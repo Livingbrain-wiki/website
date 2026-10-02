@@ -156,6 +156,13 @@ Prices may change before launch.
   Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level
   questions. On your own LLM key you pay only your provider, with no fee from
   us.
+- Does it work with Grafana? Planned. Connect Grafana with a read-only token
+  and the brain can answer "is prod down?" with the current numbers and a link
+  to the exact panel or log query. Alerts become incident pages linked to the
+  deploy and pull request that caused them, and the nightly pass drafts the
+  postmortem for a person to confirm. In the other direction, Living Brain
+  exports its own metrics, traces and logs over OpenTelemetry, so you can
+  watch it in Grafana, Datadog or Honeycomb.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
