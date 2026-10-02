@@ -127,5 +127,5 @@ illustrations, not screenshots.
 ## Links
 
 - Site: https://livingbrain.wiki/
-- Factory Zero: https://factory0.ventures
+- Factory Zero: https://factory0.ventures (Living Brain is FZ-018: https://factory0.ventures/ventures/living-brain/)
 - Colonizer: https://colonizer.dev
