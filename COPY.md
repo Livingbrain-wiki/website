@@ -14,8 +14,8 @@ carries the claim; see Information architecture below.
 | :--- | :--- | :--- |
 | Early access, in design; nothing built | Home hero badge, every footer, llms.txt, JSON-LD | True. Only this site exists |
 | A teammate that turns conversations into a Markdown wiki and keeps it true; every fact links to its source message | Home hero ("A brain for your team…"), /how-it-works/, FAQ, llms.txt | Design file and `claude-design-prompt.md`. Planned |
-| Use it from your coding agent, your terminal, or your team chat; "a brain for your team, used from coding agents, the terminal and team chat" | Home hero, every page's meta/OG/Twitter, JSON-LD, site.webmanifest, llms.txt | User decision 2026-10-03 (repositioned the same day): coding agents over MCP, the CLI and the app lead; team chat follows. No "Slack teammate" framing |
-| "Use it anywhere": coding agents (any MCP client), the `livingbrain` CLI, the app (PWA), then team chat (Slack and Discord), each marked planned | Home "Use it anywhere" (coding agents, CLI, app, team chat), /agents/ (#connect, Claude Desktop), FAQ, llms.txt | User decision 2026-10-03 |
+| Use it from your coding harness, your terminal, or your team chat; "a brain for your team, used from coding harnesses, the terminal and team chat" | Home hero, every page's meta/OG/Twitter, JSON-LD, site.webmanifest, llms.txt | User decision 2026-10-03 (repositioned the same day): coding agents over MCP (renamed "coding harnesses" by user decision 2026-10-03), the CLI and the app lead; team chat follows. No "Slack teammate" framing |
+| "Use it anywhere": coding harnesses (any MCP client), the `livingbrain` CLI, the app (PWA), then team chat (Slack and Discord), each marked planned | Home "Use it anywhere" (coding harnesses, CLI, app, team chat), /agents/ (#connect, Claude Desktop), FAQ, llms.txt | User decision 2026-10-03 |
 | Discord, as an equal of Slack: answers in threads, `/brain ask` slash command, role-gated channels mapped to permissions | Home "Use it anywhere" (team chat), Home Listen step, /integrations/ #chat, /security/ #access note, /pricing/, FAQ "Which chat apps does it work with?", llms.txt | User decision 2026-10-03. Planned. Decided 2026-10-03: Discord's own "View Channel" permission decides. A channel @everyone can view feeds the shared brain, a role-gated channel is its own scope readable by whoever Discord lets view it (roles plus member overrides, recomputed on role changes), threads inherit their channel, private threads are their own scope, DMs are personal (#56) |
 | WhatsApp and Telegram later | Home "Use it anywhere" (one quiet note), /integrations/ #chat (marked "later"), FAQ, llms.txt | User decision 2026-10-03. Not a planned feature yet; named only as "later", with no detail |
 | `livingbrain ask "who owns billing?"` returning a cited answer; `livingbrain mcp` | /agents/ #connect, CLI illustration | Illustration, labelled "Illustrative commands · not live yet". User decision 2026-10-03. **Fix before launch:** the binary does not exist; reserve the name |
@@ -25,14 +25,17 @@ carries the claim; see Information architecture below.
 | Merges duplicates, flags contradictions, retires stale facts, rewrites summaries, on a schedule | Home (Evolve step), /how-it-works/ #steps and #evolve, FAQ | Design file. Planned |
 | Learns how each person works ("the learning layer") | /how-it-works/ #learns, /agents/ #learns, FAQ | Design brief. Planned. The vendor behind it is deliberately not named |
 | Acts: opens issues, reads PRs, sends digests, hands bigger jobs to a sandboxed agent | /how-it-works/ #learns | Design file. Planned |
-| Connects to Claude Code, Codex, Cursor, OpenCode, Claude Desktop and any MCP agent; not affiliated | Home (one line), /agents/, /integrations/ #code, FAQ | Design file; Claude Desktop added by user decision 2026-10-03. Names in plain text, no logos |
+| Connects to Claude Code, Codex, Hermes, Cursor, OpenCode, Claude Desktop and any MCP harness; not affiliated | Home (one line), /agents/, /integrations/ #code, FAQ | Design file; Claude Desktop added by user decision 2026-10-03; Hermes added from Livingbrain-wiki/livingbrain#38. Shown with logos where allowed (see Marks) |
+| Supported coding harnesses, planned, in waves; each stays planned until its integration test passes. First wave: Claude Code, Codex, Hermes (Nous Research hermes-agent), Cursor, OpenCode, Claude Desktop. Next: Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI, Qwen Code. Plus any MCP client | /agents/ #harnesses (logo grid), home switcher (Claude Code, Codex, Hermes, Cursor, OpenCode, Gemini CLI, any MCP client), FAQ "Which coding harnesses can I connect?", llms.txt, `assets/harnesses.json` | Livingbrain-wiki/livingbrain#38 (user decision 2026-10-03). Planned; no harness is tested yet. Wave 3 from the issue (OpenHands, pi, Oh-My-Pi, Windsurf, Zed) is not on the site yet. The list lives in `assets/harnesses.json`; `tools/marks.js` writes the rows |
+| "Planned integrations. Not affiliated with or endorsed by these companies; names and logos are trademarks of their owners." | Under every logo group: home strip, home switcher, /agents/ #harnesses, /integrations/ (once, under the groups; the intro says it too) | User decision 2026-10-03. Nominative "works with" use only, no partner wording |
+| Linear and Notion: the brain acts in them through their MCP servers, with each person's own connection | /integrations/ #code | Livingbrain-wiki/livingbrain#11 (remote MCP servers for GitHub, Linear, Notion, Google per user via OAuth). Planned |
 | `claude mcp add ... https://mcp.livingbrain.wiki`, `codex mcp add ...`, `.cursor/mcp.json`, "14 tools" | /agents/ #connect, connect tabs | Illustration from the design, labelled "not live yet". **Fix before launch:** check each command against the agent's current docs; `mcp.livingbrain.wiki` does not exist |
 | Agent prompts and decisions become pages only with opt-in; secrets redacted; code never stored unless allowed | /agents/ #context, FAQ | Design file. Planned. **Needs a decision:** how redaction works and what "allow" means |
 | Works with Colonizer, a sister Factory Zero venture, launching microVM colonies that return PRs | /agents/ #colonizer, /integrations/ #ventures, llms.txt | Design brief. Colonizer exists at colonizer.dev; the integration is planned |
 | Reads only with the asker's own access, following your chat's permissions (Slack channels, Discord roles); public channel / private channel / DMs table | /security/ #access, /pricing/ note | Design file. Planned. **Needs a decision:** how this maps to MCP and the CLI |
 | Plain Markdown, exportable, opens in Obsidian; not a black-box vector store | /how-it-works/ #own, /security/ #ownership | Design file. Planned |
 | Not used for training | FAQ, /security/ #ownership | Design file. A promise to keep; **needs** a privacy policy before launch |
-| Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | /integrations/ #models, FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Plain text, no logos |
+| Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | /integrations/ #models, FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Logos where allowed (see Marks); OpenAI and LiteLLM by name only |
 | Pricing per workspace, planned: Community free (self-hosted on your own Cloudflare account, your own LLM key, up to 5 people, all core features, your own storage); Teams from $5/mo: self-hosted license $5/mo (unlimited people) or hosted $9/mo or $90/yr, two months free (bring your own LLM, up to 25 people included, 10 GB), team features (SSO, admin and audit log, shared prompt library, per-channel policies, white-label app) on both; Crew $15/mo or $150/yr (hosted, $5/month DeepSeek credit included or bring your own LLM, up to 25 people included, 25 GB, team features and white-label included); extra people +$5/mo per 25 on hosted plans; billed annually by default, monthly available, annual shown first; "unlimited people" only on the self-hosted Teams license. No hosted plan is free | Home (three short cards: price, who it is for, two bullets each, all taken from /pricing/), /pricing/ (cards, notes, meta/OG/Twitter), FAQ, llms.txt | User decision 2026-10-03, after a cost model: Cloudflare Workers/D1/R2/Vectorize/Workers AI list prices, DeepSeek API prices, Stripe 2.9% + $0.30 + 0.7% Billing; hosted margin targets about 60–75% (Teams) and about 45–55% (Crew). Labelled "Planned pricing". **Supersedes** the earlier 2026-10-03 table (Teams $5/mo with unlimited people on hosted too; Crew $9/mo with $3 credit) |
 | "Self-hosting is free for small teams. Teams and hosting are paid." | /pricing/ lede | User decision 2026-10-03 |
 | Can I self-host? Yes, free up to 5 people; larger teams need a Teams license, planned at $5 a month per workspace with unlimited people; source public at Livingbrain-wiki/livingbrain, Apache-2.0 core + `ee/` commercial | FAQ, /security/ #ownership, llms.txt, footer | User decision 2026-10-03; `LICENSE` and `NOTICE` in the product repo, made public 2026-10-03; license price from the pricing row above |
@@ -51,13 +54,13 @@ carries the claim; see Information architecture below.
 | Users choose their own models per role on every plan (Anthropic, OpenAI, OpenRouter, LiteLLM, any OpenAI-compatible endpoint); the included model is named as an offer: $5/month of DeepSeek credit on Crew | /integrations/ #models, /pricing/, FAQ "Which models?", llms.txt | User decision 2026-10-03 ("select their own LLMs, only mention offers like DeepSeek"); credit amount $5 (supersedes $3) from the pricing decision: User decision 2026-10-03, after a cost model: Cloudflare Workers/D1/R2/Vectorize/Workers AI list prices, DeepSeek API prices, Stripe 2.9% + $0.30 + 0.7% Billing; hosted margin targets about 60–75% (Teams) and about 45–55% (Crew) |
 | Storage per plan: Community own Cloudflare storage (no limit from us); Teams hosted 10 GB, self-hosted own storage; Crew 25 GB; extra hosted storage $0.25/GB-month; storage covers pages, sources, indexes, agent logs | /pricing/, FAQ, llms.txt | User decision 2026-10-03 (GB in the plans); amounts proposed by the agent, planned pricing |
 | Usage pricing: writing $1/M tokens (evolve included), reading unlimited, reasoning per question Minimal $0.001 / Low $0.005 / Medium $0.02 / High $0.05 / Max $0.25; "Crew's $5 monthly credit covers about 1,000 questions at the default level" ($5 / $0.005); own LLM key = no fee | /pricing/ (meter + reasoning slider), FAQ, llms.txt | User request 2026-10-03 to follow Honcho's pricing model (honcho.dev: ingestion $2/M, unlimited context, reasoning $0.001–$0.50/q). Our planned prices set at or below Honcho's; structure borrowed, numbers ours. Credit line updated by the later pricing decision (supersedes "$3 ≈ 600 questions") |
-| Aggregates coding agents' session logs (Claude Code, Codex, Cursor, OpenCode, Colonizer) via the CLI, redacted locally, opt-in upload, search, tokens and cost per person/repo/model, decisions become pages | /agents/ #logs, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain issue (Epic 4). Planned; the table is sample data |
+| Aggregates coding harnesses' session logs (Claude Code, Codex, Cursor, OpenCode, Colonizer) via the CLI, redacted locally, opt-in upload, search, tokens and cost per person/repo/model, decisions become pages | /agents/ #logs, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain issue (Epic 4). Planned; the table is sample data |
 | "Others charge $10–45 per user. We charge per team."; $45 × 20 = $900, $10 × 20 = $200; Living Brain Crew $15 for 20 people (one flat monthly price) | /pricing/ comparison | Design file (the design showed Crew at $9); Crew bar updated to $15 by the pricing decision of 2026-10-03. Labelled "Illustrative comparison". **Check before launch:** the $10–45 range against current per-seat prices of comparable tools |
 | Kestrel Freight, its people, customers, messages, PRs, prompts, counts (214 messages, 412 pages, 2,960 links, 412 uses…) | /how-it-works/, /agents/ | Fictional sample data, labelled "Illustration" or "Sample data" everywhere it appears |
 | A brain for your team. It turns your conversations into a company wiki and keeps it true | Home hero, meta, OG, llms.txt | Positioning reworded 2026-10-03 (simplified IA); same claim as the row above. Planned |
 | A Claude Code plugin will bundle the MCP server with skills and slash commands | /agents/ #connect, llms.txt | Livingbrain-wiki/livingbrain#37 (Epic 4). Planned |
 | Telemetry: anonymous, bucketed usage counts from the CLI and a self-hosted server, no free text, the exact batch shown on first run, `livingbrain telemetry off`; message text, page bodies and secrets never collected or logged; OpenTelemetry export; audit log on Teams | /security/ #telemetry, llms.txt | Livingbrain-wiki/livingbrain#44. Planned. The `LIVINGBRAIN_TELEMETRY=0` switch and the opt-in live map from #44 are not on the site |
-| "We're not affiliated with them" (other companies' tools named on /integrations/) | /integrations/ intro, FAQ "Which coding agents" | True. Names in plain text, no logos |
+| "We're not affiliated with them" (other companies' tools named on /integrations/) | /integrations/ intro, FAQ "Which coding harnesses" | True. Logos only for nominative use, see Marks |
 | Factory Zero venture | Every footer, JSON-LD, llms.txt | True |
 | `hello@livingbrain.wiki` (no-JS form fallback), `security@livingbrain.wiki` | Form `action`, security.txt | **Fix before launch:** neither mailbox exists yet |
 | Waitlist at `api.livingbrain.wiki/v1/waitlist` | Forms | Contract shared with sealb.in and Colonizer (Cratefield waitlist module). **Not deployed**: the form says "The list isn't open yet. Check back soon." |
@@ -70,10 +73,10 @@ claim lives on one page; other pages link to it instead of repeating it.
 
 | Page | Job |
 | :--- | :--- |
-| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one sentence each, each over a small looping illustration; where you use it (coding agents, CLI, app, team chat: Slack and Discord) as one switcher; pricing as three short cards. Then six link tiles to the subpages and the footer waitlist. No FAQ |
+| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one sentence each, each over a small looping illustration; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher; pricing as three short cards. Then six link tiles to the subpages and the footer waitlist. No FAQ |
 | `/how-it-works/` | The team-chat moment (Slack shown), the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
-| `/agents/` | Connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
-| `/integrations/` | Grouped plain-text names: chat, mail, imports, code, monitoring and logs, models, sister ventures |
+| `/agents/` | Coding harnesses (nav label "Harnesses"; the URL stays `/agents/`): the planned harnesses as a logo grid (`#harnesses`), connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
+| `/integrations/` | Grouped names, each with its logo where allowed: chat, mail, imports, code, monitoring and logs, models, sister ventures |
 | `/security/` | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership and self-hosting |
 | `/pricing/` | The three plans, storage, the usage meter, reasoning levels, the illustrative comparison |
 | `/faq/` | Every question, grouped, with the only `FAQPage` JSON-LD on the site |
@@ -96,7 +99,7 @@ marked **(user)** follow a user decision on 2026-10-03.
 Runtime and structure
 - **(user)** One page became eight (see Information architecture). The home
   hero says "A brain for your team." instead of "Your company, remembered."
-  (kept as the OG title and slogan). Header nav: How it works, Agents,
+  (kept as the OG title and slogan). Header nav: How it works, Harnesses (was Agents),
   Integrations, Security, Pricing, FAQ, with `aria-current` on the active page;
   under 860px it folds into a native `<details>` menu, so phones reach every
   page without JavaScript. Every page shares the header and the waitlist footer.
@@ -144,6 +147,16 @@ Copy and sections
   "Which chat apps does it work with?". The Colonizer flow on /agents/ is
   "From chat to pull request". The design's Slack wording is kept only where it
   is the Slack example itself.
+- **(user, 2026-10-03)** "Coding agents" is now "Coding harnesses" wherever
+  it names the category (switcher tab and panel, /agents/ title, eyebrow, meta,
+  OG, JSON-LD, nav label "Harnesses", FAQ, llms.txt, webmanifest, OG card and
+  README banner). "Agent" stays where it means the AI inside a harness. The URL
+  stays `/agents/`. Logos replace plain-text names on the home strip, in the
+  switcher's harness panel (a row of tiles spanning the panel), on /agents/
+  (#harnesses, a new section under the intro) and on /integrations/ (see Marks).
+  The home "Works with" strip now wraps to a second line instead of fading out
+  at the right edge, so no logo is cut off; the switcher's harness tiles sit
+  under the copy, beside the device frame.
 - **(user)** New feature card 08 "Easy to use" (planned app). The grid is now
   eight cards, which also removes the design's empty ninth cell at four columns.
 - **(user)** Pricing replaced: Community / Teams / Crew (see Claims). Each card
@@ -226,4 +239,63 @@ Security
 
 | White-label app on your domain (Teams, Crew; self-hosters rebrand freely) and an open API with webhooks and SDKs for TypeScript, Python and Rust | Home switcher (App & API), /pricing/, /integrations/ Code, FAQ, llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#40 and #59. Planned |
 
-| Home "Works with (planned)" strip: plain-text names of planned integrations, links to /integrations/ | Home, under the hero | Design fix 2026-10-03 (user screenshot: dead space under hero); names already listed on /integrations/. No logos, no partnership implied |
+| Home "Works with (planned)" strip: logos and names of planned integrations, links to /integrations/ | Home, under the hero | Design fix 2026-10-03 (user screenshot: dead space under hero); names already listed on /integrations/. Logos added by user decision 2026-10-03 (see Marks); Hermes added; no partnership implied |
+
+## Marks
+
+Other companies' logos, shown only to say what Living Brain is planned to work
+with (nominative use), by user decision 2026-10-03, replacing "names in plain
+text, no logos". Rules: official marks only, from the brand's press kit or
+[Simple Icons](https://simpleicons.org) (CC0 SVG path data; trademarks remain
+with their owners), pinned to the release in `tools/fetch-simple-icons.sh`
+(downloaded into `tools/vendor/`, not committed, never fetched at runtime).
+`tools/marks.js` copies each to `assets/logos/` as one path with a
+`currentColor` fill and writes the rows and an inline sprite into the pages.
+Every logo is shown unaltered in one colour (`--ink2`), with the brand colour on
+hover only where it clears 3:1 on the theme's surfaces. Where no official or
+Simple Icons mark exists, or the owner's guidelines forbid this use, the brand
+is its name only, in the same chip; never draw a stand-in. Each logo has the
+brand name as its accessible name. `tools/build-dist.sh` fails if a file in
+`assets/logos/` has no row here. **Check before launch:** every "no published
+guidelines found" row against the owner's current terms.
+
+| Mark | File | Source | Version or kit | License / terms | Guideline note |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Claude Code | `assets/logos/claude-code.svg` | https://code.claude.com | Simple Icons 16.33.0 (`claudecode`) | Simple Icons 16.33.0, CC0 path data; trademark of Anthropic | No published third-party logo guidelines found; nominative "works with" use, unaltered |
+| Codex | name only | https://openai.com/brand/ | — | Trademark of OpenAI | Name only: OpenAI's brand guidelines ask for permission to use its marks, and Simple Icons removed OpenAI's icon for that reason (simple-icons#13944) |
+| Hermes | name only | https://github.com/NousResearch/hermes-agent | — | Nous Research hermes-agent | Name only: no press kit or published mark from Nous Research; the Simple Icons "Hermes" icon is an unrelated parcel company |
+| Cursor | `assets/logos/cursor.svg` | https://cursor.com/brand | Simple Icons 16.33.0 (`cursor`) | Simple Icons 16.33.0, CC0 path data; trademark of Anysphere | Brand page cursor.com/brand provides the mark; nominative use, unaltered |
+| OpenCode | `assets/logos/opencode.svg` | https://github.com/anomalyco/opencode/blob/1251a870cb384543c150c4a72fb101b55eec971b/packages/identity/mark.svg | Simple Icons 16.33.0 (`opencode`) | Simple Icons 16.33.0, CC0 path data; mark from the project's own repo | Nominative use, unaltered |
+| Claude Desktop | `assets/logos/claude.svg` | https://claude.ai | Simple Icons 16.33.0 (`claude`) | Simple Icons 16.33.0, CC0 path data; trademark of Anthropic | No published third-party logo guidelines found; nominative use, unaltered |
+| Gemini CLI | `assets/logos/google-gemini.svg` | https://gemini.google.com | Simple Icons 16.33.0 (`googlegemini`) | Simple Icons 16.33.0, CC0 path data; trademark of Google | Gemini mark, nominative use, unaltered. Check against Google's brand permissions before launch |
+| GitHub Copilot | `assets/logos/github-copilot.svg` | https://primer.style/foundations/icons/copilot-24 | Simple Icons 16.33.0 (`githubcopilot`) | Simple Icons 16.33.0; icon from GitHub Primer Octicons, MIT; trademark of GitHub | github.com/logos: nominative use allowed, unaltered |
+| Goose | name only | https://github.com/block/goose | — | Block's goose | Name only: no Simple Icons mark and no press kit found |
+| Cline | `assets/logos/cline.svg` | https://cline.bot/assets/branding/logos/cline-wordmark-black.svg | Simple Icons 16.33.0 (`cline`) | Simple Icons 16.33.0, CC0 path data; from Cline's own branding assets | Nominative use, unaltered |
+| Aider | name only | https://aider.chat | — | Aider | Name only: no Simple Icons mark and no press kit found |
+| Kimi CLI | `assets/logos/kimi.svg` | https://moonshotai.github.io/Branding-Guide | Simple Icons 16.33.0 (`kimi`) | Simple Icons 16.33.0, CC0 path data; trademark of Moonshot AI | Moonshot AI branding guide; nominative use, unaltered |
+| Qwen Code | `assets/logos/qwen.svg` | https://qwen.ai | Simple Icons 16.33.0 (`qwen`) | Simple Icons 16.33.0, CC0 path data; trademark of Alibaba Cloud | No published third-party logo guidelines found; nominative use, unaltered |
+| Slack | name only | https://slack.com/media-kit | — | Trademark of Salesforce | Name only: Salesforce had all its icons removed from Simple Icons (simple-icons#13503) |
+| Discord | `assets/logos/discord.svg` | https://discord.com/branding | Simple Icons 16.33.0 (`discord`) | Simple Icons 16.33.0, CC0 path data; trademark of Discord | discord.com/branding: the Clyde mark in one colour is allowed; unaltered |
+| GitHub | `assets/logos/github.svg` | https://github.com/logos | Simple Icons 16.33.0 (`github`) | Simple Icons 16.33.0, CC0 path data; trademark of GitHub | github.com/logos: the Invertocat may be used to refer to GitHub; unaltered, one colour |
+| Gmail | `assets/logos/gmail.svg` | https://fonts.gstatic.com/s/i/productlogos/gmail_2020q4/v8/192px.svg | Simple Icons 16.33.0 (`gmail`) | Simple Icons 16.33.0, CC0 path data; trademark of Google | Nominative use, unaltered. Check against Google's brand permissions before launch |
+| Outlook | name only | https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks | — | Trademark of Microsoft | Name only: Microsoft had all its icons removed from Simple Icons (simple-icons#11236) |
+| Microsoft 365 | name only | https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks | — | Trademark of Microsoft | Name only: Microsoft had all its icons removed from Simple Icons (simple-icons#11236) |
+| IMAP | name only | — | — | — | A protocol, not a brand |
+| Grafana | `assets/logos/grafana.svg` | https://grafana.com | Simple Icons 16.33.0 (`grafana`) | Simple Icons 16.33.0, CC0 path data; trademark of Grafana Labs | No published third-party logo guidelines found; nominative use, unaltered |
+| Loki | name only | https://grafana.com/oss/loki/ | — | Grafana Labs | Name only: no Simple Icons mark |
+| Elasticsearch | `assets/logos/elasticsearch.svg` | https://www.elastic.co/brand | Simple Icons 16.33.0 (`elasticsearch`) | Simple Icons 16.33.0, CC0 path data; trademark of Elasticsearch B.V. | elastic.co/brand; nominative use, unaltered |
+| Datadog | `assets/logos/datadog.svg` | https://www.datadoghq.com/about/resources/ | Simple Icons 16.33.0 (`datadog`) | Simple Icons 16.33.0, CC0 path data; trademark of Datadog | Datadog press resources; nominative use, unaltered |
+| CloudWatch | name only | https://aws.amazon.com/trademark-guidelines/ | — | Trademark of Amazon | Name only: no Simple Icons mark; AWS trademark guidelines restrict logo use |
+| Cloudflare | `assets/logos/cloudflare.svg` | https://www.cloudflare.com/logo/ | Simple Icons 16.33.0 (`cloudflare`) | Simple Icons 16.33.0, CC0 path data; trademark of Cloudflare | cloudflare.com/trademark: nominative use, unaltered |
+| Sentry | `assets/logos/sentry.svg` | https://sentry.io/branding/ | Simple Icons 16.33.0 (`sentry`) | Simple Icons 16.33.0, CC0 path data; trademark of Functional Software | sentry.io/branding; nominative use, unaltered |
+| Anthropic | `assets/logos/anthropic.svg` | https://www.anthropic.com | Simple Icons 16.33.0 (`anthropic`) | Simple Icons 16.33.0, CC0 path data; trademark of Anthropic | No published third-party logo guidelines found; nominative use, unaltered |
+| OpenAI | name only | https://openai.com/brand/ | — | Trademark of OpenAI | Name only: OpenAI's brand guidelines ask for permission to use its marks, and Simple Icons removed its icon (simple-icons#13944) |
+| OpenRouter | `assets/logos/openrouter.svg` | https://openrouter.ai | Simple Icons 16.33.0 (`openrouter`) | Simple Icons 16.33.0, CC0 path data; trademark of OpenRouter | No published third-party logo guidelines found; nominative use, unaltered |
+| LiteLLM | name only | https://github.com/BerriAI/litellm | — | BerriAI | Name only: no Simple Icons mark and no press kit found |
+| DeepSeek | `assets/logos/deepseek.svg` | https://www.deepseek.com | Simple Icons 16.33.0 (`deepseek`) | Simple Icons 16.33.0, CC0 path data; trademark of DeepSeek | No published third-party logo guidelines found; nominative use, unaltered |
+| Linear | `assets/logos/linear.svg` | https://linear.app | Simple Icons 16.33.0 (`linear`) | Simple Icons 16.33.0, CC0 path data; trademark of Linear Orbit | No published third-party logo guidelines found; nominative use, unaltered |
+| Notion | `assets/logos/notion.svg` | https://www.notion.so | Simple Icons 16.33.0 (`notion`) | Simple Icons 16.33.0, CC0 path data; trademark of Notion Labs | Nominative use, unaltered |
+| WhatsApp | `assets/logos/whatsapp.svg` | https://about.meta.com/brand/resources/whatsapp/whatsapp-brand | Simple Icons 16.33.0 (`whatsapp`) | Simple Icons 16.33.0, CC0 path data; trademark of Meta | Meta's WhatsApp brand guidelines: glyph in one colour allowed, unaltered |
+| Telegram | `assets/logos/telegram.svg` | https://telegram.org/tour/screenshots | Simple Icons 16.33.0 (`telegram`) | Simple Icons 16.33.0, CC0 path data; trademark of Telegram | No published third-party logo guidelines found; nominative use, unaltered |
+| ChatGPT | name only | https://openai.com/brand/ | — | Trademark of OpenAI | Name only: as OpenAI |
+| Claude | same file as above (assets/logos/claude.svg) | https://claude.ai | Simple Icons 16.33.0 (`claude`) | Simple Icons 16.33.0, CC0 path data; trademark of Anthropic | No published third-party logo guidelines found; nominative use, unaltered |

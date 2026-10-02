@@ -14,6 +14,10 @@ design tokens and the deploy procedure.
 - **No-JS state:** after changing the sample data in `assets/livingbrain.js`
   (between `data:start` and `data:end`) or the generator in `assets/brain.js`,
   run `node tools/prerender.js`. Never hand-edit between its markers.
+- **Logos and harness list:** edit `assets/harnesses.json` or
+  `tools/integrations.json`, then `node tools/marks.js` (it writes the
+  `marks-*` regions; never hand-edit between them). A new logo needs
+  `tools/fetch-simple-icons.sh` first and a COPY.md Marks row.
 - **Images:** edit `tools/*-render.html`, then `tools/render-og.sh` (macOS,
   needs Google Chrome). Never hand-edit the PNGs.
 - **Pages:** the site is several static pages, each a `folder/index.html`
@@ -45,6 +49,9 @@ Rules that matter most:
 4. Keep both themes AA, keep 360px free of horizontal scroll, keep focus visible.
 5. Copy voice: short, plain sentences. No "seamless", "supercharge", "unlock",
    "AI-powered", "revolutionary", "magic". Don't name the learning layer's
-   vendor; call it "the learning layer". Name other tools in plain text, never
-   with logos, and imply no partnership.
+   vendor; call it "the learning layer". Imply no partnership. Other
+   companies' logos come only through `tools/marks.js` (data in
+   `assets/harnesses.json` and `tools/integrations.json`), each with a row in
+   COPY.md's Marks table; where no official mark exists or the owner forbids
+   it, show the name only. Never hotlink or redraw a logo.
 6. Do not ship or commit the design's `support.js` runtime.

@@ -30,7 +30,7 @@ follows the structure of the sealb.in and Colonizer sites.
 | :--- | :--- | :--- |
 | **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki. The waitlist API is not deployed yet |
 | **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki`, same contract as sealb.in and Colonizer. | **Not deployed.** The form says "The list isn't open yet." |
-| **Living Brain** | The product: a brain for your team, used from coding agents (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
+| **Living Brain** | The product: a brain for your team, used from coding harnesses (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
 
 > **Your company, remembered.**
 
@@ -44,10 +44,10 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 
 | Page | What's on it |
 | :--- | :--- |
-| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding agents, CLI, app, team chat: Slack and Discord) as one switcher over a device frame; pricing as three cards; six link tiles; the footer waitlist |
+| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher over a device frame, with a row of harness logos; pricing as three cards; six link tiles; the footer waitlist |
 | [`/how-it-works/`](how-it-works/index.html) | The team-chat thread (Slack shown) with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
-| [`/agents/`](agents/index.html) | Connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
-| [`/integrations/`](integrations/index.html) | Chat, mail, imports, code, monitoring and logs, models, sister ventures. Plain-text names |
+| [`/agents/`](agents/index.html) | Coding harnesses: the planned harnesses as a logo grid (`#harnesses`), connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
+| [`/integrations/`](integrations/index.html) | Code, chat, mail, imports, monitoring and logs, models, sister ventures. Names with logos where allowed |
 | [`/security/`](security/index.html) | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership |
 | [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams (from $5; hosted $9), Crew ($15); storage, usage, reasoning levels; planned |
 | [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
@@ -102,12 +102,17 @@ to 360px with no horizontal scroll.
 │   ├── brain.js                the 3D brain renderer (2D canvas, no dependencies), from the design
 │   ├── fonts/                  Bricolage Grotesque, Hanken Grotesk, JetBrains Mono (OFL, latin, variable)
 │   ├── favicon.svg             the mark
+│   ├── logos/                  other companies' marks (Simple Icons), written by tools/marks.js
+│   ├── harnesses.json          the planned coding harnesses (#38), source of the logo rows
 │   ├── og.png                  Open Graph card
 │   ├── icon-192.png  icon-512.png  icon-maskable-512.png  apple-touch-icon.png
 │   ├── org-avatar.png          GitHub organization avatar, uploaded by hand
 │   └── readme-banner.png       the banner above
 ├── tools/
 │   ├── prerender.js            writes the no-JS state into the pages (still brain, demo, tabs, chart)
+│   ├── marks.js                writes the logo rows and sprites from harnesses.json and integrations.json
+│   ├── integrations.json       the other planned integrations' marks and where each row goes
+│   ├── fetch-simple-icons.sh   downloads the pinned Simple Icons release into tools/vendor/ (not committed)
 │   ├── build-dist.sh           assembles dist/ from an allowlist, stamps cache hashes, checks the CSP hash
 │   ├── deploy.sh               builds main in a throwaway worktree and deploys it
 │   ├── og-render.html          source for og.png

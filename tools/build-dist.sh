@@ -24,6 +24,20 @@ for f in livingbrain.css livingbrain.js brain.js favicon.svg og.png \
          apple-touch-icon.png icon-192.png icon-512.png icon-maskable-512.png; do
   cp "assets/$f" dist/assets/
 done
+# assets/harnesses.json is the planned-harness list (#38) the logo rows are
+# generated from (tools/marks.js); shipped so agents can read it too.
+cp assets/harnesses.json dist/assets/
+
+# Logos (other companies' marks): every file needs its row in COPY.md, Marks.
+# A logo with no row fails the build instead of shipping unrecorded.
+mkdir -p dist/assets/logos
+for f in assets/logos/*.svg; do
+  n=$(basename "$f")
+  grep -q "^| .*\`assets/logos/$n\`" COPY.md || { echo "assets/logos/$n has no row in COPY.md (Marks)" >&2; exit 1; }
+  grep -q '<script\|<foreignObject\|href=\|<image' "$f" && { echo "assets/logos/$n must be a plain path, no scripts, links or images" >&2; exit 1; }
+  cp "$f" dist/assets/logos/
+done
+
 for f in bricolage-grotesque.woff2 hanken-grotesk.woff2 jetbrains-mono.woff2; do
   cp "assets/fonts/$f" dist/assets/fonts/
 done

@@ -1,7 +1,7 @@
 {
   "name": "Living Brain",
   "short_name": "Living Brain",
-  "description": "A brain for your team, used from coding agents, the terminal and team chat. It writes and keeps your company wiki in Markdown you own. Early access, in design.",
+  "description": "A brain for your team, used from coding harnesses, the terminal and team chat. It writes and keeps your company wiki in Markdown you own. Early access, in design.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

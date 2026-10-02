@@ -1,8 +1,8 @@
 # Living Brain
 
 > Living Brain (livingbrain.wiki) is a brain for your team, used from coding
-> agents, the terminal and team chat. It builds and keeps its own company wiki
-> in plain Markdown. You use it from your coding agent over MCP, from the
+> harnesses, the terminal and team chat. It builds and keeps its own company wiki
+> in plain Markdown. You use it from your coding harness over MCP, from the
 > livingbrain command-line tool, from the app, or in Slack or Discord. A
 > Factory Zero venture. Status: early access, in design. Nothing is built yet:
 > no MCP server, CLI, web app, Slack or Discord app or hosted service exists. Only this website exists, and
@@ -27,7 +27,7 @@ under those names today is not ours.
 
 - Home: https://livingbrain.wiki/
 - How it works: https://livingbrain.wiki/how-it-works/
-- Coding agents: https://livingbrain.wiki/agents/
+- Coding harnesses: https://livingbrain.wiki/agents/
 - Integrations: https://livingbrain.wiki/integrations/
 - Security and privacy: https://livingbrain.wiki/security/
 - Pricing: https://livingbrain.wiki/pricing/
@@ -37,10 +37,10 @@ under those names today is not ours.
 ## Home: https://livingbrain.wiki/
 
 A brain for your team. It turns your conversations into a company wiki and
-keeps it true. Use it from your coding agent, your terminal, or your team chat.
+keeps it true. Use it from your coding harness, your terminal, or your team chat.
 
 Where you use it (planned):
-- Coding agents: Claude Code, Codex, Cursor and others read it over MCP.
+- Coding harnesses: Claude Code, Codex, Hermes, Cursor and others read it over MCP.
 - The livingbrain CLI: one Rust binary for terminals and scripts.
 - The app (PWA), white-label on Teams and Crew (your name, logo, domain), plus an open API with
   webhooks and SDKs for TypeScript, Python and Rust. The app installs from the browser on phone and desktop, keeps pages
@@ -69,10 +69,15 @@ Where you use it (planned):
   every change as a pull request and merged edits flow back in.
 - An explorable 3D sample brain of a fictional company, Kestrel Freight.
 
-## Coding agents: https://livingbrain.wiki/agents/
+## Coding harnesses: https://livingbrain.wiki/agents/
 
-- Connects to Claude Code, Codex, Cursor, OpenCode, Claude Desktop or any MCP
-  agent; a Claude Code plugin will bundle the MCP server with skills and slash
+- Works with your coding harness (planned, in waves; each stays planned until
+  its integration test passes). First wave: Claude Code, Codex, Hermes (Nous
+  Research hermes-agent), Cursor, OpenCode, Claude Desktop. Next: Gemini CLI,
+  GitHub Copilot, Goose, Cline, Aider, Kimi CLI, Qwen Code. Plus any MCP
+  client. Not affiliated with or endorsed by these companies; names and logos
+  are trademarks of their owners.
+- A Claude Code plugin will bundle the MCP server with skills and slash
   commands. Not affiliated with these tools.
 - Built in Rust. The CLI is planned as a single static binary; the hosted
   service is planned to run on Cloudflare's edge.
@@ -158,7 +163,7 @@ Self-hosting is free for small teams. Teams and hosting are paid. No hosted
 plan is free.
 
 - Community: free. Self-hosted on your own Cloudflare account with your own
-  model key. Up to 5 people. All core features: MCP for coding agents, the
+  model key. Up to 5 people. All core features: MCP for coding harnesses, the
   brain in Slack and Discord, the living wiki, citations, the 3D graph, agent
   log aggregation, export. Storage: your own Cloudflare account, no limit from us.
 - Teams: from $5/month per workspace. Team features: SSO, admin and audit
@@ -198,11 +203,11 @@ Same answers as the site.
   improve every week.
 - How is it different from Slack AI or Glean? Search tools find what already
   exists. Living Brain writes and maintains a wiki you own as Markdown, cites
-  the message behind every fact, acts in your tools, gives your coding agents
+  the message behind every fact, acts in your tools, gives your coding harnesses
   the same memory, and is priced per workspace instead of per seat.
 - Which chat apps does it work with? Slack and Discord, as equals. Both are
   planned. WhatsApp and Telegram come later. You don't need a chat app at all:
-  coding agents such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop
+  coding harnesses such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop
   connect over MCP, and the livingbrain command-line tool, a single Rust
   binary, and the app work on their own. All of it is planned, like the rest
   of the product.
@@ -210,22 +215,24 @@ Same answers as the site.
   phone and desktop as a PWA, keep pages readable offline, open on one box to
   search or ask, and keep the 3D brain one tap away. Like the rest of Living
   Brain, it is not built yet.
-
-### Coding agents
-
 - Can we put our own brand on it, or build on it? Planned. On Teams and Crew,
   the app runs on your own domain with your name, logo and colours, and
   installs on phones and desktops as your app. A small "powered by" link is
   optional. There's also an open API with webhooks and SDKs for TypeScript,
   Python and Rust, so you can build the brain into your own tools. If you
   self-host, the code is yours to rebrand.
-- Which coding agents can I connect? Any agent that supports MCP, including
-  Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these
-  tools; they connect through the open protocol.
+
+### Coding harnesses
+
+- Which coding harnesses can I connect? Any harness that supports MCP.
+  Planned first: Claude Code, Codex, Hermes, Cursor, OpenCode and Claude
+  Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI and
+  Qwen Code. We're not affiliated with these tools; they connect through the
+  open protocol.
 - Do you store my agent prompts and code? Only if you opt in. Prompts and
   session notes are stored with secrets redacted first. Source code is never
   stored unless you allow it.
-- Can it collect my coding agents' logs? Planned. The livingbrain CLI collects
+- Can it collect my coding harnesses' logs? Planned. The livingbrain CLI collects
   the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer
   already write, redacts secrets on your machine, and uploads them only if you
   opt in. You can search every session, see tokens and cost per person, repo

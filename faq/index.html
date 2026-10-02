@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>FAQ · Living Brain</title>
-<meta name="description" content="Questions about Living Brain: coding agents, the CLI, Slack and Discord, mail and imports, encryption, self-hosting, models and planned pricing. Not built yet: early access, in design.">
+<meta name="description" content="Questions about Living Brain: coding harnesses, the CLI, Slack and Discord, mail and imports, encryption, self-hosting, models and planned pricing. Not built yet: early access, in design.">
 <link rel="canonical" href="https://livingbrain.wiki/faq/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/faq/">
 <meta property="og:title" content="Living Brain FAQ">
-<meta property="og:description" content="Every question about Living Brain, from coding agents and team chat to encryption, self-hosting and pricing.">
+<meta property="og:description" content="Every question about Living Brain, from coding harnesses and team chat to encryption, self-hosting and pricing.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain FAQ">
-<meta name="twitter:description" content="Every question about Living Brain, from coding agents and team chat to encryption, self-hosting and pricing.">
+<meta name="twitter:description" content="Every question about Living Brain, from coding harnesses and team chat to encryption, self-hosting and pricing.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 <meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
 
@@ -83,7 +83,7 @@
           "name": "How is it different from Slack AI or Glean?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat."
+            "text": "Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding harnesses the same memory, and is priced per workspace instead of per seat."
           }
         },
         {
@@ -91,7 +91,7 @@
           "name": "Which chat apps does it work with?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Slack and Discord, as equals. Both are planned. WhatsApp and Telegram come later. You don't need a chat app at all: coding agents such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop connect over MCP, and the livingbrain command-line tool, a single Rust binary, and the app work on their own. All of it is planned, like the rest of the product."
+            "text": "Slack and Discord, as equals. Both are planned. WhatsApp and Telegram come later. You don't need a chat app at all: coding harnesses such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop connect over MCP, and the livingbrain command-line tool, a single Rust binary, and the app work on their own. All of it is planned, like the rest of the product."
           }
         },
         {
@@ -112,10 +112,10 @@
         },
         {
           "@type": "Question",
-          "name": "Which coding agents can I connect?",
+          "name": "Which coding harnesses can I connect?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol."
+            "text": "Any harness that supports MCP. Planned first: Claude Code, Codex, Hermes, Cursor, OpenCode and Claude Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI and Qwen Code. We're not affiliated with these tools; they connect through the open protocol."
           }
         },
         {
@@ -128,7 +128,7 @@
         },
         {
           "@type": "Question",
-          "name": "Can it collect my coding agents' logs?",
+          "name": "Can it collect my coding harnesses' logs?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session."
@@ -237,7 +237,7 @@
     <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
     <nav class="nav" aria-label="Primary">
       <a href="/how-it-works/">How it works</a>
-      <a href="/agents/">Agents</a>
+      <a href="/agents/">Harnesses</a>
       <a href="/integrations/">Integrations</a>
       <a href="/security/">Security</a>
       <a href="/pricing/">Pricing</a>
@@ -247,7 +247,7 @@
       <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
       <nav class="menu__panel" aria-label="Primary, small screens">
         <a href="/how-it-works/">How it works</a>
-        <a href="/agents/">Agents</a>
+        <a href="/agents/">Harnesses</a>
         <a href="/integrations/">Integrations</a>
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
@@ -271,16 +271,16 @@
     <h2 id="product" class="h4 faq__group">Product</h2>
     <div class="faq">
       <details><summary><h3>What does "living" mean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week.</p></details>
-      <details><summary><h3>How is it different from Slack AI or Glean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat.</p></details>
-      <details><summary><h3>Which chat apps does it work with?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Slack and Discord, as equals. Both are planned. WhatsApp and Telegram come later. You don't need a chat app at all: coding agents such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop connect over MCP, and the livingbrain command-line tool, a single Rust binary, and the app work on their own. All of it is planned, like the rest of the product.</p></details>
+      <details><summary><h3>How is it different from Slack AI or Glean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding harnesses the same memory, and is priced per workspace instead of per seat.</p></details>
+      <details><summary><h3>Which chat apps does it work with?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Slack and Discord, as equals. Both are planned. WhatsApp and Telegram come later. You don't need a chat app at all: coding harnesses such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop connect over MCP, and the livingbrain command-line tool, a single Rust binary, and the app work on their own. All of it is planned, like the rest of the product.</p></details>
       <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet.</p></details>
       <details><summary><h3>Can we put our own brand on it, or build on it?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. On Teams and Crew, the app runs on your own domain with your name, logo and colours, and installs on phones and desktops as your app. A small "powered by" link is optional. There's also an open API with webhooks and SDKs for TypeScript, Python and Rust, so you can build the brain into your own tools. If you self-host, the code is yours to rebrand.</p></details>
     </div>
-    <h2 id="agents" class="h4 faq__group">Coding agents</h2>
+    <h2 id="agents" class="h4 faq__group">Coding harnesses</h2>
     <div class="faq">
-      <details><summary><h3>Which coding agents can I connect?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol.</p></details>
+      <details><summary><h3>Which coding harnesses can I connect?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Any harness that supports MCP. Planned first: Claude Code, Codex, Hermes, Cursor, OpenCode and Claude Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI and Qwen Code. We're not affiliated with these tools; they connect through the open protocol.</p></details>
       <details><summary><h3>Do you store my agent prompts and code?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it.</p></details>
-      <details><summary><h3>Can it collect my coding agents' logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session.</p></details>
+      <details><summary><h3>Can it collect my coding harnesses' logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session.</p></details>
     </div>
     <h2 id="integrations" class="h4 faq__group">Integrations</h2>
     <div class="faq">
@@ -327,7 +327,7 @@
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>
         <a href="/how-it-works/">How it works</a>
-        <a href="/agents/">Agents</a>
+        <a href="/agents/">Harnesses</a>
         <a href="/integrations/">Integrations</a>
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>

@@ -1,0 +1,309 @@
+{
+  "about": "Marks for the planned integrations on / and /integrations/. tools/marks.js reads this file with assets/harnesses.json. A brand with \"logo\": null shows its name only, in the same chip; never draw a stand-in. Every logo needs a row in COPY.md (Marks).",
+  "marks": [
+    {
+      "id": "slack",
+      "name": "Slack",
+      "logo": null,
+      "source": "https://slack.com/media-kit",
+      "terms": "Trademark of Salesforce",
+      "guideline": "Name only: Salesforce had all its icons removed from Simple Icons (simple-icons#13503)"
+    },
+    {
+      "id": "discord",
+      "name": "Discord",
+      "logo": "logos/discord.svg",
+      "si": "discord",
+      "brand": "#5865F2",
+      "source": "https://discord.com/branding",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Discord",
+      "guideline": "discord.com/branding: the Clyde mark in one colour is allowed; unaltered"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "logo": "logos/github.svg",
+      "si": "github",
+      "brand": "#181717",
+      "source": "https://github.com/logos",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of GitHub",
+      "guideline": "github.com/logos: the Invertocat may be used to refer to GitHub; unaltered, one colour"
+    },
+    {
+      "id": "gmail",
+      "name": "Gmail",
+      "logo": "logos/gmail.svg",
+      "si": "gmail",
+      "brand": "#EA4335",
+      "source": "https://fonts.gstatic.com/s/i/productlogos/gmail_2020q4/v8/192px.svg",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Google",
+      "guideline": "Nominative use, unaltered. Check against Google's brand permissions before launch"
+    },
+    {
+      "id": "outlook",
+      "name": "Outlook",
+      "logo": null,
+      "source": "https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks",
+      "terms": "Trademark of Microsoft",
+      "guideline": "Name only: Microsoft had all its icons removed from Simple Icons (simple-icons#11236)"
+    },
+    {
+      "id": "microsoft-365",
+      "name": "Microsoft 365",
+      "logo": null,
+      "source": "https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks",
+      "terms": "Trademark of Microsoft",
+      "guideline": "Name only: Microsoft had all its icons removed from Simple Icons (simple-icons#11236)"
+    },
+    {
+      "id": "imap",
+      "name": "IMAP",
+      "logo": null,
+      "guideline": "A protocol, not a brand"
+    },
+    {
+      "id": "grafana",
+      "name": "Grafana",
+      "logo": "logos/grafana.svg",
+      "si": "grafana",
+      "brand": "#F46800",
+      "source": "https://grafana.com",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Grafana Labs",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "loki",
+      "name": "Loki",
+      "logo": null,
+      "source": "https://grafana.com/oss/loki/",
+      "terms": "Grafana Labs",
+      "guideline": "Name only: no Simple Icons mark"
+    },
+    {
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "logo": "logos/elasticsearch.svg",
+      "si": "elasticsearch",
+      "brand": "#005571",
+      "source": "https://www.elastic.co/brand",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Elasticsearch B.V.",
+      "guideline": "elastic.co/brand; nominative use, unaltered"
+    },
+    {
+      "id": "datadog",
+      "name": "Datadog",
+      "logo": "logos/datadog.svg",
+      "si": "datadog",
+      "brand": "#632CA6",
+      "source": "https://www.datadoghq.com/about/resources/",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Datadog",
+      "guideline": "Datadog press resources; nominative use, unaltered"
+    },
+    {
+      "id": "cloudwatch",
+      "name": "CloudWatch",
+      "logo": null,
+      "source": "https://aws.amazon.com/trademark-guidelines/",
+      "terms": "Trademark of Amazon",
+      "guideline": "Name only: no Simple Icons mark; AWS trademark guidelines restrict logo use"
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "logo": "logos/cloudflare.svg",
+      "si": "cloudflare",
+      "brand": "#F38020",
+      "source": "https://www.cloudflare.com/logo/",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Cloudflare",
+      "guideline": "cloudflare.com/trademark: nominative use, unaltered"
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "logo": "logos/sentry.svg",
+      "si": "sentry",
+      "brand": "#362D59",
+      "source": "https://sentry.io/branding/",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Functional Software",
+      "guideline": "sentry.io/branding; nominative use, unaltered"
+    },
+    {
+      "id": "anthropic",
+      "name": "Anthropic",
+      "logo": "logos/anthropic.svg",
+      "si": "anthropic",
+      "brand": "#191919",
+      "source": "https://www.anthropic.com",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Anthropic",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "logo": null,
+      "source": "https://openai.com/brand/",
+      "terms": "Trademark of OpenAI",
+      "guideline": "Name only: OpenAI's brand guidelines ask for permission to use its marks, and Simple Icons removed its icon (simple-icons#13944)"
+    },
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "logo": "logos/openrouter.svg",
+      "si": "openrouter",
+      "brand": "#94A3B8",
+      "source": "https://openrouter.ai",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of OpenRouter",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "litellm",
+      "name": "LiteLLM",
+      "logo": null,
+      "source": "https://github.com/BerriAI/litellm",
+      "terms": "BerriAI",
+      "guideline": "Name only: no Simple Icons mark and no press kit found"
+    },
+    {
+      "id": "deepseek",
+      "name": "DeepSeek",
+      "logo": "logos/deepseek.svg",
+      "si": "deepseek",
+      "brand": "#5786FE",
+      "source": "https://www.deepseek.com",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of DeepSeek",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "logo": "logos/linear.svg",
+      "si": "linear",
+      "brand": "#5E6AD2",
+      "source": "https://linear.app",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Linear Orbit",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "logo": "logos/notion.svg",
+      "si": "notion",
+      "brand": "#000000",
+      "source": "https://www.notion.so",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Notion Labs",
+      "guideline": "Nominative use, unaltered"
+    },
+    {
+      "id": "whatsapp",
+      "name": "WhatsApp",
+      "logo": "logos/whatsapp.svg",
+      "si": "whatsapp",
+      "brand": "#25D366",
+      "source": "https://about.meta.com/brand/resources/whatsapp/whatsapp-brand",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Meta",
+      "guideline": "Meta's WhatsApp brand guidelines: glyph in one colour allowed, unaltered"
+    },
+    {
+      "id": "telegram",
+      "name": "Telegram",
+      "logo": "logos/telegram.svg",
+      "si": "telegram",
+      "brand": "#26A5E4",
+      "source": "https://telegram.org/tour/screenshots",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Telegram",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "logo": null,
+      "source": "https://openai.com/brand/",
+      "terms": "Trademark of OpenAI",
+      "guideline": "Name only: as OpenAI"
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "logo": "logos/claude.svg",
+      "si": "claude",
+      "brand": "#D97757",
+      "source": "https://claude.ai",
+      "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Anthropic",
+      "guideline": "No published third-party logo guidelines found; nominative use, unaltered"
+    }
+  ],
+  "regions": {
+    "works": [
+      "@claude-code",
+      "@codex",
+      "@hermes",
+      "@cursor",
+      "@opencode",
+      "slack",
+      "discord",
+      "github",
+      "gmail",
+      "outlook",
+      "grafana",
+      "deepseek",
+      "litellm"
+    ],
+    "intg-harnesses": [
+      "@claude-code",
+      "@codex",
+      "@hermes",
+      "@cursor",
+      "@opencode",
+      "@claude-desktop"
+    ],
+    "intg-github": [
+      "github"
+    ],
+    "intg-tools": [
+      "linear",
+      "notion"
+    ],
+    "intg-slack": [
+      "slack"
+    ],
+    "intg-discord": [
+      "discord"
+    ],
+    "intg-later": [
+      "whatsapp",
+      "telegram"
+    ],
+    "intg-mail": [
+      "gmail",
+      "outlook",
+      "microsoft-365",
+      "imap"
+    ],
+    "intg-chatgpt": [
+      "chatgpt"
+    ],
+    "intg-claude": [
+      "claude"
+    ],
+    "intg-grafana": [
+      "grafana"
+    ],
+    "intg-logs": [
+      "loki",
+      "elasticsearch",
+      "datadog",
+      "cloudwatch",
+      "cloudflare",
+      "sentry"
+    ],
+    "intg-models": [
+      "anthropic",
+      "openai",
+      "openrouter",
+      "litellm"
+    ],
+    "intg-deepseek": [
+      "deepseek"
+    ]
+  }
+}
