@@ -1,0 +1,9 @@
+# Cloudflare Pages redirects.
+# Short, stable links for talks, READMEs and chat. Temporary (302) on purpose:
+# the targets may move.
+
+/waitlist   /#waitlist   302
+/demo       /#demo       302
+/agents     /#agents     302
+/pricing    /#pricing    302
+/faq        /#faq        302

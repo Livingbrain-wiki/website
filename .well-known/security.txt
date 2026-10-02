@@ -1,0 +1,4 @@
+Contact: mailto:security@livingbrain.wiki
+Expires: 2027-10-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://livingbrain.wiki/.well-known/security.txt
