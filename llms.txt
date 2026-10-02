@@ -58,6 +58,9 @@ under those names today is not ours.
   readable offline, opens on one box to search or ask, with the 3D brain one
   tap away.
 
+- Connectors (planned): Gmail, Outlook.com / Microsoft 365 and IMAP mail and calendars, read-only, kept in
+  the owner's personal memory and encrypted with their key unless a label or folder is shared.
+
 ## Planned pricing (per workspace, not per seat)
 
 Self-hosting is free for small teams. Teams and hosting are paid. No hosted
@@ -92,6 +95,14 @@ Prices may change before launch.
   25 GB, covering wiki pages, sources, search indexes and aggregated agent
   logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
   your own Cloudflare storage, with no limit from us. Planned pricing.
+- Can it connect my Gmail or Outlook? Planned. You can connect Gmail,
+  Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-
+  only. Your mail stays in your personal memory, encrypted with your own key,
+  and no one else can draw on it unless you share a specific label or folder.
+  Every message is screened for spoofing and prompt injection before the brain
+  reads it, and mail can never trigger actions. Revoke the connection at any
+  time and its stored mail is erased. When you self-host, you use your own
+  Google or Microsoft app, so mail never touches our servers.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
