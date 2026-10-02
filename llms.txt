@@ -40,7 +40,8 @@ under those names today is not ours.
 - Works with Colonizer (https://colonizer.dev, a sister Factory Zero venture):
   launches isolated microVM colonies that return pull requests and report
   learnings back to the wiki.
-- You own it: plain Markdown, exportable, opens in Obsidian.
+- You own it: plain Markdown, exportable, opens in Obsidian. Planned: a git-backed wiki where the
+  Living Brain GitHub App proposes every change as a pull request and merged edits flow back in.
 - Private by design: reads only with the asker's own access. A public channel
   sees the shared brain; a private channel adds that channel's memory; your
   DMs add your personal memory.
