@@ -45,7 +45,7 @@ under those names today is not ours.
 - Private by design: reads only with the asker's own access. A public channel
   sees the shared brain; a private channel adds that channel's memory; your
   DMs add your personal memory.
-- Bring your own model: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway,
+- Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway,
   or any OpenAI-compatible endpoint, including self-hosted ones.
 - Built in Rust. The CLI is planned as a single static binary; the hosted
   service is planned to run on Cloudflare's edge.
@@ -83,7 +83,7 @@ plan is free.
   export. Storage: your own Cloudflare account, no limit from us.
 - Teams: $5/month per workspace. Unlimited people. Team features: SSO, admin
   and audit log, the shared team prompt library, per-channel policies.
-  Self-hosted with a license key, or hosted by us with your own model key.
+  Self-hosted with a license key, or hosted by us with your own LLM key.
   Hosted: 10 GB storage included. Self-hosted: your own storage.
 - Crew: $9/month per workspace. Hosted by us, $3 of DeepSeek credit included each month (or bring your own
   model), up to 25 people,
@@ -153,7 +153,7 @@ Prices may change before launch.
   search or ask, and keep the 3D brain one tap away. Like the rest of Living
   Brain, it is not built yet.
 - Can I self-host? Yes. The Community plan is free for up to 5 people: it runs
-  on your own Cloudflare account with your own model key. Larger teams need a
+  on your own Cloudflare account with your own LLM key. Larger teams need a
   Teams license. The plan and the code as it lands are public at
   https://github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with
   the Teams features under a commercial license.
