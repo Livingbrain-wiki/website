@@ -89,6 +89,10 @@ plan is free.
   model), up to 25 people,
   team features included, 25 GB storage included.
 
+Usage (planned, hosted): writing the brain $1 per million tokens (nightly evolve
+included); reading it unlimited. Reasoning per question: Minimal $0.001, Low $0.005
+(default), Medium $0.02, High $0.05, Max $0.25. On your own LLM key: no fee from us.
+
 Storage covers wiki pages, sources, search indexes and aggregated agent logs.
 Extra hosted storage: $0.25 per GB a month.
 
@@ -135,6 +139,14 @@ Prices may change before launch.
   the brain who owns the topic and routes the question to that person.
   Customer messages are screened for hidden instructions before they touch the
   brain.
+- What does a question cost? Planned, for hosted plans: writing the brain
+  (reading sources and writing pages, with the nightly evolve pass included)
+  costs $1 per million tokens, and reading it (search, pages and context for
+  agents) is unlimited. Harder questions are priced per question by reasoning
+  level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05,
+  Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level
+  questions. On your own LLM key you pay only your provider, with no fee from
+  us.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it

@@ -664,3 +664,37 @@ html:not(.js) .stage { opacity: 1; }
 .guide__steps { list-style: decimal; }
 .guide__list { list-style: disc; }
 .guide__steps li::marker, .guide__list li::marker { color: var(--accent); font-family: var(--f-mono); }
+
+/* ---------------------------------------------------------------- pricing: memory meter and reasoning levels */
+.vh { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.meter, .rs { margin-top: 16px; padding: 22px 24px 24px; }
+.meter .row-head, .rs .row-head { margin: 0; align-items: center; gap: 12px; }
+.meter__grid { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px 28px; }
+.meter__k { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.meter__v { margin-top: 6px; color: var(--ink3); font-size: 14px; }
+.meter__v span { font-family: var(--f-display); font-size: 30px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin-right: 4px; }
+.meter__grid p, .rs__lede, .rs__panel p { margin: 8px 0 0; color: var(--ink2); line-height: 1.55; }
+.rs__set { margin: 22px 0 0; padding: 0; border: 0; min-width: 0; }
+.rs__track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.rs__track::before { content: ""; position: absolute; left: 10%; right: 10%; top: 9px; height: 2px; background: var(--line); border-radius: 2px; }
+.rs__in { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.rs__stop { position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; cursor: pointer; padding-bottom: 4px; }
+.rs__dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--line); background: var(--bg); transition: border-color .2s, background-color .2s, box-shadow .2s; }
+.rs__name { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; color: var(--ink3); transition: color .2s; }
+.rs__stop:hover .rs__dot { border-color: var(--accent); }
+.rs__in:checked + .rs__stop .rs__dot { border-color: var(--accent); background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft), 0 0 18px var(--accent); }
+.rs__in:checked + .rs__stop .rs__name { color: var(--ink); }
+.rs__in:focus-visible + .rs__stop .rs__dot { outline: 2px solid var(--accent); outline-offset: 4px; }
+.rs__panels { margin-top: 18px; }
+.rs__panel { display: none; padding: 16px 18px; border: 1px solid var(--line2); border-radius: 12px; background: var(--bg2); }
+.rs__price { color: var(--ink3); font-size: 14px; }
+.rs__price span { font-family: var(--f-display); font-size: 34px; font-weight: 600; letter-spacing: -0.03em; color: var(--accent); margin-right: 4px; }
+.rs__speed { margin-top: 2px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+.rs__set:has(#rs-minimal:checked) [data-level="minimal"],
+.rs__set:has(#rs-low:checked) [data-level="low"],
+.rs__set:has(#rs-medium:checked) [data-level="medium"],
+.rs__set:has(#rs-high:checked) [data-level="high"],
+.rs__set:has(#rs-max:checked) [data-level="max"] { display: block; }
+@supports not selector(:has(*)) { .rs__panels { display: grid; gap: 10px; } .rs__panel { display: block; } }
+@media (max-width: 520px) { .rs__name { font-size: 10px; letter-spacing: 0; } }
+@media (prefers-reduced-motion: reduce) { .rs__dot, .rs__name { transition: none; } }
