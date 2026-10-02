@@ -85,7 +85,7 @@ plan is free.
   and audit log, the shared team prompt library, per-channel policies.
   Self-hosted with a license key, or hosted by us with your own model key.
   Hosted: 10 GB storage included. Self-hosted: your own storage.
-- Crew: $9/month per workspace. Hosted by us, DeepSeek included (or bring your own
+- Crew: $9/month per workspace. Hosted by us, $3 of DeepSeek credit included each month (or bring your own
   model), up to 25 people,
   team features included, 25 GB storage included.
 
@@ -160,7 +160,8 @@ Prices may change before launch.
 - Which models? On every plan you choose your own models, per role (triage,
   answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or
   any OpenAI-compatible endpoint, including self-hosted ones. Crew also
-  includes DeepSeek, so you can start without a key of your own.
+  includes $3 of DeepSeek credit each month, so you can start without a key of
+  your own; past that, add your own key or top up.
 - What does "living" mean? Most wikis start going stale the day they're
   written. Living Brain revisits its own pages on a schedule: it merges
   duplicates, flags contradictions, retires facts that are no longer true and
