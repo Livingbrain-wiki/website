@@ -145,6 +145,10 @@ All planned.
   Teams adds an audit log.
 - Not used for training. Export as Markdown any time. Self-host for full control.
 
+- Research radar (planned): the nightly pass also scans new arXiv papers, news, and releases or
+  advisories for the team's stack, keeps what's relevant, and writes cited pages on how each could
+  apply to the team's projects. It proposes issues or spike colonies only with a person's approval.
+
 ## Pricing: https://livingbrain.wiki/pricing/
 
 Planned, per workspace, not per seat.
