@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Import your ChatGPT history · Living Brain</title>
+<meta name="description" content="How to export your ChatGPT history today, and how Living Brain will turn it into Markdown pages with sources, kept private and encrypted with your own key.">
+<link rel="canonical" href="https://livingbrain.wiki/guides/import-chatgpt/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/guides/import-chatgpt/">
+<meta property="og:title" content="Import your ChatGPT history · Living Brain">
+<meta property="og:description" content="Export your ChatGPT history, then let Living Brain turn it into cited Markdown pages, private to you.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Import your ChatGPT history · Living Brain">
+<meta name="twitter:description" content="Export your ChatGPT history, then let Living Brain turn it into cited Markdown pages, private to you.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Import your ChatGPT history into Living Brain",
+  "description": "Export your ChatGPT data, then import it with the livingbrain CLI. The export steps work today; the import is planned.",
+  "url": "https://livingbrain.wiki/guides/import-chatgpt/",
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": "Open ChatGPT settings", "text": "In ChatGPT on the web, click your profile picture, then Settings." },
+    { "@type": "HowToStep", "position": 2, "name": "Request the export", "text": "Open Data controls, choose Export data, and confirm." },
+    { "@type": "HowToStep", "position": 3, "name": "Download the zip", "text": "OpenAI emails you a download link. It expires after 24 hours. Download the .zip file." },
+    { "@type": "HowToStep", "position": 4, "name": "Import it (planned)", "text": "Run livingbrain import chatgpt with the path to the zip. It reads on your machine, shows a preview, redacts secrets, and uploads only what you confirm, into your personal memory." }
+  ],
+  "isPartOf": { "@type": "WebSite", "name": "Living Brain", "url": "https://livingbrain.wiki/" }
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#how">How it works</a>
+      <a href="/#demo">Demo</a>
+      <a href="/#agents">Coding agents</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/#faq">FAQ</a>
+    </nav>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">Guide · Import</p>
+    <h1 class="h2">Import your ChatGPT history.</h1>
+    <p class="lede">Years of ChatGPT conversations hold decisions, plans and prompts that worked. Living Brain will read them and keep what matters as Markdown pages with sources, private to you unless you choose to share.</p>
+    <p class="guide__status"><span class="tag">Step 1 works today · Step 2 is planned</span></p>
+
+    <h2 class="h3">1. Export your data from ChatGPT</h2>
+    <ol class="guide__steps">
+      <li>Open <a href="https://chatgpt.com">ChatGPT</a> on the web, click your profile picture, then <strong>Settings</strong>.</li>
+      <li>Open <strong>Data controls</strong>, choose <strong>Export data</strong>, and confirm.</li>
+      <li>OpenAI emails you a download link. It <strong>expires after 24 hours</strong>, so download the <span class="mono">.zip</span> soon.</li>
+    </ol>
+    <p>The zip holds every conversation in <span class="mono">conversations.json</span>, a readable copy in <span class="mono">chat.html</span>, a few small files about your account and feedback, and the files and images you uploaded.</p>
+    <p class="guide__note">Using a ChatGPT workspace through your company? Personal export may be switched off there, and admins export workspace data instead. Ask your admin. OpenAI's steps can change; their help centre has <a href="https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpt-history-and-data">the current version</a>.</p>
+
+    <h2 class="h3">2. Import it into Living Brain <span class="tag">Planned</span></h2>
+    <pre class="guide__cmd"><code>livingbrain import chatgpt ~/Downloads/chatgpt-export.zip</code></pre>
+    <ul class="guide__list">
+      <li><strong>It reads on your machine.</strong> Nothing uploads until you confirm.</li>
+      <li><strong>You choose what goes in.</strong> A preview lists conversations by date and title. Take them all, a date range, the ones matching a word, or pick by hand.</li>
+      <li><strong>Secrets stay out.</strong> API keys, passwords, email addresses and phone numbers are redacted before anything leaves your laptop.</li>
+      <li><strong>It stays yours.</strong> Imported chats go into your personal memory, encrypted with your own key. To share one with a channel or the whole team, choose it explicitly.</li>
+      <li><strong>It keeps what matters.</strong> The brain writes pages for the projects, decisions and people it finds, adds the prompts that worked to your prompt library, and links every fact back to the conversation it came from.</li>
+      <li><strong>Re-importing is safe.</strong> Conversations are matched by id, so a newer export only adds what's new.</li>
+    </ul>
+
+    <h2 class="h3">3. Then delete the zip</h2>
+    <p>The export contains everything you ever typed into ChatGPT. Once it's imported, delete the zip from your Downloads folder and empty the trash.</p>
+
+    <h2 class="h3">Also from Claude</h2>
+    <p>Claude's export (<strong>Settings → Privacy → Export data</strong>) will import the same way: <span class="mono">livingbrain import claude ~/Downloads/claude-export.zip</span>. <span class="tag">Planned</span></p>
+
+    <p class="guide__back"><a class="btn" href="/#faq">Back to the FAQ</a> <a class="btn btn--primary" href="/#top">Join the waitlist</a></p>
+  </div>
+</main>
+
+<footer class="ft ft--min">
+  <div class="wrap">
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav class="ft__nav" aria-label="Footer">
+        <a href="https://colonizer.dev">Colonizer</a>
+        <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/.well-known/security.txt">security.txt</a>
+      </nav>
+    </div>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

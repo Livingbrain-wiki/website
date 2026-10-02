@@ -648,3 +648,19 @@ html:not(.js) .stage { opacity: 1; }
 #why .card p { margin: 10px 0 0; color: var(--ink2); line-height: 1.6; max-width: 70em; }
 #why .card .row-head { margin: 0; }
 #why .card .mono { overflow-wrap: anywhere; }
+
+/* ---------------------------------------------------------------- guides */
+.guide { padding: clamp(56px, 8vw, 96px) 0 clamp(64px, 9vw, 112px); }
+.guide h1 { margin: 10px 0 18px; }
+.guide h2 { margin: 52px 0 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.guide p, .guide li { color: var(--ink2); line-height: 1.65; }
+.guide p { margin: 0 0 14px; max-width: 40em; }
+.guide strong { color: var(--ink); font-weight: 600; }
+.guide__status { margin-top: 18px; }
+.guide__steps, .guide__list { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 10px; max-width: 42em; }
+.guide__note { padding: 14px 16px; border: 1px solid var(--line2); border-radius: 12px; background: var(--bg2); font-size: 15px; }
+.guide__cmd { margin: 0 0 18px; padding: 16px 18px; border: 1px solid var(--line2); border-radius: 12px; background: var(--bg2); overflow-x: auto; font-family: var(--f-mono); font-size: 14px; color: var(--ink); }
+.guide__back { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px; }
+.guide__steps { list-style: decimal; }
+.guide__list { list-style: disc; }
+.guide__steps li::marker, .guide__list li::marker { color: var(--accent); font-family: var(--f-mono); }

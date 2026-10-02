@@ -114,6 +114,13 @@ Prices may change before launch.
   reads it, and mail can never trigger actions. Revoke the connection at any
   time and its stored mail is erased. When you self-host, you use your own
   Google or Microsoft app, so mail never touches our servers.
+- Can I import my ChatGPT history? Planned. Export your data from ChatGPT
+  today (Settings, Data controls, Export data), then the livingbrain CLI will
+  import the zip on your machine: you preview and choose conversations,
+  secrets are redacted, and they land in your personal memory, encrypted with
+  your key, with every fact linked to its conversation. Claude exports will
+  import the same way. Step-by-step guide:
+  https://livingbrain.wiki/guides/import-chatgpt/
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
@@ -162,6 +169,9 @@ Kestrel Freight, its people (Maya Okafor, Dev Patel, Lina Haas, Tomás Reyes,
 Sam Ito, Kofi Mensah), its customers and every number on the page are sample
 data for a fictional company. The graphs, threads and terminals are
 illustrations, not screenshots.
+
+## Guides
+- Import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
 
 ## Links
 
