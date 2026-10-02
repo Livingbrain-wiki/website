@@ -164,54 +164,175 @@
   </div>
 </section>
 
-<section id="how" class="sec sec--tight" aria-labelledby="how-title">
+<section id="how" class="sec hs hs--how" aria-labelledby="how-title">
   <div class="wrap sec__in">
-    <h2 id="how-title" class="h3">How it works</h2>
-    <ol class="trio">
-      <li class="card trio__item"><span class="trio__n">01</span><h3>Listen</h3><p>It reads the channels you invite it to, in Slack or Discord, plus mail and agent logs you connect.</p></li>
-      <li class="card trio__item"><span class="trio__n">02</span><h3>Write</h3><p>It writes what it learns as wiki pages, and every fact links to the message it came from.</p></li>
-      <li class="card trio__item"><span class="trio__n">03</span><h3>Evolve</h3><p>Every night it merges duplicates, flags contradictions and retires old facts.</p></li>
+    <div class="hs__head" data-reveal>
+      <p class="kick"><span class="kick__n">01</span>Listen · Write · Evolve</p>
+      <h2 id="how-title" class="hs__title">How it works</h2>
+    </div>
+    <ol class="bento">
+      <li class="bento__cell bento__cell--listen" data-reveal data-spot style="--i:0">
+        <div class="mini mini--listen" data-mini aria-hidden="true">
+          <svg class="ml__wires" viewBox="0 0 400 260" preserveAspectRatio="none" focusable="false"><path d="M60 46C220 46 240 130 300 130M60 104C210 104 240 130 300 130M60 162C210 162 240 130 300 130M60 218C220 218 240 130 300 130"/></svg>
+          <span class="ml__src ml__src--slack" style="--dx:150px;--dy:84px;--i:0"><b>#product</b> Tomás Reyes<span>Lina is taking Billing v2 from here.</span></span>
+          <span class="ml__src ml__src--discord" style="--dx:150px;--dy:26px;--i:1"><b>#billing</b> Lina Haas<span>Tax rules took longer than planned.</span></span>
+          <span class="ml__src ml__src--mail" style="--dx:150px;--dy:-32px;--i:2"><svg viewBox="0 0 16 12" focusable="false"><rect x=".75" y=".75" width="14.5" height="10.5" rx="1.5"/><path d="M1 1.5l7 5 7-5"/></svg>Re: Alder &amp; Finch invoices</span>
+          <span class="ml__src ml__src--term" style="--dx:150px;--dy:-88px;--i:3"><i>$</i> agent session log</span>
+          <span class="ml__node"><span class="ml__ring"></span><span class="ml__ring ml__ring--2"></span><span class="ml__core"></span></span>
+        </div>
+        <span class="mini__tag">Illustration</span>
+        <div class="bento__text"><span class="bento__n">01</span><h3>Listen</h3><p>It reads the channels you invite it to, in Slack or Discord, plus mail and agent logs you connect.</p></div>
+      </li>
+      <li class="bento__cell bento__cell--write" data-reveal data-spot style="--i:1">
+        <div class="mini mini--write" data-mini aria-hidden="true">
+          <div class="mw__page">
+            <div class="mw__bar"><span></span><span></span><span></span><em>brain/projects/billing-v2.md</em></div>
+            <p class="mw__ln mw__ln--h" style="--n:10;--i:0"><span class="mw__txt"><i>##</i> Billing</span><span class="mw__cover"></span></p>
+            <p class="mw__ln" style="--n:30;--i:1"><span class="mw__txt">Owner: <i>[[Lina Haas]]</i> <b class="mw__cite">[^1]</b></span><span class="mw__cover"></span></p>
+            <p class="mw__ln mw__ln--dim" style="--n:34;--i:2"><span class="mw__txt">Usage-based invoices for fleet customers.</span><span class="mw__cover"></span></p>
+          </div>
+          <svg class="mw__link" viewBox="0 0 100 40" preserveAspectRatio="none" focusable="false"><path d="M8 2C8 26 60 14 92 38"/></svg>
+          <div class="mw__src"><span class="mw__srcn">[1]</span><span><b>#product</b> Tomás Reyes · Mar 12</span><span class="mw__srcq">Lina is taking Billing v2 from here.</span></div>
+        </div>
+        <span class="mini__tag">Illustration</span>
+        <div class="bento__text"><span class="bento__n">02</span><h3>Write</h3><p>It writes what it learns as wiki pages, and every fact links to the message it came from.</p></div>
+      </li>
+      <li class="bento__cell bento__cell--evolve" data-reveal data-spot style="--i:2">
+        <div class="mini mini--evolve" data-mini aria-hidden="true">
+          <div class="me__stage">
+            <span class="me__tile me__tile--a"><em>billing-v2.md</em><span class="me__l"></span><span class="me__l me__l--s"></span></span>
+            <span class="me__tile me__tile--b"><em>billing-2.md</em><span class="me__l"></span><span class="me__l me__l--s"></span></span>
+            <span class="me__pulse"></span>
+          </div>
+          <div class="me__facts">
+            <p class="me__stale"><span>Ships Mar 31</span><span class="me__strike"></span></p>
+            <p class="me__fresh">Ships Apr 30 <b>[^2]</b></p>
+          </div>
+        </div>
+        <span class="mini__tag">Illustration</span>
+        <div class="bento__text"><span class="bento__n">03</span><h3>Evolve</h3><p>Every night it merges duplicates, flags contradictions and retires old facts.</p></div>
+      </li>
     </ol>
-    <p class="go"><a href="/how-it-works/">See how it works <span aria-hidden="true">→</span></a></p>
+    <p class="go" data-reveal><a href="/how-it-works/">See how it works <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section id="anywhere" class="sec sec--tight" aria-labelledby="where-title">
+<section id="anywhere" class="sec hs hs--where" aria-labelledby="where-title">
   <div class="wrap sec__in">
-    <h2 id="where-title" class="h3">Use it anywhere</h2>
-    <ul class="where__list">
-      <li><span class="where__name">Coding agents</span><span class="where__st">planned</span><span class="where__what">Claude Code, Codex, Cursor and others read it over MCP.</span></li>
-      <li><span class="where__name">The <code>livingbrain</code> CLI</span><span class="where__st">planned</span><span class="where__what">Ask it from your terminal and your scripts.</span></li>
-      <li><span class="where__name">The app</span><span class="where__st">planned</span><span class="where__what">Installs on your phone and desktop from the browser.</span></li>
-      <li><span class="where__name">Team chat: Slack and Discord</span><span class="where__st">planned</span><span class="where__what">Invite it to a channel. It answers in the thread.</span></li>
-    </ul>
-    <p class="fine where__later">WhatsApp and Telegram later.</p>
-    <p class="go"><a href="/agents/">Living Brain for coding agents <span aria-hidden="true">→</span></a></p>
+    <div class="hs__head" data-reveal>
+      <p class="kick"><span class="kick__n">02</span>Agents · Terminal · App · Chat</p>
+      <h2 id="where-title" class="hs__title">Use it anywhere</h2>
+    </div>
+    <div class="sw" data-switcher data-reveal>
+      <div class="sw__tabs" role="tablist" aria-label="Where you use it" data-js-only>
+        <button class="sw__tab" type="button" role="tab" id="sw-t0" aria-controls="sw-p0" aria-selected="true">Coding agents<span class="sw__st">planned</span><span class="sw__prog" aria-hidden="true"></span></button>
+        <button class="sw__tab" type="button" role="tab" id="sw-t1" aria-controls="sw-p1" aria-selected="false" tabindex="-1">CLI<span class="sw__st">planned</span><span class="sw__prog" aria-hidden="true"></span></button>
+        <button class="sw__tab" type="button" role="tab" id="sw-t2" aria-controls="sw-p2" aria-selected="false" tabindex="-1">App<span class="sw__st">planned</span><span class="sw__prog" aria-hidden="true"></span></button>
+        <button class="sw__tab" type="button" role="tab" id="sw-t3" aria-controls="sw-p3" aria-selected="false" tabindex="-1">Team chat<span class="sw__st">planned</span><span class="sw__prog" aria-hidden="true"></span></button>
+      </div>
+      <div class="sw__panels">
+        <div class="sw__panel" id="sw-p0" data-sw-panel>
+          <div class="sw__copy"><h3 class="sw__h">Coding agents <span class="sw__st">planned</span></h3><p>Claude Code, Codex, Cursor and others read it over MCP.</p></div>
+          <figure class="dev dev--win">
+            <div class="dev__bar"><span class="dev__dots"><i></i><i></i><i></i></span><span class="dev__t">agent session · MCP</span><span class="dev__tag">Illustration</span></div>
+            <div class="dev__body mono">
+              <p class="ln" style="--i:0"><span class="ink3">&gt;</span> who owns billing now?</p>
+              <p class="ln tool" style="--i:1"><span class="tool__k">tool</span> livingbrain.search <span class="ink3">{ "q": "billing owner" }</span></p>
+              <p class="ln tool tool--out" style="--i:2"><span class="ink3">↳</span> brain/projects/billing-v2.md <span class="ink3">· brain/people/lina-haas.md</span></p>
+              <p class="ln" style="--i:3"><span class="accent">●</span> Lina Haas owns Billing v2, taking over from Dev Patel. <span class="cite">[1]</span></p>
+              <p class="ln ink3" style="--i:4">[1] #product · Tomás Reyes · Mar 12</p>
+            </div>
+          </figure>
+        </div>
+        <div class="sw__panel" id="sw-p1" data-sw-panel>
+          <div class="sw__copy"><h3 class="sw__h">The <code>livingbrain</code> CLI <span class="sw__st">planned</span></h3><p>Ask it from your terminal and your scripts.</p></div>
+          <figure class="dev dev--term">
+            <div class="dev__bar"><span class="dev__dots"><i></i><i></i><i></i></span><span class="dev__t">~/kestrel · zsh</span><span class="dev__tag">Illustration</span></div>
+            <div class="dev__body mono">
+              <p class="ln" style="--i:0"><span class="accent">$</span> livingbrain ask "who owns billing?"</p>
+              <p class="ln" style="--i:1">Lina Haas owns Billing v2 since Mar 12,</p>
+              <p class="ln" style="--i:2">taking over from Dev Patel. <span class="cite">[1]</span></p>
+              <p class="ln ink3" style="--i:3">[1] #product · Tomás Reyes · "Lina is taking Billing v2 from here."</p>
+              <p class="ln" style="--i:4"><span class="accent">$</span> <span class="caret"></span></p>
+            </div>
+          </figure>
+        </div>
+        <div class="sw__panel" id="sw-p2" data-sw-panel>
+          <div class="sw__copy"><h3 class="sw__h">The app <span class="sw__st">planned</span></h3><p>Installs on your phone and desktop from the browser.</p></div>
+          <figure class="dev dev--phone">
+            <div class="phone">
+              <div class="phone__top"><span class="dev__tag">Illustration</span></div>
+              <div class="phone__search"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><span>Search or ask</span></div>
+              <div class="phone__brain" data-brain-frame>
+                <svg class="brain-still" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#bsg"/></svg>
+                <canvas class="brain-canvas" data-brain="app" aria-hidden="true"></canvas>
+              </div>
+              <p class="phone__hit"><span class="dot dot--person"></span>Lina Haas <span class="ink3">· Billing v2</span></p>
+            </div>
+          </figure>
+        </div>
+        <div class="sw__panel" id="sw-p3" data-sw-panel>
+          <div class="sw__copy"><h3 class="sw__h">Team chat: Slack and Discord <span class="sw__st">planned</span></h3><p>Invite it to a channel. It answers in the thread.</p></div>
+          <figure class="dev dev--chat">
+            <div class="dev__bar"><span class="dev__t"># billing · thread</span><span class="dev__tag">Illustration</span></div>
+            <div class="dev__body chat">
+              <div class="msg ln" style="--i:0"><span class="av av--p">SI</span><div><p class="msg__who">Sam Ito</p><p>Who owns billing now? Alder &amp; Finch is asking.</p></div></div>
+              <div class="msg msg--bot ln" style="--i:1"><span class="av av--b"><span class="mark" aria-hidden="true"><span></span></span></span><div><p class="msg__who">Living Brain <span class="msg__app">app</span></p><p>Lina Haas, since Mar 12. She is also the account contact for Alder &amp; Finch. <span class="cite">[1]</span></p></div></div>
+              <div class="msg__src ln mono" style="--i:2">[1] #product · Tomás Reyes · "Lina is taking Billing v2 from here."</div>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </div>
+    <p class="fine sw__later" data-reveal>WhatsApp and Telegram later.</p>
+    <p class="go" data-reveal><a href="/agents/">Living Brain for coding agents <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section id="pricing" class="sec sec--tight" aria-labelledby="price-title">
+<section id="pricing" class="sec hs hs--price" aria-labelledby="price-title">
   <div class="wrap sec__in">
-    <div class="eyebrow-row"><h2 id="price-title" class="h3">Pricing</h2><span class="tag">Planned pricing</span></div>
-    <p class="price-line"><span><strong>Community</strong> free, self-hosted, up to 5 people</span><span><strong>Teams</strong> $5/mo</span><span><strong>Crew</strong> $9/mo, hosted</span></p>
-    <p class="price-line__note">Per workspace, not per seat.</p>
-    <p class="go"><a href="/pricing/">See the plans <span aria-hidden="true">→</span></a></p>
+    <div class="hs__head" data-reveal>
+      <p class="kick"><span class="kick__n">03</span>Per workspace, not per seat</p>
+      <div class="hs__row"><h2 id="price-title" class="hs__title">Pricing</h2><span class="tag">Planned pricing</span></div>
+    </div>
+    <div class="tiers">
+      <article class="tier" data-reveal style="--i:0">
+        <div class="tier__top"><h3>Community</h3><span class="tier__run">Self-hosted</span></div>
+        <p class="tier__price"><span>$0</span>per workspace</p>
+        <p class="tier__for">Free for small teams that host it themselves.</p>
+        <ul><li>Up to 5 people</li><li>Your own Cloudflare account and LLM key</li></ul>
+      </article>
+      <article class="tier" data-reveal style="--i:1">
+        <div class="tier__top"><h3>Teams</h3><span class="tier__run">Self-hosted or hosted</span></div>
+        <p class="tier__price"><span>$5</span>/mo per workspace</p>
+        <p class="tier__for">For bigger teams that need admin controls.</p>
+        <ul><li>Unlimited people</li><li>SSO, admin and audit log</li></ul>
+      </article>
+      <article class="tier tier--on" data-reveal style="--i:2">
+        <div class="tier__top"><h3>Crew</h3><span class="tier__run">Hosted</span></div>
+        <p class="tier__price"><span>$9</span>/mo per workspace</p>
+        <p class="tier__for">For teams that want us to run it.</p>
+        <ul><li>Up to 25 people</li><li>$3 of DeepSeek credit a month, or your own LLM</li></ul>
+      </article>
+    </div>
+    <p class="price-line__note" data-reveal>Per workspace, not per seat.</p>
+    <p class="go" data-reveal><a href="/pricing/">See the plans <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
 <nav class="more" aria-label="More about Living Brain">
   <div class="wrap more__in">
-    <a href="/how-it-works/">How it works</a>
-    <a href="/agents/">Agents</a>
-    <a href="/integrations/">Integrations</a>
-    <a href="/security/">Security</a>
-    <a href="/pricing/">Pricing</a>
-    <a href="/faq/">FAQ</a>
+    <a class="lt" href="/how-it-works/" data-reveal style="--i:0"><span class="lt__n">01</span><span class="lt__t">How it works</span><span class="lt__d">From chat thread to page</span><span class="lt__a" aria-hidden="true">→</span></a>
+    <a class="lt" href="/agents/" data-reveal style="--i:1"><span class="lt__n">02</span><span class="lt__t">Agents</span><span class="lt__d">MCP, CLI and agent logs</span><span class="lt__a" aria-hidden="true">→</span></a>
+    <a class="lt" href="/integrations/" data-reveal style="--i:2"><span class="lt__n">03</span><span class="lt__t">Integrations</span><span class="lt__d">Chat, mail, code and models</span><span class="lt__a" aria-hidden="true">→</span></a>
+    <a class="lt" href="/security/" data-reveal style="--i:3"><span class="lt__n">04</span><span class="lt__t">Security</span><span class="lt__d">Access, encryption and hidden text</span><span class="lt__a" aria-hidden="true">→</span></a>
+    <a class="lt" href="/pricing/" data-reveal style="--i:4"><span class="lt__n">05</span><span class="lt__t">Pricing</span><span class="lt__d">Plans, storage and usage costs</span><span class="lt__a" aria-hidden="true">→</span></a>
+    <a class="lt" href="/faq/" data-reveal style="--i:5"><span class="lt__n">06</span><span class="lt__t">FAQ</span><span class="lt__d">Every question in one place</span><span class="lt__a" aria-hidden="true">→</span></a>
   </div>
 </nav>
 </main>
 
-<footer id="waitlist" class="ft">
+<footer id="waitlist" class="ft ft--glow">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
     <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>

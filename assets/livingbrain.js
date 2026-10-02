@@ -667,6 +667,68 @@
     return api;
   }
 
+  // ---- home: scroll reveal, bento minis and spotlight, the "Use it anywhere" switcher ----
+  // Without this the markup is the final frame: everything shown, all four
+  // surfaces stacked. Under reduced motion nothing reveals, loops or advances.
+  var onView = function (els, fn, opt) {
+    if (!els.length || !('IntersectionObserver' in window)) return;
+    var o = new IntersectionObserver(function (es) { es.forEach(function (en) { fn(en.target, en.isIntersecting, o); }); }, opt);
+    els.forEach(function (el) { o.observe(el); });
+  };
+  if (!reduce && 'IntersectionObserver' in window) {
+    // Only what is still below the fold waits, so nothing already on screen blinks.
+    var later = $$('[data-reveal]').filter(function (el) { return el.getBoundingClientRect().top > window.innerHeight; });
+    later.forEach(function (el) {
+      el.classList.add('rv-wait');
+      el.addEventListener('transitionend', function done(e) { if (e.target === el && e.propertyName === 'transform') { el.classList.remove('rv-in'); el.removeEventListener('transitionend', done); } });
+    });
+    onView(later, function (el, on, o) { if (on) { el.classList.add('rv-in'); el.classList.remove('rv-wait'); o.unobserve(el); } }, { rootMargin: '0px 0px -6% 0px' });
+    // The looping illustrations run only while on screen.
+    onView($$('[data-mini]'), function (el, on) { el.classList.toggle('is-on', on); });
+  }
+  if (!reduce && mq('(hover: hover) and (pointer: fine)').matches) {
+    $$('[data-spot]').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+  var sw = $('[data-switcher]');
+  if (sw) {
+    var swTabs = $$('[role="tab"]', sw), swPanels = $$('[data-sw-panel]', sw), swCur = 0, appBrain = null;
+    sw.classList.add('is-js');
+    swPanels.forEach(function (p, i) { p.setAttribute('role', 'tabpanel'); p.setAttribute('aria-labelledby', swTabs[i].id); });
+    var swShow = function (i, focus) {
+      swCur = i;
+      swTabs.forEach(function (t, j) { var on = j === i; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
+      swPanels.forEach(function (p, j) { p.classList.toggle('is-sel', j === i); p.tabIndex = j === i ? 0 : -1; });
+      // The app's mini brain mounts the first time its tab shows.
+      if (i === 2 && !appBrain) appBrain = mountBrain('app', { nodes: 140, seed: 11, speed: 0.07, nodeScale: 0.9 });
+      if (focus) swTabs[i].focus();
+    };
+    var swStop = function () { sw.classList.remove('is-auto'); };
+    swTabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { swStop(); swShow(i, false); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, n = swTabs.length, j = k === 'ArrowRight' ? (i + 1) % n : k === 'ArrowLeft' ? (i + n - 1) % n : k === 'Home' ? 0 : k === 'End' ? n - 1 : -1;
+        if (j >= 0) { e.preventDefault(); swStop(); swShow(j, true); }
+      });
+      // Auto-advance rides the progress bar's CSS animation, so hover, focus
+      // and leaving the screen pause it for free.
+      var bar = $('.sw__prog', t);
+      if (bar) bar.addEventListener('animationend', function () { if (sw.classList.contains('is-auto')) swShow((swCur + 1) % n0); });
+    });
+    var n0 = swTabs.length;
+    swShow(0, false);
+    requestAnimationFrame(function () { requestAnimationFrame(function () { sw.classList.add('is-ready'); }); });
+    if (!reduce && 'IntersectionObserver' in window) {
+      sw.classList.add('is-auto', 'is-hold');
+      onView([sw], function (el, on) { el.classList.toggle('is-hold', !on); }, { threshold: 0.35 });
+    }
+  }
+
   // ---- waitlist forms ----
   // Both forms post { email, product: "livingbrain" } as JSON to the waitlist
   // Worker (Cratefield harness waitlist module), the same contract as the

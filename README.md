@@ -44,7 +44,7 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 
 | Page | What's on it |
 | :--- | :--- |
-| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve in one line each; where you use it (coding agents, CLI, app, team chat: Slack and Discord); pricing in one line; links to every page; the footer waitlist |
+| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding agents, CLI, app, team chat: Slack and Discord) as one switcher over a device frame; pricing as three cards; six link tiles; the footer waitlist |
 | [`/how-it-works/`](how-it-works/index.html) | The team-chat thread (Slack shown) with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | [`/agents/`](agents/index.html) | Connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | [`/integrations/`](integrations/index.html) | Chat, mail, imports, code, monitoring and logs, models, sister ventures. Plain-text names |
@@ -74,6 +74,14 @@ mark is a ring (the brain) around one live node in the accent.
 | `--ink2` | `oklch(0.8 0.014 205)` | `oklch(0.4 0.02 215)` |
 | `--accent` | `oklch(0.86 0.16 162)` | `oklch(0.48 0.11 165)` |
 | `--t-person` / `project` / `decision` / `customer` | entity colours, graph nodes only | darker in light for AA |
+
+Home page components (styles under "home: next-gen sections" in
+`livingbrain.css`, behaviour under "home:" in `livingbrain.js`): `.hs` sections
+(grid and glow backdrop, `.kick` mono label, `.hs__title`), `[data-reveal]`
+(scroll reveal, staggered by `--i`), the `.bento` of `.mini` illustrations
+(looping only while `.is-on`), the `[data-switcher]` tablist with `.dev` device
+frames (auto-advance rides the `.sw__prog` CSS animation, so hover, focus and
+off-screen pause it), `.tiers`, the `.lt` link tiles and `.ft--glow`.
 
 Every animation sits on its final frame under `prefers-reduced-motion`; the
 brains render still and the 3D views turn only when you turn them. Responsive

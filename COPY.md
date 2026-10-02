@@ -33,7 +33,7 @@ carries the claim; see Information architecture below.
 | Plain Markdown, exportable, opens in Obsidian; not a black-box vector store | /how-it-works/ #own, /security/ #ownership | Design file. Planned |
 | Not used for training | FAQ, /security/ #ownership | Design file. A promise to keep; **needs** a privacy policy before launch |
 | Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | /integrations/ #models, FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Plain text, no logos |
-| Pricing per workspace, planned: Community free (self-hosted on your own Cloudflare account, your own LLM key, up to 5 people, all core features); Teams $5/mo (unlimited people, SSO, admin and audit log, shared prompt library, per-channel policies; self-hosted with a license key or hosted with your own LLM key); Crew $9/mo (hosted, $3/month DeepSeek credit included or bring your own LLM, up to 25 people, team features). No hosted plan is free | Home (one line), /pricing/, FAQ, llms.txt | User decision 2026-10-03 (open core), replacing the design's Free/$5/$9 table. Labelled "Planned pricing" |
+| Pricing per workspace, planned: Community free (self-hosted on your own Cloudflare account, your own LLM key, up to 5 people, all core features); Teams $5/mo (unlimited people, SSO, admin and audit log, shared prompt library, per-channel policies; self-hosted with a license key or hosted with your own LLM key); Crew $9/mo (hosted, $3/month DeepSeek credit included or bring your own LLM, up to 25 people, team features). No hosted plan is free | Home (three short cards: price, who it is for, two bullets each, all taken from /pricing/), /pricing/, FAQ, llms.txt | User decision 2026-10-03 (open core), replacing the design's Free/$5/$9 table. Labelled "Planned pricing" |
 | "Self-hosting is free for small teams. Teams and hosting are paid." | /pricing/ lede | User decision 2026-10-03 |
 | Can I self-host? Yes, free up to 5 people; larger teams need a Teams license; source public at Livingbrain-wiki/livingbrain, Apache-2.0 core + `ee/` commercial | FAQ, /security/ #ownership, llms.txt, footer | User decision 2026-10-03; `LICENSE` and `NOTICE` in the product repo, made public 2026-10-03 |
 | Is my data encrypted? Planned: per-scope keys held apart from the data, scoped and fast search, deleting a key erases that memory, bring your own key on Teams; the model must read text, so self-host for full control | FAQ, llms.txt (the detail is on /security/ #encryption) | Livingbrain-wiki/livingbrain#43 (user decision 2026-10-03). Labelled planned |
@@ -70,7 +70,7 @@ claim lives on one page; other pages link to it instead of repeating it.
 
 | Page | Job |
 | :--- | :--- |
-| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one line each; where you use it (coding agents, CLI, app, team chat: Slack and Discord); pricing in one line. Then a row of links to the subpages and the footer waitlist. No infographics, no FAQ |
+| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one sentence each, each over a small looping illustration; where you use it (coding agents, CLI, app, team chat: Slack and Discord) as one switcher; pricing as three short cards. Then six link tiles to the subpages and the footer waitlist. No FAQ |
 | `/how-it-works/` | The team-chat moment (Slack shown), the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | `/agents/` | Connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | `/integrations/` | Grouped plain-text names: chat, mail, imports, code, monitoring and logs, models, sister ventures |
@@ -185,6 +185,37 @@ Visual **(improvement)**
 - The demo hint sits on a fade so graph nodes don't run under it.
 - Infographic loop only runs while a section with travelling shapes is on
   screen (the design ran a rAF loop for the whole page lifetime).
+
+Home page, next-gen layout **(user, 2026-10-03: "much better and next gen designed")**.
+Presentation only; no claim was added or changed, and section order is the same.
+- How it works is a bento grid of three cards, each over a small looping
+  illustration labelled "Illustration" (CSS and inline SVG): Listen (a
+  Slack-style and a Discord-style message, a mail and an agent session log drift
+  into a glowing node), Write (a Markdown page types `## Billing` and
+  `Owner: [[Lina Haas]] [^1]`; the citation lights up and links to its source
+  message), Evolve (two duplicate page tiles merge with a soft accent pulse; a
+  stale date is struck through and replaced). The people, channels and dates
+  are the Kestrel Freight sample data. A cursor spotlight and gradient border
+  show on hover (fine pointers only, not under reduced motion).
+- Use it anywhere is one switcher: an ARIA tablist (arrow keys, Home, End)
+  over one large device frame: an agent session making an MCP tool call, a
+  terminal running `livingbrain ask "who owns billing?"`, a phone with the
+  search box and a small live brain (`assets/brain.js`, 140 nodes, mounted on
+  first view, still under reduced motion), and a team-chat thread. Every tab
+  and panel says "planned"; every frame says "Illustration". It auto-advances
+  only while on screen with motion allowed, pauses on hover or focus, and stops
+  once you pick a tab. Without JavaScript all four show stacked.
+  "WhatsApp and Telegram later." stays a quiet footnote.
+- Pricing is three cards (Community, Teams, Crew) with the price, one line on
+  who it suits and two bullets taken from /pricing/; Crew gets the accent ring.
+  "Planned pricing", "Per workspace, not per seat" and the link stay.
+- The page links became six tiles (title, a five-word description, an arrow
+  that moves on hover). The closing waitlist gets a soft accent glow.
+- Rhythm: larger section titles with a mono kicker (01, 02, 03), a faint grid
+  and radial accent glow behind each section (CSS only), and one scroll reveal
+  (fade and rise, staggered) driven by IntersectionObserver. Only opacity and
+  transform animate; the loops run only while on screen; under reduced motion
+  or without JavaScript every element sits on its final frame.
 
 Security
 - `_headers` adds a Content-Security-Policy (self only, the inline theme
