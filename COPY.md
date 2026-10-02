@@ -5,54 +5,83 @@ of the Claude Design file `Living Brain.dc.html` (project
 `64188b59-b651-4bfe-803d-b8ef935c8fad`, copy in `design-src/`). Living Brain
 is **in design and not built**; every product claim below is a plan. Rows
 marked **needs a decision** or **fix before launch** must be resolved before
-anything opens. Updated 2026-10-03.
+anything opens. Updated 2026-10-03. "Where" names the page (and anchor) that
+carries the claim; see Information architecture below.
 
 ## Claims
 
 | Claim | Where | Backed by |
 | :--- | :--- | :--- |
-| Early access, in design; nothing built | Hero badge, footer, llms.txt, JSON-LD | True. Only this site exists |
-| A teammate that turns conversations into a Markdown wiki and keeps it true; every fact links to its source message | Hero, Speaks up, How it works, FAQ, llms.txt | Design file and `claude-design-prompt.md`. Planned |
-| Use it in Slack, in your coding agent, in your terminal | Hero, meta, OG, JSON-LD, llms.txt | User decision 2026-10-03. Slack is the first chat integration; everything else via MCP or the CLI |
-| "Use it from anywhere": Slack (first), any MCP client, the `livingbrain` CLI, App (PWA), each MCP/CLI/PWA marked planned | Strip under the hero, FAQ, llms.txt | User decision 2026-10-03 |
-| `livingbrain ask "who owns billing?"` returning a cited answer; `livingbrain mcp` | CLI illustration | Illustration, labelled "Illustrative commands · not live yet". User decision 2026-10-03. **Fix before launch:** the binary does not exist; reserve the name |
-| Built in Rust; the CLI is a single static binary that starts instantly; the hosted core runs on Cloudflare's edge | Strip, pricing lede, llms.txt | User decision 2026-10-03 (Rust, fast) and the design file (Rust on Cloudflare's edge). No benchmark numbers on purpose: nothing is built |
-| App (PWA): installs on phone and desktop, reads offline, one search-or-ask box, 3D brain one tap away | Strip, feature 08 "Easy to use", FAQ "Is there an app?", llms.txt | User decision 2026-10-03. Planned |
-| Speaks up unprompted in a thread, with a citation chip | Speaks up | Design file. Illustration |
-| Merges duplicates, flags contradictions, retires stale facts, rewrites summaries, on a schedule | How it works, features, FAQ | Design file. Planned |
-| Learns how each person works ("the learning layer") | How it works, agents, FAQ | Design brief. Planned. The vendor behind it is deliberately not named |
-| Acts: opens issues, reads PRs, sends digests, hands bigger jobs to a sandboxed agent | Features | Design file. Planned |
-| Connects to Claude Code, Codex, Cursor, OpenCode, Claude Desktop and any MCP agent; not affiliated | Strip, agents, FAQ | Design file; Claude Desktop added by user decision 2026-10-03. Names in plain text, no logos |
-| `claude mcp add ... https://mcp.livingbrain.wiki`, `codex mcp add ...`, `.cursor/mcp.json`, "14 tools" | Agent connect tabs | Illustration from the design, labelled "not live yet". **Fix before launch:** check each command against the agent's current docs; `mcp.livingbrain.wiki` does not exist |
-| Agent prompts and decisions become pages only with opt-in; secrets redacted; code never stored unless allowed | Agents, FAQ | Design file. Planned. **Needs a decision:** how redaction works and what "allow" means |
-| Works with Colonizer, a sister Factory Zero venture, launching microVM colonies that return PRs | Colonizer section, llms.txt | Design brief. Colonizer exists at colonizer.dev; the integration is planned |
-| Reads only with the asker's own access; public channel / private channel / DMs table | Private by design | Design file. Planned. **Needs a decision:** how this maps to MCP and the CLI |
-| Plain Markdown, exportable, opens in Obsidian; not a black-box vector store | You own it | Design file. Planned |
-| Not used for training | FAQ | Design file. A promise to keep; **needs** a privacy policy before launch |
-| Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Plain text, no logos |
-| Pricing per workspace, planned: Community free (self-hosted on your own Cloudflare account, your own LLM key, up to 5 people, all core features); Teams $5/mo (unlimited people, SSO, admin and audit log, shared prompt library, per-channel policies; self-hosted with a license key or hosted with your own LLM key); Crew $9/mo (hosted, $3/month DeepSeek credit included or bring your own LLM, up to 25 people, team features). No hosted plan is free | Pricing, FAQ, llms.txt | User decision 2026-10-03 (open core), replacing the design's Free/$5/$9 table. Labelled "Planned pricing" |
-| "Self-hosting is free for small teams. Teams and hosting are paid." | Pricing lede | User decision 2026-10-03 |
-| Can I self-host? Yes, free up to 5 people; larger teams need a Teams license; source public at Livingbrain-wiki/livingbrain, Apache-2.0 core + `ee/` commercial | FAQ, llms.txt, footer | User decision 2026-10-03; `LICENSE` and `NOTICE` in the product repo, made public 2026-10-03 |
-| Is my data encrypted? Planned: per-scope keys held apart from the data, scoped and fast search, deleting a key erases that memory, bring your own key on Teams; the model must read text, so self-host for full control | FAQ, privacy section, llms.txt | Livingbrain-wiki/livingbrain#43 (user decision 2026-10-03). Labelled planned |
-| Encryption block: per-scope AES-256-GCM keys, envelope-wrapped by a workspace key in a separate KMS (customer-managed on Teams), blind-index and per-scope vector search, on-device decrypt, crypto-shredding, stated limits | Privacy section (#encryption), llms.txt | Livingbrain-wiki/livingbrain#43 (2026-10-03). Planned; nothing is built |
-| Mail in: Owlpost brain address first (forward/BCC/auto-forward, no mailbox access); connectors for Gmail, Outlook.com / Microsoft 365, IMAP and calendars, read-only; personal encrypted scope by default; share by label/folder; screening for spoofing and prompt injection; mail never triggers actions; revoke erases; self-host uses your own OAuth app | Feature 01, privacy note, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#46. Planned |
-| Git-backed wiki: the Living Brain GitHub App proposes changes as PRs; merged edits flow back in | You own it section, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#47. Planned |
-| Hidden-text screening by PromptDecode (tag block, bidi controls, variation selectors) on every input and before serving context; instruction-like payloads held; mail also through Owlpost | Privacy note, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#50. Classes from PromptDecode's README (`tools/core/classes.json`). Planned |
-| Grafana and logs (Loki, Elasticsearch/OpenSearch, Datadog, CloudWatch, Cloudflare Workers Logs, Sentry, OTLP): read-only queries for "is prod down?" and log summaries, alert webhooks to incident pages, postmortem drafts; OpenTelemetry export of the brain's own metrics/traces/logs | Feature 04, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#52 and #44. Planned |
-| SupportGenius answers customers only from pages explicitly published to customers, routes by ownership, screens customer messages | FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#51, SupportGenius/core#64. Planned |
-| Advantages: fewer tokens, less rework, cheaper models do more, fast; an open benchmark with a RAG baseline; no numbers until measured | Coding agents section (#why), llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#48. Mechanisms only; illustration labelled; no quantitative claim by design |
+| Early access, in design; nothing built | Home hero badge, every footer, llms.txt, JSON-LD | True. Only this site exists |
+| A teammate that turns conversations into a Markdown wiki and keeps it true; every fact links to its source message | Home hero ("A brain for your team…"), /how-it-works/, FAQ, llms.txt | Design file and `claude-design-prompt.md`. Planned |
+| Use it in Slack, in your coding agent, in your terminal | Home hero, meta, OG, JSON-LD, llms.txt | User decision 2026-10-03. Slack is the first chat integration; everything else via MCP or the CLI |
+| "Use it from anywhere": Slack (first), any MCP client, the `livingbrain` CLI, App (PWA), each MCP/CLI/PWA marked planned | Home "Use it anywhere" (Slack, coding agents, CLI, app), /agents/ (#connect, Claude Desktop), FAQ, llms.txt | User decision 2026-10-03 |
+| `livingbrain ask "who owns billing?"` returning a cited answer; `livingbrain mcp` | /agents/ #connect, CLI illustration | Illustration, labelled "Illustrative commands · not live yet". User decision 2026-10-03. **Fix before launch:** the binary does not exist; reserve the name |
+| Built in Rust; the CLI is a single static binary that starts instantly; the hosted core runs on Cloudflare's edge | /agents/ #connect, /pricing/ lede, llms.txt | User decision 2026-10-03 (Rust, fast) and the design file (Rust on Cloudflare's edge). No benchmark numbers on purpose: nothing is built |
+| App (PWA): installs on phone and desktop, reads offline, one search-or-ask box, 3D brain one tap away | Home "Use it anywhere" (one line), FAQ "Is there an app?", llms.txt | User decision 2026-10-03. Planned |
+| Speaks up unprompted in a thread, with a citation chip | /how-it-works/ #slack | Design file. Illustration |
+| Merges duplicates, flags contradictions, retires stale facts, rewrites summaries, on a schedule | Home (Evolve step), /how-it-works/ #steps and #evolve, FAQ | Design file. Planned |
+| Learns how each person works ("the learning layer") | /how-it-works/ #learns, /agents/ #learns, FAQ | Design brief. Planned. The vendor behind it is deliberately not named |
+| Acts: opens issues, reads PRs, sends digests, hands bigger jobs to a sandboxed agent | /how-it-works/ #learns | Design file. Planned |
+| Connects to Claude Code, Codex, Cursor, OpenCode, Claude Desktop and any MCP agent; not affiliated | Home (one line), /agents/, /integrations/ #code, FAQ | Design file; Claude Desktop added by user decision 2026-10-03. Names in plain text, no logos |
+| `claude mcp add ... https://mcp.livingbrain.wiki`, `codex mcp add ...`, `.cursor/mcp.json`, "14 tools" | /agents/ #connect, connect tabs | Illustration from the design, labelled "not live yet". **Fix before launch:** check each command against the agent's current docs; `mcp.livingbrain.wiki` does not exist |
+| Agent prompts and decisions become pages only with opt-in; secrets redacted; code never stored unless allowed | /agents/ #context, FAQ | Design file. Planned. **Needs a decision:** how redaction works and what "allow" means |
+| Works with Colonizer, a sister Factory Zero venture, launching microVM colonies that return PRs | /agents/ #colonizer, /integrations/ #ventures, llms.txt | Design brief. Colonizer exists at colonizer.dev; the integration is planned |
+| Reads only with the asker's own access; public channel / private channel / DMs table | /security/ #access | Design file. Planned. **Needs a decision:** how this maps to MCP and the CLI |
+| Plain Markdown, exportable, opens in Obsidian; not a black-box vector store | /how-it-works/ #own, /security/ #ownership | Design file. Planned |
+| Not used for training | FAQ, /security/ #ownership | Design file. A promise to keep; **needs** a privacy policy before launch |
+| Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | /integrations/ #models, FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Plain text, no logos |
+| Pricing per workspace, planned: Community free (self-hosted on your own Cloudflare account, your own LLM key, up to 5 people, all core features); Teams $5/mo (unlimited people, SSO, admin and audit log, shared prompt library, per-channel policies; self-hosted with a license key or hosted with your own LLM key); Crew $9/mo (hosted, $3/month DeepSeek credit included or bring your own LLM, up to 25 people, team features). No hosted plan is free | Home (one line), /pricing/, FAQ, llms.txt | User decision 2026-10-03 (open core), replacing the design's Free/$5/$9 table. Labelled "Planned pricing" |
+| "Self-hosting is free for small teams. Teams and hosting are paid." | /pricing/ lede | User decision 2026-10-03 |
+| Can I self-host? Yes, free up to 5 people; larger teams need a Teams license; source public at Livingbrain-wiki/livingbrain, Apache-2.0 core + `ee/` commercial | FAQ, /security/ #ownership, llms.txt, footer | User decision 2026-10-03; `LICENSE` and `NOTICE` in the product repo, made public 2026-10-03 |
+| Is my data encrypted? Planned: per-scope keys held apart from the data, scoped and fast search, deleting a key erases that memory, bring your own key on Teams; the model must read text, so self-host for full control | FAQ, llms.txt (the detail is on /security/ #encryption) | Livingbrain-wiki/livingbrain#43 (user decision 2026-10-03). Labelled planned |
+| Encryption block: per-scope AES-256-GCM keys, envelope-wrapped by a workspace key in a separate KMS (customer-managed on Teams), blind-index and per-scope vector search, on-device decrypt, crypto-shredding, stated limits | /security/ #encryption, llms.txt | Livingbrain-wiki/livingbrain#43 (2026-10-03). Planned; nothing is built |
+| Mail in: Owlpost brain address first (forward/BCC/auto-forward, no mailbox access); connectors for Gmail, Outlook.com / Microsoft 365, IMAP and calendars, read-only; personal encrypted scope by default; share by label/folder; screening for spoofing and prompt injection; mail never triggers actions; revoke erases; self-host uses your own OAuth app | /integrations/ #mail, /security/ #mail, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#46. Planned |
+| Git-backed wiki: the Living Brain GitHub App proposes changes as PRs; merged edits flow back in | /how-it-works/ #own, /integrations/ #code, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#47. Planned |
+| Hidden-text screening by PromptDecode (tag block, bidi controls, variation selectors) on every input and before serving context; instruction-like payloads held; mail also through Owlpost | /security/ #screening, /integrations/ #ventures, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#50. Classes from PromptDecode's README (`tools/core/classes.json`). Planned |
+| Grafana and logs (Loki, Elasticsearch/OpenSearch, Datadog, CloudWatch, Cloudflare Workers Logs, Sentry, OTLP): read-only queries for "is prod down?" and log summaries, alert webhooks to incident pages, postmortem drafts; OpenTelemetry export of the brain's own metrics/traces/logs | /integrations/ #monitoring, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#52 and #44. Planned |
+| SupportGenius answers customers only from pages explicitly published to customers, routes by ownership, screens customer messages | /integrations/ #ventures, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain#51, SupportGenius/core#64. Planned |
+| Advantages: fewer tokens, less rework, cheaper models do more, fast; an open benchmark with a RAG baseline; no numbers until measured | /agents/ #tokens, llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#48. Mechanisms only; illustration labelled; no quantitative claim by design |
 | ChatGPT export steps: Settings → Data controls → Export data; emailed link expires after 24 hours; zip holds conversations.json, chat.html, account/feedback files and uploads; workspace users ask their admin | /guides/import-chatgpt/ | OpenAI help centre article 7260999 (linked on the page). Verify before launch; steps can change |
-| ChatGPT/Claude import via `livingbrain import chatgpt|claude`: local read, preview and choose, redaction, personal encrypted scope, pages with citations, prompt library, idempotent re-import | Guide, FAQ, llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#49 (Epic 4). Planned |
-| Users choose their own models per role on every plan (Anthropic, OpenAI, OpenRouter, LiteLLM, any OpenAI-compatible endpoint); the included model is named as an offer: $3/month of DeepSeek credit on Crew (user decision 2026-10-03) | Pricing, FAQ "Which models?", llms.txt | User decision 2026-10-03 ("select their own LLMs, only mention offers like DeepSeek") |
-| Storage per plan: Community own Cloudflare storage (no limit from us); Teams hosted 10 GB, self-hosted own storage; Crew 25 GB; extra hosted storage $0.25/GB-month; storage covers pages, sources, indexes, agent logs | Pricing, FAQ, llms.txt | User decision 2026-10-03 (GB in the plans); amounts proposed by the agent, planned pricing |
-| Usage pricing: writing $1/M tokens (evolve included), reading unlimited, reasoning per question Minimal $0.001 / Low $0.005 / Medium $0.02 / High $0.05 / Max $0.25; $3 Crew credit ≈ 600 Low questions; own LLM key = no fee | Pricing (meter + reasoning slider), FAQ, llms.txt | User request 2026-10-03 to follow Honcho's pricing model (honcho.dev: ingestion $2/M, unlimited context, reasoning $0.001–$0.50/q). Our planned prices set at or below Honcho's; structure borrowed, numbers ours |
-| Aggregates coding agents' session logs (Claude Code, Codex, Cursor, OpenCode, Colonizer) via the CLI, redacted locally, opt-in upload, search, tokens and cost per person/repo/model, decisions become pages | Coding agents section, feature 07, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain issue (Epic 4). Planned; the table is sample data |
-| "Others charge $10–45 per user. We charge per team."; $45 × 20 = $900, $10 × 20 = $200 | Pricing comparison | Design file. Labelled "Illustrative comparison". **Check before launch:** the $10–45 range against current per-seat prices of comparable tools |
-| Kestrel Freight, its people, customers, messages, PRs, prompts, counts (214 messages, 412 pages, 2,960 links, 412 uses…) | Throughout | Fictional sample data, labelled "Illustration" or "Sample data" everywhere it appears |
-| Factory Zero venture | Footer, JSON-LD, llms.txt | True |
+| ChatGPT/Claude import via `livingbrain import chatgpt|claude`: local read, preview and choose, redaction, personal encrypted scope, pages with citations, prompt library, idempotent re-import | Guide, /integrations/ #imports, FAQ, llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#49 (Epic 4). Planned |
+| Users choose their own models per role on every plan (Anthropic, OpenAI, OpenRouter, LiteLLM, any OpenAI-compatible endpoint); the included model is named as an offer: $3/month of DeepSeek credit on Crew (user decision 2026-10-03) | /integrations/ #models, /pricing/, FAQ "Which models?", llms.txt | User decision 2026-10-03 ("select their own LLMs, only mention offers like DeepSeek") |
+| Storage per plan: Community own Cloudflare storage (no limit from us); Teams hosted 10 GB, self-hosted own storage; Crew 25 GB; extra hosted storage $0.25/GB-month; storage covers pages, sources, indexes, agent logs | /pricing/, FAQ, llms.txt | User decision 2026-10-03 (GB in the plans); amounts proposed by the agent, planned pricing |
+| Usage pricing: writing $1/M tokens (evolve included), reading unlimited, reasoning per question Minimal $0.001 / Low $0.005 / Medium $0.02 / High $0.05 / Max $0.25; $3 Crew credit ≈ 600 Low questions; own LLM key = no fee | /pricing/ (meter + reasoning slider), FAQ, llms.txt | User request 2026-10-03 to follow Honcho's pricing model (honcho.dev: ingestion $2/M, unlimited context, reasoning $0.001–$0.50/q). Our planned prices set at or below Honcho's; structure borrowed, numbers ours |
+| Aggregates coding agents' session logs (Claude Code, Codex, Cursor, OpenCode, Colonizer) via the CLI, redacted locally, opt-in upload, search, tokens and cost per person/repo/model, decisions become pages | /agents/ #logs, FAQ, llms.txt | User decision 2026-10-03; Livingbrain-wiki/livingbrain issue (Epic 4). Planned; the table is sample data |
+| "Others charge $10–45 per user. We charge per team."; $45 × 20 = $900, $10 × 20 = $200 | /pricing/ comparison | Design file. Labelled "Illustrative comparison". **Check before launch:** the $10–45 range against current per-seat prices of comparable tools |
+| Kestrel Freight, its people, customers, messages, PRs, prompts, counts (214 messages, 412 pages, 2,960 links, 412 uses…) | /how-it-works/, /agents/ | Fictional sample data, labelled "Illustration" or "Sample data" everywhere it appears |
+| A brain for your team. It turns your conversations into a company wiki and keeps it true | Home hero, meta, OG, llms.txt | Positioning reworded 2026-10-03 (simplified IA); same claim as the row above. Planned |
+| A Claude Code plugin will bundle the MCP server with skills and slash commands | /agents/ #connect, llms.txt | Livingbrain-wiki/livingbrain#37 (Epic 4). Planned |
+| Telemetry: anonymous, bucketed usage counts from the CLI and a self-hosted server, no free text, the exact batch shown on first run, `livingbrain telemetry off`; message text, page bodies and secrets never collected or logged; OpenTelemetry export; audit log on Teams | /security/ #telemetry, llms.txt | Livingbrain-wiki/livingbrain#44. Planned. The `LIVINGBRAIN_TELEMETRY=0` switch and the opt-in live map from #44 are not on the site |
+| "We're not affiliated with them" (other companies' tools named on /integrations/) | /integrations/ intro, FAQ "Which coding agents" | True. Names in plain text, no logos |
+| Factory Zero venture | Every footer, JSON-LD, llms.txt | True |
 | `hello@livingbrain.wiki` (no-JS form fallback), `security@livingbrain.wiki` | Form `action`, security.txt | **Fix before launch:** neither mailbox exists yet |
 | Waitlist at `api.livingbrain.wiki/v1/waitlist` | Forms | Contract shared with sealb.in and Colonizer (Cratefield waitlist module). **Not deployed**: the form says "The list isn't open yet. Check back soon." |
 | GitHub "(soon)" | Footer | Plain text, not a link: there is no repo yet |
+
+## Information architecture
+
+Since 2026-10-03 the site is several short pages instead of one long one. Each
+claim lives on one page; other pages link to it instead of repeating it.
+
+| Page | Job |
+| :--- | :--- |
+| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one line each; where you use it (Slack, coding agents, CLI, app); pricing in one line. Then a row of links to the subpages and the footer waitlist. No infographics, no FAQ |
+| `/how-it-works/` | The Slack moment, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
+| `/agents/` | Connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
+| `/integrations/` | Grouped plain-text names: chat, mail, imports, code, monitoring and logs, models, sister ventures |
+| `/security/` | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership and self-hosting |
+| `/pricing/` | The three plans, storage, the usage meter, reasoning levels, the illustrative comparison |
+| `/faq/` | Every question, grouped, with the only `FAQPage` JSON-LD on the site |
+| `/guides/import-chatgpt/` | The ChatGPT export guide |
+
+The old eight-card "A teammate, not a search box" grid was dropped as a block:
+each card's claim already had a home (Remembers → integrations, mail; Answers
+with sources → how it works; Acts, Learns your way → how it works #learns;
+Speaks up and Grafana → how it works, integrations; Works while you sleep →
+how it works #evolve; coding agents → agents; Easy to use → home and FAQ).
+The privacy section's notes on encryption, mail and PromptDecode became their
+own short sections on /security/.
 
 ## Port notes and divergences from the design
 
@@ -61,6 +90,15 @@ Everything below differs from `Living Brain.dc.html`. Items marked
 marked **(user)** follow a user decision on 2026-10-03.
 
 Runtime and structure
+- **(user)** One page became eight (see Information architecture). The home
+  hero says "A brain for your team." instead of "Your company, remembered."
+  (kept as the OG title and slogan). Header nav: How it works, Agents,
+  Integrations, Security, Pricing, FAQ, with `aria-current` on the active page;
+  under 860px it folds into a native `<details>` menu, so phones reach every
+  page without JavaScript. Every page shares the header and the waitlist footer.
+- Each page with a brain figure carries its own still brain (`tools/prerender.js`
+  writes it into every page that has the markers); other figures on that page
+  reuse it with `<use href="#bsg">`.
 - The React/DCLogic runtime (`support.js`) is not shipped. Its state and
   handlers are rewritten as vanilla JS in `assets/livingbrain.js`; styles moved
   from inline attributes into classes in `assets/livingbrain.css`.

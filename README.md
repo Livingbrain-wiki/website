@@ -5,7 +5,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/SITE-NOT%20DEPLOYED-8E9B9E?style=flat-square&labelColor=070F11" alt="Site: not deployed">
   <img src="https://img.shields.io/badge/LIVING%20BRAIN-IN%20DESIGN-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: in design">
-  <img src="https://img.shields.io/badge/PAGES-1-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 1">
+  <img src="https://img.shields.io/badge/PAGES-8-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 8">
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
   <img src="https://img.shields.io/badge/BUILD%20STEP-NONE-E9F0F0?style=flat-square&labelColor=070F11" alt="Build step: none">
   <img src="https://img.shields.io/badge/DEPENDENCIES-ZERO-56F1B0?style=flat-square&labelColor=070F11" alt="Dependencies: zero">
@@ -21,8 +21,8 @@
 
 # The site
 
-This repository is the marketing site for **Living Brain**: one page, one
-stylesheet, one page script and the brain renderer, served by Cloudflare (a static-assets Worker).
+This repository is the marketing site for **Living Brain**: a few short
+static pages, one stylesheet, one page script and the brain renderer, served by Cloudflare (a static-assets Worker).
 There is no framework, no bundler, no build step and no runtime dependency. It
 follows the structure of the sealb.in and Colonizer sites.
 
@@ -42,21 +42,19 @@ with the `Brand Sheet.dc.html`, `brain.js` and `llms.txt` it came with. The
 design's React runtime (`support.js`) is not shipped or committed:
 markup and styles are static, and `assets/livingbrain.js` reimplements its logic.
 
-| Anchor | Section | Job |
-| :--- | :--- | :--- |
-| `#top` | Hero | Headline, waitlist form, and a rotating 3D knowledge-graph brain you can drag to turn |
-| | Use it from anywhere | Slack (first); MCP, the `livingbrain` CLI and the PWA (planned); a CLI illustration |
-| `#slack` | Speaks up | A mock #eng thread: the answer draws a citation trail back to its source message |
-| `#how` | Listen. Write. Evolve. | Three animated steps, the pipeline infographic, the nightly loop |
-| `#demo` | Explore a sample brain | An explorable 3D graph of a fictional company: orbit, zoom, filter by type, open any page with its sources |
-| `#features` | A teammate, not a search box | Eight capabilities and one night in the brain |
-| `#agents` | Coding agents | Connect tabs, an agent session, agents ⇄ brain, the prompt library, the learning layer |
-| `#colonizer` | Works with Colonizer | Slack → brief → colony → pull request → learnings |
-| `#privacy` | Private by design | Access rings and table |
-| `#own` | You own it | A Markdown file, the graph, thirty sample days |
-| `#pricing` | Pricing | Community (free, self-hosted), Teams ($5), Crew ($9); per workspace; planned |
-| `#faq` | Questions | Nine answers, native `<details>` |
-| `#waitlist` | Footer | The second waitlist form |
+| Page | What's on it |
+| :--- | :--- |
+| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve in one line each; where you use it (Slack, coding agents, CLI, app); pricing in one line; links to every page; the footer waitlist |
+| [`/how-it-works/`](how-it-works/index.html) | The Slack thread with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
+| [`/agents/`](agents/index.html) | Connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
+| [`/integrations/`](integrations/index.html) | Chat, mail, imports, code, monitoring and logs, models, sister ventures. Plain-text names |
+| [`/security/`](security/index.html) | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership |
+| [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams ($5), Crew ($9); storage, usage, reasoning levels; planned |
+| [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
+| [`/guides/import-chatgpt/`](guides/import-chatgpt/index.html) | Export your ChatGPT history; the planned import |
+
+Every page shares the header (a `<details>` menu under 860px) and the footer
+with the second waitlist form.
 
 Plus `404.html`, `llms.txt`, `sitemap.xml`, `robots.txt`, `site.webmanifest`,
 `.well-known/security.txt` and the images.
@@ -85,7 +83,10 @@ to 360px with no horizontal scroll.
 
 ```
 .
-├── index.html                  the page
+├── index.html                  the home page (short)
+├── how-it-works/ agents/ integrations/ security/ pricing/ faq/
+│                               one index.html each, served at /<folder>/
+├── guides/import-chatgpt/      the ChatGPT export guide
 ├── 404.html
 ├── assets/
 │   ├── livingbrain.css         the whole design system, tokens at the top
@@ -98,7 +99,7 @@ to 360px with no horizontal scroll.
 │   ├── org-avatar.png          GitHub organization avatar, uploaded by hand
 │   └── readme-banner.png       the banner above
 ├── tools/
-│   ├── prerender.js            writes the no-JS state into index.html (still brain, demo, tabs, chart)
+│   ├── prerender.js            writes the no-JS state into the pages (still brain, demo, tabs, chart)
 │   ├── build-dist.sh           assembles dist/ from an allowlist, stamps cache hashes, checks the CSP hash
 │   ├── deploy.sh               builds main in a throwaway worktree and deploys it
 │   ├── og-render.html          source for og.png
@@ -117,10 +118,10 @@ to 360px with no horizontal scroll.
 
 ```sh
 python3 -m http.server 8080
-# then http://localhost:8080/
+# then http://localhost:8080/ (and /how-it-works/, /agents/, …)
 ```
 
-The page is complete without JavaScript: the hero shows a still brain (an
+Every page is complete without JavaScript: the menu is a native `<details>`, the hero shows a still brain (an
 inline SVG), every infographic sits on its final frame, the demo shows a
 static graph with one page open, the form falls back to `mailto:`, and the FAQ
 is native `<details>`. After changing the sample data or `brain.js`'s
@@ -143,7 +144,7 @@ form falls back to `mailto:hello@livingbrain.wiki`, which needs that mailbox.
 
 `site.webmanifest` makes the marketing site installable (standalone, theme
 colours from the tokens, 192/512 and maskable icons, Apple meta tags). There is
-no service worker: the site is one page and nothing should cache the waitlist
+no service worker: the site is a few static pages and nothing should cache the waitlist
 POST. The planned Living Brain web app (a PWA) is a product feature, not this site.
 
 ## Regenerating images
@@ -182,9 +183,11 @@ metadata points at `https://livingbrain.wiki`.
    `llms.txt` tells agents nothing can be installed. See [`COPY.md`](COPY.md).
 2. **The design file is the source.** Visual changes start in the Claude
    Design project, then get ported; note anything that diverges in `COPY.md`.
-3. **The FAQ moves together.** The visible FAQ, the JSON-LD `FAQPage` and
+3. **The FAQ moves together.** The visible FAQ on `/faq/`, its JSON-LD `FAQPage` and
    `llms.txt` say the same thing. Change one, change all three.
-4. **No dark patterns.** One email when there's something to try.
+4. **One claim, one page.** Say it once and link to it. A new page goes into
+   `tools/build-dist.sh` (`PAGES`), `sitemap.xml` and `llms.txt`.
+5. **No dark patterns.** One email when there's something to try.
 
 ---
 
