@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Pricing · Living Brain</title>
-<meta name="description" content="Planned pricing for Living Brain, per workspace, not per seat: Community free and self-hosted for up to 5 people, Teams $5 a month, Crew $9 a month hosted with $3 of DeepSeek credit.">
+<meta name="description" content="Planned pricing for Living Brain, per workspace, not per seat: Community free and self-hosted for up to 5 people, Teams from $5 a month, Crew $15 a month or $150 a year, hosted with $5 of DeepSeek credit a month.">
 <link rel="canonical" href="https://livingbrain.wiki/pricing/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/pricing/">
 <meta property="og:title" content="Living Brain pricing">
-<meta property="og:description" content="Per workspace, not per seat: Community free self-hosted, Teams $5/mo, Crew $9/mo. Planned pricing.">
+<meta property="og:description" content="Per workspace, not per seat: Community free self-hosted, Teams from $5/mo, Crew $15/mo. Planned pricing.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain pricing">
-<meta name="twitter:description" content="Per workspace, not per seat: Community free self-hosted, Teams $5/mo, Crew $9/mo. Planned pricing.">
+<meta name="twitter:description" content="Per workspace, not per seat: Community free self-hosted, Teams from $5/mo, Crew $15/mo. Planned pricing.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 <meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
 
@@ -120,26 +120,25 @@
       </article>
       <article class="card plan">
         <div class="plan__top"><h3>Teams</h3><span class="plan__run">Self-hosted or hosted</span></div>
-        <p class="plan__price"><span>$5</span>/mo per workspace</p>
+        <p class="plan__price">From <span>$5</span>/mo per workspace</p>
         <ul>
-          <li>Unlimited people</li>
           <li>Team features: SSO, admin and audit log, the shared team prompt library, per-channel policies, and a white-label app on your own domain</li>
-          <li>Self-hosted with a license key, or hosted by us with your own LLM key</li>
-          <li>Hosted: 10 GB storage included. Self-hosted: your own storage</li>
+          <li>Self-hosted license: $5/mo per workspace, unlimited people, your own storage</li>
+          <li>Hosted by us: $90/yr (two months free) or $9/mo per workspace, with your own LLM key. Up to 25 people included, 10 GB storage included</li>
         </ul>
       </article>
       <article class="card plan plan--on">
         <div class="plan__top"><h3>Crew</h3><span class="plan__run">Hosted</span></div>
-        <p class="plan__price"><span>$9</span>/mo per workspace</p>
+        <p class="plan__price"><span>$150</span>/yr or $15/mo per workspace</p>
         <ul>
-          <li>Hosted by us, with $3 of DeepSeek credit included each month, or bring your own LLM</li>
-          <li>Up to 25 people, white-label app included</li>
-          <li>Team features included</li>
+          <li>Hosted by us, with $5 of DeepSeek credit included each month, or bring your own LLM</li>
+          <li>Up to 25 people included</li>
+          <li>Team features and the white-label app included</li>
           <li>25 GB storage included</li>
         </ul>
       </article>
     </div>
-    <p class="plans__note">Storage covers wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage: $0.25 per GB a month. Every plan: Markdown export, cited answers, and access that follows your chat's permissions (Slack channels, Discord roles). No hosted plan is free.</p>
+    <p class="plans__note">Storage covers wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage: $0.25 per GB a month. Extra people: +$5/mo per 25 on hosted plans. Billed annually by default; monthly available. Every plan: Markdown export, cited answers, and access that follows your chat's permissions (Slack channels, Discord roles). No hosted plan is free.</p>
 
     <div class="card card--line meter">
       <div class="row-head"><h2 class="h3 h3--sm">Memory, priced like memory</h2><span class="tag">Planned · hosted</span></div>
@@ -152,7 +151,7 @@
 
     <div class="card card--line rs">
       <div class="row-head"><h2 class="h3 h3--sm">Brain reasoning, on demand</h2><span class="tag">Planned · per question</span></div>
-      <p class="rs__lede">Ask harder questions when it matters. Pick how hard the brain thinks, per question, from MCP, the CLI or team chat. Crew's $3 monthly credit covers about 600 questions at the default level.</p>
+      <p class="rs__lede">Ask harder questions when it matters. Pick how hard the brain thinks, per question, from MCP, the CLI or team chat. Crew's $5 monthly credit covers about 1,000 questions at the default level.</p>
       <fieldset class="rs__set">
         <legend class="vh">Reasoning level</legend>
         <div class="rs__track">
@@ -180,7 +179,7 @@
       <div class="bars">
         <div><div class="bars__row"><span>Per-user pricing at $45 × 20 people</span><span class="mono ink" data-count data-to="900" data-pre="$" data-dur="2800">$900</span></div><div class="bars__track"><div class="bars__fill" style="width:100%" data-a="growX" data-t="2800" data-e="cubic-bezier(.3,.1,.2,1)"></div></div></div>
         <div><div class="bars__row"><span>Per-user pricing at $10 × 20 people</span><span class="mono ink" data-count data-to="200" data-pre="$" data-dur="1900">$200</span></div><div class="bars__track"><div class="bars__fill" style="width:22.2%" data-a="growX" data-t="1900" data-e="cubic-bezier(.3,.1,.2,1)"></div></div></div>
-        <div><div class="bars__row bars__row--us"><span>Living Brain Crew, one flat price</span><span class="mono accent" data-count data-to="9" data-pre="$" data-dur="500">$9</span></div><div class="bars__track"><div class="bars__fill bars__fill--us" style="width:1%" data-a="growX" data-t="500"></div></div></div>
+        <div><div class="bars__row bars__row--us"><span>Living Brain Crew, one flat price</span><span class="mono accent" data-count data-to="15" data-pre="$" data-dur="500">$15</span></div><div class="bars__track"><div class="bars__fill bars__fill--us" style="width:1.7%" data-a="growX" data-t="500"></div></div></div>
       </div>
       <figcaption class="cost__line">Others charge $10–45 per user. We charge per team.</figcaption>
     </figure>

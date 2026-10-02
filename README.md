@@ -49,7 +49,7 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 | [`/agents/`](agents/index.html) | Connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | [`/integrations/`](integrations/index.html) | Chat, mail, imports, code, monitoring and logs, models, sister ventures. Plain-text names |
 | [`/security/`](security/index.html) | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership |
-| [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams ($5), Crew ($9); storage, usage, reasoning levels; planned |
+| [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams (from $5; hosted $9), Crew ($15); storage, usage, reasoning levels; planned |
 | [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
 | [`/guides/import-chatgpt/`](guides/import-chatgpt/index.html) | Export your ChatGPT history; the planned import |
 
