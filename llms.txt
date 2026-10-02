@@ -65,17 +65,33 @@ plan is free.
 
 - Community: free. Self-hosted on your own Cloudflare account with your own
   model key. Up to 5 people. All core features: the Slack brain, the living
-  wiki, citations, the 3D graph, MCP for coding agents, export.
+  wiki, citations, the 3D graph, MCP for coding agents, agent log aggregation,
+  export. Storage: your own Cloudflare account, no limit from us.
 - Teams: $5/month per workspace. Unlimited people. Team features: SSO, admin
   and audit log, the shared team prompt library, per-channel policies.
   Self-hosted with a license key, or hosted by us with your own model key.
-- Crew: $9/month per workspace. Hosted by us, model included, up to 25 people,
-  team features included.
+  Hosted: 10 GB storage included. Self-hosted: your own storage.
+- Crew: $9/month per workspace. Hosted by us, DeepSeek included (or bring your own
+  model), up to 25 people,
+  team features included, 25 GB storage included.
+
+Storage covers wiki pages, sources, search indexes and aggregated agent logs.
+Extra hosted storage: $0.25 per GB a month.
 
 Prices may change before launch.
 
 ## FAQ (same answers as the site)
 
+- Can it collect my coding agents' logs? Planned. The livingbrain CLI collects
+  the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer
+  already write, redacts secrets on your machine, and uploads them only if you
+  opt in. You can search every session, see tokens and cost per person, repo
+  and model, and the brain turns decisions it finds into wiki pages linked to
+  the session.
+- How much storage is included? Hosted Teams includes 10 GB and Crew includes
+  25 GB, covering wiki pages, sources, search indexes and aggregated agent
+  logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
+  your own Cloudflare storage, with no limit from us. Planned pricing.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
@@ -98,9 +114,10 @@ Prices may change before launch.
   Teams license. The plan and the code as it lands are public at
   https://github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with
   the Teams features under a commercial license.
-- Which models? Crew includes our default model. On Community and Teams you
-  connect your own: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any
-  OpenAI-compatible endpoint, including self-hosted ones.
+- Which models? On every plan you choose your own models, per role (triage,
+  answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or
+  any OpenAI-compatible endpoint, including self-hosted ones. Crew also
+  includes DeepSeek, so you can start without a key of your own.
 - What does "living" mean? Most wikis start going stale the day they're
   written. Living Brain revisits its own pages on a schedule: it merges
   duplicates, flags contradictions, retires facts that are no longer true and
