@@ -13,7 +13,7 @@
 # (origin/main when a remote exists) out into a temporary worktree, builds
 # there, deploys that, and removes it. The deployment records the commit.
 #
-# Cloudflare Pages project: livingbrain, on the Factory0 account, via
+# Cloudflare: the Worker livingbrain-website (static assets, wrangler.toml), on the Factory0 account, via
 # CLOUDFLARE_API_TOKEN or `wrangler login` (see README, Deploy).
 # Run only when asked to deploy.
 set -euo pipefail
@@ -56,9 +56,7 @@ if [ "$dry_run" = 1 ]; then
   exit 0
 fi
 
-npx --yes wrangler@latest pages deploy "$tmp/tree/dist" \
-  --project-name=livingbrain \
-  --branch=main \
-  --commit-hash="$sha" \
-  --commit-message="$subject" \
-  --commit-dirty=false
+# A Worker with static assets (wrangler.toml): it serves the clean checkout's
+# dist/ and attaches livingbrain.wiki and www.livingbrain.wiki as custom domains.
+npx --yes wrangler@latest deploy --config "$tmp/tree/wrangler.toml" \
+  --message="$ref ${sha:0:7}: $subject"

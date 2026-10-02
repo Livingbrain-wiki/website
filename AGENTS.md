@@ -2,7 +2,7 @@
 
 The livingbrain.wiki marketing site: static HTML, one stylesheet
 (`assets/livingbrain.css`), one page script (`assets/livingbrain.js`) and the
-brain renderer (`assets/brain.js`), deployed to Cloudflare Pages. No framework,
+brain renderer (`assets/brain.js`), deployed to Cloudflare as a static-assets Worker (`wrangler.toml`). No framework,
 no build step, no npm install. [README.md](README.md) has the page map, the
 design tokens and the deploy procedure.
 

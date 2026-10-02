@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
   <img src="https://img.shields.io/badge/BUILD%20STEP-NONE-E9F0F0?style=flat-square&labelColor=070F11" alt="Build step: none">
   <img src="https://img.shields.io/badge/DEPENDENCIES-ZERO-56F1B0?style=flat-square&labelColor=070F11" alt="Dependencies: zero">
-  <img src="https://img.shields.io/badge/DEPLOY-CLOUDFLARE%20PAGES-E9F0F0?style=flat-square&labelColor=070F11" alt="Deploy: Cloudflare Pages">
+  <img src="https://img.shields.io/badge/DEPLOY-CLOUDFLARE%20WORKERS-E9F0F0?style=flat-square&labelColor=070F11" alt="Deploy: Cloudflare Workers">
   <img src="https://img.shields.io/badge/AGENT%20READABLE-YES-E9F0F0?style=flat-square&labelColor=070F11" alt="Agent readable: yes">
 </p>
 
@@ -22,13 +22,13 @@
 # The site
 
 This repository is the marketing site for **Living Brain**: one page, one
-stylesheet, one page script and the brain renderer, served by Cloudflare Pages.
+stylesheet, one page script and the brain renderer, served by Cloudflare (a static-assets Worker).
 There is no framework, no bundler, no build step and no runtime dependency. It
 follows the structure of the sealb.in and Colonizer sites.
 
 | | What it is | Status |
 | :--- | :--- | :--- |
-| **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Built, not deployed.** No GitHub repo, no Pages deploy, no DNS yet |
+| **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki. The waitlist API is not deployed yet |
 | **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki`, same contract as sealb.in and Colonizer. | **Not deployed.** The form says "The list isn't open yet." |
 | **Living Brain** | The product: Slack teammate, MCP server, `livingbrain` CLI, PWA, hosted service. | **In design.** The page says so |
 
@@ -159,10 +159,11 @@ page; GitHub has no API for it.
 
 ## Deploy
 
-Cloudflare Pages, project `livingbrain`, on the Factory0 account. **Not done
-yet:** the GitHub repo, the Pages project, the `livingbrain.wiki` custom domain
-and the `api.livingbrain.wiki` route all still need creating. After that, for
-every merge to `main`:
+A Cloudflare Worker with static assets, `livingbrain-website` (`wrangler.toml`), on
+the Factory0 account. It has no script: Cloudflare serves `dist/` and applies
+`_headers` and `_redirects`. `livingbrain.wiki` and `www.livingbrain.wiki` are its
+custom domains, attached by the deploy itself. The `api.livingbrain.wiki` waitlist
+Worker does not exist yet. For every merge to `main`:
 
 ```sh
 tools/deploy.sh              # deploy origin/main
@@ -172,7 +173,7 @@ tools/deploy.sh --dry-run    # build it and say what would ship
 The script deploys **`origin/main` and nothing else** (or local `main` while
 there is no remote): it checks it out into a throwaway worktree, builds there,
 deploys that and removes it. It never reads your working copy or its `dist/`.
-Do not run `wrangler pages deploy dist` by hand. Every absolute URL in the
+Do not run `wrangler deploy` from a working copy by hand. Every absolute URL in the
 metadata points at `https://livingbrain.wiki`.
 
 ## House rules for edits
