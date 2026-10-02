@@ -84,6 +84,7 @@
       "@type": "FAQPage",
       "@id": "https://livingbrain.wiki/#faq",
       "mainEntity": [
+        { "@type": "Question", "name": "Is my data encrypted?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host." } },
         { "@type": "Question", "name": "Is my data used for training?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own model, requests go to your provider under your account's terms." } },
         { "@type": "Question", "name": "Does it only work in Slack?", "acceptedAnswer": { "@type": "Answer", "text": "No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product." } },
         { "@type": "Question", "name": "Is there an app?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet." } },
@@ -641,6 +642,7 @@
         </table>
         </div>
         <p class="access__note">Always limited to what the person asking can already see in Slack.</p>
+        <p class="access__note">Planned: each scope is encrypted with its own key. Search stays inside your scopes and stays fast, and deleting a scope's key erases that memory everywhere.</p>
       </div>
     </div>
   </div>
@@ -761,6 +763,7 @@
     <p class="eyebrow">10 · FAQ</p>
     <h2 id="faq-title" class="h2">Questions</h2>
     <div class="faq">
+      <details><summary><h3>Is my data encrypted?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host.</p></details>
       <details><summary><h3>Is my data used for training?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own model, requests go to your provider under your account's terms.</p></details>
       <details><summary><h3>Does it only work in Slack?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product.</p></details>
       <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet.</p></details>

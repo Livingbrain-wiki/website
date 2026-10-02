@@ -76,6 +76,12 @@ Prices may change before launch.
 
 ## FAQ (same answers as the site)
 
+- Is my data encrypted? Planned. Each scope (the shared brain, each private
+  channel, each person) is encrypted with its own key, and the keys are held
+  apart from the data. Search runs only inside the scopes you can see, so it
+  stays fast. Deleting a scope's key erases that memory everywhere, backups
+  included. On Teams you can bring your own key. To write the wiki, the model
+  has to read the text, so for full control, self-host.
 - Is my data used for training? No. Your workspace's messages and pages are
   never used to train models, ours or anyone else's. If you bring your own
   model, requests go to your provider under your account's terms.
