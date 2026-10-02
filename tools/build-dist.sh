@@ -29,14 +29,18 @@ for f in bricolage-grotesque.woff2 hanken-grotesk.woff2 jetbrains-mono.woff2; do
 done
 cp .well-known/security.txt dist/.well-known/
 
-# guides: one folder per guide, each an index.html served at /guides/<name>/
-mkdir -p dist/guides/import-chatgpt
-cp guides/import-chatgpt/index.html dist/guides/import-chatgpt/
+# pages: one folder per page, each an index.html served at /<folder>/.
+# A new page goes here AND in the CSP loop below AND in sitemap.xml and llms.txt.
+PAGES="how-it-works agents integrations security pricing faq guides/import-chatgpt"
+for d in $PAGES; do
+  mkdir -p "dist/$d"
+  cp "$d/index.html" "dist/$d/"
+done
 
 # The CSP in _headers allows the inline theme script by hash. Fail if the
 # script changed and the hash did not.
 b64sha() { if command -v openssl >/dev/null 2>&1; then openssl dgst -sha256 -binary | openssl base64 -A; else shasum -a 256 | cut -d' ' -f1 | xxd -r -p | base64; fi; }
-for page in index.html 404.html guides/import-chatgpt/index.html; do
+for page in index.html 404.html $(for d in $PAGES; do printf '%s/index.html ' "$d"; done); do
   inline=$(python3 -c 'import re,sys; s=open(sys.argv[1]).read(); m=re.search(r"<script>(.*?)</script>", s, re.S); sys.stdout.write(m.group(1))' "$page")
   h=$(printf '%s' "$inline" | b64sha)
   grep -q "'sha256-$h'" _headers || { echo "CSP hash in _headers does not match the inline script in $page (sha256-$h)" >&2; exit 1; }
@@ -62,6 +66,10 @@ for f in livingbrain.css livingbrain.js brain.js; do
   done
   # A sed that matches nothing exits 0. Fail instead of shipping an immutable
   # asset under a URL that never changes.
+  # Every page that references the file must carry the stamp.
+  for page in $(grep -rl "/assets/$f" dist --include='*.html'); do
+    grep -q "/assets/$f?v=$h\"" "$page" || { echo "cache stamp for $f did not apply in $page" >&2; exit 1; }
+  done
   grep -q "/assets/$f?v=$h\"" dist/index.html || { echo "cache stamp for $f did not apply" >&2; exit 1; }
 done
 

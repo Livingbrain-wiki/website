@@ -3,7 +3,7 @@
 # tools/build-dist.sh, so the URL changes whenever the file does.
 #
 # The CSP allows one inline script: the theme snippet at the top of <head> in
-# index.html and 404.html, by its sha256. If you change that snippet, update the
+# every page (index.html, 404.html and each folder/index.html), by its sha256. If you change that snippet, update the
 # hash here (tools/build-dist.sh checks it). connect-src allows the waitlist
 # Worker; form-action allows the no-JavaScript mailto fallback.
 

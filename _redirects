@@ -1,9 +1,9 @@
-# Cloudflare Pages redirects.
+# Cloudflare static-assets redirects.
 # Short, stable links for talks, READMEs and chat. Temporary (302) on purpose:
-# the targets may move.
+# the targets may move. /agents, /pricing and /faq are real pages now
+# (served at /agents/ and so on), so they need no rule.
 
-/waitlist   /#waitlist   302
-/demo       /#demo       302
-/agents     /#agents     302
-/pricing    /#pricing    302
-/faq        /#faq        302
+/waitlist   /#waitlist                302
+/demo       /how-it-works/#demo       302
+/how        /how-it-works/            302
+/security   /security/                302

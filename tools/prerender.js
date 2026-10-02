@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 // Writes the hero's static brain: an inline SVG frozen from the same graph
 // that assets/brain.js renders (300 nodes, seed 11), between the
-// <!-- brain-still:start --> and <!-- brain-still:end --> markers in index.html.
+// <!-- brain-still:start --> and <!-- brain-still:end --> markers. The home page
+// hero has one, and so does each subpage whose figures reuse it (via <use href="#bsg">),
+// along with the sample-graph, agent-tab and growth-chart parts on their pages.
 //
 // Why: the hero shows a brain at first paint, before any script runs, and
 // keeps showing it when JavaScript or <canvas> is unavailable. Colours come
 // from the page's CSS tokens (classes .bs-0 to .bs-3), so it follows the theme.
 // The canvas fades in over it once brain.js is running.
 //
-//     node tools/brain-still.js
+//     node tools/prerender.js
 //
 // Rerun after changing the graph generator in assets/brain.js. No dependencies.
 'use strict';
@@ -76,13 +78,22 @@ const parts = {
   'growth': `<path class="g-area" d="${g.linksArea}"></path><path class="g-links" d="${g.links}"></path><path class="g-pages" d="${g.pages}"></path><path class="g-refreshed" d="${g.refreshed}"></path>`
 };
 
-const file = path.join(root, 'index.html');
-let html = fs.readFileSync(file, 'utf8');
-for (const [name, body] of Object.entries(parts)) {
-  const re = new RegExp(`(<!-- ${name}:start -->)[\\s\\S]*?(<!-- ${name}:end -->)`);
-  if (!re.test(html)) throw new Error(`markers for ${name} not found in index.html`);
-  html = html.replace(re, (m, a, b) => a + body + b);
-  console.log(`${name.padEnd(12)} ${body.length} bytes`);
+// Each part lives on one or more pages; a part whose markers are on no page is an error.
+const pages = ['index.html', 'how-it-works/index.html', 'agents/index.html'];
+const found = {};
+for (const page of pages) {
+  const file = path.join(root, page);
+  let html = fs.readFileSync(file, 'utf8');
+  for (const [name, body] of Object.entries(parts)) {
+    const re = new RegExp(`(<!-- ${name}:start -->)[\\s\\S]*?(<!-- ${name}:end -->)`);
+    if (!re.test(html)) continue;
+    html = html.replace(re, (m, a, b) => a + body + b);
+    found[name] = (found[name] || []).concat(page);
+  }
+  fs.writeFileSync(file, html);
 }
-fs.writeFileSync(file, html);
+for (const [name, body] of Object.entries(parts)) {
+  if (!found[name]) throw new Error(`markers for ${name} not found in ${pages.join(', ')}`);
+  console.log(`${name.padEnd(12)} ${String(body.length).padStart(6)} bytes  ${found[name].join(', ')}`);
+}
 console.log(`brain: ${N.length} nodes, ${E.length} edges`);
