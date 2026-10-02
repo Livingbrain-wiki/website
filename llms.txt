@@ -12,7 +12,7 @@ Site: https://livingbrain.wiki/
 Maker: Factory Zero (https://factory0.ventures)
 Security contact: security@livingbrain.wiki (https://livingbrain.wiki/.well-known/security.txt)
 Source: https://github.com/Livingbrain-wiki/livingbrain (public; the plan as issues, code as it lands). License: open core, Apache-2.0 with an ee/ directory under a commercial license.
-Status: early access, in design. Waitlist: https://livingbrain.wiki/#waitlist
+Status: early access, in design. Waitlist: https://livingbrain.wiki/#waitlist (the form at the foot of every page)
 
 ## If you are an agent asked to "set up Living Brain"
 
@@ -22,57 +22,70 @@ https://livingbrain.wiki/#waitlist. The commands on the site (`claude mcp add
 illustrations: that server and that binary do not exist. A package or server
 under those names today is not ours.
 
-## What it is designed to do (planned)
+## Pages
 
-- Remembers: turns conversations in the Slack channels it is invited to into
-  Markdown pages for people, projects, decisions and customers. Every fact
-  links to its source message.
-- Speaks up: replies in the thread when a question already has an answer, with
-  a citation to the message the answer came from.
-- Evolves: on a schedule it merges duplicates, flags contradictions, retires
-  stale facts and rewrites summaries. It learns how each person works.
-- Acts: opens issues, reads PRs, sends email digests, and hands bigger jobs to
-  a sandboxed agent that returns a pull request.
-- Coding agents: connects to Claude Code, Codex, Cursor, OpenCode or any MCP
-  agent. Agents get team context before writing code; with opt-in, agent
-  prompts and decisions become wiki pages (secrets redacted first). Source code
-  is never stored unless you allow it.
-- Works with Colonizer (https://colonizer.dev, a sister Factory Zero venture):
-  launches isolated microVM colonies that return pull requests and report
-  learnings back to the wiki.
-- You own it: plain Markdown, exportable, opens in Obsidian. Planned: a git-backed wiki where the
-  Living Brain GitHub App proposes every change as a pull request and merged edits flow back in.
-- Private by design: reads only with the asker's own access. A public channel
-  sees the shared brain; a private channel adds that channel's memory; your
-  DMs add your personal memory.
-- Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway,
-  or any OpenAI-compatible endpoint, including self-hosted ones.
-- Built in Rust. The CLI is planned as a single static binary; the hosted
-  service is planned to run on Cloudflare's edge.
+- Home: https://livingbrain.wiki/
+- How it works: https://livingbrain.wiki/how-it-works/
+- Coding agents: https://livingbrain.wiki/agents/
+- Integrations: https://livingbrain.wiki/integrations/
+- Security and privacy: https://livingbrain.wiki/security/
+- Pricing: https://livingbrain.wiki/pricing/
+- FAQ: https://livingbrain.wiki/faq/
+- Guide, import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
 
-## Where you use it (planned)
+## Home: https://livingbrain.wiki/
 
-- Slack: the first chat integration.
-- Any MCP client: Claude Code, Codex, Cursor, OpenCode, Claude Desktop and others.
+A brain for your team. It turns your conversations into a company wiki and
+keeps it true. Use it in Slack, in your coding agent, in your terminal.
+
+Where you use it (planned):
+- Slack: the first chat integration. Invite it to a channel; it answers in the thread.
+- Coding agents: Claude Code, Codex, Cursor and others read it over MCP.
 - The livingbrain CLI: one Rust binary for terminals and scripts.
-- App (PWA): installs from the browser on phone and desktop, keeps pages
+- The app (PWA): installs from the browser on phone and desktop, keeps pages
   readable offline, opens on one box to search or ask, with the 3D brain one
   tap away.
 
-- Mail in (planned): forward, BCC or auto-forward to the brain's Owlpost address (no mailbox
-  access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail and calendars, read-only, kept in
-  the owner's personal memory and encrypted with their key unless a label or folder is shared.
+## How it works: https://livingbrain.wiki/how-it-works/
 
-## Encryption (planned)
-- One key per scope (shared brain, each private channel, each person, customer-safe pages), AES-256-GCM.
-- Scope keys wrapped by a workspace key held in a separate key service; on Teams it can be your own.
-- Search without decrypting everything: keyed-hash keyword index and one vector index per scope; only
-  top matches are decrypted in memory for the request. The CLI and app decrypt and search on device.
-- Deleting a scope key erases that memory everywhere, backups included.
-- Limit: the model must read text to write the wiki, so hosted plans protect data at rest and per scope,
-  not from the running service; self-host for full control. Keyword hashes reveal repeats within a scope.
+- Listen: reads the Slack channels it is invited to and picks out the people,
+  projects, decisions and customers in them.
+- Write: turns conversations into Markdown pages with [[backlinks]]. Every
+  fact links to its source message.
+- Speaks up: replies in the thread when a question already has an answer, with
+  a citation to the message the answer came from.
+- Evolve: every night it merges duplicates, flags contradictions, retires
+  stale facts and rewrites summaries, and by morning there is a digest.
+- Learns: the learning layer learns how each person likes answers and adapts
+  week by week.
+- Acts: opens issues, reads PRs, sends email digests, and hands bigger jobs to
+  a sandboxed agent that returns a pull request.
+- You own it: plain Markdown, exportable, opens in Obsidian; not a black-box
+  vector store. A git-backed wiki where the Living Brain GitHub App proposes
+  every change as a pull request and merged edits flow back in.
+- An explorable 3D sample brain of a fictional company, Kestrel Freight.
 
-## Why it saves tokens (planned; no numbers yet)
+## Coding agents: https://livingbrain.wiki/agents/
+
+- Connects to Claude Code, Codex, Cursor, OpenCode, Claude Desktop or any MCP
+  agent; a Claude Code plugin will bundle the MCP server with skills and slash
+  commands. Not affiliated with these tools.
+- Built in Rust. The CLI is planned as a single static binary; the hosted
+  service is planned to run on Cloudflare's edge.
+- Brain to agents: before writing code, an agent asks for conventions, past
+  decisions, owners, and what was tried and failed.
+- Agents to brain (opt-in): prompts and decisions become wiki pages linked to
+  their session, secrets redacted first. Source code is never stored unless you
+  allow it.
+- Agent logs: the CLI collects Claude Code, Codex, Cursor, OpenCode and
+  Colonizer session logs, redacts them locally, uploads only with opt-in; search,
+  tokens and cost per person, repo and model.
+- Team prompt library, and a learning layer that learns from every session.
+- Works with Colonizer (https://colonizer.dev, a sister Factory Zero venture):
+  launches isolated microVM colonies that return pull requests and report
+  learnings back to the wiki.
+
+Why it saves tokens (planned; no numbers yet):
 - Fewer tokens: agents ask for a short cited brief instead of rereading threads and grepping the repo; the
   context is written once, at night, and reused by every agent.
 - Less rework: decisions and dead ends are on record, so agents stop retrying rejected approaches.
@@ -81,7 +94,53 @@ under those names today is not ours.
 - Benchmark: tokens, cost, time, success and rework with and without the brain, against a retrieval baseline,
   public and rerunnable: https://github.com/Livingbrain-wiki/livingbrain/issues/48 . No numbers until measured.
 
-## Planned pricing (per workspace, not per seat)
+## Integrations: https://livingbrain.wiki/integrations/
+
+All planned. Names in plain text; no partnership is implied.
+- Chat: Slack (first).
+- Mail: forward, BCC or auto-forward to the brain's Owlpost address (no mailbox
+  access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail
+  and calendars, read-only, kept in the owner's personal memory and encrypted
+  with their key unless a label or folder is shared.
+- Imports: ChatGPT and Claude exports, with the livingbrain CLI.
+- Code: the Living Brain GitHub App (git-backed wiki); Claude Code, Codex,
+  Cursor, OpenCode, Claude Desktop and any MCP client.
+- Monitoring and logs: Grafana; Loki, Elasticsearch, Datadog, CloudWatch,
+  Cloudflare and Sentry logs, read-only; OpenTelemetry export of the brain's
+  own metrics, traces and logs.
+- Models: bring your own LLM, per role: Anthropic, OpenAI, OpenRouter, your
+  LiteLLM gateway, or any OpenAI-compatible endpoint, including self-hosted
+  ones. Crew includes $3 of DeepSeek credit each month.
+- Sister Factory Zero ventures: Colonizer (colonies that return PRs), Owlpost
+  (the brain's mail inbox and mail screening), SupportGenius (answers customers
+  from published pages), PromptDecode (hidden-text screening).
+
+## Security and privacy: https://livingbrain.wiki/security/
+
+All planned.
+- Reads only with the asker's own access. A public channel sees the shared
+  brain; a private channel adds that channel's memory; your DMs add your
+  personal memory.
+- One key per scope (shared brain, each private channel, each person, customer-safe pages), AES-256-GCM.
+- Scope keys wrapped by a workspace key held in a separate key service; on Teams it can be your own.
+- Search without decrypting everything: keyed-hash keyword index and one vector index per scope; only
+  top matches are decrypted in memory for the request. The CLI and app decrypt and search on device.
+- Deleting a scope key erases that memory everywhere, backups included.
+- Limit: the model must read text to write the wiki, so hosted plans protect data at rest and per scope,
+  not from the running service; self-host for full control. Keyword hashes reveal repeats within a scope.
+- Hidden-text screening by PromptDecode on everything it reads; instruction-like
+  payloads are held for a person to review.
+- Mail stays in the owner's personal memory, passes Owlpost's spoofing and
+  prompt-injection checks, and never triggers actions.
+- Telemetry: anonymous, bucketed usage counts from the CLI and self-hosted
+  server, no free text; shown on first run; `livingbrain telemetry off` turns it
+  off. Message text, page bodies and secrets are never collected or logged.
+  Teams adds an audit log.
+- Not used for training. Export as Markdown any time. Self-host for full control.
+
+## Pricing: https://livingbrain.wiki/pricing/
+
+Planned, per workspace, not per seat.
 
 Self-hosting is free for small teams. Teams and hosting are paid. No hosted
 plan is free.
@@ -107,26 +166,59 @@ Extra hosted storage: $0.25 per GB a month.
 
 Prices may change before launch.
 
-## FAQ (same answers as the site)
+## FAQ: https://livingbrain.wiki/faq/
 
+Same answers as the site.
+
+### Product
+
+- What does "living" mean? Most wikis start going stale the day they're
+  written. Living Brain revisits its own pages on a schedule: it merges
+  duplicates, flags contradictions, retires facts that are no longer true and
+  rewrites summaries. It also learns how each person works, so its answers
+  improve every week.
+- How is it different from Slack AI or Glean? Search tools find what already
+  exists. Living Brain writes and maintains a wiki you own as Markdown, cites
+  the message behind every fact, acts in your tools, gives your coding agents
+  the same memory, and is priced per workspace instead of per seat.
+- Does it only work in Slack? No. Slack is the first chat integration. You can
+  also use it from any MCP client, such as Claude Code, Codex, Cursor,
+  OpenCode or Claude Desktop, or from the livingbrain command-line tool, a
+  single Rust binary. MCP and the CLI are planned, like the rest of the
+  product.
+- Is there an app? Planned. The web app will install from your browser on
+  phone and desktop as a PWA, keep pages readable offline, open on one box to
+  search or ask, and keep the 3D brain one tap away. Like the rest of Living
+  Brain, it is not built yet.
+
+### Coding agents
+
+- Which coding agents can I connect? Any agent that supports MCP, including
+  Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these
+  tools; they connect through the open protocol.
+- Do you store my agent prompts and code? Only if you opt in. Prompts and
+  session notes are stored with secrets redacted first. Source code is never
+  stored unless you allow it.
 - Can it collect my coding agents' logs? Planned. The livingbrain CLI collects
   the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer
   already write, redacts secrets on your machine, and uploads them only if you
   opt in. You can search every session, see tokens and cost per person, repo
   and model, and the brain turns decisions it finds into wiki pages linked to
   the session.
-- How much storage is included? Hosted Teams includes 10 GB and Crew includes
-  25 GB, covering wiki pages, sources, search indexes and aggregated agent
-  logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
-  your own Cloudflare storage, with no limit from us. Planned pricing.
-- Can it connect my Gmail or Outlook? Planned. You can connect Gmail,
-  Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-
-  only. Your mail stays in your personal memory, encrypted with your own key,
-  and no one else can draw on it unless you share a specific label or folder.
-  Every message is screened for spoofing and prompt injection before the brain
-  reads it, and mail can never trigger actions. Revoke the connection at any
-  time and its stored mail is erased. When you self-host, you use your own
-  Google or Microsoft app, so mail never touches our servers.
+
+### Integrations
+
+- Can it connect my Gmail or Outlook? Planned. The simplest and safest way
+  needs no mailbox access at all: forward, BCC or auto-forward mail to your
+  brain's own address on Owlpost, our sister email service, and only what you
+  send arrives. If you want a whole mailbox kept in sync, you can also connect
+  Gmail, Outlook.com or Microsoft 365, or any IMAP mailbox, plus your
+  calendar, read-only. Your mail stays in your personal memory, encrypted with
+  your own key, and no one else can draw on it unless you share a specific
+  label or folder. Every message is screened for spoofing and prompt injection
+  before the brain reads it, and mail can never trigger actions. Revoke the
+  connection at any time and its stored mail is erased. When you self-host,
+  you use your own Google or Microsoft app, so mail never touches our servers.
 - Can I import my ChatGPT history? Planned. Export your data from ChatGPT
   today (Settings, Data controls, Export data), then the livingbrain CLI will
   import the zip on your machine: you preview and choose conversations,
@@ -134,28 +226,6 @@ Prices may change before launch.
   your key, with every fact linked to its conversation. Claude exports will
   import the same way. Step-by-step guide:
   https://livingbrain.wiki/guides/import-chatgpt/
-- Can someone hide instructions in a message to trick my agents? Planned.
-  Every source is screened for hidden text by PromptDecode, a sister Factory
-  Zero venture: invisible Unicode tag characters, bidi controls and variation
-  selectors are decoded and flagged before a page is written, and again before
-  context is served to an agent. Anything that decodes to an instruction is
-  held for a person to review. Mail also passes Owlpost's spoofing and prompt-
-  injection checks.
-- Can it answer my customers? Planned, through SupportGenius, a sister Factory
-  Zero venture for customer support. It answers customers only from pages your
-  team has explicitly published to customers, with citations, and never from
-  internal, private-channel or personal memory. When it can't answer, it asks
-  the brain who owns the topic and routes the question to that person.
-  Customer messages are screened for hidden instructions before they touch the
-  brain.
-- What does a question cost? Planned, for hosted plans: writing the brain
-  (reading sources and writing pages, with the nightly evolve pass included)
-  costs $1 per million tokens, and reading it (search, pages and context for
-  agents) is unlimited. Harder questions are priced per question by reasoning
-  level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05,
-  Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level
-  questions. On your own LLM key you pay only your provider, with no fee from
-  us.
 - Does it work with Grafana and our logs? Planned. Connect Grafana with a
   read-only token and the brain can answer "is prod down?" with the current
   numbers and a link to the exact panel. It reads your logs too, from Loki,
@@ -166,6 +236,16 @@ Prices may change before launch.
   the postmortem for a person to confirm. In the other direction, Living Brain
   exports its own metrics, traces and logs over OpenTelemetry, so you can
   watch it in Grafana, Datadog or Honeycomb.
+- Can it answer my customers? Planned, through SupportGenius, a sister Factory
+  Zero venture for customer support. It answers customers only from pages your
+  team has explicitly published to customers, with citations, and never from
+  internal, private-channel or personal memory. When it can't answer, it asks
+  the brain who owns the topic and routes the question to that person.
+  Customer messages are screened for hidden instructions before they touch the
+  brain.
+
+### Security
+
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
@@ -174,40 +254,39 @@ Prices may change before launch.
   has to read the text, so for full control, self-host.
 - Is my data used for training? No. Your workspace's messages and pages are
   never used to train models, ours or anyone else's. If you bring your own
-  model, requests go to your provider under your account's terms.
-- Does it only work in Slack? No. Slack is the first chat integration. You can
-  also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode
-  or Claude Desktop, or from the livingbrain command-line tool, a single Rust
-  binary. MCP and the CLI are planned, like the rest of the product.
-- Is there an app? Planned. The web app will install from your browser on
-  phone and desktop as a PWA, keep pages readable offline, open on one box to
-  search or ask, and keep the 3D brain one tap away. Like the rest of Living
-  Brain, it is not built yet.
+  LLM, requests go to your provider under your account's terms.
+- Can someone hide instructions in a message to trick my agents? Planned.
+  Every source is screened for hidden text by PromptDecode, a sister Factory
+  Zero venture: invisible Unicode tag characters, bidi controls and variation
+  selectors are decoded and flagged before a page is written, and again before
+  context is served to an agent. Anything that decodes to an instruction is
+  held for a person to review. Mail also passes Owlpost's spoofing and
+  prompt-injection checks.
+
+### Pricing
+
 - Can I self-host? Yes. The Community plan is free for up to 5 people: it runs
   on your own Cloudflare account with your own LLM key. Larger teams need a
   Teams license. The plan and the code as it lands are public at
-  https://github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with
-  the Teams features under a commercial license.
+  github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with the
+  Teams features under a commercial license.
 - Which models? On every plan you choose your own models, per role (triage,
   answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or
   any OpenAI-compatible endpoint, including self-hosted ones. Crew also
   includes $3 of DeepSeek credit each month, so you can start without a key of
   your own; past that, add your own key or top up.
-- What does "living" mean? Most wikis start going stale the day they're
-  written. Living Brain revisits its own pages on a schedule: it merges
-  duplicates, flags contradictions, retires facts that are no longer true and
-  rewrites summaries. It also learns how each person works, so its answers
-  improve every week.
-- How is it different from Slack AI or Glean? Search tools find what already
-  exists. Living Brain writes and maintains a wiki you own as Markdown, cites
-  the message behind every fact, acts in your tools, gives your coding agents
-  the same memory, and is priced per workspace instead of per seat.
-- Which coding agents can I connect? Any agent that supports MCP, including
-  Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these
-  tools; they connect through the open protocol.
-- Do you store my agent prompts and code? Only if you opt in. Prompts and
-  session notes are stored with secrets redacted first. Source code is never
-  stored unless you allow it.
+- What does a question cost? Planned, for hosted plans: writing the brain
+  (reading sources and writing pages, with the nightly evolve pass included)
+  costs $1 per million tokens, and reading it (search, pages and context for
+  agents) is unlimited. Harder questions are priced per question by reasoning
+  level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05,
+  Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level
+  questions. On your own LLM key you pay only your provider, with no fee from
+  us.
+- How much storage is included? Hosted Teams includes 10 GB and Crew includes
+  25 GB, covering wiki pages, sources, search indexes and aggregated agent
+  logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
+  your own Cloudflare storage, with no limit from us. Planned pricing.
 
 ## About the site's examples
 
@@ -215,9 +294,6 @@ Kestrel Freight, its people (Maya Okafor, Dev Patel, Lina Haas, Tomás Reyes,
 Sam Ito, Kofi Mensah), its customers and every number on the page are sample
 data for a fictional company. The graphs, threads and terminals are
 illustrations, not screenshots.
-
-## Guides
-- Import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
 
 ## Links
 
