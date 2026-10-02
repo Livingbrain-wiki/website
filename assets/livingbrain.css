@@ -698,3 +698,15 @@ html:not(.js) .stage { opacity: 1; }
 @supports not selector(:has(*)) { .rs__panels { display: grid; gap: 10px; } .rs__panel { display: block; } }
 @media (max-width: 520px) { .rs__name { font-size: 10px; letter-spacing: 0; } }
 @media (prefers-reduced-motion: reduce) { .rs__dot, .rs__name { transition: none; } }
+
+/* ---------------------------------------------------------------- encryption diagram */
+#encryption .features { margin-top: 16px; }
+#encryption .access__note { margin-top: 18px; }
+.crypt { margin-top: 24px; padding: 22px 24px; display: grid; gap: 14px; }
+.crypt__row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.crypt__box { padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; font-family: var(--f-mono); font-size: 13px; color: var(--ink); background: var(--bg); }
+.crypt__box--dark { color: var(--ink3); border-style: dashed; }
+.crypt__box--key { border-color: var(--accent); color: var(--accent); }
+.crypt__arrow { display: inline-flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .06em; color: var(--ink3); }
+.crypt__arrow::after { content: ""; width: 28px; height: 1px; background: var(--line); }
+.crypt figcaption { margin-top: 4px; color: var(--ink3); line-height: 1.6; }

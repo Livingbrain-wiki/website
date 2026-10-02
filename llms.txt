@@ -63,6 +63,15 @@ under those names today is not ours.
   access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail and calendars, read-only, kept in
   the owner's personal memory and encrypted with their key unless a label or folder is shared.
 
+## Encryption (planned)
+- One key per scope (shared brain, each private channel, each person, customer-safe pages), AES-256-GCM.
+- Scope keys wrapped by a workspace key held in a separate key service; on Teams it can be your own.
+- Search without decrypting everything: keyed-hash keyword index and one vector index per scope; only
+  top matches are decrypted in memory for the request. The CLI and app decrypt and search on device.
+- Deleting a scope key erases that memory everywhere, backups included.
+- Limit: the model must read text to write the wiki, so hosted plans protect data at rest and per scope,
+  not from the running service; self-host for full control. Keyword hashes reveal repeats within a scope.
+
 ## Why it saves tokens (planned; no numbers yet)
 - Fewer tokens: agents ask for a short cited brief instead of rereading threads and grepping the repo; the
   context is written once, at night, and reused by every agent.

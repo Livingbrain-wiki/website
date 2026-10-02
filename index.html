@@ -713,6 +713,26 @@
         <p class="access__note">Planned: everything it reads, from Slack, mail, imports, agent logs and git, is screened for hidden text by <a href="https://promptdeco.de">PromptDecode</a>, a sister Factory Zero venture, so an invisible instruction in one message can't reach every agent's context.</p>
       </div>
     </div>
+
+    <div class="sub" id="encryption">
+      <div class="row-head">
+        <h3 class="h3">Encrypted per scope, searchable and fast.</h3>
+        <span class="tag">Planned</span>
+      </div>
+      <p class="lede lede--sm lede--wide">The access rules above aren't only a check in code. Each scope is its own encryption key, so a bug or a leaked key for one channel exposes that channel and nothing else.</p>
+      <figure class="card card--line crypt" aria-label="Envelope encryption: page text is encrypted with its scope key, and the scope key is wrapped by a workspace key held in a separate key service">
+        <div class="crypt__row"><span class="crypt__box">page text</span><span class="crypt__arrow">AES-256-GCM, scope key</span><span class="crypt__box crypt__box--dark">ciphertext in storage</span></div>
+        <div class="crypt__row"><span class="crypt__box crypt__box--key">scope key</span><span class="crypt__arrow">wrapped by</span><span class="crypt__box crypt__box--key">workspace key, in a separate key service</span></div>
+        <figcaption class="mono-s">Scopes: shared brain · each private channel · each person · customer-safe pages. On Teams, the workspace key can live in your own key service.</figcaption>
+      </figure>
+      <div class="features">
+        <article class="feat"><span class="num">01</span><h3>One key per scope</h3><p>The shared brain, every private channel and every person each have their own key. Your mail, imported chats and agent logs sit under yours.</p></article>
+        <article class="feat"><span class="num">02</span><h3>Search without opening everything</h3><p>Keyword search runs on keyed hashes and meaning search on one index per scope, so a query only touches the scopes you can see. Only the top matches are decrypted, in memory, for that one request.</p></article>
+        <article class="feat"><span class="num">03</span><h3>Fastest on your device</h3><p>The CLI and the app keep your scopes encrypted with a key from your keychain or passkey, and search locally without a network round trip.</p></article>
+        <article class="feat"><span class="num">04</span><h3>Delete the key, erase the memory</h3><p>Forget a channel, offboard a person or revoke a mailbox: delete that scope's key and its memory is unreadable everywhere, backups included.</p></article>
+      </div>
+      <p class="access__note"><strong>The honest limit:</strong> to write the wiki, the model has to read the text. Hosted plans protect your data at rest and scope by scope, but not from the running service itself. For "even you can't read it", self-host on the Community or Teams plan. Keyword hashes also reveal which words repeat within a scope, never across scopes.</p>
+    </div>
   </div>
 </section>
 
