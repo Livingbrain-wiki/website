@@ -225,3 +225,5 @@ Security
 | /integrations/ group order: Code first, then Chat, Mail, Imports, Monitoring, Models, Sister ventures | /integrations/ | Decision 2026-10-03 to match the new surface order (agents first) |
 
 | White-label app on your domain (Teams, Crew; self-hosters rebrand freely) and an open API with webhooks and SDKs for TypeScript, Python and Rust | Home switcher (App & API), /pricing/, /integrations/ Code, FAQ, llms.txt | User request 2026-10-03; Livingbrain-wiki/livingbrain#40 and #59. Planned |
+
+| Home "Works with (planned)" strip: plain-text names of planned integrations, links to /integrations/ | Home, under the hero | Design fix 2026-10-03 (user screenshot: dead space under hero); names already listed on /integrations/. No logos, no partnership implied |

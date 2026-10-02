@@ -189,9 +189,9 @@ html:not(.js) [data-js-only] { display: none; }
 }
 
 /* ---- hero ---- */
-.hero__in { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; padding-block: clamp(36px, 6vw, 80px) clamp(56px, 7vw, 96px); }
+.hero__in { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(24px, 4vw, 48px); align-items: center; padding-block: clamp(36px, 6vw, 72px) clamp(28px, 4vw, 48px); }
 @media (min-width: 900px) {
-  .hero__in { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: min(calc(100svh - 59px), 860px); }
+  .hero__in { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); min-height: min(calc(100svh - 140px), 760px); }
 }
 .hero__copy { min-width: 0; max-width: 620px; }
 .status { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 28px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-family: var(--f-mono); font-size: 12px; letter-spacing: .1em; color: var(--ink2); }
@@ -772,12 +772,13 @@ html:not(.js) .stage { opacity: 1; }
 .hs::before { content: ''; position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background-image: linear-gradient(var(--line2) 1px, transparent 1px), linear-gradient(90deg, var(--line2) 1px, transparent 1px);
   background-size: 56px 56px; background-position: center top;
-  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 22%, #000 0%, transparent 72%); mask-image: radial-gradient(ellipse 70% 55% at 50% 22%, #000 0%, transparent 72%); opacity: .55; }
-.hs::after { content: ''; position: absolute; z-index: -1; pointer-events: none; width: 900px; height: 600px; top: -260px; left: 50%; transform: translateX(-50%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 0%, transparent 72%), linear-gradient(to bottom, transparent 0, #000 160px); -webkit-mask-composite: source-in; mask-image: radial-gradient(ellipse 70% 55% at 50% 30%, #000 0%, transparent 72%), linear-gradient(to bottom, transparent 0, #000 160px); mask-composite: intersect; opacity: .55; }
+.hs::after { content: ''; position: absolute; z-index: -1; pointer-events: none; width: 900px; height: 600px; top: -60px; left: 50%; transform: translateX(-50%);
   background: radial-gradient(closest-side, var(--accent-soft), transparent); opacity: .7; }
 .hs--where::after { left: 85%; top: 10%; }
 .hs--price::after { left: 80%; top: 30%; }
-.hs .sec__in { padding-block: clamp(72px, 9vw, 120px); }
+.hs .sec__in { padding-block: clamp(64px, 8vw, 112px); }
+#how.hs .sec__in { padding-top: clamp(48px, 6vw, 80px); }
 .hs__head { max-width: 760px; }
 .hs__row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
 .hs__title { font-family: var(--f-display); font-weight: 600; font-size: clamp(40px, 6.2vw, 76px); line-height: .98; letter-spacing: -0.045em; text-wrap: balance; }
@@ -1020,4 +1021,18 @@ html:not(.js) .sw__tabs { display: none; }
   .mw__link { display: none; }
   .mw__src { margin: 0; }
   .mini--evolve { padding-inline: 14px; gap: 10px; }
+}
+
+/* ---------------------------------------------------------------- hero: works-with strip
+   Fills the space under the hero with something useful: plain-text names of
+   planned integrations (no logos, no implied partnership), edges faded. */
+.works { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-block: 22px clamp(28px, 4vw, 44px); border-top: 1px solid var(--line2); }
+.works__k { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink3); }
+.works__list { flex: 1 1 420px; min-width: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; font-family: var(--f-display); font-size: clamp(15px, 1.4vw, 17px); font-weight: 600; letter-spacing: -0.01em; color: var(--ink2); }
+.works__list li { white-space: nowrap; transition: color .2s; }
+.works__list li:hover { color: var(--ink); }
+.works__more { font-size: 14px; color: var(--ink2); white-space: nowrap; }
+.works__more:hover { color: var(--accent); }
+@media (min-width: 1100px) {
+  .works__list { flex-wrap: nowrap; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
 }
