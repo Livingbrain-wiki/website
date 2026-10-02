@@ -98,7 +98,7 @@
       { label: 'Claude Code', lines: [['$', 'claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added HTTP MCP server livingbrain', 'out'], ['$', 'claude', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
       { label: 'Codex', lines: [['$', 'codex mcp add livingbrain --url https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added livingbrain to ~/.codex/config.toml', 'out'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
       { label: 'Cursor', lines: [['', '// .cursor/mcp.json', 'com'], ['', '{ "mcpServers": { "livingbrain": {', 'cmd'], ['', '    "url": "https://mcp.livingbrain.wiki" } } }', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
-      { label: 'Other MCP', lines: [['', '# any agent that speaks MCP', 'com'], ['', 'url:  https://mcp.livingbrain.wiki', 'cmd'], ['', 'auth: sign in with your Slack workspace', 'cmd'], ['', '✓ reads with your own access', 'ok']] }
+      { label: 'Other MCP', lines: [['', '# any agent that speaks MCP', 'com'], ['', 'url:  https://mcp.livingbrain.wiki', 'cmd'], ['', 'auth: sign in to your workspace', 'cmd'], ['', '✓ reads with your own access', 'ok']] }
     ];
 
     // ---- HTML for the parts that change on interaction ----

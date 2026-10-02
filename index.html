@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Living Brain · A brain for your team</title>
-<meta name="description" content="A brain for your team. Living Brain turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal. Not built yet: early access, in design.">
+<meta name="description" content="A brain for your team, used from coding agents, the terminal and team chat. Living Brain turns your conversations into a company wiki and keeps it true. Not built yet: early access, in design.">
 <link rel="canonical" href="https://livingbrain.wiki/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/">
 <meta property="og:title" content="Living Brain · Your company, remembered.">
-<meta property="og:description" content="A brain for your team. It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.">
+<meta property="og:description" content="A brain for your team, used from coding agents, the terminal and team chat. It turns your conversations into a company wiki and keeps it true.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain · Your company, remembered.">
-<meta name="twitter:description" content="A brain for your team. It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.">
+<meta name="twitter:description" content="A brain for your team, used from coding agents, the terminal and team chat. It turns your conversations into a company wiki and keeps it true.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 <meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
 
@@ -56,7 +56,7 @@
       "name": "Living Brain",
       "alternateName": "livingbrain.wiki",
       "url": "https://livingbrain.wiki/",
-      "description": "Living Brain is designing a teammate that builds and keeps a company wiki in plain Markdown. Not built yet.",
+      "description": "Living Brain is designing a brain for your team, used from coding agents, the terminal and team chat. It builds and keeps a company wiki in plain Markdown. Not built yet.",
       "slogan": "Your company, remembered.",
       "logo": {
         "@type": "ImageObject",
@@ -87,7 +87,7 @@
       "name": "Living Brain",
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Knowledge management",
-      "description": "In design, not built or available yet. A teammate used from Slack (the first chat integration), from any MCP client, or from the livingbrain command line tool, a single Rust binary; a web app that installs as a PWA is planned too. It turns conversations in invited Slack channels into a Markdown wiki of people, projects, decisions and customers, cites the source message behind every fact, keeps the wiki current on a schedule, acts in your tools, and gives coding agents the team's memory over MCP. Planned to run on Cloudflare's edge, built in Rust, with the wiki exportable as plain Markdown.",
+      "description": "In design, not built or available yet. A brain for your team, used from coding agents, the terminal and team chat: from any MCP client, from the livingbrain command line tool, a single Rust binary, from a web app that installs as a PWA, and from Slack or Discord. It turns conversations in the chat channels you invite it to into a Markdown wiki of people, projects, decisions and customers, cites the source message behind every fact, keeps the wiki current on a schedule, acts in your tools, and gives coding agents the team's memory over MCP. Planned to run on Cloudflare's edge, built in Rust, with the wiki exportable as plain Markdown.",
       "creator": {
         "@id": "https://livingbrain.wiki/#organization"
       },
@@ -133,7 +133,7 @@
     <div class="hero__copy">
       <p class="status"><span class="live-dot" aria-hidden="true"></span>EARLY ACCESS · IN DESIGN</p>
       <h1 id="hero-title" class="display">A brain for your <span class="accent">team.</span></h1>
-      <p class="hero__lede">It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.</p>
+      <p class="hero__lede">It turns your conversations into a company wiki and keeps it true. Use it from your coding agent, your terminal, or your team chat.</p>
       <div class="join-box">
         <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
           <label class="sr" for="email-hero">Work email</label>
@@ -168,7 +168,7 @@
   <div class="wrap sec__in">
     <h2 id="how-title" class="h3">How it works</h2>
     <ol class="trio">
-      <li class="card trio__item"><span class="trio__n">01</span><h3>Listen</h3><p>It reads the Slack channels you invite it to.</p></li>
+      <li class="card trio__item"><span class="trio__n">01</span><h3>Listen</h3><p>It reads the channels you invite it to, in Slack or Discord, plus mail and agent logs you connect.</p></li>
       <li class="card trio__item"><span class="trio__n">02</span><h3>Write</h3><p>It writes what it learns as wiki pages, and every fact links to the message it came from.</p></li>
       <li class="card trio__item"><span class="trio__n">03</span><h3>Evolve</h3><p>Every night it merges duplicates, flags contradictions and retires old facts.</p></li>
     </ol>
@@ -180,11 +180,12 @@
   <div class="wrap sec__in">
     <h2 id="where-title" class="h3">Use it anywhere</h2>
     <ul class="where__list">
-      <li><span class="where__name">Slack</span><span class="where__st where__st--first">first</span><span class="where__what">Invite it to a channel. It answers in the thread.</span></li>
       <li><span class="where__name">Coding agents</span><span class="where__st">planned</span><span class="where__what">Claude Code, Codex, Cursor and others read it over MCP.</span></li>
       <li><span class="where__name">The <code>livingbrain</code> CLI</span><span class="where__st">planned</span><span class="where__what">Ask it from your terminal and your scripts.</span></li>
       <li><span class="where__name">The app</span><span class="where__st">planned</span><span class="where__what">Installs on your phone and desktop from the browser.</span></li>
+      <li><span class="where__name">Team chat: Slack and Discord</span><span class="where__st">planned</span><span class="where__what">Invite it to a channel. It answers in the thread.</span></li>
     </ul>
+    <p class="fine where__later">WhatsApp and Telegram later.</p>
     <p class="go"><a href="/agents/">Living Brain for coding agents <span aria-hidden="true">→</span></a></p>
   </div>
 </section>

@@ -30,7 +30,7 @@ follows the structure of the sealb.in and Colonizer sites.
 | :--- | :--- | :--- |
 | **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki. The waitlist API is not deployed yet |
 | **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki`, same contract as sealb.in and Colonizer. | **Not deployed.** The form says "The list isn't open yet." |
-| **Living Brain** | The product: Slack teammate, MCP server, `livingbrain` CLI, PWA, hosted service. | **In design.** The page says so |
+| **Living Brain** | The product: a brain for your team, used from coding agents (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
 
 > **Your company, remembered.**
 
@@ -44,8 +44,8 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 
 | Page | What's on it |
 | :--- | :--- |
-| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve in one line each; where you use it (Slack, coding agents, CLI, app); pricing in one line; links to every page; the footer waitlist |
-| [`/how-it-works/`](how-it-works/index.html) | The Slack thread with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
+| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve in one line each; where you use it (coding agents, CLI, app, team chat: Slack and Discord); pricing in one line; links to every page; the footer waitlist |
+| [`/how-it-works/`](how-it-works/index.html) | The team-chat thread (Slack shown) with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | [`/agents/`](agents/index.html) | Connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | [`/integrations/`](integrations/index.html) | Chat, mail, imports, code, monitoring and logs, models, sister ventures. Plain-text names |
 | [`/security/`](security/index.html) | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership |

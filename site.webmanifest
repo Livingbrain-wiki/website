@@ -1,7 +1,7 @@
 {
   "name": "Living Brain",
   "short_name": "Living Brain",
-  "description": "A teammate that writes and keeps your company wiki in Markdown you own. In Slack, your coding agent and your terminal. Early access, in design.",
+  "description": "A brain for your team, used from coding agents, the terminal and team chat. It writes and keeps your company wiki in Markdown you own. Early access, in design.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

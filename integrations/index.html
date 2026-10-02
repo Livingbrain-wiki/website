@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Integrations · Living Brain</title>
-<meta name="description" content="Planned integrations for Living Brain: Slack, mail through Owlpost or Gmail and Outlook, ChatGPT and Claude imports, GitHub and coding agents, Grafana and logs, your own LLM, and sister Factory Zero ventures.">
+<meta name="description" content="Planned integrations for Living Brain: Slack and Discord, mail through Owlpost or Gmail and Outlook, ChatGPT and Claude imports, GitHub and coding agents, Grafana and logs, your own LLM, and sister Factory Zero ventures.">
 <link rel="canonical" href="https://livingbrain.wiki/integrations/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/integrations/">
 <meta property="og:title" content="Living Brain integrations">
-<meta property="og:description" content="Slack, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
+<meta property="og:description" content="Slack and Discord, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain integrations">
-<meta name="twitter:description" content="Slack, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
+<meta name="twitter:description" content="Slack and Discord, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 <meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
 
@@ -109,7 +109,9 @@
     <div class="intg" id="chat">
       <div class="intg__head"><h2 class="h4">Chat</h2><p>Where people ask.</p></div>
       <ul class="intg__list">
-        <li><span class="intg__name">Slack</span><span class="where__st where__st--first">first</span><span class="intg__what">Invite it to channels. It answers in the thread, with the asker's own access.</span></li>
+        <li><span class="intg__name">Slack</span><span class="intg__what">Invite it to channels. It answers in the thread, with the asker's own access.</span></li>
+        <li><span class="intg__name">Discord</span><span class="intg__what">Answers in threads, with a <code>/brain ask</code> slash command. Role-gated channels map to permissions, so it only answers with what the asker's roles can see.</span></li>
+        <li><span class="intg__name">WhatsApp and Telegram</span><span class="where__st">later</span><span class="intg__what">After Slack and Discord.</span></li>
       </ul>
     </div>
     <div class="intg" id="mail">
@@ -151,7 +153,7 @@
     <div class="intg" id="ventures">
       <div class="intg__head"><h2 class="h4">Sister ventures</h2><p>Other Factory Zero ventures it is designed to work with.</p></div>
       <ul class="intg__list">
-        <li><span class="intg__name"><a href="https://colonizer.dev">Colonizer</a></span><span class="intg__what">Runs bigger jobs in isolated microVMs and returns pull requests. <a href="/agents/#colonizer">From Slack to pull request</a></span></li>
+        <li><span class="intg__name"><a href="https://colonizer.dev">Colonizer</a></span><span class="intg__what">Runs bigger jobs in isolated microVMs and returns pull requests. <a href="/agents/#colonizer">From chat to pull request</a></span></li>
         <li><span class="intg__name">Owlpost</span><span class="intg__what">The brain's email inbox, and the screening every message passes first.</span></li>
         <li><span class="intg__name"><a href="https://supportgeni.us">SupportGenius</a></span><span class="intg__what">Answers your customers, only from pages you published to them.</span></li>
         <li><span class="intg__name"><a href="https://promptdeco.de">PromptDecode</a></span><span class="intg__what">Screens everything the brain reads for hidden text. <a href="/security/#screening">Screening</a></span></li>

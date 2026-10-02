@@ -253,7 +253,8 @@ html:not(.js) [data-js-only] { display: none; }
 .where__st { justify-self: start; font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); padding: 2px 8px; border: 1px dashed var(--line); border-radius: 999px; }
 .where__st--first { color: var(--accent); border: 1px solid var(--accent); }
 .where__what { color: var(--ink2); font-size: 15px; }
-@media (max-width: 640px) { .where__list li { grid-template-columns: auto minmax(0, 1fr); } .where__what { grid-column: 1 / -1; } }
+.where__later { margin-top: 12px; }
+@media (max-width: 640px) { .where__list li { display: flex; flex-wrap: wrap; } .where__name { min-width: 0; } .where__what { flex: 1 1 100%; } }
 .where__rust { margin-top: 22px; max-width: 36em; color: var(--ink2); line-height: 1.6; }
 .where__rust strong { color: var(--ink); font-weight: 600; }
 .cli { overflow: hidden; }

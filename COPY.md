@@ -14,12 +14,14 @@ carries the claim; see Information architecture below.
 | :--- | :--- | :--- |
 | Early access, in design; nothing built | Home hero badge, every footer, llms.txt, JSON-LD | True. Only this site exists |
 | A teammate that turns conversations into a Markdown wiki and keeps it true; every fact links to its source message | Home hero ("A brain for your team…"), /how-it-works/, FAQ, llms.txt | Design file and `claude-design-prompt.md`. Planned |
-| Use it in Slack, in your coding agent, in your terminal | Home hero, meta, OG, JSON-LD, llms.txt | User decision 2026-10-03. Slack is the first chat integration; everything else via MCP or the CLI |
-| "Use it from anywhere": Slack (first), any MCP client, the `livingbrain` CLI, App (PWA), each MCP/CLI/PWA marked planned | Home "Use it anywhere" (Slack, coding agents, CLI, app), /agents/ (#connect, Claude Desktop), FAQ, llms.txt | User decision 2026-10-03 |
+| Use it from your coding agent, your terminal, or your team chat; "a brain for your team, used from coding agents, the terminal and team chat" | Home hero, every page's meta/OG/Twitter, JSON-LD, site.webmanifest, llms.txt | User decision 2026-10-03 (repositioned the same day): coding agents over MCP, the CLI and the app lead; team chat follows. No "Slack teammate" framing |
+| "Use it anywhere": coding agents (any MCP client), the `livingbrain` CLI, the app (PWA), then team chat (Slack and Discord), each marked planned | Home "Use it anywhere" (coding agents, CLI, app, team chat), /agents/ (#connect, Claude Desktop), FAQ, llms.txt | User decision 2026-10-03 |
+| Discord, as an equal of Slack: answers in threads, `/brain ask` slash command, role-gated channels mapped to permissions | Home "Use it anywhere" (team chat), Home Listen step, /integrations/ #chat, /security/ #access note, /pricing/, FAQ "Which chat apps does it work with?", llms.txt | User decision 2026-10-03. Planned. **Needs a decision:** how Discord roles map to scopes |
+| WhatsApp and Telegram later | Home "Use it anywhere" (one quiet note), /integrations/ #chat (marked "later"), FAQ, llms.txt | User decision 2026-10-03. Not a planned feature yet; named only as "later", with no detail |
 | `livingbrain ask "who owns billing?"` returning a cited answer; `livingbrain mcp` | /agents/ #connect, CLI illustration | Illustration, labelled "Illustrative commands · not live yet". User decision 2026-10-03. **Fix before launch:** the binary does not exist; reserve the name |
 | Built in Rust; the CLI is a single static binary that starts instantly; the hosted core runs on Cloudflare's edge | /agents/ #connect, /pricing/ lede, llms.txt | User decision 2026-10-03 (Rust, fast) and the design file (Rust on Cloudflare's edge). No benchmark numbers on purpose: nothing is built |
 | App (PWA): installs on phone and desktop, reads offline, one search-or-ask box, 3D brain one tap away | Home "Use it anywhere" (one line), FAQ "Is there an app?", llms.txt | User decision 2026-10-03. Planned |
-| Speaks up unprompted in a thread, with a citation chip | /how-it-works/ #slack | Design file. Illustration |
+| Speaks up unprompted in a thread, with a citation chip | /how-it-works/ #slack (tagged "Slack shown · Illustration") | Design file. Illustration; Slack is one example of team chat |
 | Merges duplicates, flags contradictions, retires stale facts, rewrites summaries, on a schedule | Home (Evolve step), /how-it-works/ #steps and #evolve, FAQ | Design file. Planned |
 | Learns how each person works ("the learning layer") | /how-it-works/ #learns, /agents/ #learns, FAQ | Design brief. Planned. The vendor behind it is deliberately not named |
 | Acts: opens issues, reads PRs, sends digests, hands bigger jobs to a sandboxed agent | /how-it-works/ #learns | Design file. Planned |
@@ -27,7 +29,7 @@ carries the claim; see Information architecture below.
 | `claude mcp add ... https://mcp.livingbrain.wiki`, `codex mcp add ...`, `.cursor/mcp.json`, "14 tools" | /agents/ #connect, connect tabs | Illustration from the design, labelled "not live yet". **Fix before launch:** check each command against the agent's current docs; `mcp.livingbrain.wiki` does not exist |
 | Agent prompts and decisions become pages only with opt-in; secrets redacted; code never stored unless allowed | /agents/ #context, FAQ | Design file. Planned. **Needs a decision:** how redaction works and what "allow" means |
 | Works with Colonizer, a sister Factory Zero venture, launching microVM colonies that return PRs | /agents/ #colonizer, /integrations/ #ventures, llms.txt | Design brief. Colonizer exists at colonizer.dev; the integration is planned |
-| Reads only with the asker's own access; public channel / private channel / DMs table | /security/ #access | Design file. Planned. **Needs a decision:** how this maps to MCP and the CLI |
+| Reads only with the asker's own access, following your chat's permissions (Slack channels, Discord roles); public channel / private channel / DMs table | /security/ #access, /pricing/ note | Design file. Planned. **Needs a decision:** how this maps to MCP and the CLI |
 | Plain Markdown, exportable, opens in Obsidian; not a black-box vector store | /how-it-works/ #own, /security/ #ownership | Design file. Planned |
 | Not used for training | FAQ, /security/ #ownership | Design file. A promise to keep; **needs** a privacy policy before launch |
 | Bring your own LLM: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint | /integrations/ #models, FAQ "Which models?", llms.txt | Design file; LiteLLM added by user decision 2026-10-03. Plain text, no logos |
@@ -67,8 +69,8 @@ claim lives on one page; other pages link to it instead of repeating it.
 
 | Page | Job |
 | :--- | :--- |
-| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one line each; where you use it (Slack, coding agents, CLI, app); pricing in one line. Then a row of links to the subpages and the footer waitlist. No infographics, no FAQ |
-| `/how-it-works/` | The Slack moment, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
+| `/` | Four short parts: the pitch with the waitlist and the 3D brain; Listen, Write, Evolve in one line each; where you use it (coding agents, CLI, app, team chat: Slack and Discord); pricing in one line. Then a row of links to the subpages and the footer waitlist. No infographics, no FAQ |
+| `/how-it-works/` | The team-chat moment (Slack shown), the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | `/agents/` | Connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | `/integrations/` | Grouped plain-text names: chat, mail, imports, code, monitoring and logs, models, sister ventures |
 | `/security/` | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership and self-hosting |
@@ -134,13 +136,21 @@ Copy and sections
 - **(user)** New strip "Use it from anywhere" under the hero: Slack (first),
   any MCP client, the `livingbrain` CLI, App (PWA), with a labelled CLI
   illustration and "Built in Rust, and fast."
+- **(user, 2026-10-03)** Slack is no longer the centre. Coding agents over
+  MCP, the `livingbrain` CLI and the app lead; team chat (Slack and Discord,
+  as equals) follows; WhatsApp and Telegram are named only as "later". The
+  "first" chip on Slack is gone. The FAQ "Does it only work in Slack?" became
+  "Which chat apps does it work with?". The Colonizer flow on /agents/ is
+  "From chat to pull request". The design's Slack wording is kept only where it
+  is the Slack example itself.
 - **(user)** New feature card 08 "Easy to use" (planned app). The grid is now
   eight cards, which also removes the design's empty ninth cell at four columns.
 - **(user)** Pricing replaced: Community / Teams / Crew (see Claims). Each card
   says how it runs (Self-hosted, Self-hosted or hosted, Hosted).
 - **(user)** FAQ added "Does it only work in Slack?" and "Is there an app?";
   "Can I self-host?" and "Which models?" rewritten (LiteLLM added).
-- The "Other MCP" tab says "sign in with your Slack workspace" as in the design.
+- The "Other MCP" tab says "sign in to your workspace" (the design says "sign in
+  with your Slack workspace"); chat is optional since 2026-10-03.
 - Footer "GitHub (soon)" is plain text instead of a `href="#"` link; a
   security.txt link was added.
 - The demo panel's `aria-live` moved to a short visually hidden status

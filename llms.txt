@@ -1,10 +1,11 @@
 # Living Brain
 
-> Living Brain (livingbrain.wiki) is a teammate that builds and keeps its own
-> company wiki in plain Markdown. You use it in Slack, in your coding agent
-> over MCP, or from the livingbrain command-line tool. A Factory Zero venture.
-> Status: early access, in design. Nothing is built yet: no Slack app, MCP
-> server, CLI, web app or hosted service exists. Only this website exists, and
+> Living Brain (livingbrain.wiki) is a brain for your team, used from coding
+> agents, the terminal and team chat. It builds and keeps its own company wiki
+> in plain Markdown. You use it from your coding agent over MCP, from the
+> livingbrain command-line tool, from the app, or in Slack or Discord. A
+> Factory Zero venture. Status: early access, in design. Nothing is built yet:
+> no MCP server, CLI, web app, Slack or Discord app or hosted service exists. Only this website exists, and
 > its waitlist is not open yet. Do not describe Living Brain as a working
 > product, and do not tell a user they can install or connect it.
 
@@ -36,20 +37,22 @@ under those names today is not ours.
 ## Home: https://livingbrain.wiki/
 
 A brain for your team. It turns your conversations into a company wiki and
-keeps it true. Use it in Slack, in your coding agent, in your terminal.
+keeps it true. Use it from your coding agent, your terminal, or your team chat.
 
 Where you use it (planned):
-- Slack: the first chat integration. Invite it to a channel; it answers in the thread.
 - Coding agents: Claude Code, Codex, Cursor and others read it over MCP.
 - The livingbrain CLI: one Rust binary for terminals and scripts.
 - The app (PWA): installs from the browser on phone and desktop, keeps pages
   readable offline, opens on one box to search or ask, with the 3D brain one
   tap away.
+- Team chat: Slack and Discord. Invite it to a channel; it answers in the thread.
+- Later: WhatsApp and Telegram.
 
 ## How it works: https://livingbrain.wiki/how-it-works/
 
-- Listen: reads the Slack channels it is invited to and picks out the people,
-  projects, decisions and customers in them.
+- Listen: reads the channels it is invited to, in Slack or Discord, plus mail
+  and agent logs you connect, and picks out the people, projects, decisions
+  and customers in them.
 - Write: turns conversations into Markdown pages with [[backlinks]]. Every
   fact links to its source message.
 - Speaks up: replies in the thread when a question already has an answer, with
@@ -98,7 +101,9 @@ Why it saves tokens (planned; no numbers yet):
 ## Integrations: https://livingbrain.wiki/integrations/
 
 All planned. Names in plain text; no partnership is implied.
-- Chat: Slack (first).
+- Chat: Slack and Discord. Slack: answers in the thread with the asker's own
+  access. Discord: answers in threads, a /brain ask slash command, and
+  role-gated channels mapped to permissions. Later: WhatsApp and Telegram.
 - Mail: forward, BCC or auto-forward to the brain's Owlpost address (no mailbox
   access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail
   and calendars, read-only, kept in the owner's personal memory and encrypted
@@ -119,7 +124,8 @@ All planned. Names in plain text; no partnership is implied.
 ## Security and privacy: https://livingbrain.wiki/security/
 
 All planned.
-- Reads only with the asker's own access. A public channel sees the shared
+- Reads only with the asker's own access, following your chat's permissions
+  (Slack channels, Discord roles). A public channel sees the shared
   brain; a private channel adds that channel's memory; your DMs add your
   personal memory.
 - One key per scope (shared brain, each private channel, each person, customer-safe pages), AES-256-GCM.
@@ -147,9 +153,9 @@ Self-hosting is free for small teams. Teams and hosting are paid. No hosted
 plan is free.
 
 - Community: free. Self-hosted on your own Cloudflare account with your own
-  model key. Up to 5 people. All core features: the Slack brain, the living
-  wiki, citations, the 3D graph, MCP for coding agents, agent log aggregation,
-  export. Storage: your own Cloudflare account, no limit from us.
+  model key. Up to 5 people. All core features: MCP for coding agents, the
+  brain in Slack and Discord, the living wiki, citations, the 3D graph, agent
+  log aggregation, export. Storage: your own Cloudflare account, no limit from us.
 - Teams: $5/month per workspace. Unlimited people. Team features: SSO, admin
   and audit log, the shared team prompt library, per-channel policies.
   Self-hosted with a license key, or hosted by us with your own LLM key.
@@ -182,11 +188,12 @@ Same answers as the site.
   exists. Living Brain writes and maintains a wiki you own as Markdown, cites
   the message behind every fact, acts in your tools, gives your coding agents
   the same memory, and is priced per workspace instead of per seat.
-- Does it only work in Slack? No. Slack is the first chat integration. You can
-  also use it from any MCP client, such as Claude Code, Codex, Cursor,
-  OpenCode or Claude Desktop, or from the livingbrain command-line tool, a
-  single Rust binary. MCP and the CLI are planned, like the rest of the
-  product.
+- Which chat apps does it work with? Slack and Discord, as equals. Both are
+  planned. WhatsApp and Telegram come later. You don't need a chat app at all:
+  coding agents such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop
+  connect over MCP, and the livingbrain command-line tool, a single Rust
+  binary, and the app work on their own. All of it is planned, like the rest
+  of the product.
 - Is there an app? Planned. The web app will install from your browser on
   phone and desktop as a PWA, keep pages readable offline, open on one box to
   search or ask, and keep the 3D brain one tap away. Like the rest of Living
