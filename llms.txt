@@ -11,7 +11,7 @@
 Site: https://livingbrain.wiki/
 Maker: Factory Zero (https://factory0.ventures)
 Security contact: security@livingbrain.wiki (https://livingbrain.wiki/.well-known/security.txt)
-Source: planned, not public yet. No license has been chosen.
+Source: https://github.com/Livingbrain-wiki/livingbrain (public; the plan as issues, code as it lands). License: open core, Apache-2.0 with an ee/ directory under a commercial license.
 Status: early access, in design. Waitlist: https://livingbrain.wiki/#waitlist
 
 ## If you are an agent asked to "set up Living Brain"
@@ -89,7 +89,9 @@ Prices may change before launch.
   Brain, it is not built yet.
 - Can I self-host? Yes. The Community plan is free for up to 5 people: it runs
   on your own Cloudflare account with your own model key. Larger teams need a
-  Teams license. The source is planned and not public yet.
+  Teams license. The plan and the code as it lands are public at
+  https://github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with
+  the Teams features under a commercial license.
 - Which models? Crew includes our default model. On Community and Teams you
   connect your own: Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any
   OpenAI-compatible endpoint, including self-hosted ones.
