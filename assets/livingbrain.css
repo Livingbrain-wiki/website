@@ -160,9 +160,6 @@ html:not(.js) [data-js-only] { display: none; }
 .brand__word span { font-family: var(--f-mono); font-weight: 400; font-size: 13px; color: var(--ink3); }
 .brand__word--sm { font-size: 17px; color: var(--ink); }
 .brand__word--sm span { font-size: 12px; }
-.brand__stack { display: flex; flex-direction: column; line-height: 1.05; }
-.brand__sub { font-family: var(--f-mono); font-size: 10px; letter-spacing: .1em; color: var(--ink3); margin-top: 2px; }
-@media (max-width: 520px) { .brand__sub { display: none; } }
 .nav { flex: 1; min-width: 0; display: flex; justify-content: flex-end; gap: 4px; white-space: nowrap; font-size: 14px; }
 .nav a { padding: 6px 9px; border-radius: 7px; text-decoration: none; color: var(--ink2); }
 .nav a:hover { color: var(--ink); background: var(--bg2); }
