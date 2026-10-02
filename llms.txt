@@ -58,7 +58,8 @@ under those names today is not ours.
   readable offline, opens on one box to search or ask, with the 3D brain one
   tap away.
 
-- Connectors (planned): Gmail, Outlook.com / Microsoft 365 and IMAP mail and calendars, read-only, kept in
+- Mail in (planned): forward, BCC or auto-forward to the brain's Owlpost address (no mailbox
+  access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail and calendars, read-only, kept in
   the owner's personal memory and encrypted with their key unless a label or folder is shared.
 
 ## Planned pricing (per workspace, not per seat)
