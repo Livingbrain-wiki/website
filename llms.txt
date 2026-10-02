@@ -128,6 +128,13 @@ Prices may change before launch.
   context is served to an agent. Anything that decodes to an instruction is
   held for a person to review. Mail also passes Owlpost's spoofing and prompt-
   injection checks.
+- Can it answer my customers? Planned, through SupportGenius, a sister Factory
+  Zero venture for customer support. It answers customers only from pages your
+  team has explicitly published to customers, with citations, and never from
+  internal, private-channel or personal memory. When it can't answer, it asks
+  the brain who owns the topic and routes the question to that person.
+  Customer messages are screened for hidden instructions before they touch the
+  brain.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
@@ -186,3 +193,4 @@ illustrations, not screenshots.
 - Factory Zero: https://factory0.ventures (Living Brain is FZ-018: https://factory0.ventures/ventures/living-brain/)
 - Colonizer: https://colonizer.dev
 - PromptDecode (hidden-text screening): https://promptdeco.de
+- SupportGenius (customer support on the brain): https://supportgeni.us
