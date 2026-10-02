@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Source for assets/readme-banner.png (1280x640, rendered at 2x). Rendered by
+     tools/render-og.sh. The Brand Sheet's README banner, pinned to the dark theme. -->
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/livingbrain.css">
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:400 700;src:url(../assets/fonts/bricolage-grotesque.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-weight:400 700;src:url(../assets/fonts/hanken-grotesk.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400 500;src:url(../assets/fonts/jetbrains-mono.woff2) format('woff2')}
+*{animation:none!important;transition:none!important}
+html,body{margin:0;width:1280px;height:640px;overflow:hidden;background:var(--bg)}
+.b{position:relative;width:1280px;height:640px;background:var(--bg);overflow:hidden}
+.b canvas{position:absolute;left:300px;top:-20px;width:680px;height:680px;display:block}
+.fade{position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent,var(--bg) 70%)}
+.tree,.list{position:absolute;top:56px;font-family:var(--f-mono);font-size:15px;color:var(--ink3);line-height:1.8}
+.tree{left:64px}.list{right:64px;text-align:right}
+.foot{position:absolute;left:0;right:0;bottom:64px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.wm{display:flex;align-items:center;gap:16px;color:var(--ink)}
+.ring{width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center}
+.ring span{width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)}
+.word{font-family:var(--f-display);font-weight:650;font-size:64px;letter-spacing:-0.035em}
+.word span{font-family:var(--f-mono);font-weight:400;font-size:32px;color:var(--ink3)}
+.tl{font-family:var(--f-body);font-size:24px;color:var(--ink2)}
+</style></head>
+<body><div class="b">
+  <canvas data-r="banner"></canvas>
+  <div class="fade"></div>
+  <div class="tree"><div>brain/</div><div>├─ people/</div><div>├─ projects/</div><div>├─ decisions/</div><div>└─ customers/</div></div>
+  <div class="list"><div>Slack teammate</div><div>MCP for coding agents</div><div>livingbrain CLI</div><div>Rust · Cloudflare edge</div></div>
+  <div class="foot">
+    <div class="wm"><span class="ring"><span></span></span><span class="word">livingbrain<span>.wiki</span></span></div>
+    <div class="tl">A living brain for your crew.</div>
+  </div>
+</div>
+<script src="../assets/brain.js"></script>
+<script>
+document.fonts.ready.then(function () {
+  LivingBrain.mount(document.querySelector('[data-r="banner"]'), { still: true, decorate: true, nodes: 340, seed: 23, angle: 0.5, zoom: 1.05, glow: 1.2, colonies: 2 });
+});
+</script>
+</body></html>

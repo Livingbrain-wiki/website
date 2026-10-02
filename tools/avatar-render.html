@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- Source for assets/org-avatar.png (512x512). Rendered by tools/render-og.sh.
+     The mark (a ring around one live node) over a dim, frozen brain. Dark theme.
+     GitHub has no avatar API: upload the PNG by hand. -->
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/livingbrain.css">
+<style>
+*{animation:none!important;transition:none!important}
+html,body{margin:0;width:512px;height:512px;overflow:hidden;background:var(--bg)}
+.a{position:relative;width:512px;height:512px;background:var(--bg);display:grid;place-items:center;overflow:hidden}
+.a canvas{position:absolute;inset:-40px;width:592px;height:592px;opacity:.38}
+.ring{position:relative;width:260px;height:260px;border-radius:50%;border:22px solid var(--ink);display:grid;place-items:center}
+.ring span{width:86px;height:86px;border-radius:50%;background:var(--accent);box-shadow:0 0 60px var(--accent)}
+</style></head>
+<body><div class="a"><canvas data-r="avatar"></canvas><div class="ring"><span></span></div></div>
+<script src="../assets/brain.js"></script>
+<script>LivingBrain.mount(document.querySelector('[data-r="avatar"]'), { still: true, decorate: true, nodes: 260, seed: 11, angle: 0.9, zoom: 1 });</script>
+</body></html>

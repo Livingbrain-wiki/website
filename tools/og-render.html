@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Source for assets/og.png (1200x630). Rendered by tools/render-og.sh.
+     The Brand Sheet's Open Graph layout, pinned to the dark theme, with the
+     brain frozen on one frame by ../assets/brain.js (still + decorate). -->
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<link rel="stylesheet" href="../assets/livingbrain.css">
+<style>
+@font-face{font-family:'Bricolage Grotesque';font-weight:400 700;src:url(../assets/fonts/bricolage-grotesque.woff2) format('woff2')}
+@font-face{font-family:'Hanken Grotesk';font-weight:400 700;src:url(../assets/fonts/hanken-grotesk.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:400 500;src:url(../assets/fonts/jetbrains-mono.woff2) format('woff2')}
+*{animation:none!important;transition:none!important}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:var(--bg)}
+.og{position:relative;width:1200px;height:630px;background:var(--bg);overflow:hidden}
+.og canvas{position:absolute;right:-30px;top:-10px;width:680px;height:650px;display:block}
+.tk{position:absolute;width:22px;height:22px;border:0 solid var(--line)}
+.tk1{left:28px;top:28px;border-left-width:1px;border-top-width:1px}
+.tk2{right:28px;bottom:28px;border-right-width:1px;border-bottom-width:1px}
+.col{position:absolute;left:80px;top:72px;bottom:72px;width:620px;display:flex;flex-direction:column;justify-content:space-between}
+.wm{display:flex;align-items:center;gap:12px;color:var(--ink)}
+.ring{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center}
+.ring span{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.word{font-family:var(--f-display);font-weight:650;font-size:30px;letter-spacing:-0.03em}
+.word span{font-family:var(--f-mono);font-weight:400;font-size:17px;color:var(--ink3)}
+h1{margin:0;font-family:var(--f-display);font-weight:600;font-size:88px;line-height:.95;letter-spacing:-0.045em;color:var(--ink)}
+h1 span{color:var(--accent)}
+p{margin:24px 0 0;font-family:var(--f-body);font-size:26px;line-height:1.4;color:var(--ink2);max-width:20em}
+.pill{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-family:var(--f-mono);font-size:15px;letter-spacing:.1em;color:var(--ink2)}
+.pill i{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+</style></head>
+<body><div class="og">
+  <canvas data-r="og"></canvas>
+  <span class="tk tk1"></span><span class="tk tk2"></span>
+  <div class="col">
+    <div class="wm"><span class="ring"><span></span></span><span class="word">livingbrain<span>.wiki</span></span></div>
+    <div>
+      <h1>Your company, <span>remembered.</span></h1>
+      <p>A teammate that writes and keeps your company wiki. In Slack, your coding agent, your terminal.</p>
+    </div>
+    <span class="pill"><i></i>EARLY ACCESS · IN DESIGN</span>
+  </div>
+</div>
+<script src="../assets/brain.js"></script>
+<script>
+document.fonts.ready.then(function () {
+  LivingBrain.mount(document.querySelector('[data-r="og"]'), { still: true, decorate: true, nodes: 320, seed: 11, angle: 1.1, zoom: 1.05, glow: 1.2 });
+});
+</script>
+</body></html>
