@@ -637,3 +637,14 @@ html:not(.js) .stage { opacity: 1; }
   .stats dt .key { margin-top: 7px; flex: 0 0 10px; width: 10px; }
   .stats dd { font-size: 28px; }
 }
+
+/* ---------------------------------------------------------------- why: fewer tokens, the open benchmark */
+#why .features { margin-top: 28px; }
+#why .pair { margin-top: 16px; }
+#why > .card { margin-top: 16px; }
+#why .card { padding: 22px 24px 24px; }
+#why .card .row-head { align-items: center; gap: 12px; }
+#why .card ol { margin: 12px 0 0; padding-left: 20px; display: grid; gap: 6px; color: var(--ink2); line-height: 1.55; }
+#why .card p { margin: 10px 0 0; color: var(--ink2); line-height: 1.6; max-width: 70em; }
+#why .card .row-head { margin: 0; }
+#why .card .mono { overflow-wrap: anywhere; }

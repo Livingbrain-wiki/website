@@ -562,6 +562,43 @@
         </article>
       </div>
     </div>
+
+    <div class="sub" id="why">
+      <div class="row-head">
+        <h3 class="h3">Fewer tokens. Less rework. Faster agents.</h3>
+        <span class="tag">Planned · benchmark coming</span>
+      </div>
+      <p class="lede lede--sm lede--wide">Most agents start every task cold: they reread threads, grep the repo and rediscover what the team already decided. Living Brain does that work once, at night, and hands every agent the result.</p>
+      <div class="features">
+        <article class="feat"><span class="num">A</span><h3>Fewer tokens</h3><p>An agent asks for a short brief with citations instead of reading thirty threads and grepping the whole repo. The context is written once and reused by every agent on the team.</p></article>
+        <article class="feat"><span class="num">B</span><h3>Less rework</h3><p>Decisions and dead ends are on record, so agents stop retrying approaches the team has already ruled out.</p></article>
+        <article class="feat"><span class="num">C</span><h3>Cheaper models do more</h3><p>The hard reading happens when the wiki is written. Day to day, a small model with the right page can do work that a large model with no context gets wrong.</p></article>
+        <article class="feat"><span class="num">D</span><h3>Fast</h3><p>One Rust binary, a local cache and Cloudflare's edge. Search answers from your machine before the network does.</p></article>
+      </div>
+      <div class="pair">
+        <div class="card card--line">
+          <div class="row-head"><h4 class="h4">Without the brain</h4><span class="tag">Illustration</span></div>
+          <ol>
+            <li>Read the Slack threads about billing</li>
+            <li>Grep the repo for every place that touches invoices</li>
+            <li>Ask a teammate who owns it</li>
+            <li>Try the approach the team rejected last month</li>
+          </ol>
+        </div>
+        <div class="card card--line">
+          <div class="row-head"><h4 class="h4">With the brain</h4><span class="tag">Illustration</span></div>
+          <ol>
+            <li><span class="mono">brain_context_for("billing", task)</span></li>
+            <li>One page: the owner, the conventions, the decision, the dead end, each with its source</li>
+            <li>Start coding</li>
+          </ol>
+        </div>
+      </div>
+      <div class="card card--line">
+        <h4 class="h4">The benchmark, in the open</h4>
+        <p>We'll measure tokens, cost, time, success and rework, with and without the brain, against a plain retrieval baseline, across Claude Code, Codex and Colonizer colonies, on large and small models. The task set, the harness and the raw results will be public, and anyone can rerun them. Until then there are no numbers on this page. <a href="https://github.com/Livingbrain-wiki/livingbrain/issues/48">Follow the benchmark</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
