@@ -42,7 +42,8 @@ keeps it true. Use it from your coding agent, your terminal, or your team chat.
 Where you use it (planned):
 - Coding agents: Claude Code, Codex, Cursor and others read it over MCP.
 - The livingbrain CLI: one Rust binary for terminals and scripts.
-- The app (PWA): installs from the browser on phone and desktop, keeps pages
+- The app (PWA), white-label on Teams and Crew (your name, logo, domain), plus an open API with
+  webhooks and SDKs for TypeScript, Python and Rust. The app installs from the browser on phone and desktop, keeps pages
   readable offline, opens on one box to search or ask, with the 3D brain one
   tap away.
 - Team chat: Slack and Discord. Invite it to a channel; it answers in the thread.
@@ -205,6 +206,12 @@ Same answers as the site.
 
 ### Coding agents
 
+- Can we put our own brand on it, or build on it? Planned. On Teams and Crew,
+  the app runs on your own domain with your name, logo and colours, and
+  installs on phones and desktops as your app. A small "powered by" link is
+  optional. There's also an open API with webhooks and SDKs for TypeScript,
+  Python and Rust, so you can build the brain into your own tools. If you
+  self-host, the code is yours to rebrand.
 - Which coding agents can I connect? Any agent that supports MCP, including
   Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these
   tools; they connect through the open protocol.
