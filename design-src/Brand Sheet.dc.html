@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Living Brain · Brand sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--f-display:'Bricolage Grotesque',system-ui,sans-serif;--f-body:'Hanken Grotesk',system-ui,sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;--bg:oklch(0.16 0.014 215);--bg2:oklch(0.195 0.016 215);--bg3:oklch(0.235 0.018 215);--ink:oklch(0.95 0.008 200);--ink2:oklch(0.8 0.014 205);--ink3:oklch(0.68 0.016 210);--line:oklch(0.34 0.018 215);--line2:oklch(0.265 0.016 215);--accent:oklch(0.86 0.16 162);--accent-ink:oklch(0.2 0.05 165);--accent-soft:oklch(0.86 0.16 162 / 0.13);--graph-edge:oklch(0.72 0.04 200);--t-person:oklch(0.8 0.075 235);--t-project:oklch(0.79 0.075 295);--t-decision:oklch(0.85 0.085 85);--t-customer:oklch(0.8 0.08 25)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);-webkit-font-smoothing:antialiased}
+a{color:var(--ink)}a:hover{color:var(--accent)}
+</style>
+<script src="brain.js"></script>
+</helmet>
+
+<div style="max-width:1320px;margin:0 auto;padding:64px 32px 120px">
+  <header style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;padding-bottom:28px;border-bottom:1px solid var(--line2)">
+    <h1 style="margin:0;font-family:var(--f-display);font-size:44px;font-weight:600;letter-spacing:-0.04em">Living Brain · brand sheet</h1>
+    <span style="font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--ink3)">v0.1 · EARLY ACCESS · IN DESIGN</span>
+  </header>
+
+  <section style="padding:48px 0;border-bottom:1px solid var(--line2)">
+    <h2 style="margin:0 0 24px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--ink3)">01 · WORDMARK</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="height:240px;border-radius:18px;background:var(--bg);border:1px solid var(--line2);display:grid;place-items:center">
+        <div style="display:flex;align-items:center;gap:18px">
+          <span style="width:46px;height:46px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center"><span style="width:15px;height:15px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent)"></span></span>
+          <span style="font-family:var(--f-display);font-weight:650;font-size:52px;letter-spacing:-0.035em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:26px;color:var(--ink3)">.wiki</span></span>
+        </div>
+      </div>
+      <div style="height:240px;border-radius:18px;background:oklch(0.975 0.006 190);display:grid;place-items:center">
+        <div style="display:flex;align-items:center;gap:18px;color:oklch(0.22 0.02 220)">
+          <span style="width:46px;height:46px;border-radius:50%;border:3px solid currentColor;display:grid;place-items:center"><span style="width:15px;height:15px;border-radius:50%;background:oklch(0.52 0.12 165)"></span></span>
+          <span style="font-family:var(--f-display);font-weight:650;font-size:52px;letter-spacing:-0.035em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:26px;color:oklch(0.49 0.02 215)">.wiki</span></span>
+        </div>
+      </div>
+    </div>
+    <ul style="margin:20px 0 0;padding:0 0 0 18px;color:var(--ink2);line-height:1.7;max-width:60em">
+      <li>Mark: a ring (the brain) around one live node in the accent. The node is the only glowing element.</li>
+      <li>Wordmark is lowercase Bricolage Grotesque 650, tracking −3.5%. ".wiki" is JetBrains Mono at half size in a muted ink.</li>
+      <li>Clear space equals the ring's diameter on every side. Minimum size: 18px ring.</li>
+    </ul>
+  </section>
+
+  <section style="padding:48px 0;border-bottom:1px solid var(--line2)">
+    <h2 style="margin:0 0 24px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--ink3)">02 · COLOR TOKENS</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;font-family:var(--f-mono);font-size:12px">
+      <div style="border:1px solid var(--line2);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.16 0.014 215)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--ink)">--bg</div><div style="color:var(--ink3)">oklch(0.16 0.014 215)</div><div style="color:var(--ink3)">light 0.975 0.006 190</div></div></div>
+      <div style="border:1px solid var(--line2);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.195 0.016 215)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--ink)">--bg2 surface</div><div style="color:var(--ink3)">oklch(0.195 0.016 215)</div><div style="color:var(--ink3)">light 0.995 0.003 190</div></div></div>
+      <div style="border:1px solid var(--line2);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.34 0.018 215)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--ink)">--line</div><div style="color:var(--ink3)">oklch(0.34 0.018 215)</div><div style="color:var(--ink3)">light 0.84 0.012 200</div></div></div>
+      <div style="border:1px solid var(--line2);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.95 0.008 200)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--ink)">--ink</div><div style="color:var(--ink3)">oklch(0.95 0.008 200)</div><div style="color:var(--ink3)">light 0.22 0.02 220</div></div></div>
+      <div style="border:1px solid var(--line2);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.8 0.014 205)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--ink)">--ink2 body</div><div style="color:var(--ink3)">oklch(0.8 0.014 205)</div><div style="color:var(--ink3)">light 0.40 0.02 215</div></div></div>
+      <div style="border:1px solid var(--accent);border-radius:12px;overflow:hidden"><div style="height:72px;background:oklch(0.86 0.16 162);box-shadow:inset 0 0 30px oklch(0.95 0.1 162)"></div><div style="padding:10px 12px;line-height:1.6"><div style="color:var(--accent)">--accent · alive</div><div style="color:var(--ink3)">oklch(0.86 0.16 162)</div><div style="color:var(--ink3)">light 0.52 0.12 165</div></div></div>
+    </div>
+    <div style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;font-family:var(--f-mono);font-size:12px">
+      <div style="display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line2);border-radius:12px"><span style="width:14px;height:14px;border-radius:50%;background:var(--t-person)"></span><span>--t-person · 0.80 0.075 235</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line2);border-radius:12px"><span style="width:14px;height:14px;border-radius:50%;background:var(--t-project)"></span><span>--t-project · 0.79 0.075 295</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line2);border-radius:12px"><span style="width:14px;height:14px;border-radius:50%;background:var(--t-decision)"></span><span>--t-decision · 0.85 0.085 85</span></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line2);border-radius:12px"><span style="width:14px;height:14px;border-radius:50%;background:var(--t-customer)"></span><span>--t-customer · 0.80 0.08 25</span></div>
+    </div>
+    <p style="margin:16px 0 0;color:var(--ink2);line-height:1.7;max-width:60em">The accent is reserved for alive moments: pulses, new links, the live node, the primary action. Entity colors are low-chroma and only ever label graph nodes. Everything else is ink on a cool near-black.</p>
+  </section>
+
+  <section style="padding:48px 0;border-bottom:1px solid var(--line2)">
+    <h2 style="margin:0 0 24px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--ink3)">03 · TYPE SCALE</h2>
+    <div style="display:grid;gap:0;border-top:1px solid var(--line2)">
+      <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line2)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">Display XL · Bricolage 600<br>46–100px · lh .95 · −4.5%</span><span style="font-family:var(--f-display);font-weight:600;font-size:76px;line-height:.95;letter-spacing:-0.045em">Your company, remembered.</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line2)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">H2 · Bricolage 600<br>34–58px · lh 1.02 · −3.5%</span><span style="font-family:var(--f-display);font-weight:600;font-size:48px;line-height:1.02;letter-spacing:-0.035em">Listen. Write. Evolve.</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line2)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">H3 · Bricolage 600<br>21–38px · −2 to −3%</span><span style="font-family:var(--f-display);font-weight:600;font-size:28px;letter-spacing:-0.025em">A wiki that keeps itself true.</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line2)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">Body · Hanken Grotesk 400<br>16–19px · lh 1.6</span><span style="font-size:18px;line-height:1.6;color:var(--ink2);max-width:36em">Living Brain listens in the channels you invite it to and replies in the thread, with a link to the exact message the answer came from.</span></div>
+      <div style="display:grid;grid-template-columns:minmax(140px,220px) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line2)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">Mono · JetBrains Mono 400<br>11–13px · labels, Markdown, code</span><span style="font-family:var(--f-mono);font-size:13px;color:var(--ink2)">Owner: <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Lina Haas]]</span> <span style="color:var(--accent)">[^1]</span> &#160;·&#160; 01 · HOW IT WORKS</span></div>
+    </div>
+    <p style="margin:16px 0 0;color:var(--ink2);line-height:1.7;max-width:60em">Spacing runs on a 4px base (8, 12, 16, 24, 44, 72). Radii: 6 chips, 10 inputs and buttons, 14–18 cards, 999 status pills. Hairlines are 1px; engineering details (corner ticks, dashed paths, mono labels) carry the "machine" half of the look.</p>
+  </section>
+
+  <section style="padding:48px 0;border-bottom:1px solid var(--line2)">
+    <h2 style="margin:0 0 24px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--ink3)">04 · VOICE</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="padding:24px;border:1px solid var(--accent);border-radius:16px">
+        <h3 style="margin:0 0 14px;font-family:var(--f-display);font-size:24px;font-weight:600">Do</h3>
+        <ol style="margin:0;padding-left:20px;display:grid;gap:12px;color:var(--ink2);line-height:1.6">
+          <li><strong style="color:var(--ink)">Say what it does in plain verbs.</strong> "It opens the issue." "It merges duplicates."</li>
+          <li><strong style="color:var(--ink)">Show the source.</strong> Cite messages, and label every mock "Illustration" or "Sample data".</li>
+          <li><strong style="color:var(--ink)">Write like a calm teammate.</strong> Short, specific, a little dry.</li>
+        </ol>
+      </div>
+      <div style="padding:24px;border:1px solid var(--line);border-radius:16px">
+        <h3 style="margin:0 0 14px;font-family:var(--f-display);font-size:24px;font-weight:600">Don't</h3>
+        <ol style="margin:0;padding-left:20px;display:grid;gap:12px;color:var(--ink2);line-height:1.6">
+          <li><strong style="color:var(--ink)">Claim what isn't built.</strong> No customer logos, testimonials, user counts or uptime.</li>
+          <li><strong style="color:var(--ink)">Reach for hype.</strong> No "revolutionary", "magic" or "supercharge".</li>
+          <li><strong style="color:var(--ink)">Imply partnerships.</strong> Name other tools in plain text, never with their logos.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:48px 0">
+    <h2 style="margin:0 0 24px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--ink3)">05 · SOCIAL IMAGES</h2>
+    <p style="margin:0 0 12px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)">Open Graph · 1200 × 630</p>
+    <div style="overflow-x:auto;padding-bottom:8px">
+      <div id="og" style="position:relative;width:1200px;height:630px;flex:0 0 auto;background:oklch(0.16 0.014 215);overflow:hidden;border-radius:4px">
+        <canvas ref="{{ ogCanvas }}" aria-hidden="true" style="position:absolute;right:-30px;top:-10px;width:680px;height:650px;display:block"></canvas>
+        <span style="position:absolute;left:28px;top:28px;width:22px;height:22px;border-left:1px solid var(--line);border-top:1px solid var(--line)"></span>
+        <span style="position:absolute;right:28px;bottom:28px;width:22px;height:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)"></span>
+        <div style="position:absolute;left:80px;top:72px;bottom:72px;width:600px;display:flex;flex-direction:column;justify-content:space-between">
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)"></span></span>
+            <span style="font-family:var(--f-display);font-weight:650;font-size:30px;letter-spacing:-0.03em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:17px;color:var(--ink3)">.wiki</span></span>
+          </div>
+          <div>
+            <div style="font-family:var(--f-display);font-weight:600;font-size:88px;line-height:.95;letter-spacing:-0.045em">Your company, <span style="color:var(--accent)">remembered.</span></div>
+            <div style="margin-top:24px;font-size:26px;line-height:1.4;color:var(--ink2);max-width:22em">A teammate in your Slack that writes and keeps your company wiki.</div>
+          </div>
+          <span style="align-self:flex-start;display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid var(--line);border-radius:999px;font-family:var(--f-mono);font-size:15px;letter-spacing:.1em;color:var(--ink2)"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>EARLY ACCESS · IN DESIGN</span>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin:40px 0 12px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)">README banner · 1280 × 640</p>
+    <div style="overflow-x:auto;padding-bottom:8px">
+      <div id="readme" style="position:relative;width:1280px;height:640px;background:oklch(0.16 0.014 215);overflow:hidden;border-radius:4px">
+        <canvas ref="{{ bannerCanvas }}" aria-hidden="true" style="position:absolute;left:390px;top:-20px;width:680px;height:680px;display:block"></canvas>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:220px;background:linear-gradient(transparent, oklch(0.16 0.014 215) 70%)"></div>
+        <div style="position:absolute;left:64px;top:56px;font-family:var(--f-mono);font-size:15px;color:var(--ink3);line-height:1.8">
+          <div>brain/</div><div>├─ people/</div><div>├─ projects/</div><div>├─ decisions/</div><div>└─ customers/</div>
+        </div>
+        <div style="position:absolute;right:64px;top:56px;text-align:right;font-family:var(--f-mono);font-size:15px;color:var(--ink3);line-height:1.8">
+          <div>Slack teammate</div><div>Markdown wiki</div><div>MCP for coding agents</div><div>Rust · Cloudflare edge</div>
+        </div>
+        <div style="position:absolute;left:0;right:0;bottom:64px;display:flex;flex-direction:column;align-items:center;gap:18px">
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);display:grid;place-items:center"><span style="width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 16px var(--accent)"></span></span>
+            <span style="font-family:var(--f-display);font-weight:650;font-size:64px;letter-spacing:-0.035em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:32px;color:var(--ink3)">.wiki</span></span>
+          </div>
+          <div style="font-size:24px;color:var(--ink2)">A living brain for your crew.</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin:16px 0 0;color:var(--ink2);line-height:1.7;max-width:60em">Both images use the same brain renderer as the site, frozen on one frame with pulses mid-edge. Export each frame at 1× (OG) and 2× (README) as PNG.</p>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  ogCanvas = React.createRef(); bannerCanvas = React.createRef();
+  componentDidMount() {
+    document.documentElement.dataset.theme = 'dark';
+    const go = () => {
+      if (!window.LivingBrain) return setTimeout(go, 40);
+      const L = window.LivingBrain;
+      this.b1 = this.ogCanvas.current && L.mount(this.ogCanvas.current, { still: true, decorate: true, nodes: 320, seed: 11, angle: 1.1, zoom: 1.05, glow: 1.2 });
+      this.b2 = this.bannerCanvas.current && L.mount(this.bannerCanvas.current, { still: true, decorate: true, nodes: 340, seed: 23, angle: 0.5, zoom: 1.05, glow: 1.2, colonies: 2 });
+      if (document.fonts) document.fonts.ready.then(() => { this.b1 && this.b1.draw(); this.b2 && this.b2.draw(); });
+    };
+    go();
+  }
+  componentWillUnmount() { this.b1 && this.b1.destroy(); this.b2 && this.b2.destroy(); }
+  renderVals() { return { ogCanvas: this.ogCanvas, bannerCanvas: this.bannerCanvas }; }
+}
+
+</script>
+</body>
+</html>

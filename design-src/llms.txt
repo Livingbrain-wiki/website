@@ -1,0 +1,24 @@
+# Living Brain
+
+> Living Brain (livingbrain.wiki) is a teammate in your Slack that builds and keeps its own company wiki in plain Markdown. A Factory Zero venture. Status: early access, in design. Not built yet.
+
+## What it does
+- Remembers: turns conversations in invited channels into Markdown pages for people, projects, decisions and customers. Every fact links to its source message.
+- Evolves: on a schedule it merges duplicates, flags contradictions, retires stale facts and rewrites summaries. It learns how each person works.
+- Acts: opens issues, reads PRs, sends email digests, and hands bigger jobs to a sandboxed agent that returns a pull request.
+- Coding agents: connects to Claude Code, Codex, Cursor, OpenCode or any MCP agent. Agents get team context before writing code; with opt-in, agent decisions become wiki pages (secrets redacted).
+- Works with Colonizer (colonizer.dev): launches isolated microVM colonies that return pull requests and report learnings back to the wiki.
+- You own it: plain Markdown, exportable, opens in Obsidian.
+- Private by design: reads only with the asker's own Slack access.
+- Bring your own model: Anthropic, OpenAI, OpenRouter, or any OpenAI-compatible endpoint.
+- Built in Rust on Cloudflare's edge.
+
+## Planned pricing (per workspace)
+- Free: $0, up to 5 people
+- Bring your own model: $5/mo, unlimited people
+- Crew: $9/mo, model included, up to 25 people
+
+## Links
+- Site: https://livingbrain.wiki/
+- Factory Zero: https://factory0.ventures
+- Colonizer: https://colonizer.dev

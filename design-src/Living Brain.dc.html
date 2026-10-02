@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Living Brain · The wiki that writes itself</title>
+<meta name="description" content="Living Brain is a teammate in your Slack that builds and keeps its own company wiki in plain Markdown you own. Early access, in design.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://livingbrain.wiki/">
+<meta property="og:title" content="Living Brain · Your company, remembered.">
+<meta property="og:description" content="A teammate in your Slack that writes and keeps your company wiki. Every fact links back to the message it came from.">
+<meta property="og:image" content="https://livingbrain.wiki/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Living Brain · Your company, remembered.">
+<meta name="twitter:description" content="A teammate in your Slack that writes and keeps your company wiki, in Markdown you own.">
+<meta name="twitter:image" content="https://livingbrain.wiki/og.png">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--f-display:'Bricolage Grotesque',system-ui,sans-serif;--f-body:'Hanken Grotesk',system-ui,sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;--bg:oklch(0.16 0.014 215);--bg2:oklch(0.195 0.016 215);--bg3:oklch(0.235 0.018 215);--ink:oklch(0.95 0.008 200);--ink2:oklch(0.8 0.014 205);--ink3:oklch(0.68 0.016 210);--line:oklch(0.34 0.018 215);--line2:oklch(0.265 0.016 215);--accent:oklch(0.86 0.16 162);--accent-ink:oklch(0.2 0.05 165);--accent-soft:oklch(0.86 0.16 162 / 0.13);--graph-edge:oklch(0.72 0.04 200);--t-person:oklch(0.8 0.075 235);--t-project:oklch(0.79 0.075 295);--t-decision:oklch(0.85 0.085 85);--t-customer:oklch(0.8 0.08 25);--t-fact:oklch(0.55 0.02 210)}
+:root[data-theme="light"]{color-scheme:light;--bg:oklch(0.975 0.006 190);--bg2:oklch(0.995 0.003 190);--bg3:oklch(0.945 0.009 190);--ink:oklch(0.22 0.02 220);--ink2:oklch(0.4 0.02 215);--ink3:oklch(0.49 0.02 215);--line:oklch(0.84 0.012 200);--line2:oklch(0.9 0.01 200);--accent:oklch(0.52 0.12 165);--accent-ink:oklch(0.99 0.01 165);--accent-soft:oklch(0.52 0.12 165 / 0.1);--graph-edge:oklch(0.45 0.03 210);--t-person:oklch(0.55 0.11 240);--t-project:oklch(0.52 0.12 300);--t-decision:oklch(0.6 0.12 75);--t-customer:oklch(0.55 0.13 30);--t-fact:oklch(0.72 0.02 210)}
+@media (prefers-color-scheme: light){:root:not([data-theme]){color-scheme:light;--bg:oklch(0.975 0.006 190);--bg2:oklch(0.995 0.003 190);--bg3:oklch(0.945 0.009 190);--ink:oklch(0.22 0.02 220);--ink2:oklch(0.4 0.02 215);--ink3:oklch(0.49 0.02 215);--line:oklch(0.84 0.012 200);--line2:oklch(0.9 0.01 200);--accent:oklch(0.52 0.12 165);--accent-ink:oklch(0.99 0.01 165);--accent-soft:oklch(0.52 0.12 165 / 0.1);--graph-edge:oklch(0.45 0.03 210);--t-person:oklch(0.55 0.11 240);--t-project:oklch(0.52 0.12 300);--t-decision:oklch(0.6 0.12 75);--t-customer:oklch(0.55 0.13 30);--t-fact:oklch(0.72 0.02 210)}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .3s}
+a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px}
+a:hover{color:var(--accent);text-decoration-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+summary{list-style:none}summary::-webkit-details-marker{display:none}
+input::placeholder{color:var(--ink3)}
+.scene-tooltip{font-family:var(--f-mono)!important;font-size:12px!important;color:var(--ink)!important;background:var(--bg2)!important;border:1px solid var(--line)!important;padding:4px 8px!important;border-radius:6px!important}
+</style>
+<script src="brain.js"></script>
+</helmet>
+
+<a href="#main" style="position:absolute;left:-9999px;top:8px;z-index:100;padding:10px 14px;background:var(--accent);color:var(--accent-ink);border-radius:8px" style-focus="left:8px">Skip to content</a>
+
+<header style="position:sticky;top:0;z-index:50;background:color-mix(in oklch, var(--bg) 84%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px">
+    <a href="#top" aria-label="Living Brain, home" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex-shrink:0">
+      <span aria-hidden="true" style="width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)"></span></span>
+      <span style="font-family:var(--f-display);font-weight:650;font-size:19px;letter-spacing:-0.02em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:13px;color:var(--ink3)">.wiki</span></span>
+    </a>
+    <nav aria-label="Primary" style="flex:1;min-width:0;display:flex;justify-content:flex-end;gap:22px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;font-size:14px">
+      <a href="#how" style="text-decoration:none;color:var(--ink2)">How it works</a>
+      <a href="#demo" style="text-decoration:none;color:var(--ink2)">Demo</a>
+      <a href="#agents" style="text-decoration:none;color:var(--ink2)">Coding agents</a>
+      <a href="#pricing" style="text-decoration:none;color:var(--ink2)">Pricing</a>
+      <a href="#faq" style="text-decoration:none;color:var(--ink2)">FAQ</a>
+    </nav>
+    <button type="button" onClick="{{ toggleTheme }}" aria-label="{{ themeAria }}" style="flex-shrink:0;display:flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--line);background:transparent;color:var(--ink2);font:inherit;font-size:13px;cursor:pointer" style-hover="color:var(--ink);border-color:var(--ink3)">
+      <span aria-hidden="true" style="width:13px;height:13px;border-radius:50%;border:1.5px solid currentColor;background:linear-gradient(90deg,currentColor 50%,transparent 50%)"></span>{{ themeLabel }}
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<section id="top" data-screen-label="01 Hero" aria-labelledby="hero-title">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(40px,7vw,96px) 20px clamp(64px,8vw,112px);display:flex;flex-wrap:wrap;align-items:center;gap:clamp(24px,4vw,56px)">
+    <div style="flex:1 1 420px;min-width:0;max-width:600px">
+      <p style="display:inline-flex;align-items:center;gap:8px;margin:0 0 28px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;color:var(--ink2)"><span aria-hidden="true" style="width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)"></span>EARLY ACCESS · IN DESIGN</p>
+      <h1 id="hero-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(46px,8.2vw,100px);line-height:.95;letter-spacing:-0.045em;text-wrap:balance">
+        <sc-if value="{{ tagA }}" hint-placeholder-val="{{ true }}">Your company, <span style="color:var(--accent)">remembered.</span></sc-if>
+        <sc-if value="{{ tagB }}" hint-placeholder-val="{{ false }}">The wiki that <span style="color:var(--accent)">writes itself.</span></sc-if>
+        <sc-if value="{{ tagC }}" hint-placeholder-val="{{ false }}">A <span style="color:var(--accent)">living</span> brain for your crew.</sc-if>
+      </h1>
+      <p style="margin:26px 0 0;max-width:32em;font-size:clamp(17px,1.7vw,20px);line-height:1.55;color:var(--ink2);text-wrap:pretty">Living Brain is a teammate in your Slack that turns conversations into a Markdown wiki and keeps it true. Every fact links back to the message it came from.</p>
+      <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onJoin }}" aria-label="Join the waitlist" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;max-width:520px">
+          <label for="email-hero" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Work email</label>
+          <input id="email-hero" name="email" type="email" required="{{ true }}" placeholder="you@company.com" style="flex:1 1 220px;min-width:0;height:50px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);font:inherit;font-size:16px">
+          <button type="submit" style="flex:0 0 auto;height:50px;padding:0 20px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:650;font-size:16px;cursor:pointer" style-hover="filter:brightness(1.08)">Join the waitlist</button>
+        </form>
+      </sc-if>
+      <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin:34px 0 0;padding:14px 16px;border:1px solid var(--accent);border-radius:10px;max-width:520px;color:var(--ink)">You're on the list. We'll write once, when there's something to try.</p>
+      </sc-if>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-top:16px">
+        <a href="#demo" style="display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px" style-hover="border-color:var(--accent);color:var(--ink)">See how it thinks <span aria-hidden="true" style="font-family:var(--f-mono)">↓</span></a>
+        <span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">No spam. One email when it's ready.</span>
+      </div>
+    </div>
+    <figure style="flex:1 1 400px;min-width:0;max-width:600px;margin:0 auto;width:100%">
+      <div style="position:relative;aspect-ratio:1/1;width:100%">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;width:16px;height:16px;border-left:1px solid var(--line);border-top:1px solid var(--line)"></span>
+        <span aria-hidden="true" style="position:absolute;right:0;top:0;width:16px;height:16px;border-right:1px solid var(--line);border-top:1px solid var(--line)"></span>
+        <span aria-hidden="true" style="position:absolute;left:0;bottom:0;width:16px;height:16px;border-left:1px solid var(--line);border-bottom:1px solid var(--line)"></span>
+        <span aria-hidden="true" style="position:absolute;right:0;bottom:0;width:16px;height:16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)"></span>
+        <span aria-hidden="true" style="position:absolute;left:24px;top:4px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)">brain · 300 nodes</span>
+        <span aria-hidden="true" style="position:absolute;right:24px;top:4px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)">Illustration</span>
+        <canvas ref="{{ heroCanvas }}" role="img" aria-label="Illustration: a slowly rotating brain made of a knowledge graph. Nodes for people, projects, decisions and customers appear, merge and brighten as new links form." style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+      </div>
+      <figcaption style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;margin-top:10px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)">
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--t-person)"></span>people</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--t-project)"></span>projects</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--t-decision)"></span>decisions</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:var(--t-customer)"></span>customers</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:2px;background:var(--accent);box-shadow:0 0 6px var(--accent)"></span>new link</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="slack" data-screen-label="02 Slack moment" data-play="cite" aria-labelledby="slack-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center">
+    <div style="flex:1 1 320px;min-width:0">
+      <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">01 · Speaks up</p>
+      <h2 id="slack-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;text-wrap:balance">It answers before anyone has to dig.</h2>
+      <p style="margin:20px 0 0;max-width:30em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">Living Brain listens in the channels you invite it to. When a question already has an answer, it replies in the thread and links to the exact message the answer came from.</p>
+    </div>
+    <figure style="flex:1 1 520px;min-width:0;margin:0;background:var(--bg2);border:1px solid var(--line2);border-radius:18px;overflow:hidden">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line2)">
+        <span style="font-weight:700;font-size:15px"><span style="color:var(--ink3)">#</span> eng</span>
+        <span style="display:inline-flex;padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustration</span>
+      </div>
+      <div ref="{{ slackRef }}" style="position:relative;padding:22px 20px 24px 34px;display:flex;flex-direction:column;gap:20px">
+        <svg aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none">
+          <path data-trail="1" data-a="draw" data-d="2700" data-t="1100" d="M0 0" style="fill:none;stroke:var(--accent);stroke-width:1.5"></path>
+          <circle data-trail-dot="0" data-a="pop" data-d="2650" data-t="300" cx="-20" cy="-20" r="3.5" style="fill:var(--accent)"></circle>
+          <circle data-trail-dot="1" data-a="pop" data-d="3700" data-t="300" cx="-20" cy="-20" r="3.5" style="fill:var(--accent)"></circle>
+        </svg>
+        <div data-src="1" style="position:relative;display:flex;gap:12px;padding:8px;margin:-8px;border-radius:10px">
+          <div data-a="fade" data-d="3650" data-t="700" aria-hidden="true" style="position:absolute;inset:0;border-radius:10px;background:var(--accent-soft);border:1px solid var(--accent)"></div>
+          <div style="position:relative;width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:var(--bg3);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--t-person)">DP</div>
+          <div style="position:relative;min-width:0">
+            <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><strong style="font-size:15px">Dev Patel</strong><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">09:51</span></div>
+            <p style="margin:3px 0 0;font-size:15px;line-height:1.5;color:var(--ink2)">Rolling back #412. The 502s on /api/routes come from the new pool config.</p>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span style="flex:1;height:1px;background:var(--line2)"></span>12 more messages<span style="flex:1;height:1px;background:var(--line2)"></span></div>
+        <div data-a="fadeUp" data-d="200" style="display:flex;gap:12px">
+          <div style="width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:var(--bg3);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--t-customer)">SI</div>
+          <div style="min-width:0">
+            <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><strong style="font-size:15px">Sam Ito</strong><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">10:04</span></div>
+            <p style="margin:3px 0 0;font-size:15px;line-height:1.5;color:var(--ink2)">is prod down? Northwind says routes won't load</p>
+          </div>
+        </div>
+        <div style="position:relative">
+          <div data-a="blip" data-d="900" data-t="1100" aria-hidden="true" style="position:absolute;left:0;top:0;display:flex;gap:12px;align-items:center;opacity:0">
+            <div style="width:34px;height:34px;border-radius:9px;background:var(--bg3);border:1px solid var(--line);display:grid;place-items:center"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent)"></span></div>
+            <span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">Living Brain is writing…</span>
+          </div>
+          <div data-a="fadeUp" data-d="1950" data-t="600" style="display:flex;gap:12px">
+            <div style="width:34px;height:34px;flex:0 0 34px;border-radius:9px;background:var(--bg3);border:1px solid var(--line);display:grid;place-items:center"><span style="width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)"></span></div>
+            <div style="min-width:0">
+              <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><strong style="font-size:15px">Living Brain</strong><span style="padding:1px 5px;border-radius:4px;background:var(--bg3);font-size:10px;font-weight:700;color:var(--ink3)">APP</span><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">10:04</span><span style="font-family:var(--f-mono);font-size:11px;color:var(--accent)">unprompted</span></div>
+              <p style="margin:3px 0 0;font-size:15px;line-height:1.55;color:var(--ink)">Not down. routes-api returned 502s from 09:38 to 09:52 after deploy #412. Dev rolled it back at 09:51 and error rates have been normal since.</p>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+                <a data-chip="1" data-a="pop" data-o="left center" data-d="2500" data-t="450" href="#demo" style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;border:1px solid var(--accent);color:var(--accent);font-family:var(--f-mono);font-size:12px;text-decoration:none">↩ #eng · Dev Patel · 09:51</a>
+                <span style="display:inline-flex;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink2);font-family:var(--f-mono);font-size:12px">[[Route Optimizer]]</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section id="how" data-screen-label="03 How it works" aria-labelledby="how-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">02 · How it works</p>
+    <h2 id="how-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em">Listen. Write. Evolve.</h2>
+    <div data-play="steps" style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px">
+      <article style="padding:20px;border-radius:16px;border:1px solid var(--line2);background:var(--bg2)">
+        <div aria-hidden="true" style="height:156px;border-radius:10px;background:var(--bg);border:1px solid var(--line2);padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:11px;overflow:hidden">
+          <div data-a="fadeUp" data-d="150" style="display:flex;gap:9px;align-items:center"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:5px;background:var(--t-person)"></span><span style="height:9px;width:62%;border-radius:5px;background:var(--line)"></span></div>
+          <div data-a="fadeUp" data-d="550" style="display:flex;gap:9px;align-items:center"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:5px;background:var(--t-customer)"></span><span style="height:9px;width:44%;border-radius:5px;background:var(--line)"></span></div>
+          <div data-a="fadeUp" data-d="950" style="display:flex;gap:9px;align-items:center"><span style="width:18px;height:18px;flex:0 0 18px;border-radius:5px;background:var(--t-project)"></span><span style="height:9px;width:72%;border-radius:5px;background:var(--line)"></span></div>
+          <div data-a="fadeUp" data-d="1500" style="font-family:var(--f-mono);font-size:12px;color:var(--accent)">→ project: Billing v2</div>
+        </div>
+        <h3 style="margin:20px 0 0;display:flex;gap:10px;align-items:baseline;font-family:var(--f-display);font-size:24px;font-weight:600;letter-spacing:-0.02em"><span style="font-family:var(--f-mono);font-size:12px;font-weight:400;color:var(--ink3)">01</span>Listen</h3>
+        <p style="margin:8px 0 0;color:var(--ink2);line-height:1.55;text-wrap:pretty">It reads the channels it's invited to and picks out the people, projects, decisions and customers in them.</p>
+      </article>
+      <article style="padding:20px;border-radius:16px;border:1px solid var(--line2);background:var(--bg2)">
+        <div aria-hidden="true" style="height:156px;border-radius:10px;background:var(--bg);border:1px solid var(--line2);padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:2px;overflow:hidden;font-family:var(--f-mono);font-size:13px;line-height:1.75;color:var(--ink2)">
+          <div data-a="type" data-steps="12" data-d="200" data-t="500" style="white-space:nowrap;color:var(--ink);font-weight:500"># Billing v2</div>
+          <div data-a="type" data-steps="20" data-d="800" data-t="800" style="white-space:nowrap">Owner: <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Lina Haas]]</span></div>
+          <div data-a="type" data-steps="22" data-d="1700" data-t="800" style="white-space:nowrap">For: <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Alder &amp; Finch]]</span></div>
+          <div data-a="type" data-steps="18" data-d="2600" data-t="700" style="white-space:nowrap">Ships: Apr 30 <span style="color:var(--accent)">[^1]</span></div>
+        </div>
+        <h3 style="margin:20px 0 0;display:flex;gap:10px;align-items:baseline;font-family:var(--f-display);font-size:24px;font-weight:600;letter-spacing:-0.02em"><span style="font-family:var(--f-mono);font-size:12px;font-weight:400;color:var(--ink3)">02</span>Write</h3>
+        <p style="margin:8px 0 0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Conversations become Markdown pages with <code style="font-family:var(--f-mono);font-size:14px;color:var(--ink)">[[backlinks]]</code>. Every fact cites the message it came from.</p>
+      </article>
+      <article style="padding:20px;border-radius:16px;border:1px solid var(--line2);background:var(--bg2)">
+        <div aria-hidden="true" style="height:156px;border-radius:10px;background:var(--bg);border:1px solid var(--line2);padding:18px 12px;display:flex;flex-direction:column;justify-content:center;gap:18px;overflow:hidden">
+          <div style="position:relative;height:58px">
+            <div data-a="merge" data-x="56" data-loop="1" data-t="5200" style="position:absolute;left:calc(50% - 104px);top:0;width:96px;height:58px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);padding:8px;font-family:var(--f-mono);font-size:11px;color:var(--ink2)">billing.md<span style="display:block;margin-top:8px;height:5px;width:70%;border-radius:3px;background:var(--line)"></span></div>
+            <div data-a="merge" data-x="-56" data-loop="1" data-t="5200" style="position:absolute;left:calc(50% + 8px);top:0;width:96px;height:58px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);padding:8px;font-family:var(--f-mono);font-size:11px;color:var(--ink2)">billing-v2.md<span style="display:block;margin-top:8px;height:5px;width:55%;border-radius:3px;background:var(--line)"></span></div>
+            <div data-a="mergedIn" data-loop="1" data-t="5200" style="position:absolute;left:calc(50% - 48px);top:0;width:96px;height:58px;border-radius:8px;border:1px solid var(--accent);background:var(--bg2);padding:8px;font-family:var(--f-mono);font-size:11px;color:var(--accent);opacity:0">billing-v2.md<span style="display:block;margin-top:8px;height:5px;width:80%;border-radius:3px;background:var(--accent)"></span></div>
+            <div data-a="spark" data-loop="1" data-t="5200" style="position:absolute;left:calc(50% - 16px);top:13px;width:32px;height:32px;border-radius:50%;border:2px solid var(--accent);opacity:0"></div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;font-family:var(--f-mono);font-size:12px">
+            <span data-a="stale" data-d="1200" data-t="900" style="position:relative;color:var(--ink2);opacity:.4">Ships: Mar 31<span data-a="growX" data-d="1200" data-t="500" style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ink2);transform-origin:left"></span></span>
+            <span data-a="fadeUp" data-d="1900" style="color:var(--accent)">Ships: Apr 30</span>
+          </div>
+        </div>
+        <h3 style="margin:20px 0 0;display:flex;gap:10px;align-items:baseline;font-family:var(--f-display);font-size:24px;font-weight:600;letter-spacing:-0.02em"><span style="font-family:var(--f-mono);font-size:12px;font-weight:400;color:var(--ink3)">03</span>Evolve</h3>
+        <p style="margin:8px 0 0;color:var(--ink2);line-height:1.55;text-wrap:pretty">On its own schedule it merges duplicates, flags contradictions, retires stale facts and rewrites summaries.</p>
+      </article>
+    </div>
+
+    <figure data-play="pipeline" style="margin:56px 0 0;padding:clamp(14px,3vw,28px);border:1px solid var(--line2);border-radius:18px;background:var(--bg2)">
+      <svg viewBox="0 0 960 320" role="img" aria-label="Illustration: Slack messages stream into the brain, come out as Markdown pages that join a graph, and two duplicate pages merge." style="display:block;width:100%;height:auto;font-family:var(--f-mono)">
+        <text x="95" y="24" style="font-size:14px;letter-spacing:2px;fill:var(--ink3);text-anchor:middle">LISTEN</text>
+        <text x="480" y="24" style="font-size:14px;letter-spacing:2px;fill:var(--ink3);text-anchor:middle">WRITE</text>
+        <text x="830" y="24" style="font-size:14px;letter-spacing:2px;fill:var(--ink3);text-anchor:middle">EVOLVE</text>
+        <g data-a="fade" data-d="0"><rect x="20" y="46" width="150" height="52" rx="10" style="fill:var(--bg);stroke:var(--line)"></rect><text x="36" y="68" style="font-size:15px;fill:var(--ink)">#eng</text><rect x="36" y="80" width="104" height="6" rx="3" style="fill:var(--line)"></rect></g>
+        <g data-a="fade" data-d="150"><rect x="20" y="134" width="150" height="52" rx="10" style="fill:var(--bg);stroke:var(--line)"></rect><text x="36" y="156" style="font-size:15px;fill:var(--ink)">#sales</text><rect x="36" y="168" width="80" height="6" rx="3" style="fill:var(--line)"></rect></g>
+        <g data-a="fade" data-d="300"><rect x="20" y="222" width="150" height="52" rx="10" style="fill:var(--bg);stroke:var(--line)"></rect><text x="36" y="244" style="font-size:15px;fill:var(--ink)">#support</text><rect x="36" y="256" width="96" height="6" rx="3" style="fill:var(--line)"></rect></g>
+        <path id="pin1" d="M176 72 C 300 72, 330 160, 436 160" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <path id="pin2" d="M176 160 C 280 160, 330 160, 436 160" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <path id="pin3" d="M176 248 C 300 248, 330 160, 436 160" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <path id="pout1" d="M524 160 C 600 160, 640 70, 712 70" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <path id="pout2" d="M524 160 C 620 160, 720 120, 812 120" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <path id="pout3" d="M524 160 C 600 160, 660 190, 752 190" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+        <g style="stroke:var(--graph-edge);stroke-width:1.2;opacity:.5">
+          <line x1="720" y1="70" x2="820" y2="120"></line><line x1="820" y1="120" x2="900" y2="60"></line><line x1="820" y1="120" x2="890" y2="196"></line><line x1="820" y1="120" x2="760" y2="190"></line><line x1="720" y1="70" x2="760" y2="190"></line><line x1="890" y1="196" x2="760" y2="190"></line>
+        </g>
+        <circle data-a="pop" data-d="600" cx="720" cy="70" r="9" style="fill:var(--t-person)"></circle>
+        <circle data-a="pop" data-d="900" cx="820" cy="120" r="12" style="fill:var(--t-project)"></circle>
+        <circle data-a="pop" data-d="1200" cx="900" cy="60" r="8" style="fill:var(--t-decision)"></circle>
+        <circle data-a="pop" data-d="1500" cx="890" cy="196" r="9" style="fill:var(--t-customer)"></circle>
+        <circle data-a="pop" data-d="1800" cx="760" cy="190" r="8" style="fill:var(--t-project)"></circle>
+        <circle data-a="breathe" data-loop="1" data-t="2600" cx="480" cy="160" r="40" style="fill:none;stroke:var(--accent);stroke-width:2"></circle>
+        <circle cx="480" cy="160" r="40" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"></circle>
+        <circle cx="480" cy="160" r="7" style="fill:var(--accent)"></circle>
+        <circle cx="466" cy="148" r="3" style="fill:var(--ink3)"></circle><circle cx="496" cy="150" r="3" style="fill:var(--ink3)"></circle><circle cx="470" cy="176" r="3" style="fill:var(--ink3)"></circle><circle cx="494" cy="174" r="3" style="fill:var(--ink3)"></circle>
+        <text x="480" y="226" style="font-size:14px;fill:var(--ink2);text-anchor:middle">living brain</text>
+        <rect data-travel="pin1" data-dur="2600" data-off="0" x="-8" y="-6" width="16" height="12" rx="4" style="fill:var(--ink2);opacity:0"></rect>
+        <rect data-travel="pin1" data-dur="2600" data-off="0.5" x="-8" y="-6" width="16" height="12" rx="4" style="fill:var(--ink2);opacity:0"></rect>
+        <rect data-travel="pin2" data-dur="2200" data-off="0.25" x="-8" y="-6" width="16" height="12" rx="4" style="fill:var(--ink2);opacity:0"></rect>
+        <rect data-travel="pin2" data-dur="2200" data-off="0.75" x="-8" y="-6" width="16" height="12" rx="4" style="fill:var(--ink2);opacity:0"></rect>
+        <rect data-travel="pin3" data-dur="2800" data-off="0.4" x="-8" y="-6" width="16" height="12" rx="4" style="fill:var(--ink2);opacity:0"></rect>
+        <g data-travel="pout1" data-dur="3000" data-off="0.1" style="opacity:0"><rect x="-9" y="-11" width="18" height="22" rx="3" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"></rect><rect x="-5" y="-5" width="10" height="2" style="fill:var(--accent)"></rect><rect x="-5" y="0" width="7" height="2" style="fill:var(--accent)"></rect></g>
+        <g data-travel="pout2" data-dur="3000" data-off="0.45" style="opacity:0"><rect x="-9" y="-11" width="18" height="22" rx="3" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"></rect><rect x="-5" y="-5" width="10" height="2" style="fill:var(--accent)"></rect><rect x="-5" y="0" width="7" height="2" style="fill:var(--accent)"></rect></g>
+        <g data-travel="pout3" data-dur="3000" data-off="0.8" style="opacity:0"><rect x="-9" y="-11" width="18" height="22" rx="3" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"></rect><rect x="-5" y="-5" width="10" height="2" style="fill:var(--accent)"></rect><rect x="-5" y="0" width="7" height="2" style="fill:var(--accent)"></rect></g>
+        <g data-a="merge" data-x="70" data-loop="1" data-t="5600"><rect x="700" y="258" width="100" height="36" rx="7" style="fill:var(--bg);stroke:var(--line)"></rect><text x="750" y="281" style="font-size:13px;fill:var(--ink2);text-anchor:middle">billing.md</text></g>
+        <g data-a="merge" data-x="-70" data-loop="1" data-t="5600"><rect x="840" y="258" width="100" height="36" rx="7" style="fill:var(--bg);stroke:var(--line)"></rect><text x="890" y="281" style="font-size:13px;fill:var(--ink2);text-anchor:middle">billing-v2</text></g>
+        <g data-a="mergedIn" data-loop="1" data-t="5600" style="opacity:0"><rect x="770" y="258" width="100" height="36" rx="7" style="fill:var(--bg);stroke:var(--accent);stroke-width:1.5"></rect><text x="820" y="281" style="font-size:13px;fill:var(--accent);text-anchor:middle">billing-v2</text></g>
+        <circle data-a="spark" data-loop="1" data-t="5600" cx="820" cy="276" r="22" style="fill:none;stroke:var(--accent);stroke-width:2;opacity:0"></circle>
+      </svg>
+      <figcaption style="margin-top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustration · the pipeline, end to end</figcaption>
+    </figure>
+
+    <div data-play="evolve" style="margin-top:72px;display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,64px);align-items:center">
+      <div style="flex:1 1 320px;min-width:0">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-0.03em;line-height:1.08;text-wrap:balance">A wiki that keeps itself true.</h3>
+        <p style="margin:14px 0 0;max-width:30em;color:var(--ink2);font-size:17px;line-height:1.6;text-wrap:pretty">Every night the brain revisits what it knows. It also learns how each person works, so its answers improve every week.</p>
+        <div style="margin-top:26px;padding:18px 20px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);font-family:var(--f-mono);font-size:13px;max-width:420px">
+          <div style="font-size:11px;letter-spacing:.1em;color:var(--ink3);margin-bottom:12px">BILLING-V2.MD · OWNER</div>
+          <div data-a="stale" data-d="1400" data-t="900" style="position:relative;display:inline-block;color:var(--ink2);opacity:.4">Dev Patel · since Jan 08<span data-a="growX" data-d="1400" data-t="500" style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--ink2);transform-origin:left"></span></div>
+          <div data-a="fadeUp" data-d="2300" style="margin-top:8px;color:var(--ink)">Lina Haas · since Mar 12 <span style="color:var(--accent)">[^1]</span></div>
+          <div data-a="fade" data-d="2900" style="margin-top:12px;font-size:11px;color:var(--ink3)">[1] #product · Tomás Reyes · Mar 12 · 11:20</div>
+        </div>
+      </div>
+      <figure style="flex:1 1 320px;min-width:0;max-width:420px;margin:0 auto">
+        <svg viewBox="0 0 400 400" role="img" aria-label="Illustration: a loop of four stages, Observe, Summarize, Reconcile and Learn, with a pulse travelling around it." style="display:block;width:100%;height:auto;font-family:var(--f-mono)">
+          <circle cx="200" cy="200" r="140" style="fill:none;stroke:var(--line);stroke-width:1.5"></circle>
+          <circle cx="200" cy="200" r="104" style="fill:none;stroke:var(--line2);stroke-width:1;stroke-dasharray:2 5"></circle>
+          <path id="evo" d="M200 60 A140 140 0 1 1 200 340 A140 140 0 1 1 200 60" style="fill:none"></path>
+          <g data-near="evo" data-at="0" style="opacity:.35"><circle cx="200" cy="60" r="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:2"></circle><text x="200" y="98" style="font-size:15px;fill:var(--ink);text-anchor:middle">Observe</text></g>
+          <g data-near="evo" data-at="0.25" style="opacity:.35"><circle cx="340" cy="200" r="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:2"></circle><text x="320" y="205" style="font-size:15px;fill:var(--ink);text-anchor:end">Summarize</text></g>
+          <g data-near="evo" data-at="0.5" style="opacity:.35"><circle cx="200" cy="340" r="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:2"></circle><text x="200" y="315" style="font-size:15px;fill:var(--ink);text-anchor:middle">Reconcile</text></g>
+          <g data-near="evo" data-at="0.75" style="opacity:.35"><circle cx="60" cy="200" r="9" style="fill:var(--bg);stroke:var(--accent);stroke-width:2"></circle><text x="80" y="205" style="font-size:15px;fill:var(--ink);text-anchor:start">Learn</text></g>
+          <text x="200" y="196" style="font-size:12px;letter-spacing:2px;fill:var(--ink3);text-anchor:middle">EVERY</text>
+          <text x="200" y="216" style="font-size:12px;letter-spacing:2px;fill:var(--ink3);text-anchor:middle">NIGHT</text>
+          <g data-travel="evo" data-key="evo" data-dur="7000" data-off="0" style="opacity:0"><circle r="16" style="fill:var(--accent);opacity:.18"></circle><circle r="6" style="fill:var(--accent)"></circle></g>
+        </svg>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<section id="demo" data-screen-label="04 Demo" aria-labelledby="demo-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">03 · See how it thinks</p>
+    <h2 id="demo-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em">Explore a sample brain.</h2>
+    <p style="margin:20px 0 0;max-width:36em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">This is Kestrel Freight, a fictional 20-person logistics company. Drag to orbit, scroll or pinch to zoom, and click any node to open its page.</p>
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:20px;overflow:hidden">
+      <div style="position:relative;flex:1 1 520px;min-width:0;height:clamp(380px,62vh,600px);background:var(--bg)">
+        <div ref="{{ demoRef }}" aria-label="Interactive 3D graph of the sample brain" style="position:absolute;inset:0;touch-action:none;cursor:grab"></div>
+        <sc-if value="{{ demoStatic }}" hint-placeholder-val="{{ false }}">
+          <svg viewBox="0 0 600 430" role="img" aria-label="Static graph of the sample brain" style="position:absolute;inset:0;width:100%;height:100%;font-family:var(--f-mono)">
+            <sc-for list="{{ staticEdges }}" as="ed" hint-placeholder-count="0">
+              <line x1="{{ ed.x1 }}" y1="{{ ed.y1 }}" x2="{{ ed.x2 }}" y2="{{ ed.y2 }}" style="stroke:var(--graph-edge);stroke-width:1;opacity:.35"></line>
+            </sc-for>
+            <sc-for list="{{ staticNodes }}" as="nd" hint-placeholder-count="0">
+              <g onClick="{{ nd.onClick }}" style="cursor:pointer">
+                <circle cx="{{ nd.x }}" cy="{{ nd.y }}" r="{{ nd.r }}" style="fill:{{ nd.color }}"></circle>
+                <text x="{{ nd.x }}" y="{{ nd.ty }}" style="font-size:11px;fill:var(--ink2);text-anchor:middle">{{ nd.name }}</text>
+              </g>
+            </sc-for>
+          </svg>
+        </sc-if>
+        <sc-if value="{{ demoLoading }}" hint-placeholder-val="{{ true }}">
+          <div style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink3);pointer-events:none">Loading 3D view…</div>
+        </sc-if>
+        <div style="position:absolute;left:14px;top:14px;display:flex;gap:8px;flex-wrap:wrap;pointer-events:none">
+          <span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;background:var(--bg);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustration · Sample data</span>
+        </div>
+        <p style="position:absolute;left:14px;right:14px;bottom:12px;margin:0;font-family:var(--f-mono);font-size:11px;color:var(--ink3);pointer-events:none">{{ demoHint }}</p>
+      </div>
+      <aside aria-label="Entity page" aria-live="polite" style="flex:1 1 340px;min-width:0;max-height:clamp(380px,62vh,600px);overflow:auto;padding:22px;background:var(--bg2)">
+        <div style="display:flex;align-items:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink3);word-break:break-all"><span style="width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:{{ panel.color }}"></span>{{ panel.path }}</div>
+        <div style="margin-top:16px;font-family:var(--f-mono);font-size:13px;line-height:1.7">
+          <sc-for list="{{ panel.lines }}" as="ln" hint-placeholder-count="8">
+            <div style="min-height:1.7em;white-space:pre-wrap;overflow-wrap:anywhere">
+              <sc-for list="{{ ln.segs }}" as="sg" hint-placeholder-count="1">
+                <sc-if value="{{ sg.isText }}" hint-placeholder-val="{{ true }}"><span style="color:{{ ln.color }};font-weight:{{ ln.weight }}">{{ sg.t }}</span></sc-if>
+                <sc-if value="{{ sg.isLink }}" hint-placeholder-val="{{ false }}"><button type="button" onClick="{{ sg.onClick }}" style="padding:0;border:0;background:none;font:inherit;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;cursor:pointer" style-hover="color:var(--accent)">{{ sg.t }}</button></sc-if>
+                <sc-if value="{{ sg.isCite }}" hint-placeholder-val="{{ false }}"><span style="color:var(--accent)">{{ sg.t }}</span></sc-if>
+              </sc-for>
+            </div>
+          </sc-for>
+        </div>
+        <h3 style="margin:22px 0 10px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.12em;color:var(--ink3)">SOURCES</h3>
+        <div style="display:grid;gap:8px">
+          <sc-for list="{{ panel.sources }}" as="src" hint-placeholder-count="1">
+            <div style="padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--bg)">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--accent)">{{ src.label }}</div>
+              <p style="margin:4px 0 0;font-size:14px;line-height:1.5;color:var(--ink2)">{{ src.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </aside>
+    </div>
+    <div style="margin-top:18px">
+      <p style="margin:0 0 10px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--ink3)">JUMP TO A PAGE</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <sc-for list="{{ entities }}" as="en" hint-placeholder-count="15">
+          <button type="button" onClick="{{ en.onClick }}" aria-pressed="{{ en.pressed }}" style="display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid {{ en.border }};background:var(--bg2);color:var(--ink);font:inherit;font-size:14px;cursor:pointer" style-hover="border-color:var(--ink3)"><span style="width:8px;height:8px;border-radius:50%;background:{{ en.color }}"></span>{{ en.name }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" data-screen-label="05 What it does" aria-labelledby="feat-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">04 · What it does</p>
+    <h2 id="feat-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:14ch">A teammate, not a search box.</h2>
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:var(--line2);border:1px solid var(--line2);border-radius:18px;overflow:hidden">
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">01</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Remembers</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Turns conversations into pages for people, projects, decisions and customers.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">02</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Answers with sources</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Every answer links to the messages it came from, so you can check it in one click.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">03</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Acts in your tools</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Opens the issue, reads the PR, sends the email digest, and hands bigger jobs to a sandboxed agent that returns a pull request.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">04</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Speaks up</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Replies when a question in a channel already has an answer, without waiting to be mentioned.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">05</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Works while you sleep</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Merges duplicates, resolves contradictions and retires stale facts on its own schedule.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">06</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Learns your way</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Notices how each person likes answers, short or detailed, in threads or DMs, and adapts week by week.</p></article>
+      <article style="padding:26px 24px 30px;background:var(--bg)"><span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">07</span><h3 style="margin:14px 0 8px;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Connects to your coding agents</h3><p style="margin:0;color:var(--ink2);line-height:1.55;text-wrap:pretty">Gives Claude Code, Codex, Cursor and other MCP agents the team's memory before they write code. <a href="#agents" style="color:var(--ink)">How it works</a></p></article>
+    </div>
+
+    <div data-play="night" style="margin-top:80px;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,72px);align-items:flex-start">
+      <div style="flex:1 1 300px;min-width:0">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-0.03em;line-height:1.08">One night in the brain.</h3>
+        <p style="margin:14px 0 0;max-width:28em;color:var(--ink2);font-size:17px;line-height:1.6;text-wrap:pretty">While the team is offline it reads what happened, tidies what it knows and hands work to agents. By morning there's a digest waiting.</p>
+        <span style="display:inline-flex;margin-top:18px;padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample data</span>
+      </div>
+      <ol style="flex:1 1 420px;min-width:0;list-style:none;margin:0;padding:0;position:relative">
+        <span aria-hidden="true" style="position:absolute;left:68px;top:14px;bottom:30px;width:1px;background:var(--line)"></span>
+        <span data-a="growY" data-t="4600" data-e="linear" aria-hidden="true" style="position:absolute;left:68px;top:14px;bottom:30px;width:1px;background:var(--accent);box-shadow:0 0 6px var(--accent)"></span>
+        <li style="display:grid;grid-template-columns:56px 24px minmax(0,1fr);padding:8px 0 18px"><span style="font-family:var(--f-mono);font-size:13px;color:var(--ink3);text-align:right;padding-right:10px;padding-top:1px">22:40</span><span data-a="pop" data-d="0" style="justify-self:center;width:11px;height:11px;margin-top:5px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)"></span><div data-a="fadeUp" data-d="100" style="padding-left:12px"><strong style="font-weight:600">Read 214 new messages</strong><p style="margin:2px 0 0;color:var(--ink2);font-size:15px">across 9 channels</p></div></li>
+        <li style="display:grid;grid-template-columns:56px 24px minmax(0,1fr);padding:8px 0 18px"><span style="font-family:var(--f-mono);font-size:13px;color:var(--ink3);text-align:right;padding-right:10px;padding-top:1px">23:15</span><span data-a="pop" data-d="1000" style="justify-self:center;width:11px;height:11px;margin-top:5px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)"></span><div data-a="fadeUp" data-d="1100" style="padding-left:12px"><strong style="font-weight:600">Merged 4 duplicate pages</strong><p style="margin:2px 0 0;color:var(--ink2);font-size:15px">billing.md folded into billing-v2.md, and 3 more</p></div></li>
+        <li style="display:grid;grid-template-columns:56px 24px minmax(0,1fr);padding:8px 0 18px"><span style="font-family:var(--f-mono);font-size:13px;color:var(--ink3);text-align:right;padding-right:10px;padding-top:1px">01:30</span><span data-a="pop" data-d="2000" style="justify-self:center;width:11px;height:11px;margin-top:5px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)"></span><div data-a="fadeUp" data-d="2100" style="padding-left:12px"><strong style="font-weight:600">Resolved 3 contradictions</strong><p style="margin:2px 0 0;color:var(--ink2);font-size:15px">Billing v2 ship date, PG16 window, Bluepeak contact</p></div></li>
+        <li style="display:grid;grid-template-columns:56px 24px minmax(0,1fr);padding:8px 0 18px"><span style="font-family:var(--f-mono);font-size:13px;color:var(--ink3);text-align:right;padding-right:10px;padding-top:1px">03:05</span><span data-a="pop" data-d="3000" style="justify-self:center;width:11px;height:11px;margin-top:5px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)"></span><div data-a="fadeUp" data-d="3100" style="padding-left:12px"><strong style="font-weight:600">An agent opened PR #218</strong><p style="margin:2px 0 0;color:var(--ink2);font-size:15px">"Set routes-api pool size back to 20", waiting for Dev's review</p></div></li>
+        <li style="display:grid;grid-template-columns:56px 24px minmax(0,1fr);padding:8px 0 0"><span style="font-family:var(--f-mono);font-size:13px;color:var(--accent);text-align:right;padding-right:10px;padding-top:1px">07:00</span><span data-a="pop" data-d="4300" style="justify-self:center;width:11px;height:11px;margin-top:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)"></span><div data-a="fadeUp" data-d="4400" style="padding-left:12px"><strong style="font-weight:600">Wrote the morning digest</strong><p style="margin:2px 0 0;color:var(--ink2);font-size:15px">emailed to 12 people, each in the format they prefer</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="agents" data-screen-label="06 Coding agents" aria-labelledby="agents-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">05 · Coding agents</p>
+    <h2 id="agents-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:16ch;text-wrap:balance">Every agent starts with the company's memory.</h2>
+    <p style="margin:20px 0 0;max-width:38em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">Connect Claude Code, Codex, Cursor, OpenCode or any agent that supports MCP. Before an agent writes code, it asks the brain for team conventions, past decisions, who owns what, and what was tried and failed.</p>
+
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:16px">
+      <figure style="flex:1 1 440px;min-width:0;margin:0;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);overflow:hidden">
+        <div role="tablist" aria-label="Agent" style="display:flex;gap:4px;padding:0 10px;border-bottom:1px solid var(--line2);overflow-x:auto;scrollbar-width:none">
+          <sc-for list="{{ agentTabs }}" as="tb" hint-placeholder-count="4">
+            <button type="button" role="tab" aria-selected="{{ tb.selected }}" onClick="{{ tb.onClick }}" style="flex:0 0 auto;min-height:46px;padding:0 12px;border:0;border-bottom:2px solid {{ tb.border }};background:none;color:{{ tb.color }};font:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap" style-hover="color:var(--ink)">{{ tb.label }}</button>
+          </sc-for>
+        </div>
+        <div role="tabpanel" style="padding:20px;font-family:var(--f-mono);font-size:13px;line-height:1.8;min-height:176px">
+          <sc-for list="{{ agentLines }}" as="al" hint-placeholder-count="3">
+            <div style="display:flex;gap:10px;overflow-wrap:anywhere"><span style="color:var(--accent);flex:0 0 auto">{{ al.p }}</span><span style="color:{{ al.color }};min-width:0">{{ al.t }}</span></div>
+          </sc-for>
+        </div>
+        <figcaption style="padding:10px 20px 14px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustrative commands · not live yet</figcaption>
+      </figure>
+      <figure data-play="session" style="flex:1 1 440px;min-width:0;margin:0;border:1px solid var(--line2);border-radius:16px;background:var(--bg2);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:47px;padding:0 18px;border-bottom:1px solid var(--line2);font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span>agent session · kestrel/routes</span><span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-size:11px;letter-spacing:.08em;text-transform:uppercase">Illustration</span></div>
+        <div style="padding:20px;display:grid;gap:14px;font-family:var(--f-mono);font-size:13px;line-height:1.65">
+          <div data-a="fadeUp" data-d="200"><span style="color:var(--ink3)">you&gt; </span><span style="color:var(--ink)">add a migration for driver shift tables</span></div>
+          <div data-a="fadeUp" data-d="900" style="color:var(--ink3)">→ livingbrain.ask("what's our convention for migrations?")</div>
+          <div data-a="fadeUp" data-d="1700" style="padding:12px 14px;border:1px solid var(--accent);border-radius:10px;background:var(--accent-soft)">
+            <div style="color:var(--ink)">Forward-only, one migration per PR, named YYYYMMDD_slug.sql. Never edit a merged migration. Large tables get a backfill job, not an UPDATE. <span style="color:var(--accent)">[1][2]</span></div>
+            <div style="margin-top:8px;font-size:11px;color:var(--ink2)">[1] #eng · Maya Okafor · Jan 30 &#160; [2] brain/decisions/forward-only-migrations.md</div>
+          </div>
+          <div data-a="fadeUp" data-d="2700"><span style="color:var(--accent)">agent&gt; </span><span style="color:var(--ink2)">Following the team convention. Creating migrations/20260314_driver_shifts.sql, with the backfill as a separate job.</span></div>
+        </div>
+      </figure>
+    </div>
+
+    <figure data-play="agents" style="margin:56px 0 0">
+      <div style="position:relative;width:100%;aspect-ratio:1000/560">
+        <canvas ref="{{ agentCanvas }}" aria-hidden="true" style="position:absolute;left:30%;top:8%;width:40%;height:84%;display:block"></canvas>
+        <svg viewBox="0 0 1000 560" role="img" aria-label="Illustration: four coding-agent terminals around the brain. Prompts and decisions flow in, a secret is redacted on the way, and context flows back out." style="position:absolute;inset:0;width:100%;height:100%;font-family:var(--f-mono);overflow:visible">
+          <path id="ag1" d="M300 90 C 400 90, 420 240, 468 262" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+          <path id="ag2" d="M700 90 C 600 90, 580 240, 532 262" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+          <path id="ag3" d="M300 470 C 400 470, 420 320, 468 298" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+          <path id="ag4" d="M700 470 C 600 470, 580 320, 532 298" style="fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:2 6"></path>
+          <g style="fill:none;stroke:var(--accent);stroke-width:1.2;opacity:.35"><path d="M300 104 C 404 104, 424 250, 468 270"></path><path d="M700 104 C 596 104, 576 250, 532 270"></path><path d="M300 456 C 404 456, 424 310, 468 290"></path><path d="M700 456 C 596 456, 576 310, 532 290"></path></g>
+          <g><rect x="30" y="30" width="270" height="120" rx="12" style="fill:var(--bg2);stroke:var(--line)"></rect><text x="50" y="62" style="font-size:14px;fill:var(--ink3)">Claude Code</text><text x="50" y="94" style="font-size:15px;fill:var(--ink)">&gt; chose PG16 because…</text><text x="50" y="124" style="font-size:15px;fill:var(--ink2)">KEY=</text><text data-a="redact" data-d="900" data-t="700" x="90" y="124" style="font-size:15px;fill:var(--ink2);filter:blur(5px);opacity:.7">sk-live-9f2a4c</text><g data-a="pop" data-d="1500"><rect x="196" y="108" width="88" height="22" rx="5" style="fill:var(--bg);stroke:var(--accent)"></rect><text x="240" y="123" style="font-size:12px;fill:var(--accent);text-anchor:middle">redacted</text></g></g>
+          <g><rect x="700" y="30" width="270" height="120" rx="12" style="fill:var(--bg2);stroke:var(--line)"></rect><text x="720" y="62" style="font-size:14px;fill:var(--ink3)">Codex</text><text x="720" y="94" style="font-size:15px;fill:var(--ink)">&gt; eta/tz.rs is fragile</text><text x="720" y="124" style="font-size:15px;fill:var(--accent)">← 4 facts, 2 owners</text></g>
+          <g><rect x="30" y="410" width="270" height="120" rx="12" style="fill:var(--bg2);stroke:var(--line)"></rect><text x="50" y="442" style="font-size:14px;fill:var(--ink3)">Cursor</text><text x="50" y="474" style="font-size:15px;fill:var(--ink)">? who owns billing/</text><text x="50" y="504" style="font-size:15px;fill:var(--accent)">← Lina Haas, since Mar 12</text></g>
+          <g><rect x="700" y="410" width="270" height="120" rx="12" style="fill:var(--bg2);stroke:var(--line)"></rect><text x="720" y="442" style="font-size:14px;fill:var(--ink3)">OpenCode</text><text x="720" y="474" style="font-size:15px;fill:var(--ink)">? what failed before</text><text x="720" y="504" style="font-size:15px;fill:var(--accent)">← offset patch, reverted</text></g>
+          <rect data-travel="ag1" data-dur="2600" data-off="0" x="-6" y="-6" width="12" height="12" rx="3" style="fill:var(--ink2);opacity:0"></rect>
+          <rect data-travel="ag1" data-dur="2600" data-off="0.5" x="-6" y="-6" width="12" height="12" rx="3" style="fill:var(--ink2);opacity:0"></rect>
+          <rect data-travel="ag2" data-dur="2900" data-off="0.2" x="-6" y="-6" width="12" height="12" rx="3" style="fill:var(--ink2);opacity:0"></rect>
+          <rect data-travel="ag3" data-dur="3100" data-off="0.6" x="-6" y="-6" width="12" height="12" rx="3" style="fill:var(--ink2);opacity:0"></rect>
+          <rect data-travel="ag4" data-dur="2700" data-off="0.35" x="-6" y="-6" width="12" height="12" rx="3" style="fill:var(--ink2);opacity:0"></rect>
+          <g data-travel="ag1" data-rev="1" data-dur="3400" data-off="0.3" style="opacity:0"><circle r="11" style="fill:var(--accent);opacity:.2"></circle><circle r="4" style="fill:var(--accent)"></circle></g>
+          <g data-travel="ag2" data-rev="1" data-dur="3200" data-off="0.7" style="opacity:0"><circle r="11" style="fill:var(--accent);opacity:.2"></circle><circle r="4" style="fill:var(--accent)"></circle></g>
+          <g data-travel="ag3" data-rev="1" data-dur="3000" data-off="0.1" style="opacity:0"><circle r="11" style="fill:var(--accent);opacity:.2"></circle><circle r="4" style="fill:var(--accent)"></circle></g>
+          <g data-travel="ag4" data-rev="1" data-dur="3600" data-off="0.85" style="opacity:0"><circle r="11" style="fill:var(--accent);opacity:.2"></circle><circle r="4" style="fill:var(--accent)"></circle></g>
+        </svg>
+      </div>
+      <figcaption style="margin-top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustration · agents ⇄ brain</figcaption>
+    </figure>
+
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+      <div style="padding:24px;border:1px solid var(--line2);border-radius:16px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Agents → brain <span style="font-family:var(--f-mono);font-size:12px;font-weight:400;color:var(--ink3)">opt-in</span></h3>
+        <p style="margin:10px 0 0;color:var(--ink2);line-height:1.6;text-wrap:pretty">The prompts your team runs and the decisions agents make along the way ("we switched to Postgres because…", "this module is fragile") become wiki pages that link to the session they came from. Secrets are redacted before anything is stored.</p>
+      </div>
+      <div style="padding:24px;border:1px solid var(--line2);border-radius:16px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:22px;font-weight:600;letter-spacing:-0.02em">Brain → agents</h3>
+        <p style="margin:10px 0 0;color:var(--ink2);line-height:1.6;text-wrap:pretty">Before an agent writes code, it asks for context: conventions, past decisions, owners, and what was tried and failed. Every agent on the team starts with the company's memory instead of a blank slate.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:72px">
+      <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-0.03em">Team prompt library</h3>
+        <span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample data</span>
+      </div>
+      <p style="margin:12px 0 0;max-width:36em;color:var(--ink2);font-size:17px;line-height:1.6">The team's best prompts are saved, versioned and suggested to everyone. The brain notices which ones work.</p>
+      <div style="margin-top:24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px">
+        <article style="padding:18px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:12px"><h4 style="margin:0;font-size:16px;font-weight:600;line-height:1.35">Review a PR against our conventions</h4><div style="margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span>Lina Haas · v4</span><span style="color:var(--ink)">412 uses</span></div></article>
+        <article style="padding:18px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:12px"><h4 style="margin:0;font-size:16px;font-weight:600;line-height:1.35">Write a migration the Kestrel way</h4><div style="margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span>Maya Okafor · v2</span><span style="color:var(--ink)">268 uses</span></div></article>
+        <article style="padding:18px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:12px"><h4 style="margin:0;font-size:16px;font-weight:600;line-height:1.35">Explain a stack trace using recent incidents</h4><div style="margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span>Dev Patel · v3</span><span style="color:var(--ink)">191 uses</span></div></article>
+        <article style="padding:18px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:12px"><h4 style="margin:0;font-size:16px;font-weight:600;line-height:1.35">Draft a customer reply from this thread</h4><div style="margin-top:auto;display:flex;justify-content:space-between;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span>Sam Ito · v1</span><span style="color:var(--ink)">144 uses</span></div></article>
+      </div>
+    </div>
+
+    <div style="margin-top:72px">
+      <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-0.03em">It learns from every session.</h3>
+      <p style="margin:12px 0 0;max-width:40em;color:var(--ink2);font-size:17px;line-height:1.6;text-wrap:pretty">The learning layer reasons over each person's prompts and agent sessions, not just chat. It learns how each developer works, which prompts lead to merged PRs and which lead to rework, and where agents keep getting stuck. Then it improves the prompt library, fills gaps in the wiki, and briefs each person's agent the way they like.</p>
+      <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:16px">
+        <article data-play="profile" style="flex:1 1 380px;min-width:0;padding:22px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2)">
+          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+            <div style="width:40px;height:40px;border-radius:10px;background:var(--bg3);display:grid;place-items:center;font-weight:700;color:var(--t-person)">MO</div>
+            <div style="flex:1;min-width:0"><div style="font-weight:600">Maya Okafor</div><div style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">profile · one sample month</div></div>
+            <span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample data</span>
+          </div>
+          <div aria-hidden="true" style="margin-top:20px;position:relative;height:4px;border-radius:2px;background:var(--line2)"><div data-a="growX" data-t="5000" data-e="linear" style="position:absolute;inset:0;border-radius:2px;background:var(--accent)"></div></div>
+          <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(4,1fr);margin-top:6px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)"><span>W1</span><span>W2</span><span>W3</span><span style="text-align:right">W4</span></div>
+          <ul style="list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px">
+            <li data-a="fadeUp" data-d="500" style="display:flex;gap:12px;align-items:baseline"><span style="font-family:var(--f-mono);font-size:11px;color:var(--ink3);flex:0 0 22px">W1</span><span>Prefers small PRs, under 300 lines</span></li>
+            <li data-a="fadeUp" data-d="1700" style="display:flex;gap:12px;align-items:baseline"><span style="font-family:var(--f-mono);font-size:11px;color:var(--ink3);flex:0 0 22px">W2</span><span>Writes tests first</span></li>
+            <li data-a="fadeUp" data-d="2900" style="display:flex;gap:12px;align-items:baseline"><span style="font-family:var(--f-mono);font-size:11px;color:var(--ink3);flex:0 0 22px">W3</span><span>Gets stuck on auth middleware <span style="color:var(--accent);font-family:var(--f-mono);font-size:12px">→ auth notes now in her agent's brief</span></span></li>
+            <li data-a="fadeUp" data-d="4100" style="display:flex;gap:12px;align-items:baseline"><span style="font-family:var(--f-mono);font-size:11px;color:var(--ink3);flex:0 0 22px">W4</span><span>Wants answers as diffs, not prose</span></li>
+          </ul>
+        </article>
+        <article data-play="leader" data-row="56" style="flex:1 1 380px;min-width:0;padding:22px;border:1px solid var(--line2);border-radius:16px;background:var(--bg2)">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><h4 style="margin:0;font-size:16px;font-weight:600">Prompts ranked by merged PRs</h4><span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample data</span></div>
+          <ol style="list-style:none;margin:18px 0 0;padding:0;position:relative;height:224px">
+            <li data-lb="1" data-from="4" data-to="38" data-final="0" style="position:absolute;left:0;right:0;top:0;height:48px;display:flex;align-items:center;gap:12px;padding:0 14px;border:1px solid var(--accent);border-radius:10px;background:var(--bg);transition:transform .45s cubic-bezier(.2,.7,.2,1)"><span style="width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)"></span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Review a PR against our conventions</span><span data-lbn="1" style="font-family:var(--f-mono);font-size:14px;color:var(--ink)">38</span></li>
+            <li data-lb="1" data-from="12" data-to="31" data-final="1" style="position:absolute;left:0;right:0;top:56px;height:48px;display:flex;align-items:center;gap:12px;padding:0 14px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);transition:transform .45s cubic-bezier(.2,.7,.2,1)"><span style="width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--line)"></span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Write a migration the Kestrel way</span><span data-lbn="1" style="font-family:var(--f-mono);font-size:14px;color:var(--ink)">31</span></li>
+            <li data-lb="1" data-from="9" data-to="22" data-final="2" style="position:absolute;left:0;right:0;top:112px;height:48px;display:flex;align-items:center;gap:12px;padding:0 14px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);transition:transform .45s cubic-bezier(.2,.7,.2,1)"><span style="width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--line)"></span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Fix a flaky test using incident history</span><span data-lbn="1" style="font-family:var(--f-mono);font-size:14px;color:var(--ink)">22</span></li>
+            <li data-lb="1" data-from="14" data-to="6" data-final="3" style="position:absolute;left:0;right:0;top:168px;height:48px;display:flex;align-items:center;gap:12px;padding:0 14px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);transition:transform .45s cubic-bezier(.2,.7,.2,1)"><span style="width:8px;height:8px;flex:0 0 8px;border-radius:50%;background:var(--line)"></span><span style="flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Refactor this file <span style="font-family:var(--f-mono);font-size:12px;color:var(--ink3)">· often reworked</span></span><span data-lbn="1" style="font-family:var(--f-mono);font-size:14px;color:var(--ink)">6</span></li>
+          </ol>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="colonizer" data-screen-label="07 Colonizer" aria-labelledby="col-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">06 · Works with Colonizer</p>
+    <h2 id="col-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:16ch">From Slack to pull request.</h2>
+    <p style="margin:20px 0 0;max-width:38em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">When a job is bigger than an answer, the brain launches a colony on <a href="https://colonizer.dev" style="color:var(--ink)">Colonizer</a>, a sister Factory Zero venture: an isolated microVM with a coding agent inside that comes back with a pull request.</p>
+
+    <figure data-play="colony" style="margin:44px 0 0">
+      <div aria-hidden="true" style="position:relative;height:2px;border-radius:1px;background:var(--line2);margin-bottom:18px"><div data-a="growX" data-t="3600" data-e="linear" style="position:absolute;inset:0;background:var(--accent);box-shadow:0 0 8px var(--accent)"></div></div>
+      <ol style="list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px">
+        <li data-a="fadeUp" data-d="0" style="padding:16px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)">01 · ASK</span>
+          <div style="font-size:14px;line-height:1.5"><strong style="font-weight:600">Maya Okafor</strong> <span style="font-family:var(--f-mono);font-size:11px;color:var(--ink3)">#routes</span><p style="margin:4px 0 0;font-family:var(--f-mono);font-size:13px;color:var(--ink)">@livingbrain fix #142</p></div>
+          <p style="margin:0;font-size:13px;color:var(--ink3)">#142 · ETA off by an hour after DST</p>
+        </li>
+        <li data-a="fadeUp" data-d="700" style="padding:16px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)">02 · BRIEF</span>
+          <ul style="list-style:none;margin:0;padding:0;display:grid;gap:4px;font-family:var(--f-mono);font-size:12px;line-height:1.5;color:var(--ink2)">
+            <li>repo: kestrel/routes</li><li>owner: Maya Okafor</li><li>tz logic: src/eta/tz.rs</li><li style="color:var(--ink)">tried: offset patch, reverted</li>
+          </ul>
+        </li>
+        <li data-a="fadeUp" data-d="1400" style="padding:16px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)">03 · COLONY c-7f3</span>
+          <div style="position:relative;display:flex;align-items:center;gap:10px;height:46px;padding:0 14px;border-radius:999px;border:1.5px solid var(--accent);background:var(--accent-soft);box-shadow:0 0 22px var(--accent-soft)">
+            <span style="width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)"></span>
+            <span style="font-family:var(--f-mono);font-size:11px;color:var(--ink2)">microVM</span>
+          </div>
+          <p aria-live="off" style="margin:0;font-family:var(--f-mono);font-size:12px;color:var(--ink);min-height:1.5em"><span style="color:var(--ink3)">$ </span><span data-ticker="1">opening pull request #219</span></p>
+        </li>
+        <li data-a="fadeUp" data-d="2100" style="padding:16px;border:1px solid var(--accent);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)">04 · PULL REQUEST</span>
+          <strong style="font-weight:600;line-height:1.35">#219 Fix ETA drift across DST</strong>
+          <span style="font-family:var(--f-mono);font-size:12px;color:var(--ink2)">+42 −9 · 213 tests pass</span>
+          <span style="font-size:13px;color:var(--ink3)">Posted back in the Slack thread</span>
+        </li>
+        <li data-a="fadeUp" data-d="2800" style="padding:16px;border:1px solid var(--line2);border-radius:14px;background:var(--bg2);display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;color:var(--ink3)">05 · LEARNINGS</span>
+          <ul style="list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:13px;line-height:1.45;color:var(--ink2)">
+            <li data-a="fadeUp" data-d="3100" style="display:flex;gap:8px"><span style="color:var(--accent);font-family:var(--f-mono)">+</span>DST handling notes</li>
+            <li data-a="fadeUp" data-d="3350" style="display:flex;gap:8px"><span style="color:var(--accent);font-family:var(--f-mono)">+</span>tz.rs owner: Maya</li>
+            <li data-a="fadeUp" data-d="3600" style="display:flex;gap:8px"><span style="color:var(--accent);font-family:var(--f-mono)">+</span>Dead end: offset patch</li>
+          </ul>
+        </li>
+      </ol>
+      <figcaption style="margin-top:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample flow · works with <a href="https://colonizer.dev" style="color:var(--ink2)">colonizer.dev</a></figcaption>
+    </figure>
+
+    <div style="margin-top:56px;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);align-items:center">
+      <ul style="flex:1 1 320px;min-width:0;list-style:none;margin:0;padding:0;display:grid;gap:22px">
+        <li><h3 style="margin:0;font-family:var(--f-display);font-size:21px;font-weight:600;letter-spacing:-0.02em">Boots already briefed</h3><p style="margin:6px 0 0;color:var(--ink2);line-height:1.6">Each colony starts with the brain's context for that repo and task.</p></li>
+        <li><h3 style="margin:0;font-family:var(--f-display);font-size:21px;font-weight:600;letter-spacing:-0.02em">Reports back to the wiki</h3><p style="margin:6px 0 0;color:var(--ink2);line-height:1.6">When it finishes, its decisions, dead ends and the PR flow back into the brain.</p></li>
+        <li><h3 style="margin:0;font-family:var(--f-display);font-size:21px;font-weight:600;letter-spacing:-0.02em">Followed from the thread</h3><p style="margin:6px 0 0;color:var(--ink2);line-height:1.6">Start a colony from Slack and watch it work live in the same thread.</p></li>
+      </ul>
+      <figure style="flex:1 1 380px;min-width:0;max-width:520px;margin:0 auto;width:100%">
+        <div style="position:relative;aspect-ratio:1/1;width:100%">
+          <canvas ref="{{ colonyCanvas }}" role="img" aria-label="Illustration: colonies orbit the brain as small capsules tied to the nodes they work on. When one finishes it docks and new nodes appear." style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+        </div>
+        <figcaption style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px 16px;font-family:var(--f-mono);font-size:11px;color:var(--ink3)"><span style="display:flex;align-items:center;gap:6px"><span style="width:14px;height:6px;border-radius:3px;background:var(--accent)"></span>active colony</span><span>Illustration · colonies in the graph</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="privacy" data-screen-label="08 Private by design" data-play="rings" aria-labelledby="priv-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">07 · Private by design</p>
+    <h2 id="priv-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:16ch;text-wrap:balance">It only knows what you're allowed to know.</h2>
+    <p style="margin:20px 0 0;max-width:36em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">Living Brain reads with the asker's own access. Where you ask decides which memory it can use.</p>
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:clamp(28px,5vw,64px);align-items:center">
+      <figure style="flex:1 1 300px;min-width:0;max-width:400px;margin:0 auto;width:100%">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Three nested rings: the shared brain inside private channel memory inside your personal DM memory. The rings light up for the place the question is asked." style="display:block;width:100%;height:auto;font-family:var(--f-mono)">
+          <circle cx="160" cy="160" r="150" style="fill:var(--accent-soft);opacity:{{ r3op }};transition:opacity .6s"></circle>
+          <circle cx="160" cy="160" r="150" style="fill:none;stroke:var(--line);stroke-width:1"></circle>
+          <circle cx="160" cy="160" r="150" style="fill:none;stroke:var(--accent);stroke-width:2;opacity:{{ r3op }};transition:opacity .6s"></circle>
+          <circle cx="160" cy="160" r="104" style="fill:var(--bg)"></circle>
+          <circle cx="160" cy="160" r="104" style="fill:var(--accent-soft);opacity:{{ r2op }};transition:opacity .6s"></circle>
+          <circle cx="160" cy="160" r="104" style="fill:none;stroke:var(--line);stroke-width:1"></circle>
+          <circle cx="160" cy="160" r="104" style="fill:none;stroke:var(--accent);stroke-width:2;opacity:{{ r2op }};transition:opacity .6s"></circle>
+          <circle cx="160" cy="160" r="58" style="fill:var(--bg)"></circle>
+          <circle cx="160" cy="160" r="58" style="fill:var(--accent-soft)"></circle>
+          <circle cx="160" cy="160" r="58" style="fill:none;stroke:var(--accent);stroke-width:2"></circle>
+          <text x="160" y="36" style="font-size:12px;fill:var(--ink2);text-anchor:middle">your DMs</text>
+          <text x="160" y="80" style="font-size:12px;fill:var(--ink2);text-anchor:middle">private channel</text>
+          <text x="160" y="157" style="font-size:12px;fill:var(--ink);text-anchor:middle">shared</text>
+          <text x="160" y="173" style="font-size:12px;fill:var(--ink);text-anchor:middle">brain</text>
+        </svg>
+        <div role="group" aria-label="Where the question is asked" style="margin-top:18px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px">
+          <sc-for list="{{ scopes }}" as="sp" hint-placeholder-count="3">
+            <button type="button" aria-pressed="{{ sp.pressed }}" onClick="{{ sp.onClick }}" style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:48px;padding:6px 12px;border-radius:10px;border:1px solid {{ sp.border }};background:{{ sp.bg }};color:var(--ink);font:inherit;cursor:pointer;transition:border-color .3s,background .3s"><span style="font-family:var(--f-mono);font-size:13px">{{ sp.label }}</span><span style="font-size:11px;color:var(--ink3)">{{ sp.sub }}</span></button>
+          </sc-for>
+        </div>
+      </figure>
+      <div style="flex:1 1 440px;min-width:0;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:15px;min-width:420px">
+          <caption style="text-align:left;padding-bottom:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--ink3)">WHAT IT CAN USE, BY WHERE YOU ASK</caption>
+          <thead>
+            <tr style="border-bottom:1px solid var(--line)">
+              <th scope="col" style="text-align:left;padding:10px 12px;font-weight:600;color:var(--ink2);font-size:13px">Asked in</th>
+              <th scope="col" style="text-align:left;padding:10px 12px;font-weight:600;color:var(--ink2);font-size:13px">Shared brain</th>
+              <th scope="col" style="text-align:left;padding:10px 12px;font-weight:600;color:var(--ink2);font-size:13px">Private channel memory</th>
+              <th scope="col" style="text-align:left;padding:10px 12px;font-weight:600;color:var(--ink2);font-size:13px">Personal memory</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--line2);background:{{ row0 }};transition:background .5s">
+              <th scope="row" style="text-align:left;padding:16px 12px;font-weight:600">Public channel</th>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>Yes</span></td>
+              <td style="padding:16px 12px;color:var(--ink3)">No</td>
+              <td style="padding:16px 12px;color:var(--ink3)">No</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line2);background:{{ row1 }};transition:background .5s">
+              <th scope="row" style="text-align:left;padding:16px 12px;font-weight:600">Private channel</th>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>Yes</span></td>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>That channel</span></td>
+              <td style="padding:16px 12px;color:var(--ink3)">No</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--line2);background:{{ row2 }};transition:background .5s">
+              <th scope="row" style="text-align:left;padding:16px 12px;font-weight:600">Your DMs</th>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>Yes</span></td>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>Channels you're in</span></td>
+              <td style="padding:16px 12px"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>Yes</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin:16px 0 0;color:var(--ink2);font-size:15px;line-height:1.6">Always limited to what the person asking can already see in Slack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="own" data-screen-label="09 You own it" aria-labelledby="own-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">08 · You own it</p>
+    <h2 id="own-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:16ch">Your brain is a folder of Markdown.</h2>
+    <p style="margin:20px 0 0;max-width:36em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">Read it, edit it, version it, move it. Your knowledge isn't locked in a black-box vector store.</p>
+    <div style="margin-top:44px;display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+      <figure style="flex:1 1 440px;min-width:0;margin:0;border:1px solid var(--line2);border-radius:18px;background:var(--bg2);overflow:hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line2);font-family:var(--f-mono);font-size:12px;color:var(--ink3)"><span style="overflow-wrap:anywhere">brain/projects/billing-v2.md</span><span>Markdown</span></div>
+        <div style="padding:20px;font-family:var(--f-mono);font-size:13px;line-height:1.75;color:var(--ink2);overflow-wrap:anywhere">
+          <div style="color:var(--ink3)">---</div>
+          <div style="color:var(--ink3)">type: project</div>
+          <div style="color:var(--ink3)">owner: [[Lina Haas]]</div>
+          <div style="color:var(--ink3)">ships: 2026-04-30</div>
+          <div style="color:var(--ink3)">updated: 2026-03-13 by living-brain</div>
+          <div style="color:var(--ink3)">---</div>
+          <div style="color:var(--ink);font-weight:600"># Billing v2</div>
+          <div>Usage-based invoices for fleet customers.</div>
+          <div>Owned by <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Lina Haas]]</span> since Mar 12. <span style="color:var(--accent)">[^1]</span></div>
+          <div style="min-height:1.75em"></div>
+          <div style="color:var(--ink);font-weight:600">## Waiting on it</div>
+          <div>- <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Alder &amp; Finch]]</span></div>
+          <div>- <span style="color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent)">[[Northwind Grocers]]</span></div>
+          <div style="min-height:1.75em"></div>
+          <div style="color:var(--ink3)">[^1]: #product · Tomás Reyes · 2026-03-12 11:20</div>
+        </div>
+      </figure>
+      <figure style="flex:1 1 380px;min-width:0;margin:0;border:1px solid var(--line2);border-radius:18px;display:flex;flex-direction:column">
+        <div style="position:relative;flex:1;min-height:340px">
+          <canvas ref="{{ ownCanvas }}" role="img" aria-label="Illustration: the same wiki as a graph, growing denser over thirty days." style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+        </div>
+        <figcaption style="padding:16px 20px 20px;border-top:1px solid var(--line2)"><p style="margin:0;font-family:var(--f-display);font-size:clamp(22px,2.6vw,28px);font-weight:600;letter-spacing:-0.02em;line-height:1.15">Export anytime. Opens in Obsidian.</p></figcaption>
+      </figure>
+    </div>
+
+    <div data-play="growth" style="margin-top:56px;padding:clamp(20px,4vw,32px);border:1px solid var(--line2);border-radius:18px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(24px,3vw,32px);font-weight:600;letter-spacing:-0.03em">Thirty days of a 20-person team</h3>
+        <span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Sample data</span>
+      </div>
+      <dl style="margin:24px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:16px">
+        <div><dt style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2)"><span style="width:14px;height:2px;background:var(--ink)"></span>Pages written</dt><dd data-count="1" data-to="412" data-dur="4200" data-d="300" style="margin:4px 0 0;font-family:var(--f-display);font-size:clamp(36px,5vw,52px);font-weight:600;letter-spacing:-0.03em">412</dd></div>
+        <div><dt style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2)"><span style="width:14px;height:2px;background:var(--accent)"></span>Links formed</dt><dd data-count="1" data-to="2960" data-dur="4200" data-d="300" style="margin:4px 0 0;font-family:var(--f-display);font-size:clamp(36px,5vw,52px);font-weight:600;letter-spacing:-0.03em;color:var(--accent)">2,960</dd></div>
+        <div><dt style="display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink2)"><span style="width:14px;height:0;border-top:2px dashed var(--t-decision)"></span>Facts refreshed</dt><dd data-count="1" data-to="738" data-dur="4200" data-d="300" style="margin:4px 0 0;font-family:var(--f-display);font-size:clamp(36px,5vw,52px);font-weight:600;letter-spacing:-0.03em">738</dd></div>
+      </dl>
+      <div data-a="reveal" data-d="300" data-t="4200" data-e="linear" style="margin-top:20px">
+        <svg viewBox="0 0 600 240" role="img" aria-label="Sample chart: pages, links and refreshed facts all climb over 30 days, links fastest." style="display:block;width:100%;height:auto;font-family:var(--f-mono)">
+          <g style="stroke:var(--line2);stroke-width:1"><line x1="20" y1="36" x2="580" y2="36"></line><line x1="20" y1="94" x2="580" y2="94"></line><line x1="20" y1="153" x2="580" y2="153"></line><line x1="20" y1="212" x2="580" y2="212"></line></g>
+          <path d="{{ growth.linksArea }}" style="fill:var(--accent-soft)"></path>
+          <path d="{{ growth.links }}" style="fill:none;stroke:var(--accent);stroke-width:2"></path>
+          <path d="{{ growth.pages }}" style="fill:none;stroke:var(--ink);stroke-width:1.5"></path>
+          <path d="{{ growth.refreshed }}" style="fill:none;stroke:var(--t-decision);stroke-width:1.5;stroke-dasharray:4 4"></path>
+          <text x="20" y="232" style="font-size:11px;fill:var(--ink3)">Day 1</text>
+          <text x="300" y="232" style="font-size:11px;fill:var(--ink3);text-anchor:middle">Day 15</text>
+          <text x="580" y="232" style="font-size:11px;fill:var(--ink3);text-anchor:end">Day 30</text>
+        </svg>
+      </div>
+      <p style="margin:10px 0 0;font-size:13px;color:var(--ink3)">Each line is scaled to its own total. The graph above fills in as the chart plays.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" data-screen-label="10 Pricing" aria-labelledby="price-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:0 0 18px"><p style="margin:0;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">09 · Pricing</p><span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Planned pricing</span></div>
+    <h2 id="price-title" style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em;max-width:16ch">Priced per workspace, not per seat.</h2>
+    <p style="margin:20px 0 0;max-width:36em;font-size:clamp(17px,1.6vw,19px);line-height:1.6;color:var(--ink2);text-wrap:pretty">Living Brain is built in Rust on Cloudflare's edge, so it's fast and very cheap to run. The price reflects that.</p>
+    <div style="margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:16px">
+      <article style="padding:28px 26px;border-radius:18px;border:1px solid var(--line2);background:var(--bg2);display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:22px;font-weight:600">Free</h3>
+        <p style="margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px"><span style="font-family:var(--f-display);font-size:56px;font-weight:600;letter-spacing:-0.04em;line-height:1">$0</span><span style="color:var(--ink3);font-size:14px">per workspace</span></p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ink2)"><li>Up to 5 people</li></ul>
+      </article>
+      <article style="padding:28px 26px;border-radius:18px;border:1px solid var(--line2);background:var(--bg2);display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:22px;font-weight:600">Bring your own model</h3>
+        <p style="margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px"><span style="font-family:var(--f-display);font-size:56px;font-weight:600;letter-spacing:-0.04em;line-height:1">$5</span><span style="color:var(--ink3);font-size:14px">/mo per workspace</span></p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ink2)"><li>Unlimited people</li><li>Anthropic, OpenAI, OpenRouter or any OpenAI-compatible endpoint, including self-hosted</li></ul>
+      </article>
+      <article style="padding:28px 26px;border-radius:18px;border:1px solid var(--accent);background:var(--bg2);display:flex;flex-direction:column;gap:16px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:22px;font-weight:600">Crew</h3>
+        <p style="margin:0;display:flex;align-items:baseline;flex-wrap:wrap;gap:6px"><span style="font-family:var(--f-display);font-size:56px;font-weight:600;letter-spacing:-0.04em;line-height:1">$9</span><span style="color:var(--ink3);font-size:14px">/mo per workspace</span></p>
+        <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;color:var(--ink2)"><li>Model included</li><li>Up to 25 people</li></ul>
+      </article>
+    </div>
+    <p style="margin:16px 0 0;font-size:14px;color:var(--ink3)">Every plan: Markdown export, cited answers, and access that follows Slack permissions.</p>
+
+    <figure data-play="cost" style="margin:56px 0 0;padding:clamp(20px,4vw,36px);border:1px solid var(--line2);border-radius:18px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:12px">
+        <h3 style="margin:0;font-family:var(--f-display);font-size:clamp(22px,2.8vw,30px);font-weight:600;letter-spacing:-0.03em">20 people, one month</h3>
+        <span style="padding:3px 9px;border:1px dashed var(--line);border-radius:999px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)">Illustrative comparison</span>
+      </div>
+      <div style="margin-top:26px;display:grid;gap:22px">
+        <div>
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink2);margin-bottom:8px"><span>Per-user pricing at $45 × 20 people</span><span data-count="1" data-to="900" data-pre="$" data-dur="2800" style="font-family:var(--f-mono);color:var(--ink)">$900</span></div>
+          <div style="height:14px;border-radius:7px;background:var(--bg3);overflow:hidden"><div data-a="growX" data-t="2800" data-e="cubic-bezier(.3,.1,.2,1)" style="height:100%;width:100%;border-radius:7px;background:var(--ink3)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink2);margin-bottom:8px"><span>Per-user pricing at $10 × 20 people</span><span data-count="1" data-to="200" data-pre="$" data-dur="1900" style="font-family:var(--f-mono);color:var(--ink)">$200</span></div>
+          <div style="height:14px;border-radius:7px;background:var(--bg3);overflow:hidden"><div data-a="growX" data-t="1900" data-e="cubic-bezier(.3,.1,.2,1)" style="height:100%;width:22.2%;border-radius:7px;background:var(--ink3)"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink);margin-bottom:8px"><span style="font-weight:600">Living Brain Crew, one flat price</span><span data-count="1" data-to="9" data-pre="$" data-dur="500" style="font-family:var(--f-mono);color:var(--accent)">$9</span></div>
+          <div style="height:14px;border-radius:7px;background:var(--bg3);overflow:hidden"><div data-a="growX" data-t="500" style="height:100%;width:1%;min-width:8px;border-radius:7px;background:var(--accent);box-shadow:0 0 10px var(--accent)"></div></div>
+        </div>
+      </div>
+      <p style="margin:28px 0 0;font-family:var(--f-display);font-size:clamp(22px,3vw,32px);font-weight:600;letter-spacing:-0.025em;line-height:1.15;text-wrap:balance">Others charge $10–45 per user. We charge per team.</p>
+    </figure>
+  </div>
+</section>
+
+<section id="faq" data-screen-label="11 FAQ" aria-labelledby="faq-title" style="border-top:1px solid var(--line2)">
+  <div style="max-width:880px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px">
+    <p style="margin:0 0 18px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)">10 · FAQ</p>
+    <h2 id="faq-title" style="margin:0 0 36px;font-family:var(--f-display);font-weight:600;font-size:clamp(34px,5vw,58px);line-height:1.02;letter-spacing:-0.035em">Questions</h2>
+    <div style="border-top:1px solid var(--line2)">
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">Is my data used for training?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own model, requests go to your provider under your account's terms.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">Can I self-host?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">You can export the whole brain as Markdown at any time and point it at a self-hosted model through any OpenAI-compatible endpoint. A fully self-hosted runtime is something we're exploring. Tell us on the waitlist if you need it.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">Which models?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">Crew includes our default model. On Bring your own model, connect Anthropic, OpenAI, OpenRouter or any OpenAI-compatible endpoint, including self-hosted ones.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">What does "living" mean?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">How is it different from Slack AI or Glean?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">Which coding agents can I connect?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol.</p></details>
+      <details style="border-bottom:1px solid var(--line2)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 2px;cursor:pointer;font-family:var(--f-display);font-size:clamp(19px,2.4vw,23px);font-weight:500;letter-spacing:-0.01em"><h3 style="margin:0;font:inherit">Do you store my agent prompts and code?</h3><span aria-hidden="true" style="font-family:var(--f-mono);color:var(--ink3)">+</span></summary><p style="margin:0 2px 24px;max-width:44em;color:var(--ink2);font-size:17px;line-height:1.6">Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it.</p></details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="waitlist" data-screen-label="12 Footer" style="border-top:1px solid var(--line2)">
+  <div style="max-width:1180px;margin:0 auto;padding:clamp(72px,10vw,128px) 20px 40px">
+    <h2 style="margin:0;font-family:var(--f-display);font-weight:600;font-size:clamp(38px,6.4vw,80px);line-height:.98;letter-spacing:-0.045em;max-width:13ch;text-wrap:balance">A <span style="color:var(--accent)">living</span> brain for your crew.</h2>
+    <p style="margin:20px 0 0;max-width:30em;font-size:18px;line-height:1.6;color:var(--ink2)">Join the waitlist. We'll write once, when there's something to try.</p>
+    <sc-if value="{{ notJoined }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onJoin }}" aria-label="Join the waitlist" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;max-width:520px">
+        <label for="email-foot" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Work email</label>
+        <input id="email-foot" name="email" type="email" required="{{ true }}" placeholder="you@company.com" style="flex:1 1 220px;min-width:0;height:50px;padding:0 16px;border-radius:10px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);font:inherit;font-size:16px">
+        <button type="submit" style="flex:0 0 auto;height:50px;padding:0 20px;border:0;border-radius:10px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:650;font-size:16px;cursor:pointer" style-hover="filter:brightness(1.08)">Join the waitlist</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ joined }}" hint-placeholder-val="{{ false }}">
+      <p role="status" style="margin:28px 0 0;padding:14px 16px;border:1px solid var(--accent);border-radius:10px;max-width:520px">You're on the list. We'll write once, when there's something to try.</p>
+    </sc-if>
+    <div style="margin-top:96px;padding-top:24px;border-top:1px solid var(--line2);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px 28px;font-size:14px;color:var(--ink3)">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span style="font-family:var(--f-display);font-weight:650;font-size:17px;color:var(--ink);letter-spacing:-0.02em">livingbrain<span style="font-family:var(--f-mono);font-weight:400;font-size:12px;color:var(--ink3)">.wiki</span></span>
+        <span style="font-family:var(--f-mono);font-size:11px;letter-spacing:.1em">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav aria-label="Footer" style="display:flex;flex-wrap:wrap;gap:8px 22px">
+        <a href="https://factory0.ventures" style="color:var(--ink2)">a Factory Zero venture</a>
+        <a href="https://colonizer.dev" style="color:var(--ink2)">Colonizer</a>
+        <a href="#" style="color:var(--ink2)">GitHub (soon)</a>
+        <a href="/llms.txt" style="color:var(--ink2)">llms.txt</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tagline&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;remembered&quot;,&quot;writes&quot;,&quot;crew&quot;],&quot;default&quot;:&quot;remembered&quot;,&quot;tsType&quot;:&quot;'remembered'|'writes'|'crew'&quot;,&quot;section&quot;:&quot;Copy&quot;},&quot;accent&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;mint&quot;,&quot;cyan&quot;,&quot;ember&quot;],&quot;default&quot;:&quot;mint&quot;,&quot;tsType&quot;:&quot;'mint'|'cyan'|'ember'&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  static DATA = (() => {
+    const T = {
+      person: { folder: 'people', color: 'var(--t-person)', label: 'Person' },
+      project: { folder: 'projects', color: 'var(--t-project)', label: 'Project' },
+      decision: { folder: 'decisions', color: 'var(--t-decision)', label: 'Decision' },
+      customer: { folder: 'customers', color: 'var(--t-customer)', label: 'Customer' }
+    };
+    const S = {
+      pg: ['#eng', 'Maya Okafor', 'Feb 3 · 14:12', 'Dev and I are pairing on the PG16 cutover. I will own the runbook.'],
+      solver: ['#routes', 'Maya Okafor', 'Mar 2 · 10:05', 'Solver rewrite is the Q2 goal. Benchmarks on Thursday.'],
+      friday: ['#eng', 'Dev Patel', 'Jan 19 · 17:40', 'Proposal: no prod deploys after Thursday 16:00. Weekends are for sleeping.'],
+      rollback: ['#eng', 'Dev Patel', 'Mar 14 · 09:51', 'Rolling back #412. The 502s on /api/routes come from the new pool config.'],
+      owner: ['#product', 'Tomás Reyes', 'Mar 12 · 11:20', 'Lina is taking Billing v2 from here. Dev goes back to infra full time.'],
+      v1: ['#leadership', 'Tomás Reyes', 'Feb 21 · 09:02', 'Decision: the v1 API goes away June 30. Every customer gets 90 days notice.'],
+      support: ['#support', 'Sam Ito', 'Mar 1 · 08:30', 'Northwind and Alder are my two loudest accounts this quarter. Loop me in on anything routes.'],
+      ship: ['#billing', 'Lina Haas', 'Mar 13 · 15:45', 'New date for Billing v2 is April 30. Tax rules took longer than planned.'],
+      pg16: ['#eng', 'Maya Okafor', 'Jan 28 · 12:00', 'We are going to PG16. The logical replication fixes alone are worth it.'],
+      mobile: ['#mobile', 'Kofi Mensah', 'Feb 25 · 16:10', 'Driver app still calls three v1 endpoints. Migrating them this sprint.'],
+      bluepeak: ['#sales', 'Tomás Reyes', 'Feb 22 · 10:15', 'Bluepeak agreed to move to v2 by May. I will check in monthly.']
+    };
+    const raw = [
+      ['maya', 'person', 'Maya Okafor', ['---', 'type: person', 'role: Engineering lead, Routes', 'updated: 2026-03-14', '---', '# Maya Okafor', 'Leads the [[Route Optimizer]] team and co-owns the [[Postgres 16 migration]] with [[Dev Patel]]. [^1]', '', '## Working on', '- Solver rewrite for [[Route Optimizer]], target end of Q2 [^2]', '- Reviewing offline sync in the [[Driver app]]', '', '## How she likes answers', '- Short, with links to PRs. Threads over DMs.'], ['pg', 'solver']],
+      ['dev', 'person', 'Dev Patel', ['---', 'type: person', 'role: Site reliability, on-call lead', 'updated: 2026-03-14', '---', '# Dev Patel', 'Runs on-call and the deploy pipeline. Proposed [[No deploys on Fridays]]. [^1]', '', '## Recent', '- Rolled back deploy #412 after 502s on routes-api, Mar 14 [^2]', '- Pairing with [[Maya Okafor]] on the [[Postgres 16 migration]]', '', '## How he likes answers', '- Commands and numbers first, context after.'], ['friday', 'rollback']],
+      ['lina', 'person', 'Lina Haas', ['---', 'type: person', 'role: Product manager, Billing', 'updated: 2026-03-13', '---', '# Lina Haas', 'Owns [[Billing v2]] since Mar 12, taking over from [[Dev Patel]]. [^1]', '', '## Accounts', '- Main contact for [[Alder & Finch]] on invoicing', '- Runs the comms plan for [[Sunset v1 API]]', '', '## How she likes answers', '- Full context, bullet points, a clear next step.'], ['owner']],
+      ['tomas', 'person', 'Tomás Reyes', ['---', 'type: person', 'role: Co-founder, CEO', 'updated: 2026-03-12', '---', '# Tomás Reyes', 'Co-founder. Made the call on [[Sunset v1 API]]. [^1]', '', '## Relationships', '- Exec sponsor for [[Bluepeak Logistics]]', '- Weekly sync with [[Lina Haas]] on [[Billing v2]]', '', '## How he likes answers', '- One paragraph. Numbers over adjectives.'], ['v1']],
+      ['sam', 'person', 'Sam Ito', ['---', 'type: person', 'role: Support lead', 'updated: 2026-03-14', '---', '# Sam Ito', 'Leads support. First to hear when [[Northwind Grocers]] or [[Alder & Finch]] see problems. [^1]', '', '## Recent', '- Asked about prod status during the routes-api 502s, Mar 14', '', '## How Sam likes answers', '- Plain language he can paste to a customer.'], ['support']],
+      ['billing', 'project', 'Billing v2', ['---', 'type: project', 'status: in progress', 'owner: Lina Haas', 'ships: 2026-04-30', '---', '# Billing v2', 'Usage-based invoices for fleet customers. Owned by [[Lina Haas]] since Mar 12. [^1]', 'Ships Apr 30, moved from Mar 31. [^2]', '', '## Customers waiting', '- [[Alder & Finch]]', '- [[Northwind Grocers]]', '', '## Retired facts', '- Owner: Dev Patel (until Mar 12)'], ['owner', 'ship']],
+      ['routes', 'project', 'Route Optimizer', ['---', 'type: project', 'status: in progress', 'owner: Maya Okafor', '---', '# Route Optimizer', 'Plans daily routes for [[Bluepeak Logistics]] and [[Northwind Grocers]]. Led by [[Maya Okafor]]. [^1]', '', '## Incidents', '- Mar 14: 502s on routes-api from 09:38 to 09:52 after deploy #412. Rolled back by [[Dev Patel]]. [^2]', '', '## Rules', '- Follows [[No deploys on Fridays]]'], ['solver', 'rollback']],
+      ['pg', 'project', 'Postgres 16 migration', ['---', 'type: project', 'status: planned', 'owner: Maya Okafor, Dev Patel', '---', '# Postgres 16 migration', 'Moves the primary database to Postgres 16. Follows [[Move to Postgres 16]]. [^1]', '', '## Plan', '- Runbook by [[Maya Okafor]], cutover by [[Dev Patel]]', '- Target window: Apr 8, 02:00 UTC'], ['pg']],
+      ['mobile', 'project', 'Driver app', ['---', 'type: project', 'status: in progress', '---', '# Driver app', 'iOS and Android app drivers use on the road. Must leave v1 before the [[Sunset v1 API]] date. [^1]', '', '- Offline sync under review by [[Maya Okafor]]'], ['mobile']],
+      ['dfriday', 'decision', 'No deploys on Fridays', ['---', 'type: decision', 'decided: 2026-01-19', 'by: Dev Patel', '---', '# No deploys on Fridays', 'No production deploys after Thursday 16:00 until Monday. Proposed by [[Dev Patel]]. [^1]', '', '## Applies to', '- [[Route Optimizer]]', '- [[Billing v2]]'], ['friday']],
+      ['dpg', 'decision', 'Move to Postgres 16', ['---', 'type: decision', 'decided: 2026-01-28', 'by: Maya Okafor', '---', '# Move to Postgres 16', 'Upgrade for logical replication fixes and faster vacuum. Work tracked in [[Postgres 16 migration]]. [^1]'], ['pg16']],
+      ['dv1', 'decision', 'Sunset v1 API', ['---', 'type: decision', 'decided: 2026-02-21', 'by: Tomás Reyes', '---', '# Sunset v1 API', 'The v1 API shuts down Jun 30. Every customer gets 90 days notice. [^1]', '', '## Affected', '- [[Driver app]]', '- [[Bluepeak Logistics]]', '- Comms plan: [[Lina Haas]]'], ['v1']],
+      ['northwind', 'customer', 'Northwind Grocers', ['---', 'type: customer', 'plan: Fleet, 140 vehicles', 'contact: Sam Ito', '---', '# Northwind Grocers', 'Regional grocery chain. Uses the [[Route Optimizer]] for morning deliveries. Support contact [[Sam Ito]]. [^1]', '', '## Open threads', '- Waiting on [[Billing v2]] for per-store invoices'], ['support']],
+      ['alder', 'customer', 'Alder & Finch', ['---', 'type: customer', 'plan: Fleet, 60 vehicles', 'contact: Lina Haas', '---', '# Alder & Finch', 'Furniture delivery. Asked for usage-based invoices, which [[Billing v2]] covers. [^1]', '', '- Account contact: [[Lina Haas]]', '- Support contact: [[Sam Ito]]'], ['ship']],
+      ['bluepeak', 'customer', 'Bluepeak Logistics', ['---', 'type: customer', 'plan: Enterprise', 'sponsor: Tomás Reyes', '---', '# Bluepeak Logistics', 'Largest account. Still on the v1 API, moving before the [[Sunset v1 API]] date. [^1]', '', '- Exec sponsor: [[Tomás Reyes]]', '- Uses [[Route Optimizer]]'], ['bluepeak']]
+    ];
+    const slug = s => s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const ents = raw.map(([id, type, name, md, src]) => ({ id, type, name, md, src: src.map(k => S[k]), path: 'brain/' + T[type].folder + '/' + slug(name) + '.md' }));
+    const byId = {}, byName = {}; ents.forEach(e => { byId[e.id] = e; byName[e.name] = e; });
+    const links = [], seen = new Set(), deg = {};
+    ents.forEach(e => e.md.join('\n').replace(/\[\[([^\]]+)\]\]/g, (m, nm) => { const t = byName[nm]; if (t && t.id !== e.id) { const k = [e.id, t.id].sort().join('|'); if (!seen.has(k)) { seen.add(k); links.push({ source: e.id, target: t.id, hot: true }); deg[e.id] = (deg[e.id] || 0) + 1; deg[t.id] = (deg[t.id] || 0) + 1; } } return m; }));
+    let s = 7; const r = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+    const nodes = ents.map(e => ({ id: e.id, name: e.name, type: e.type, val: 4 + (deg[e.id] || 0) * 1.6 }));
+    ents.forEach(e => { for (let k = 0; k < 4; k++) { const id = e.id + '-f' + k; nodes.push({ id, ent: e.id, type: 'fact', val: 0.6 }); links.push({ source: e.id, target: id }); } });
+    for (let k = 0; k < 18; k++) { const a = ents[(r() * ents.length) | 0], b = ents[(r() * ents.length) | 0]; if (a !== b) links.push({ source: a.id + '-f' + ((r() * 4) | 0), target: b.id + '-f' + ((r() * 4) | 0) }); }
+    const order = ['person', 'project', 'decision', 'customer'];
+    const sorted = ents.slice().sort((a, b) => order.indexOf(a.type) - order.indexOf(b.type));
+    const pos = {};
+    sorted.forEach((e, i) => { const a = (i / sorted.length) * Math.PI * 2 - Math.PI / 2; pos[e.id] = [300 + Math.cos(a) * 215, 215 + Math.sin(a) * 150]; });
+    const staticEdges = links.filter(l => l.hot).map(l => ({ x1: pos[l.source][0], y1: pos[l.source][1], x2: pos[l.target][0], y2: pos[l.target][1] }));
+    const P = [], L = [], R = [];
+    for (let i = 0; i < 30; i++) { const t = i / 29; P.push((1 - Math.exp(-t * 2.6)) / (1 - Math.exp(-2.6))); L.push(Math.pow(t, 1.45)); R.push(i < 6 ? 0 : Math.pow((i - 6) / 23, 1.25)); }
+    const line = arr => arr.map((v, i) => (i ? 'L' : 'M') + (20 + i * 560 / 29).toFixed(1) + ' ' + (212 - v * 176).toFixed(1)).join(' ');
+    const growth = { pages: line(P), links: line(L), refreshed: line(R), linksArea: line(L) + ' L580 212 L20 212 Z' };
+    const agents = [
+      { label: 'Claude Code', lines: [['$', 'claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added HTTP MCP server livingbrain', 'out'], ['$', 'claude', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
+      { label: 'Codex', lines: [['$', 'codex mcp add livingbrain --url https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added livingbrain to ~/.codex/config.toml', 'out'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
+      { label: 'Cursor', lines: [['', '// .cursor/mcp.json', 'com'], ['', '{ "mcpServers": { "livingbrain": {', 'cmd'], ['', '    "url": "https://mcp.livingbrain.wiki" } } }', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
+      { label: 'Other MCP', lines: [['', '# any agent that speaks MCP', 'com'], ['', 'url:  https://mcp.livingbrain.wiki', 'cmd'], ['', 'auth: sign in with your Slack workspace', 'cmd'], ['', '✓ reads with your own access', 'ok']] }
+    ];
+    return { T, ents, byId, byName, graph: { nodes, links }, pos, staticEdges, growth, agents };
+  })();
+
+  state = { theme: 'dark', joined: false, sel: 'routes', scope: 0, demoMode: 'idle', agentTab: 0 };
+  heroCanvas = React.createRef(); agentCanvas = React.createRef(); colonyCanvas = React.createRef(); ownCanvas = React.createRef();
+  demoRef = React.createRef(); slackRef = React.createRef();
+
+  componentDidMount() {
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.selId = this.state.sel; this.timers = []; this.brains = []; this.trav = []; this.near = []; this.sections = new Map();
+    this.initTheme();
+    requestAnimationFrame(() => { this.layoutTrail(); this.setupAnims(); this.raf = requestAnimationFrame(this.tick); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.layoutTrail(true));
+    this.onResize = () => this.layoutTrail(true); window.addEventListener('resize', this.onResize);
+    this.whenBrain(() => this.mountBrains());
+    const demo = this.demoRef.current;
+    if (demo) { this.demoIO = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { this.demoIO.disconnect(); this.loadDemo(); } }, { rootMargin: '600px' }); this.demoIO.observe(demo); }
+  }
+  componentDidUpdate(pp) { if (pp.accent !== this.props.accent) { this.applyAccent(); this.emitTheme(); } }
+  componentWillUnmount() {
+    cancelAnimationFrame(this.raf); window.removeEventListener('resize', this.onResize);
+    (this.timers || []).forEach(t => clearInterval(t)); (this.brains || []).forEach(b => b && b.destroy());
+    this.io && this.io.disconnect(); this.demoIO && this.demoIO.disconnect(); this.demoRO && this.demoRO.disconnect();
+    if (this.G && this.G._destructor) this.G._destructor();
+  }
+
+  initTheme() {
+    let saved = null; try { saved = localStorage.getItem('lb-theme'); } catch (e) {}
+    const mq = window.matchMedia('(prefers-color-scheme: light)');
+    this.applyTheme(saved || (mq.matches ? 'light' : 'dark'), false);
+    mq.addEventListener && mq.addEventListener('change', e => { let s = null; try { s = localStorage.getItem('lb-theme'); } catch (x) {} if (!s) this.applyTheme(e.matches ? 'light' : 'dark', false); });
+  }
+  applyTheme(t, save) {
+    document.documentElement.dataset.theme = t;
+    if (save) { try { localStorage.setItem('lb-theme', t); } catch (e) {} }
+    this.theme = t; this.applyAccent(); this.setState({ theme: t }); this.emitTheme();
+  }
+  applyAccent() {
+    const h = { mint: 162, cyan: 205, ember: 60 }[this.props.accent || 'mint'] || 162;
+    const light = this.theme === 'light', st = document.documentElement.style;
+    const c = light ? `oklch(0.52 0.12 ${h})` : `oklch(0.86 0.16 ${h})`;
+    st.setProperty('--accent', c); st.setProperty('--accent-soft', c.replace(')', light ? ' / 0.1)' : ' / 0.13)'));
+  }
+  emitTheme() { requestAnimationFrame(() => { window.dispatchEvent(new Event('lb-theme')); this.recolorGraph(); }); }
+
+  whenBrain(cb) { if (window.LivingBrain) cb(); else { this.wb = (this.wb || 0) + 1; if (this.wb < 300) setTimeout(() => this.whenBrain(cb), 40); } }
+  mountBrains() {
+    const R = this.reduced, Lb = window.LivingBrain;
+    const m = (ref, o) => { if (!ref.current) return null; const b = Lb.mount(ref.current, Object.assign({ still: R, alive: !R }, o)); this.brains.push(b); return b; };
+    this.heroB = m(this.heroCanvas, { nodes: 300, seed: 11, density: R ? 1 : 0.45, grow: !R, speed: 0.06 });
+    this.agentB = m(this.agentCanvas, { nodes: 200, seed: 5, reserve: 0.3, speed: 0.08 });
+    this.colB = m(this.colonyCanvas, { nodes: 230, seed: 31, reserve: 0.25, colonies: 3, speed: 0.05 });
+    this.ownB = m(this.ownCanvas, { nodes: 240, seed: 23, density: R ? 1 : 0.08, speed: 0.05 });
+    if (this.growthPending) this.runGrowth();
+  }
+
+  makeAnim(el) {
+    const ds = el.dataset, d = +ds.d || 0, t = +ds.t || 700, loop = ds.loop === '1', x = +ds.x || 0;
+    let e = ds.e || 'cubic-bezier(.2,.7,.2,1)';
+    if (el instanceof SVGElement) { el.style.transformBox = 'fill-box'; el.style.transformOrigin = ds.o || 'center'; }
+    else if (ds.o) el.style.transformOrigin = ds.o;
+    let kf;
+    switch (ds.a) {
+      case 'fadeUp': kf = [{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'translateY(0)' }]; break;
+      case 'fade': kf = [{ opacity: 0 }, { opacity: 1 }]; break;
+      case 'pop': kf = [{ opacity: 0, transform: 'scale(.3)' }, { opacity: 1, transform: 'scale(1.12)', offset: 0.7 }, { opacity: 1, transform: 'scale(1)' }]; break;
+      case 'draw': { const L = el.getTotalLength ? el.getTotalLength() : 100; el.style.strokeDasharray = L; kf = [{ strokeDashoffset: L }, { strokeDashoffset: 0 }]; break; }
+      case 'growX': kf = [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }]; if (!ds.o) el.style.transformOrigin = 'left center'; break;
+      case 'growY': kf = [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1)' }]; if (!ds.o) el.style.transformOrigin = 'center top'; break;
+      case 'reveal': kf = [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }]; break;
+      case 'type': kf = [{ clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)' }]; e = `steps(${+ds.steps || 20})`; break;
+      case 'stale': kf = [{ opacity: 1 }, { opacity: 0.4 }]; break;
+      case 'redact': kf = [{ filter: 'blur(0px)', opacity: 1 }, { filter: 'blur(5px)', opacity: 0.7 }]; break;
+      case 'blip': kf = [{ opacity: 0 }, { opacity: 1, offset: 0.15 }, { opacity: 1, offset: 0.85 }, { opacity: 0 }]; break;
+      case 'breathe': kf = [{ opacity: 0, transform: 'scale(.9)' }, { opacity: 0.8, transform: 'scale(1)', offset: 0.2 }, { opacity: 0, transform: 'scale(1.7)' }]; e = 'ease-out'; break;
+      case 'merge': kf = [{ transform: 'translateX(0)', opacity: 1 }, { transform: 'translateX(0)', opacity: 1, offset: 0.3 }, { transform: `translateX(${x}px)`, opacity: 1, offset: 0.62 }, { transform: `translateX(${x}px)`, opacity: 0, offset: 0.68 }, { transform: 'translateX(0)', opacity: 0, offset: 0.92 }, { transform: 'translateX(0)', opacity: 1 }]; e = 'ease-in-out'; break;
+      case 'mergedIn': kf = [{ opacity: 0 }, { opacity: 0, offset: 0.62 }, { opacity: 1, offset: 0.68 }, { opacity: 1, offset: 0.9 }, { opacity: 0 }]; e = 'linear'; break;
+      case 'spark': kf = [{ opacity: 0, transform: 'scale(.3)' }, { opacity: 0, transform: 'scale(.3)', offset: 0.6 }, { opacity: 1, transform: 'scale(1)', offset: 0.64 }, { opacity: 0, transform: 'scale(2.4)', offset: 0.8 }, { opacity: 0, transform: 'scale(2.4)' }]; e = 'linear'; break;
+      default: return null;
+    }
+    return el.animate(kf, { duration: t, delay: d, easing: e, fill: loop ? 'none' : 'both', iterations: loop ? Infinity : 1 });
+  }
+  fmt(n, el) { return (el.dataset.pre || '') + Math.round(n).toLocaleString('en-US') + (el.dataset.suf || ''); }
+  setupAnims() {
+    const R = this.reduced;
+    document.querySelectorAll('[data-play]').forEach(sec => {
+      const rec = { el: sec, anims: [], started: false, visible: false, t0: 0, kind: sec.dataset.play };
+      if (!R) sec.querySelectorAll('[data-a]').forEach(el => { const a = this.makeAnim(el); if (a) { a.pause(); a.currentTime = 0; rec.anims.push(a); } });
+      rec.counters = [...sec.querySelectorAll('[data-count]')];
+      if (!R) rec.counters.forEach(el => { el.textContent = this.fmt(+el.dataset.from || 0, el); });
+      if (!R && rec.kind === 'leader') this.leaderFrame(sec, 0);
+      this.sections.set(sec, rec);
+    });
+    document.querySelectorAll('[data-travel]').forEach(el => {
+      const svg = el.ownerSVGElement, p = svg && svg.querySelector('#' + el.dataset.travel); if (!p) return;
+      const tr = { el, p, L: p.getTotalLength(), dur: +el.dataset.dur || 3000, off: +el.dataset.off || 0, rev: el.dataset.rev === '1', key: el.dataset.key, rec: this.sections.get(el.closest('[data-play]')) };
+      this.trav.push(tr);
+      if (R) { const pt = p.getPointAtLength(((tr.off + 0.5) % 1) * tr.L); el.setAttribute('transform', `translate(${pt.x} ${pt.y})`); el.style.opacity = 1; }
+    });
+    document.querySelectorAll('[data-near]').forEach(el => this.near.push({ el, key: el.dataset.near, at: +el.dataset.at || 0 }));
+    if (R) this.near.forEach(n => { n.el.style.opacity = 1; });
+    this.io = new IntersectionObserver(es => es.forEach(en => {
+      const rec = this.sections.get(en.target); if (!rec) return; rec.visible = en.isIntersecting;
+      if (en.isIntersecting && !rec.started) { rec.started = true; rec.t0 = performance.now(); if (!R) { rec.anims.forEach(a => a.play()); this.runCounters(rec); } this.startHook(rec); }
+    }), { rootMargin: '0px 0px -18% 0px' });
+    this.sections.forEach((r, el) => this.io.observe(el));
+  }
+  runCounters(rec) {
+    rec.counters.forEach(el => {
+      const to = +el.dataset.to, from = +el.dataset.from || 0, dur = +el.dataset.dur || 1800, delay = +el.dataset.d || 0, t0 = performance.now() + delay;
+      const f = now => { const k = Math.max(0, Math.min(1, (now - t0) / dur)), e = 1 - Math.pow(1 - k, 3); el.textContent = this.fmt(from + (to - from) * e, el); if (k < 1) requestAnimationFrame(f); };
+      requestAnimationFrame(f);
+    });
+  }
+  startHook(rec) {
+    const R = this.reduced;
+    if (rec.kind === 'growth') { if (this.ownB) this.runGrowth(); else this.growthPending = true; }
+    if (rec.kind === 'rings' && !R) this.timers.push(setInterval(() => { if (rec.visible && !this.userScope) this.setState(s => ({ scope: (s.scope + 1) % 3 })); }, 2600));
+    if (rec.kind === 'agents' && !R) this.timers.push(setInterval(() => { if (rec.visible && this.agentB) this.agentB.spark(); }, 1300));
+    if (rec.kind === 'colony' && !R) {
+      const lines = ['booting microVM · 1.1s', 'cloning kestrel/routes', 'reading brief · 6 facts', 'cargo test · 212 passed, 1 failed', 'editing src/eta/tz.rs', 'cargo test · 213 passed', 'opening pull request #219'];
+      const els = [...rec.el.querySelectorAll('[data-ticker]')]; let i = 0;
+      this.timers.push(setInterval(() => { if (!rec.visible) return; i = (i + 1) % lines.length; els.forEach(el => { el.textContent = lines[i]; el.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 300 }); }); }, 1200));
+    }
+    if (rec.kind === 'leader' && !R) {
+      const t0 = performance.now() + 700, dur = 4800;
+      const f = now => { const k = Math.max(0, Math.min(1, (now - t0) / dur)); this.leaderFrame(rec.el, k); if (k < 1) requestAnimationFrame(f); };
+      requestAnimationFrame(f);
+    }
+  }
+  leaderFrame(sec, k) {
+    const rows = [...sec.querySelectorAll('[data-lb]')], h = +sec.dataset.row || 56;
+    const vals = rows.map(r => { const a = +r.dataset.from, b = +r.dataset.to; return a + (b - a) * k; });
+    const rank = vals.map((v, i) => vals.filter((w, j) => w > v || (w === v && j < i)).length);
+    rows.forEach((r, i) => { r.style.transform = `translateY(${(rank[i] - +r.dataset.final) * h}px)`; const n = r.querySelector('[data-lbn]'); if (n) n.textContent = Math.round(vals[i]); });
+  }
+  runGrowth() {
+    this.growthPending = false; if (this.reduced || !this.ownB) return;
+    const t0 = performance.now() + 300, dur = 4200;
+    const f = now => { const k = Math.max(0, Math.min(1, (now - t0) / dur)); this.ownB.setDensity(0.08 + 0.92 * (1 - Math.pow(1 - k, 2))); if (k < 1) requestAnimationFrame(f); };
+    requestAnimationFrame(f);
+  }
+  tick = () => {
+    const now = performance.now(), ph = {};
+    for (const t of this.trav) {
+      const rec = t.rec; if (!rec || !rec.started || !rec.visible || this.reduced) continue;
+      const raw = (((now - rec.t0) / t.dur) + t.off) % 1, f = t.rev ? 1 - raw : raw;
+      const pt = t.p.getPointAtLength(f * t.L);
+      t.el.setAttribute('transform', `translate(${pt.x.toFixed(1)} ${pt.y.toFixed(1)})`);
+      t.el.style.opacity = Math.min(1, raw / 0.08, (1 - raw) / 0.08).toFixed(3);
+      if (t.key) ph[t.key] = f;
+    }
+    for (const n of this.near) { const p = ph[n.key]; if (p == null) continue; let d = Math.abs(p - n.at); d = Math.min(d, 1 - d); n.el.style.opacity = (0.35 + 0.65 * Math.max(0, 1 - d * 7)).toFixed(3); }
+    this.raf = requestAnimationFrame(this.tick);
+  };
+
+  layoutTrail(resized) {
+    const box = this.slackRef.current; if (!box) return;
+    const c = box.querySelector('[data-chip]'), s = box.querySelector('[data-src]'), p = box.querySelector('[data-trail]'); if (!c || !s || !p) return;
+    const b = box.getBoundingClientRect(), cr = c.getBoundingClientRect(), sr = s.getBoundingClientRect();
+    const x0 = cr.left - b.left - 2, y0 = cr.top - b.top + cr.height / 2, x1 = sr.left - b.left - 2, y1 = sr.top - b.top + 25, g = 12;
+    p.setAttribute('d', `M${x0} ${y0} C ${g} ${y0}, ${g} ${y0}, ${g} ${(y0 + y1) / 2} S ${g} ${y1}, ${x1} ${y1}`);
+    const d = box.querySelectorAll('[data-trail-dot]');
+    d[0].setAttribute('cx', x0); d[0].setAttribute('cy', y0); d[1].setAttribute('cx', x1); d[1].setAttribute('cy', y1);
+    if (resized) p.style.strokeDasharray = 'none';
+  }
+
+  hasGL() { try { const c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } }
+  loadDemo() {
+    if (this.reduced || !this.hasGL()) { this.setState({ demoMode: 'static' }); return; }
+    this.setState({ demoMode: 'loading' });
+    if (window.ForceGraph3D) return this.initGraph();
+    const sc = document.createElement('script'); sc.src = 'https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.4/dist/3d-force-graph.min.js'; sc.async = true;
+    sc.onload = () => this.initGraph(); sc.onerror = () => this.setState({ demoMode: 'static' });
+    document.head.appendChild(sc);
+  }
+  cssHex(v) {
+    const c = this._cc || (this._cc = document.createElement('canvas')); c.width = c.height = 1;
+    const x = c.getContext('2d', { willReadFrequently: true }); x.clearRect(0, 0, 1, 1); x.fillStyle = '#888'; x.fillStyle = v; x.fillRect(0, 0, 1, 1);
+    const d = x.getImageData(0, 0, 1, 1).data; return '#' + [d[0], d[1], d[2]].map(n => n.toString(16).padStart(2, '0')).join('');
+  }
+  readCols() { const cs = getComputedStyle(document.documentElement), g = k => this.cssHex(cs.getPropertyValue(k).trim()); return { person: g('--t-person'), project: g('--t-project'), decision: g('--t-decision'), customer: g('--t-customer'), fact: g('--t-fact'), accent: g('--accent'), edge: g('--graph-edge') }; }
+  touches(l) { const s = l.source.id || l.source, t = l.target.id || l.target; return s === this.selId || t === this.selId; }
+  initGraph() {
+    const el = this.demoRef.current; if (!el || !window.ForceGraph3D) return this.setState({ demoMode: 'static' });
+    try {
+      this.cols = this.readCols();
+      const D = Component.DATA, data = { nodes: D.graph.nodes.map(n => Object.assign({}, n)), links: D.graph.links.map(l => Object.assign({}, l)) };
+      const G = ForceGraph3D({ controlType: 'orbit' })(el)
+        .width(el.clientWidth).height(el.clientHeight).backgroundColor('rgba(0,0,0,0)').showNavInfo(false)
+        .graphData(data).nodeId('id').nodeVal('val').nodeRelSize(3.2).nodeResolution(16).nodeOpacity(0.95)
+        .nodeLabel(n => n.type === 'fact' ? '' : n.name)
+        .nodeColor(n => n.type === 'fact' ? (n.ent === this.selId ? this.cols.accent : this.cols.fact) : (n.id === this.selId ? this.cols.accent : this.cols[n.type]))
+        .linkColor(l => this.touches(l) ? this.cols.accent : this.cols.edge).linkOpacity(0.32).linkWidth(l => this.touches(l) ? 0.8 : 0)
+        .linkDirectionalParticles(l => this.touches(l) ? 3 : (l.hot ? 1 : 0)).linkDirectionalParticleSpeed(0.006).linkDirectionalParticleWidth(1.6)
+        .linkDirectionalParticleColor(() => this.cols.accent)
+        .onNodeClick(n => this.select(n.ent || n.id, true))
+        .onNodeHover(n => { el.style.cursor = n ? 'pointer' : 'grab'; });
+      G.cameraPosition({ x: 0, y: 0, z: 230 });
+      const ctr = G.controls(); if (ctr) { ctr.autoRotate = true; ctr.autoRotateSpeed = 0.6; ctr.addEventListener && ctr.addEventListener('start', () => { ctr.autoRotate = false; }); }
+      this.G = G;
+      this.demoRO = new ResizeObserver(() => G.width(el.clientWidth).height(el.clientHeight)); this.demoRO.observe(el);
+      this.setState({ demoMode: '3d' });
+    } catch (e) { this.setState({ demoMode: 'static' }); }
+  }
+  recolorGraph() { if (!this.G) return; this.cols = this.readCols(); const G = this.G; G.nodeColor(G.nodeColor()).linkColor(G.linkColor()).linkWidth(G.linkWidth()).linkDirectionalParticles(G.linkDirectionalParticles()); }
+  select(id, focus) {
+    this.selId = id; this.setState({ sel: id });
+    if (this.G) {
+      this.recolorGraph();
+      if (focus) { const n = this.G.graphData().nodes.find(x => x.id === id); if (n && n.x != null) { const r = Math.hypot(n.x, n.y, n.z) || 1, k = 1 + 110 / r; this.G.cameraPosition({ x: n.x * k, y: n.y * k, z: n.z * k }, n, this.reduced ? 0 : 900); } }
+    }
+  }
+  setScope(i) { this.userScope = true; this.setState({ scope: i }); }
+
+  renderVals() {
+    const D = Component.DATA, st = this.state, tg = this.props.tagline || 'remembered';
+    const e = D.byId[st.sel] || D.ents[0];
+    let fm = 0;
+    const lines = e.md.map(line => {
+      let kind = 'body';
+      if (line.trim() === '---') { fm++; kind = 'meta'; } else if (fm === 1) kind = 'meta'; else if (line.startsWith('#')) kind = 'head';
+      const segs = line.split(/(\[\[[^\]]+\]\]|\[\^\d+\])/).filter(x => x !== '').map(x => {
+        if (x.startsWith('[[')) { const t = D.byName[x.slice(2, -2)]; if (t) return { t: x, isLink: true, onClick: () => this.select(t.id, true) }; }
+        if (/^\[\^\d+\]$/.test(x)) return { t: x, isCite: true };
+        return { t: x, isText: true };
+      });
+      return { segs, color: kind === 'head' ? 'var(--ink)' : kind === 'meta' ? 'var(--ink3)' : 'var(--ink2)', weight: kind === 'head' ? 600 : 400 };
+    });
+    const panel = { path: e.path, name: e.name, color: D.T[e.type].color, typeLabel: D.T[e.type].label, lines, sources: e.src.map((s, i) => ({ label: `[${i + 1}] ${s[0]} · ${s[1]} · ${s[2]}`, text: s[3] })) };
+    const entities = D.ents.map(x => ({ name: x.name, color: D.T[x.type].color, pressed: x.id === st.sel ? 'true' : 'false', border: x.id === st.sel ? 'var(--accent)' : 'var(--line)', onClick: () => this.select(x.id, true) }));
+    const staticNodes = D.ents.map(x => ({ x: D.pos[x.id][0], y: D.pos[x.id][1], ty: D.pos[x.id][1] + 24, r: x.id === st.sel ? 11 : 8, color: x.id === st.sel ? 'var(--accent)' : D.T[x.type].color, name: x.name, onClick: () => this.select(x.id, false) }));
+    const sc = st.scope, on = 'var(--accent-soft)';
+    const scopes = [['#general', 'Public channel'], ['#leadership', 'Private channel'], ['Your DMs', 'Direct message']].map((s, i) => ({ label: s[0], sub: s[1], pressed: sc === i ? 'true' : 'false', border: sc === i ? 'var(--accent)' : 'var(--line)', bg: sc === i ? on : 'transparent', onClick: () => this.setScope(i) }));
+    const ag = D.agents[st.agentTab];
+    const lineColor = { cmd: 'var(--ink)', out: 'var(--ink3)', ok: 'var(--accent)', com: 'var(--ink3)' };
+    return {
+      toggleTheme: () => this.applyTheme(this.theme === 'light' ? 'dark' : 'light', true),
+      themeLabel: st.theme === 'light' ? 'Dark' : 'Light',
+      themeAria: st.theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme',
+      onJoin: ev => { ev.preventDefault(); this.setState({ joined: true }); },
+      joined: st.joined, notJoined: !st.joined,
+      tagA: tg === 'remembered', tagB: tg === 'writes', tagC: tg === 'crew',
+      heroCanvas: this.heroCanvas, agentCanvas: this.agentCanvas, colonyCanvas: this.colonyCanvas, ownCanvas: this.ownCanvas, demoRef: this.demoRef, slackRef: this.slackRef,
+      growth: D.growth,
+      demoStatic: st.demoMode === 'static', demoLoading: st.demoMode === 'loading' || st.demoMode === 'idle',
+      demoHint: st.demoMode === 'static' ? 'Static view · click a node or use the list' : 'Drag to orbit · scroll or pinch to zoom · click a node',
+      panel, entities, staticNodes, staticEdges: D.staticEdges,
+      scopes, r2op: sc >= 1 ? 1 : 0.08, r3op: sc >= 2 ? 1 : 0.08,
+      row0: sc === 0 ? on : 'transparent', row1: sc === 1 ? on : 'transparent', row2: sc === 2 ? on : 'transparent',
+      agentTabs: D.agents.map((a, i) => ({ label: a.label, selected: i === st.agentTab ? 'true' : 'false', color: i === st.agentTab ? 'var(--ink)' : 'var(--ink3)', border: i === st.agentTab ? 'var(--accent)' : 'transparent', onClick: () => this.setState({ agentTab: i }) })),
+      agentLines: ag.lines.map(l => ({ p: l[0], t: l[1], color: lineColor[l[2]] }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>
