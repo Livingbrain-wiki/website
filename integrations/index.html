@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Integrations · Living Brain</title>
+<meta name="description" content="Planned integrations for Living Brain: Slack, mail through Owlpost or Gmail and Outlook, ChatGPT and Claude imports, GitHub and coding agents, Grafana and logs, your own LLM, and sister Factory Zero ventures.">
+<link rel="canonical" href="https://livingbrain.wiki/integrations/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://livingbrain.wiki/integrations/">
+<meta property="og:title" content="Living Brain integrations">
+<meta property="og:description" content="Slack, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Living Brain integrations">
+<meta name="twitter:description" content="Slack, mail, imports, GitHub and coding agents, Grafana and logs, your own LLM. All planned.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Living Brain">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://livingbrain.wiki/integrations/#webpage",
+  "url": "https://livingbrain.wiki/integrations/",
+  "name": "Integrations",
+  "description": "Planned integrations for Living Brain.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://livingbrain.wiki/#website",
+    "name": "Living Brain",
+    "url": "https://livingbrain.wiki/"
+  },
+  "about": {
+    "@id": "https://livingbrain.wiki/#app"
+  }
+}
+</script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Agents</a>
+      <a href="/integrations/" aria-current="page">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/" aria-current="page">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hd" aria-labelledby="page-title">
+  <div class="wrap">
+    <div class="eyebrow-row"><p class="eyebrow">Integrations</p><span class="tag">Planned</span></div>
+    <h1 id="page-title" class="h2 h2--page">Works with the tools you already use.</h1>
+    <p class="lede">Everything on this page is planned. Other companies' tools are named in plain text; we're not affiliated with them.</p>
+  </div>
+</section>
+<section class="sec" aria-label="Integrations by kind">
+  <div class="wrap sec__in sec__in--top">
+    <div class="intg" id="chat">
+      <div class="intg__head"><h2 class="h4">Chat</h2><p>Where people ask.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">Slack</span><span class="where__st where__st--first">first</span><span class="intg__what">Invite it to channels. It answers in the thread, with the asker's own access.</span></li>
+      </ul>
+    </div>
+    <div class="intg" id="mail">
+      <div class="intg__head"><h2 class="h4">Mail</h2><p>Forward what matters, or connect a mailbox.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">Owlpost brain inbox</span><span class="where__st where__st--first">simplest</span><span class="intg__what">Forward, BCC or auto-forward mail to your brain's own address on Owlpost, our sister email service. No mailbox access needed.</span></li>
+        <li><span class="intg__name">Gmail, Outlook.com and Microsoft 365, IMAP</span><span class="intg__what">Connect a whole mailbox and calendar, read-only. It stays in your personal memory. <a href="/security/#mail">How mail stays private</a></span></li>
+      </ul>
+    </div>
+    <div class="intg" id="imports">
+      <div class="intg__head"><h2 class="h4">Imports</h2><p>Bring your history.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">ChatGPT</span><span class="intg__what">Import your export with the <code>livingbrain</code> CLI, on your machine. <a href="/guides/import-chatgpt/">Step-by-step guide</a></span></li>
+        <li><span class="intg__name">Claude</span><span class="intg__what">Claude exports import the same way.</span></li>
+      </ul>
+    </div>
+    <div class="intg" id="code">
+      <div class="intg__head"><h2 class="h4">Code</h2><p>Where the work happens.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">GitHub</span><span class="intg__what">The Living Brain GitHub App keeps the wiki in your own git repo and proposes every change as a pull request. <a href="/how-it-works/#own">You own it</a></span></li>
+        <li><span class="intg__name">Claude Code, Codex, Cursor, OpenCode, Claude Desktop</span><span class="intg__what">Any agent that supports MCP. <a href="/agents/">Coding agents</a></span></li>
+      </ul>
+    </div>
+    <div class="intg" id="monitoring">
+      <div class="intg__head"><h2 class="h4">Monitoring and logs</h2><p>Read-only, so it knows when prod is down.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">Grafana</span><span class="intg__what">Answers "is prod down?" with the current numbers and a link to the exact panel.</span></li>
+        <li><span class="intg__name">Loki, Elasticsearch, Datadog, CloudWatch, Cloudflare, Sentry</span><span class="intg__what">Reads your logs and says what changed: when the errors started and which deploy came before.</span></li>
+        <li><span class="intg__name">OpenTelemetry</span><span class="intg__what">Exports its own metrics, traces and logs, so you can watch it in Grafana, Datadog or Honeycomb.</span></li>
+      </ul>
+    </div>
+    <div class="intg" id="models">
+      <div class="intg__head"><h2 class="h4">Models</h2><p>Bring your own LLM, on every plan.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name">Anthropic, OpenAI, OpenRouter, LiteLLM</span><span class="intg__what">Or any OpenAI-compatible endpoint, including self-hosted ones. Choose a model per role.</span></li>
+        <li><span class="intg__name">DeepSeek</span><span class="intg__what">Crew includes $3 of DeepSeek credit each month. <a href="/pricing/">Pricing</a></span></li>
+      </ul>
+    </div>
+    <div class="intg" id="ventures">
+      <div class="intg__head"><h2 class="h4">Sister ventures</h2><p>Other Factory Zero ventures it is designed to work with.</p></div>
+      <ul class="intg__list">
+        <li><span class="intg__name"><a href="https://colonizer.dev">Colonizer</a></span><span class="intg__what">Runs bigger jobs in isolated microVMs and returns pull requests. <a href="/agents/#colonizer">From Slack to pull request</a></span></li>
+        <li><span class="intg__name">Owlpost</span><span class="intg__what">The brain's email inbox, and the screening every message passes first.</span></li>
+        <li><span class="intg__name"><a href="https://supportgeni.us">SupportGenius</a></span><span class="intg__what">Answers your customers, only from pages you published to them.</span></li>
+        <li><span class="intg__name"><a href="https://promptdeco.de">PromptDecode</a></span><span class="intg__what">Screens everything the brain reads for hidden text. <a href="/security/#screening">Screening</a></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
+    <div class="join-box">
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/" aria-current="page">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

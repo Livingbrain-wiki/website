@@ -54,19 +54,32 @@
 </script>
 </head>
 <body>
+<!--email_off-->
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="hd">
   <div class="wrap hd__in">
     <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
     <nav class="nav" aria-label="Primary">
-      <a href="/#how">How it works</a>
-      <a href="/#demo">Demo</a>
-      <a href="/#agents">Coding agents</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/#faq">FAQ</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Agents</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
     </nav>
-    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span data-theme-label>Light</span></button>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
 
@@ -103,24 +116,46 @@
     <h2 class="h3">Also from Claude</h2>
     <p>Claude's export (<strong>Settings → Privacy → Export data</strong>) will import the same way: <span class="mono">livingbrain import claude ~/Downloads/claude-export.zip</span>. <span class="tag">Planned</span></p>
 
-    <p class="guide__back"><a class="btn" href="/#faq">Back to the FAQ</a> <a class="btn btn--primary" href="/#top">Join the waitlist</a></p>
+    <p class="guide__back"><a class="btn btn--ghost" href="/faq/">All questions</a> <a class="btn btn--primary" href="#waitlist">Join the waitlist</a></p>
   </div>
 </main>
 
-<footer class="ft ft--min">
-  <div class="wrap">
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
+    <div class="join-box">
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+    </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
         <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
       </div>
-      <nav class="ft__nav" aria-label="Footer">
-        <a href="https://colonizer.dev">Colonizer</a>
-        <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
-        <a href="/llms.txt">llms.txt</a>
-        <a href="/.well-known/security.txt">security.txt</a>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
       </nav>
     </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
     <div class="ft__fz">
       <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
       <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
@@ -130,5 +165,6 @@
     </div>
   </div>
 </footer>
+<!--/email_off-->
 </body>
 </html>

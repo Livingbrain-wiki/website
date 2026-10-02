@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>FAQ · Living Brain</title>
+<meta name="description" content="Questions about Living Brain: Slack and beyond, coding agents, mail and imports, encryption, self-hosting, models and planned pricing. Not built yet: early access, in design.">
+<link rel="canonical" href="https://livingbrain.wiki/faq/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://livingbrain.wiki/faq/">
+<meta property="og:title" content="Living Brain FAQ">
+<meta property="og:description" content="Every question about Living Brain, from Slack and coding agents to encryption, self-hosting and pricing.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Living Brain FAQ">
+<meta name="twitter:description" content="Every question about Living Brain, from Slack and coding agents to encryption, self-hosting and pricing.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Living Brain">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://livingbrain.wiki/faq/#webpage",
+      "url": "https://livingbrain.wiki/faq/",
+      "name": "FAQ",
+      "description": "Questions about Living Brain.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://livingbrain.wiki/#website",
+        "name": "Living Brain",
+        "url": "https://livingbrain.wiki/"
+      },
+      "about": {
+        "@id": "https://livingbrain.wiki/#app"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://livingbrain.wiki/faq/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does \"living\" mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is it different from Slack AI or Glean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it only work in Slack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there an app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which coding agents can I connect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you store my agent prompts and code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it collect my coding agents' logs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it connect my Gmail or Outlook?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. The simplest and safest way needs no mailbox access at all: forward, BCC or auto-forward mail to your brain's own address on Owlpost, our sister email service, and only what you send arrives. If you want a whole mailbox kept in sync, you can also connect Gmail, Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-only. Your mail stays in your personal memory, encrypted with your own key, and no one else can draw on it unless you share a specific label or folder. Every message is screened for spoofing and prompt injection before the brain reads it, and mail can never trigger actions. Revoke the connection at any time and its stored mail is erased. When you self-host, you use your own Google or Microsoft app, so mail never touches our servers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I import my ChatGPT history?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. Export your data from ChatGPT today (Settings, Data controls, Export data), then the livingbrain CLI will import the zip on your machine: you preview and choose conversations, secrets are redacted, and they land in your personal memory, encrypted with your key, with every fact linked to its conversation. Claude exports will import the same way. Step-by-step guide: https://livingbrain.wiki/guides/import-chatgpt/"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work with Grafana and our logs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. Connect Grafana with a read-only token and the brain can answer \"is prod down?\" with the current numbers and a link to the exact panel. It reads your logs too, from Loki, Elasticsearch, Datadog, CloudWatch, Cloudflare or Sentry, and says what changed: when the errors started, which deploy came before, and the most common messages, with secrets redacted. Alerts become incident pages linked to the deploy and pull request that caused them, and the nightly pass drafts the postmortem for a person to confirm. In the other direction, Living Brain exports its own metrics, traces and logs over OpenTelemetry, so you can watch it in Grafana, Datadog or Honeycomb."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can it answer my customers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned, through SupportGenius, a sister Factory Zero venture for customer support. It answers customers only from pages your team has explicitly published to customers, with citations, and never from internal, private-channel or personal memory. When it can't answer, it asks the brain who owns the topic and routes the question to that person. Customer messages are screened for hidden instructions before they touch the brain."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data encrypted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my data used for training?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own LLM, requests go to your provider under your account's terms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can someone hide instructions in a message to trick my agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned. Every source is screened for hidden text by PromptDecode, a sister Factory Zero venture: invisible Unicode tag characters, bidi controls and variation selectors are decoded and flagged before a page is written, and again before context is served to an agent. Anything that decodes to an instruction is held for a person to review. Mail also passes Owlpost's spoofing and prompt-injection checks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I self-host?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Community plan is free for up to 5 people: it runs on your own Cloudflare account with your own LLM key. Larger teams need a Teams license. The plan and the code as it lands are public at github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with the Teams features under a commercial license."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which models?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On every plan you choose your own models, per role (triage, answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint, including self-hosted ones. Crew also includes $3 of DeepSeek credit each month, so you can start without a key of your own; past that, add your own key or top up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a question cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planned, for hosted plans: writing the brain (reading sources and writing pages, with the nightly evolve pass included) costs $1 per million tokens, and reading it (search, pages and context for agents) is unlimited. Harder questions are priced per question by reasoning level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05, Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level questions. On your own LLM key you pay only your provider, with no fee from us."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much storage is included?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hosted Teams includes 10 GB and Crew includes 25 GB, covering wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use your own Cloudflare storage, with no limit from us. Planned pricing."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Agents</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/" aria-current="page">FAQ</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/" aria-current="page">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hd" aria-labelledby="page-title">
+  <div class="wrap">
+    <p class="eyebrow">FAQ</p>
+    <h1 id="page-title" class="h2 h2--page">Questions.</h1>
+    <p class="lede">Every answer here describes a plan. Living Brain is in design and not built yet.</p>
+  </div>
+</section>
+<section class="sec" aria-label="Questions by topic">
+  <div class="wrap wrap--narrow sec__in sec__in--top">
+    <h2 id="product" class="h4 faq__group">Product</h2>
+    <div class="faq">
+      <details><summary><h3>What does "living" mean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week.</p></details>
+      <details><summary><h3>How is it different from Slack AI or Glean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat.</p></details>
+      <details><summary><h3>Does it only work in Slack?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product.</p></details>
+      <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet.</p></details>
+    </div>
+    <h2 id="agents" class="h4 faq__group">Coding agents</h2>
+    <div class="faq">
+      <details><summary><h3>Which coding agents can I connect?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol.</p></details>
+      <details><summary><h3>Do you store my agent prompts and code?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it.</p></details>
+      <details><summary><h3>Can it collect my coding agents' logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session.</p></details>
+    </div>
+    <h2 id="integrations" class="h4 faq__group">Integrations</h2>
+    <div class="faq">
+      <details><summary><h3>Can it connect my Gmail or Outlook?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The simplest and safest way needs no mailbox access at all: forward, BCC or auto-forward mail to your brain's own address on Owlpost, our sister email service, and only what you send arrives. If you want a whole mailbox kept in sync, you can also connect Gmail, Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-only. Your mail stays in your personal memory, encrypted with your own key, and no one else can draw on it unless you share a specific label or folder. Every message is screened for spoofing and prompt injection before the brain reads it, and mail can never trigger actions. Revoke the connection at any time and its stored mail is erased. When you self-host, you use your own Google or Microsoft app, so mail never touches our servers.</p></details>
+      <details><summary><h3>Can I import my ChatGPT history?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Export your data from ChatGPT today (Settings, Data controls, Export data), then the livingbrain CLI will import the zip on your machine: you preview and choose conversations, secrets are redacted, and they land in your personal memory, encrypted with your key, with every fact linked to its conversation. Claude exports will import the same way. <a href="/guides/import-chatgpt/">Read the step-by-step guide</a>.</p></details>
+      <details><summary><h3>Does it work with Grafana and our logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Connect Grafana with a read-only token and the brain can answer "is prod down?" with the current numbers and a link to the exact panel. It reads your logs too, from Loki, Elasticsearch, Datadog, CloudWatch, Cloudflare or Sentry, and says what changed: when the errors started, which deploy came before, and the most common messages, with secrets redacted. Alerts become incident pages linked to the deploy and pull request that caused them, and the nightly pass drafts the postmortem for a person to confirm. In the other direction, Living Brain exports its own metrics, traces and logs over OpenTelemetry, so you can watch it in Grafana, Datadog or Honeycomb.</p></details>
+      <details><summary><h3>Can it answer my customers?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned, through <a href="https://supportgeni.us">SupportGenius</a>, a sister Factory Zero venture for customer support. It answers customers only from pages your team has explicitly published to customers, with citations, and never from internal, private-channel or personal memory. When it can't answer, it asks the brain who owns the topic and routes the question to that person. Customer messages are screened for hidden instructions before they touch the brain.</p></details>
+    </div>
+    <h2 id="security" class="h4 faq__group">Security</h2>
+    <div class="faq">
+      <details><summary><h3>Is my data encrypted?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host.</p></details>
+      <details><summary><h3>Is my data used for training?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own LLM, requests go to your provider under your account's terms.</p></details>
+      <details><summary><h3>Can someone hide instructions in a message to trick my agents?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Every source is screened for hidden text by <a href="https://promptdeco.de">PromptDecode</a>, a sister Factory Zero venture: invisible Unicode tag characters, bidi controls and variation selectors are decoded and flagged before a page is written, and again before context is served to an agent. Anything that decodes to an instruction is held for a person to review. Mail also passes Owlpost's spoofing and prompt-injection checks.</p></details>
+    </div>
+    <h2 id="pricing" class="h4 faq__group">Pricing</h2>
+    <div class="faq">
+      <details><summary><h3>Can I self-host?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Yes. The Community plan is free for up to 5 people: it runs on your own Cloudflare account with your own LLM key. Larger teams need a Teams license. The plan and the code as it lands are public on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>, open core: Apache-2.0, with the Teams features under a commercial license.</p></details>
+      <details><summary><h3>Which models?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>On every plan you choose your own models, per role (triage, answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint, including self-hosted ones. Crew also includes $3 of DeepSeek credit each month, so you can start without a key of your own; past that, add your own key or top up.</p></details>
+      <details><summary><h3>What does a question cost?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned, for hosted plans: writing the brain (reading sources and writing pages, with the nightly evolve pass included) costs $1 per million tokens, and reading it (search, pages and context for agents) is unlimited. Harder questions are priced per question by reasoning level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05, Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level questions. On your own LLM key you pay only your provider, with no fee from us.</p></details>
+      <details><summary><h3>How much storage is included?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Hosted Teams includes 10 GB and Crew includes 25 GB, covering wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use your own Cloudflare storage, with no limit from us. Planned pricing.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
+    <div class="join-box">
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/" aria-current="page">FAQ</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

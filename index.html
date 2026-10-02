@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
-<title>Living Brain · The wiki that writes itself</title>
-<meta name="description" content="Living Brain is a teammate that builds and keeps your company wiki in plain Markdown you own. Use it in Slack, in your coding agent over MCP, or from a fast Rust CLI. Every fact links back to the message it came from. Not built yet: early access, in design.">
+<title>Living Brain · A brain for your team</title>
+<meta name="description" content="A brain for your team. Living Brain turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal. Not built yet: early access, in design.">
 <link rel="canonical" href="https://livingbrain.wiki/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,7 +18,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/">
 <meta property="og:title" content="Living Brain · Your company, remembered.">
-<meta property="og:description" content="A teammate in Slack, in your coding agent and in your terminal that writes and keeps your company wiki. Every fact links back to the message it came from.">
+<meta property="og:description" content="A brain for your team. It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain · Your company, remembered.">
-<meta name="twitter:description" content="A teammate in Slack, your coding agent and your terminal that writes and keeps your company wiki, in Markdown you own.">
+<meta name="twitter:description" content="A brain for your team. It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 <meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
 
@@ -58,9 +58,18 @@
       "url": "https://livingbrain.wiki/",
       "description": "Living Brain is designing a teammate that builds and keeps a company wiki in plain Markdown. Not built yet.",
       "slogan": "Your company, remembered.",
-      "logo": { "@type": "ImageObject", "url": "https://livingbrain.wiki/assets/icon-512.png", "width": 512, "height": 512 },
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://livingbrain.wiki/assets/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
       "image": "https://livingbrain.wiki/assets/og.png",
-      "parentOrganization": { "@type": "Organization", "name": "Factory Zero", "url": "https://factory0.ventures/" }
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Factory Zero",
+        "url": "https://factory0.ventures/"
+      }
     },
     {
       "@type": "WebSite",
@@ -68,7 +77,9 @@
       "url": "https://livingbrain.wiki/",
       "name": "Living Brain",
       "inLanguage": "en",
-      "publisher": { "@id": "https://livingbrain.wiki/#organization" }
+      "publisher": {
+        "@id": "https://livingbrain.wiki/#organization"
+      }
     },
     {
       "@type": "SoftwareApplication",
@@ -77,32 +88,10 @@
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Knowledge management",
       "description": "In design, not built or available yet. A teammate used from Slack (the first chat integration), from any MCP client, or from the livingbrain command line tool, a single Rust binary; a web app that installs as a PWA is planned too. It turns conversations in invited Slack channels into a Markdown wiki of people, projects, decisions and customers, cites the source message behind every fact, keeps the wiki current on a schedule, acts in your tools, and gives coding agents the team's memory over MCP. Planned to run on Cloudflare's edge, built in Rust, with the wiki exportable as plain Markdown.",
-      "creator": { "@id": "https://livingbrain.wiki/#organization" },
+      "creator": {
+        "@id": "https://livingbrain.wiki/#organization"
+      },
       "url": "https://livingbrain.wiki/"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://livingbrain.wiki/#faq",
-      "mainEntity": [
-        { "@type": "Question", "name": "Can it collect my coding agents' logs?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session." } },
-        { "@type": "Question", "name": "How much storage is included?", "acceptedAnswer": { "@type": "Answer", "text": "Hosted Teams includes 10 GB and Crew includes 25 GB, covering wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use your own Cloudflare storage, with no limit from us. Planned pricing." } },
-        { "@type": "Question", "name": "Can it connect my Gmail or Outlook?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. The simplest and safest way needs no mailbox access at all: forward, BCC or auto-forward mail to your brain's own address on Owlpost, our sister email service, and only what you send arrives. If you want a whole mailbox kept in sync, you can also connect Gmail, Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-only. Your mail stays in your personal memory, encrypted with your own key, and no one else can draw on it unless you share a specific label or folder. Every message is screened for spoofing and prompt injection before the brain reads it, and mail can never trigger actions. Revoke the connection at any time and its stored mail is erased. When you self-host, you use your own Google or Microsoft app, so mail never touches our servers." } },
-        { "@type": "Question", "name": "Can I import my ChatGPT history?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. Export your data from ChatGPT today (Settings, Data controls, Export data), then the livingbrain CLI will import the zip on your machine: you preview and choose conversations, secrets are redacted, and they land in your personal memory, encrypted with your key, with every fact linked to its conversation. Claude exports will import the same way. Step-by-step guide: https://livingbrain.wiki/guides/import-chatgpt/" } },
-        { "@type": "Question", "name": "Can someone hide instructions in a message to trick my agents?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. Every source is screened for hidden text by PromptDecode, a sister Factory Zero venture: invisible Unicode tag characters, bidi controls and variation selectors are decoded and flagged before a page is written, and again before context is served to an agent. Anything that decodes to an instruction is held for a person to review. Mail also passes Owlpost's spoofing and prompt-injection checks." } },
-        { "@type": "Question", "name": "Can it answer my customers?", "acceptedAnswer": { "@type": "Answer", "text": "Planned, through SupportGenius, a sister Factory Zero venture for customer support. It answers customers only from pages your team has explicitly published to customers, with citations, and never from internal, private-channel or personal memory. When it can't answer, it asks the brain who owns the topic and routes the question to that person. Customer messages are screened for hidden instructions before they touch the brain." } },
-        { "@type": "Question", "name": "What does a question cost?", "acceptedAnswer": { "@type": "Answer", "text": "Planned, for hosted plans: writing the brain (reading sources and writing pages, with the nightly evolve pass included) costs $1 per million tokens, and reading it (search, pages and context for agents) is unlimited. Harder questions are priced per question by reasoning level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05, Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level questions. On your own LLM key you pay only your provider, with no fee from us." } },
-        { "@type": "Question", "name": "Does it work with Grafana and our logs?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. Connect Grafana with a read-only token and the brain can answer \"is prod down?\" with the current numbers and a link to the exact panel. It reads your logs too, from Loki, Elasticsearch, Datadog, CloudWatch, Cloudflare or Sentry, and says what changed: when the errors started, which deploy came before, and the most common messages, with secrets redacted. Alerts become incident pages linked to the deploy and pull request that caused them, and the nightly pass drafts the postmortem for a person to confirm. In the other direction, Living Brain exports its own metrics, traces and logs over OpenTelemetry, so you can watch it in Grafana, Datadog or Honeycomb." } },
-        { "@type": "Question", "name": "Is my data encrypted?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host." } },
-        { "@type": "Question", "name": "Is my data used for training?", "acceptedAnswer": { "@type": "Answer", "text": "No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own LLM, requests go to your provider under your account's terms." } },
-        { "@type": "Question", "name": "Does it only work in Slack?", "acceptedAnswer": { "@type": "Answer", "text": "No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product." } },
-        { "@type": "Question", "name": "Is there an app?", "acceptedAnswer": { "@type": "Answer", "text": "Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet." } },
-        { "@type": "Question", "name": "Can I self-host?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Community plan is free for up to 5 people: it runs on your own Cloudflare account with your own LLM key. Larger teams need a Teams license. The plan and the code as it lands are public at github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with the Teams features under a commercial license." } },
-        { "@type": "Question", "name": "Which models?", "acceptedAnswer": { "@type": "Answer", "text": "On every plan you choose your own models, per role (triage, answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint, including self-hosted ones. Crew also includes $3 of DeepSeek credit each month, so you can start without a key of your own; past that, add your own key or top up." } },
-        { "@type": "Question", "name": "What does \"living\" mean?", "acceptedAnswer": { "@type": "Answer", "text": "Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week." } },
-        { "@type": "Question", "name": "How is it different from Slack AI or Glean?", "acceptedAnswer": { "@type": "Answer", "text": "Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat." } },
-        { "@type": "Question", "name": "Which coding agents can I connect?", "acceptedAnswer": { "@type": "Answer", "text": "Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol." } },
-        { "@type": "Question", "name": "Do you store my agent prompts and code?", "acceptedAnswer": { "@type": "Answer", "text": "Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it." } }
-      ]
     }
   ]
 }
@@ -114,26 +103,37 @@
 
 <header class="hd">
   <div class="wrap hd__in">
-    <a class="brand" href="#top" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
     <nav class="nav" aria-label="Primary">
-      <a href="#how">How it works</a>
-      <a href="#demo">Demo</a>
-      <a href="#agents">Coding agents</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Agents</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
     </nav>
-    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span data-theme-label>Light</span></button>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
 
 <main id="main">
-
 <section id="top" class="hero" aria-labelledby="hero-title">
   <div class="wrap hero__in">
     <div class="hero__copy">
       <p class="status"><span class="live-dot" aria-hidden="true"></span>EARLY ACCESS · IN DESIGN</p>
-      <h1 id="hero-title" class="display">Your company, <span class="accent">remembered.</span></h1>
-      <p class="hero__lede">Living Brain is a teammate that turns your team's conversations into a Markdown wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal. Every fact links back to the message it came from.</p>
+      <h1 id="hero-title" class="display">A brain for your <span class="accent">team.</span></h1>
+      <p class="hero__lede">It turns your conversations into a company wiki and keeps it true. Use it in Slack, in your coding agent, in your terminal.</p>
       <div class="join-box">
         <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
           <label class="sr" for="email-hero">Work email</label>
@@ -143,10 +143,7 @@
         <p class="join__note" id="note-hero" data-form-note role="status" hidden></p>
         <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
       </div>
-      <div class="hero__more">
-        <a class="btn btn--ghost" href="#demo">See how it thinks <span class="mono" aria-hidden="true">↓</span></a>
-        <span class="fine">No spam. One email when it's ready.</span>
-      </div>
+      <p class="hero__more fine">No spam. One email when it's ready.</p>
     </div>
     <figure class="hero__fig">
       <div class="brain-frame" data-brain-frame>
@@ -167,747 +164,50 @@
   </div>
 </section>
 
-<section class="where" aria-labelledby="where-title">
-  <div class="wrap where__in">
-    <div class="where__text">
-      <h2 id="where-title" class="where__h">Use it from anywhere</h2>
-      <ul class="where__list">
-        <li><span class="where__name">Slack</span><span class="where__st where__st--first">first</span><span class="where__what">Invite it to channels. It answers in the thread.</span></li>
-        <li><span class="where__name">Any MCP client</span><span class="where__st">planned</span><span class="where__what">Claude Code, Codex, Cursor, OpenCode, Claude Desktop and others.</span></li>
-        <li><span class="where__name">The <code>livingbrain</code> CLI</span><span class="where__st">planned</span><span class="where__what">One small Rust binary for your terminal and scripts.</span></li>
-        <li><span class="where__name">App (PWA)</span><span class="where__st">planned</span><span class="where__what">Installs on phone and desktop from the browser. Reads offline.</span></li>
-      </ul>
-      <p class="where__rust"><strong>Built in Rust, and fast.</strong> The CLI is a single static binary that starts instantly. The same core runs the hosted service on Cloudflare's edge.</p>
-    </div>
-    <figure class="card cli">
-      <div class="cli__bar"><span>~/kestrel</span><span class="tag">Illustration</span></div>
-      <div class="cli__body">
-        <div><span class="accent">$ </span><span class="ink">livingbrain ask "who owns billing?"</span></div>
-        <div class="ink2">Lina Haas owns Billing v2 since Mar 12. <span class="accent">[1]</span></div>
-        <div class="ink3">[1] #product · Tomás Reyes · Mar 12 · 11:20</div>
-        <div class="cli__gap"></div>
-        <div><span class="accent">$ </span><span class="ink">livingbrain mcp</span></div>
-        <div class="ink2">MCP server on stdio · reads with your own access</div>
-      </div>
-      <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="slack" class="sec" data-play="cite" aria-labelledby="slack-title">
-  <div class="wrap sec__in split split--center">
-    <div class="split__text">
-      <p class="eyebrow">01 · Speaks up</p>
-      <h2 id="slack-title" class="h2">It answers before anyone has to dig.</h2>
-      <p class="lede">Living Brain listens in the channels you invite it to. When a question already has an answer, it replies in the thread and links to the exact message the answer came from.</p>
-    </div>
-    <figure class="card card--xl slack">
-      <div class="slack__bar">
-        <span class="slack__ch"><span>#</span> eng</span>
-        <span class="tag">Illustration</span>
-      </div>
-      <div class="slack__body" data-trail-box>
-        <svg class="slack__trail" aria-hidden="true" focusable="false">
-          <path data-trail data-a="draw" data-d="2700" data-t="1100" d="M0 0"></path>
-          <circle data-trail-dot data-a="pop" data-d="2650" data-t="300" cx="-20" cy="-20" r="3.5"></circle>
-          <circle data-trail-dot data-a="pop" data-d="3700" data-t="300" cx="-20" cy="-20" r="3.5"></circle>
-        </svg>
-        <div class="msg msg--src" data-src>
-          <div class="msg__hl" data-a="fade" data-d="3650" data-t="700" aria-hidden="true"></div>
-          <div class="avatar avatar--person" aria-hidden="true">DP</div>
-          <div class="msg__body">
-            <div class="msg__meta"><strong>Dev Patel</strong><span class="time">09:51</span></div>
-            <p>Rolling back #412. The 502s on /api/routes come from the new pool config.</p>
-          </div>
-        </div>
-        <div class="slack__gap"><span></span>12 more messages<span></span></div>
-        <div class="msg" data-a="fadeUp" data-d="200">
-          <div class="avatar avatar--customer" aria-hidden="true">SI</div>
-          <div class="msg__body">
-            <div class="msg__meta"><strong>Sam Ito</strong><span class="time">10:04</span></div>
-            <p>is prod down? Northwind says routes won't load</p>
-          </div>
-        </div>
-        <div class="msg-wrap">
-          <div class="msg__typing" data-a="blip" data-d="900" data-t="1100" aria-hidden="true">
-            <div class="avatar avatar--bot"><span></span></div>
-            <span class="time">Living Brain is writing…</span>
-          </div>
-          <div class="msg" data-a="fadeUp" data-d="1950" data-t="600">
-            <div class="avatar avatar--bot avatar--live" aria-hidden="true"><span></span></div>
-            <div class="msg__body">
-              <div class="msg__meta"><strong>Living Brain</strong><span class="app">APP</span><span class="time">10:04</span><span class="unprompted">unprompted</span></div>
-              <p class="msg__answer">Not down. routes-api returned 502s from 09:38 to 09:52 after deploy #412. Dev rolled it back at 09:51 and error rates have been normal since.</p>
-              <div class="msg__chips">
-                <a class="cite-chip" data-chip data-a="pop" data-o="left center" data-d="2500" data-t="450" href="#demo">↩ #eng · Dev Patel · 09:51</a>
-                <span class="wiki-chip">[[Route Optimizer]]</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </figure>
-  </div>
-</section>
-
-<section id="how" class="sec" aria-labelledby="how-title">
+<section id="how" class="sec sec--tight" aria-labelledby="how-title">
   <div class="wrap sec__in">
-    <p class="eyebrow">02 · How it works</p>
-    <h2 id="how-title" class="h2">Listen. Write. Evolve.</h2>
-    <div class="steps" data-play="steps">
-      <article class="card step">
-        <div class="step__art step__art--listen" aria-hidden="true">
-          <div class="bar-row" data-a="fadeUp" data-d="150"><span class="sq sq--person"></span><span class="bar" style="width:62%"></span></div>
-          <div class="bar-row" data-a="fadeUp" data-d="550"><span class="sq sq--customer"></span><span class="bar" style="width:44%"></span></div>
-          <div class="bar-row" data-a="fadeUp" data-d="950"><span class="sq sq--project"></span><span class="bar" style="width:72%"></span></div>
-          <div class="step__out" data-a="fadeUp" data-d="1500">→ project: Billing v2</div>
-        </div>
-        <h3 class="step__h"><span>01</span>Listen</h3>
-        <p>It reads the channels it's invited to and picks out the people, projects, decisions and customers in them.</p>
-      </article>
-      <article class="card step">
-        <div class="step__art step__art--write" aria-hidden="true">
-          <div class="typed typed--h" data-a="type" data-steps="12" data-d="200" data-t="500"># Billing v2</div>
-          <div class="typed" data-a="type" data-steps="20" data-d="800" data-t="800">Owner: <span class="wl">[[Lina Haas]]</span></div>
-          <div class="typed" data-a="type" data-steps="22" data-d="1700" data-t="800">For: <span class="wl">[[Alder &amp; Finch]]</span></div>
-          <div class="typed" data-a="type" data-steps="18" data-d="2600" data-t="700">Ships: Apr 30 <span class="accent">[^1]</span></div>
-        </div>
-        <h3 class="step__h"><span>02</span>Write</h3>
-        <p>Conversations become Markdown pages with <code>[[backlinks]]</code>. Every fact cites the message it came from.</p>
-      </article>
-      <article class="card step">
-        <div class="step__art step__art--evolve" aria-hidden="true">
-          <div class="merge">
-            <div class="page-mini page-mini--l" data-a="merge" data-x="56" data-loop="1" data-t="5200">billing.md<span style="width:70%"></span></div>
-            <div class="page-mini page-mini--r" data-a="merge" data-x="-56" data-loop="1" data-t="5200">billing-v2.md<span style="width:55%"></span></div>
-            <div class="page-mini page-mini--m" data-a="mergedIn" data-loop="1" data-t="5200">billing-v2.md<span style="width:80%"></span></div>
-            <div class="spark" data-a="spark" data-loop="1" data-t="5200"></div>
-          </div>
-          <div class="facts">
-            <span class="stale" data-a="stale" data-d="1200" data-t="900">Ships: Mar 31<span class="strike" data-a="growX" data-d="1200" data-t="500"></span></span>
-            <span class="accent" data-a="fadeUp" data-d="1900">Ships: Apr 30</span>
-          </div>
-        </div>
-        <h3 class="step__h"><span>03</span>Evolve</h3>
-        <p>On its own schedule it merges duplicates, flags contradictions, retires stale facts and rewrites summaries.</p>
-      </article>
-    </div>
-
-    <figure class="card card--xl panel-fig" data-play="pipeline">
-      <div class="scroll-x" tabindex="0" role="region" aria-label="Pipeline illustration, scrolls sideways on small screens">
-      <svg class="pipe" viewBox="0 0 960 320" role="img" aria-label="Illustration: Slack messages stream into the brain, come out as Markdown pages that join a graph, and two duplicate pages merge.">
-        <text class="lbl" x="95" y="24">LISTEN</text>
-        <text class="lbl" x="480" y="24">WRITE</text>
-        <text class="lbl" x="830" y="24">EVOLVE</text>
-        <g data-a="fade" data-d="0"><rect class="box" x="20" y="46" width="150" height="52" rx="10"></rect><text class="t-ink" x="36" y="68">#eng</text><rect class="ln" x="36" y="80" width="104" height="6" rx="3"></rect></g>
-        <g data-a="fade" data-d="150"><rect class="box" x="20" y="134" width="150" height="52" rx="10"></rect><text class="t-ink" x="36" y="156">#sales</text><rect class="ln" x="36" y="168" width="80" height="6" rx="3"></rect></g>
-        <g data-a="fade" data-d="300"><rect class="box" x="20" y="222" width="150" height="52" rx="10"></rect><text class="t-ink" x="36" y="244">#support</text><rect class="ln" x="36" y="256" width="96" height="6" rx="3"></rect></g>
-        <path class="dash" id="pin1" d="M176 72 C 300 72, 330 160, 436 160"></path>
-        <path class="dash" id="pin2" d="M176 160 C 280 160, 330 160, 436 160"></path>
-        <path class="dash" id="pin3" d="M176 248 C 300 248, 330 160, 436 160"></path>
-        <path class="dash" id="pout1" d="M524 160 C 600 160, 640 70, 712 70"></path>
-        <path class="dash" id="pout2" d="M524 160 C 620 160, 720 120, 812 120"></path>
-        <path class="dash" id="pout3" d="M524 160 C 600 160, 660 190, 752 190"></path>
-        <g class="edges">
-          <line x1="720" y1="70" x2="820" y2="120"></line><line x1="820" y1="120" x2="900" y2="60"></line><line x1="820" y1="120" x2="890" y2="196"></line><line x1="820" y1="120" x2="760" y2="190"></line><line x1="720" y1="70" x2="760" y2="190"></line><line x1="890" y1="196" x2="760" y2="190"></line>
-        </g>
-        <circle class="f-person" data-a="pop" data-d="600" cx="720" cy="70" r="9"></circle>
-        <circle class="f-project" data-a="pop" data-d="900" cx="820" cy="120" r="12"></circle>
-        <circle class="f-decision" data-a="pop" data-d="1200" cx="900" cy="60" r="8"></circle>
-        <circle class="f-customer" data-a="pop" data-d="1500" cx="890" cy="196" r="9"></circle>
-        <circle class="f-project" data-a="pop" data-d="1800" cx="760" cy="190" r="8"></circle>
-        <circle class="ring-pulse" data-a="breathe" data-loop="1" data-t="2600" cx="480" cy="160" r="40"></circle>
-        <circle class="hub" cx="480" cy="160" r="40"></circle>
-        <circle class="f-accent" cx="480" cy="160" r="7"></circle>
-        <g class="f-ink3"><circle cx="466" cy="148" r="3"></circle><circle cx="496" cy="150" r="3"></circle><circle cx="470" cy="176" r="3"></circle><circle cx="494" cy="174" r="3"></circle></g>
-        <text class="t-ink2 mid" x="480" y="226">living brain</text>
-        <rect class="msg-dot" data-travel="pin1" data-dur="2600" data-off="0" x="-8" y="-6" width="16" height="12" rx="4" style="opacity:0"></rect>
-        <rect class="msg-dot" data-travel="pin1" data-dur="2600" data-off="0.5" x="-8" y="-6" width="16" height="12" rx="4" style="opacity:0"></rect>
-        <rect class="msg-dot" data-travel="pin2" data-dur="2200" data-off="0.25" x="-8" y="-6" width="16" height="12" rx="4" style="opacity:0"></rect>
-        <rect class="msg-dot" data-travel="pin2" data-dur="2200" data-off="0.75" x="-8" y="-6" width="16" height="12" rx="4" style="opacity:0"></rect>
-        <rect class="msg-dot" data-travel="pin3" data-dur="2800" data-off="0.4" x="-8" y="-6" width="16" height="12" rx="4" style="opacity:0"></rect>
-        <g class="doc" data-travel="pout1" data-dur="3000" data-off="0.1" style="opacity:0"><rect class="doc__b" x="-9" y="-11" width="18" height="22" rx="3"></rect><rect x="-5" y="-5" width="10" height="2"></rect><rect x="-5" y="0" width="7" height="2"></rect></g>
-        <g class="doc" data-travel="pout2" data-dur="3000" data-off="0.45" style="opacity:0"><rect class="doc__b" x="-9" y="-11" width="18" height="22" rx="3"></rect><rect x="-5" y="-5" width="10" height="2"></rect><rect x="-5" y="0" width="7" height="2"></rect></g>
-        <g class="doc" data-travel="pout3" data-dur="3000" data-off="0.8" style="opacity:0"><rect class="doc__b" x="-9" y="-11" width="18" height="22" rx="3"></rect><rect x="-5" y="-5" width="10" height="2"></rect><rect x="-5" y="0" width="7" height="2"></rect></g>
-        <g data-a="merge" data-x="70" data-loop="1" data-t="5600"><rect class="box" x="700" y="258" width="100" height="36" rx="7"></rect><text class="t-ink2 mid sm" x="750" y="281">billing.md</text></g>
-        <g data-a="merge" data-x="-70" data-loop="1" data-t="5600"><rect class="box" x="840" y="258" width="100" height="36" rx="7"></rect><text class="t-ink2 mid sm" x="890" y="281">billing-v2</text></g>
-        <g data-a="mergedIn" data-loop="1" data-t="5600" style="opacity:0"><rect class="box box--on" x="770" y="258" width="100" height="36" rx="7"></rect><text class="t-accent mid sm" x="820" y="281">billing-v2</text></g>
-        <circle class="spark-ring" data-a="spark" data-loop="1" data-t="5600" cx="820" cy="276" r="22" style="opacity:0"></circle>
-      </svg>
-      </div>
-      <figcaption class="cap">Illustration · the pipeline, end to end</figcaption>
-    </figure>
-
-    <div class="split split--center sub" data-play="evolve">
-      <div class="split__text">
-        <h3 class="h3">A wiki that keeps itself true.</h3>
-        <p class="lede lede--sm">Every night the brain revisits what it knows. It also learns how each person works, so its answers improve every week.</p>
-        <div class="card fact-card">
-          <div class="fact-card__k">BILLING-V2.MD · OWNER</div>
-          <div class="stale" data-a="stale" data-d="1400" data-t="900">Dev Patel · since Jan 08<span class="strike" data-a="growX" data-d="1400" data-t="500"></span></div>
-          <div class="fact-card__new" data-a="fadeUp" data-d="2300">Lina Haas · since Mar 12 <span class="accent">[^1]</span></div>
-          <div class="fact-card__src" data-a="fade" data-d="2900">[1] #product · Tomás Reyes · Mar 12 · 11:20</div>
-        </div>
-      </div>
-      <figure class="loop-fig">
-        <svg viewBox="0 0 400 400" role="img" aria-label="Illustration: a loop of four stages, Observe, Summarize, Reconcile and Learn, with a pulse travelling around it.">
-          <circle class="o-line" cx="200" cy="200" r="140"></circle>
-          <circle class="o-line2" cx="200" cy="200" r="104"></circle>
-          <path id="evo" d="M200 60 A140 140 0 1 1 200 340 A140 140 0 1 1 200 60" fill="none"></path>
-          <g class="stage" data-near="evo" data-at="0"><circle cx="200" cy="60" r="9"></circle><text x="200" y="98" class="mid">Observe</text></g>
-          <g class="stage" data-near="evo" data-at="0.25"><circle cx="340" cy="200" r="9"></circle><text x="320" y="205" class="end">Summarize</text></g>
-          <g class="stage" data-near="evo" data-at="0.5"><circle cx="200" cy="340" r="9"></circle><text x="200" y="315" class="mid">Reconcile</text></g>
-          <g class="stage" data-near="evo" data-at="0.75"><circle cx="60" cy="200" r="9"></circle><text x="80" y="205">Learn</text></g>
-          <text class="lbl" x="200" y="196">EVERY</text>
-          <text class="lbl" x="200" y="216">NIGHT</text>
-          <g class="pulse" data-travel="evo" data-key="evo" data-dur="7000" data-off="0" style="opacity:0"><circle r="16" class="pulse__halo"></circle><circle r="6"></circle></g>
-        </svg>
-      </figure>
-    </div>
+    <h2 id="how-title" class="h3">How it works</h2>
+    <ol class="trio">
+      <li class="card trio__item"><span class="trio__n">01</span><h3>Listen</h3><p>It reads the Slack channels you invite it to.</p></li>
+      <li class="card trio__item"><span class="trio__n">02</span><h3>Write</h3><p>It writes what it learns as wiki pages, and every fact links to the message it came from.</p></li>
+      <li class="card trio__item"><span class="trio__n">03</span><h3>Evolve</h3><p>Every night it merges duplicates, flags contradictions and retires old facts.</p></li>
+    </ol>
+    <p class="go"><a href="/how-it-works/">See how it works <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section id="demo" class="sec" aria-labelledby="demo-title">
+<section id="anywhere" class="sec sec--tight" aria-labelledby="where-title">
   <div class="wrap sec__in">
-    <p class="eyebrow">03 · See how it thinks</p>
-    <h2 id="demo-title" class="h2">Explore a sample brain.</h2>
-    <p class="lede">This is Kestrel Freight, a fictional 20-person logistics company. Drag to orbit, scroll or pinch to zoom, and click any node to open its page.</p>
-    <div class="demo" data-demo>
-      <div class="demo__stage">
-        <canvas class="demo__canvas" data-demo-canvas role="img" aria-label="Interactive 3D graph of the sample brain. Arrow keys turn it, plus and minus zoom. To open a page with the keyboard, use the list of pages below."></canvas>
-        <svg class="demo__static" data-static-graph viewBox="0 0 600 430" role="img" aria-label="Static graph of the sample brain"><!-- demo-static:start --><g class="sg__e"><line x1="300.0" y1="65.0" x2="426.4" y2="336.4"/><line x1="300.0" y1="65.0" x2="344.7" y2="361.7"/><line x1="300.0" y1="65.0" x2="387.4" y2="78.0"/><line x1="300.0" y1="65.0" x2="255.3" y2="361.7"/><line x1="387.4" y1="78.0" x2="173.6" y2="336.4"/><line x1="387.4" y1="78.0" x2="344.7" y2="361.7"/><line x1="459.8" y1="114.6" x2="486.2" y2="290.0"/><line x1="459.8" y1="114.6" x2="387.4" y2="78.0"/><line x1="459.8" y1="114.6" x2="140.2" y2="114.6"/><line x1="459.8" y1="114.6" x2="86.2" y2="230.7"/><line x1="504.5" y1="168.6" x2="86.2" y2="230.7"/><line x1="504.5" y1="168.6" x2="212.6" y2="78.0"/><line x1="504.5" y1="168.6" x2="459.8" y2="114.6"/><line x1="504.5" y1="168.6" x2="486.2" y2="290.0"/><line x1="513.8" y1="230.7" x2="95.5" y2="168.6"/><line x1="513.8" y1="230.7" x2="140.2" y2="114.6"/><line x1="486.2" y1="290.0" x2="140.2" y2="114.6"/><line x1="486.2" y1="290.0" x2="95.5" y2="168.6"/><line x1="426.4" y1="336.4" x2="212.6" y2="78.0"/><line x1="426.4" y1="336.4" x2="95.5" y2="168.6"/><line x1="426.4" y1="336.4" x2="387.4" y2="78.0"/><line x1="426.4" y1="336.4" x2="173.6" y2="336.4"/><line x1="344.7" y1="361.7" x2="113.8" y2="290.0"/><line x1="255.3" y1="361.7" x2="86.2" y2="230.7"/><line x1="173.6" y1="336.4" x2="486.2" y2="290.0"/><line x1="86.2" y1="230.7" x2="212.6" y2="78.0"/></g><g class="sg__n" data-goto="maya"><circle class="f-person" cx="300.0" cy="65.0" r="8"/><text x="300.0" y="89.0">Maya Okafor</text></g><g class="sg__n" data-goto="dev"><circle class="f-person" cx="387.4" cy="78.0" r="8"/><text x="387.4" y="102.0">Dev Patel</text></g><g class="sg__n" data-goto="lina"><circle class="f-person" cx="459.8" cy="114.6" r="8"/><text x="459.8" y="138.6">Lina Haas</text></g><g class="sg__n" data-goto="tomas"><circle class="f-person" cx="504.5" cy="168.6" r="8"/><text x="504.5" y="192.6">Tomás Reyes</text></g><g class="sg__n" data-goto="sam"><circle class="f-person" cx="513.8" cy="230.7" r="8"/><text x="513.8" y="254.7">Sam Ito</text></g><g class="sg__n" data-goto="billing"><circle class="f-project" cx="486.2" cy="290.0" r="8"/><text x="486.2" y="314.0">Billing v2</text></g><g class="sg__n" data-goto="routes"><circle class="f-accent" cx="426.4" cy="336.4" r="11"/><text x="426.4" y="360.4">Route Optimizer</text></g><g class="sg__n" data-goto="pg"><circle class="f-project" cx="344.7" cy="361.7" r="8"/><text x="344.7" y="385.7">Postgres 16 migration</text></g><g class="sg__n" data-goto="mobile"><circle class="f-project" cx="255.3" cy="361.7" r="8"/><text x="255.3" y="385.7">Driver app</text></g><g class="sg__n" data-goto="dfriday"><circle class="f-decision" cx="173.6" cy="336.4" r="8"/><text x="173.6" y="360.4">No deploys on Fridays</text></g><g class="sg__n" data-goto="dpg"><circle class="f-decision" cx="113.8" cy="290.0" r="8"/><text x="113.8" y="314.0">Move to Postgres 16</text></g><g class="sg__n" data-goto="dv1"><circle class="f-decision" cx="86.2" cy="230.7" r="8"/><text x="86.2" y="254.7">Sunset v1 API</text></g><g class="sg__n" data-goto="northwind"><circle class="f-customer" cx="95.5" cy="168.6" r="8"/><text x="95.5" y="192.6">Northwind Grocers</text></g><g class="sg__n" data-goto="alder"><circle class="f-customer" cx="140.2" cy="114.6" r="8"/><text x="140.2" y="138.6">Alder &amp; Finch</text></g><g class="sg__n" data-goto="bluepeak"><circle class="f-customer" cx="212.6" cy="78.0" r="8"/><text x="212.6" y="102.0">Bluepeak Logistics</text></g><!-- demo-static:end --></svg>
-        <span class="tag tag--solid demo__tag">Illustration · Sample data</span>
-        <p class="demo__hint" data-demo-hint>Static view · click a node or use the list below</p>
-      </div>
-      <aside class="demo__panel" aria-label="Entity page" data-panel><!-- demo-panel:start --><p class="panel__path"><span class="dot dot--project" aria-hidden="true"></span>brain/projects/route-optimizer.md</p><div class="md"><div class="md__l md__l--meta">---</div><div class="md__l md__l--meta">type: project</div><div class="md__l md__l--meta">status: in progress</div><div class="md__l md__l--meta">owner: Maya Okafor</div><div class="md__l md__l--meta">---</div><div class="md__l md__l--head"># Route Optimizer</div><div class="md__l md__l--body">Plans daily routes for <button type="button" class="md__link" data-goto="bluepeak">[[Bluepeak Logistics]]</button> and <button type="button" class="md__link" data-goto="northwind">[[Northwind Grocers]]</button>. Led by <button type="button" class="md__link" data-goto="maya">[[Maya Okafor]]</button>. <span class="md__cite">[^1]</span></div><div class="md__l md__l--body"></div><div class="md__l md__l--head">## Incidents</div><div class="md__l md__l--body">- Mar 14: 502s on routes-api from 09:38 to 09:52 after deploy #412. Rolled back by <button type="button" class="md__link" data-goto="dev">[[Dev Patel]]</button>. <span class="md__cite">[^2]</span></div><div class="md__l md__l--body"></div><div class="md__l md__l--head">## Rules</div><div class="md__l md__l--body">- Follows <button type="button" class="md__link" data-goto="dfriday">[[No deploys on Fridays]]</button></div></div><h3 class="panel__h">Sources</h3><ul class="srcs"><li class="src"><span class="src__label">[1] #routes · Maya Okafor · Mar 2 · 10:05</span><p>Solver rewrite is the Q2 goal. Benchmarks on Thursday.</p></li><li class="src"><span class="src__label">[2] #eng · Dev Patel · Mar 14 · 09:51</span><p>Rolling back #412. The 502s on /api/routes come from the new pool config.</p></li></ul><!-- demo-panel:end --></aside>
-    </div>
-    <p class="sr" data-demo-status role="status" aria-live="polite"></p>
-    <div class="types" role="group" aria-label="Show node types" data-js-only>
-      <span class="types__h" aria-hidden="true">Show</span>
-      <button class="type-btn" type="button" aria-pressed="true" data-type-filter="person"><span class="dot dot--person" aria-hidden="true"></span>People</button>
-      <button class="type-btn" type="button" aria-pressed="true" data-type-filter="project"><span class="dot dot--project" aria-hidden="true"></span>Projects</button>
-      <button class="type-btn" type="button" aria-pressed="true" data-type-filter="decision"><span class="dot dot--decision" aria-hidden="true"></span>Decisions</button>
-      <button class="type-btn" type="button" aria-pressed="true" data-type-filter="customer"><span class="dot dot--customer" aria-hidden="true"></span>Customers</button>
-    </div>
-    <div class="jump">
-      <h3 class="jump__h" id="jump-h">Jump to a page</h3>
-      <div class="chips" data-chips role="group" aria-labelledby="jump-h"><!-- demo-chips:start --><button type="button" class="chip" data-goto="maya" aria-pressed="false"><span class="dot dot--person" aria-hidden="true"></span>Maya Okafor</button><button type="button" class="chip" data-goto="dev" aria-pressed="false"><span class="dot dot--person" aria-hidden="true"></span>Dev Patel</button><button type="button" class="chip" data-goto="lina" aria-pressed="false"><span class="dot dot--person" aria-hidden="true"></span>Lina Haas</button><button type="button" class="chip" data-goto="tomas" aria-pressed="false"><span class="dot dot--person" aria-hidden="true"></span>Tomás Reyes</button><button type="button" class="chip" data-goto="sam" aria-pressed="false"><span class="dot dot--person" aria-hidden="true"></span>Sam Ito</button><button type="button" class="chip" data-goto="billing" aria-pressed="false"><span class="dot dot--project" aria-hidden="true"></span>Billing v2</button><button type="button" class="chip" data-goto="routes" aria-pressed="true"><span class="dot dot--project" aria-hidden="true"></span>Route Optimizer</button><button type="button" class="chip" data-goto="pg" aria-pressed="false"><span class="dot dot--project" aria-hidden="true"></span>Postgres 16 migration</button><button type="button" class="chip" data-goto="mobile" aria-pressed="false"><span class="dot dot--project" aria-hidden="true"></span>Driver app</button><button type="button" class="chip" data-goto="dfriday" aria-pressed="false"><span class="dot dot--decision" aria-hidden="true"></span>No deploys on Fridays</button><button type="button" class="chip" data-goto="dpg" aria-pressed="false"><span class="dot dot--decision" aria-hidden="true"></span>Move to Postgres 16</button><button type="button" class="chip" data-goto="dv1" aria-pressed="false"><span class="dot dot--decision" aria-hidden="true"></span>Sunset v1 API</button><button type="button" class="chip" data-goto="northwind" aria-pressed="false"><span class="dot dot--customer" aria-hidden="true"></span>Northwind Grocers</button><button type="button" class="chip" data-goto="alder" aria-pressed="false"><span class="dot dot--customer" aria-hidden="true"></span>Alder &amp; Finch</button><button type="button" class="chip" data-goto="bluepeak" aria-pressed="false"><span class="dot dot--customer" aria-hidden="true"></span>Bluepeak Logistics</button><!-- demo-chips:end --></div>
-    </div>
+    <h2 id="where-title" class="h3">Use it anywhere</h2>
+    <ul class="where__list">
+      <li><span class="where__name">Slack</span><span class="where__st where__st--first">first</span><span class="where__what">Invite it to a channel. It answers in the thread.</span></li>
+      <li><span class="where__name">Coding agents</span><span class="where__st">planned</span><span class="where__what">Claude Code, Codex, Cursor and others read it over MCP.</span></li>
+      <li><span class="where__name">The <code>livingbrain</code> CLI</span><span class="where__st">planned</span><span class="where__what">Ask it from your terminal and your scripts.</span></li>
+      <li><span class="where__name">The app</span><span class="where__st">planned</span><span class="where__what">Installs on your phone and desktop from the browser.</span></li>
+    </ul>
+    <p class="go"><a href="/agents/">Living Brain for coding agents <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section id="features" class="sec" aria-labelledby="feat-title">
+<section id="pricing" class="sec sec--tight" aria-labelledby="price-title">
   <div class="wrap sec__in">
-    <p class="eyebrow">04 · What it does</p>
-    <h2 id="feat-title" class="h2 h2--narrow">A teammate, not a search box.</h2>
-    <div class="features">
-      <article class="feat"><span class="num">01</span><h3>Remembers</h3><p>Turns conversations, and the mail you forward to its Owlpost inbox or connect from Gmail, Outlook or IMAP, into pages for people, projects, decisions and customers.</p></article>
-      <article class="feat"><span class="num">02</span><h3>Answers with sources</h3><p>Every answer links to the messages it came from, so you can check it in one click.</p></article>
-      <article class="feat"><span class="num">03</span><h3>Acts in your tools</h3><p>Opens the issue, reads the PR, sends the email digest, and hands bigger jobs to a sandboxed agent that returns a pull request.</p></article>
-      <article class="feat"><span class="num">04</span><h3>Speaks up</h3><p>Replies when a question in a channel already has an answer, without waiting to be mentioned. Connect Grafana or your logs and it knows when prod is down, and why.</p></article>
-      <article class="feat"><span class="num">05</span><h3>Works while you sleep</h3><p>Merges duplicates, resolves contradictions and retires stale facts on its own schedule.</p></article>
-      <article class="feat"><span class="num">06</span><h3>Learns your way</h3><p>Notices how each person likes answers, short or detailed, in threads or DMs, and adapts week by week.</p></article>
-      <article class="feat"><span class="num">07</span><h3>Connects to your coding agents</h3><p>Gives Claude Code, Codex, Cursor and other MCP agents the team's memory before they write code, and gathers all their session logs in one searchable place. <a href="#agents">How it works</a></p></article>
-      <article class="feat feat--last"><span class="num">08</span><h3>Easy to use <span class="opt">planned app</span></h3><p>The web app installs on your phone and desktop, keeps pages readable offline, opens on one box to search or ask, and keeps the 3D brain one tap away.</p></article>
-    </div>
-
-    <div class="split night" data-play="night">
-      <div class="split__text">
-        <h3 class="h3">One night in the brain.</h3>
-        <p class="lede lede--sm">While the team is offline it reads what happened, tidies what it knows and hands work to agents. By morning there's a digest waiting.</p>
-        <span class="tag">Sample data</span>
-      </div>
-      <ol class="timeline">
-        <li class="timeline__rail" aria-hidden="true"><span></span><span data-a="growY" data-t="4600" data-e="linear"></span></li>
-        <li><span class="timeline__t">22:40</span><span class="timeline__dot" data-a="pop" data-d="0"></span><div data-a="fadeUp" data-d="100"><strong>Read 214 new messages</strong><p>across 9 channels</p></div></li>
-        <li><span class="timeline__t">23:15</span><span class="timeline__dot" data-a="pop" data-d="1000"></span><div data-a="fadeUp" data-d="1100"><strong>Merged 4 duplicate pages</strong><p>billing.md folded into billing-v2.md, and 3 more</p></div></li>
-        <li><span class="timeline__t">01:30</span><span class="timeline__dot" data-a="pop" data-d="2000"></span><div data-a="fadeUp" data-d="2100"><strong>Resolved 3 contradictions</strong><p>Billing v2 ship date, PG16 window, Bluepeak contact</p></div></li>
-        <li><span class="timeline__t">03:05</span><span class="timeline__dot" data-a="pop" data-d="3000"></span><div data-a="fadeUp" data-d="3100"><strong>An agent opened PR #218</strong><p>"Set routes-api pool size back to 20", waiting for Dev's review</p></div></li>
-        <li class="is-last"><span class="timeline__t">07:00</span><span class="timeline__dot timeline__dot--live" data-a="pop" data-d="4300"></span><div data-a="fadeUp" data-d="4400"><strong>Wrote the morning digest</strong><p>emailed to 12 people, each in the format they prefer</p></div></li>
-      </ol>
-    </div>
+    <div class="eyebrow-row"><h2 id="price-title" class="h3">Pricing</h2><span class="tag">Planned pricing</span></div>
+    <p class="price-line"><span><strong>Community</strong> free, self-hosted, up to 5 people</span><span><strong>Teams</strong> $5/mo</span><span><strong>Crew</strong> $9/mo, hosted</span></p>
+    <p class="price-line__note">Per workspace, not per seat.</p>
+    <p class="go"><a href="/pricing/">See the plans <span aria-hidden="true">→</span></a></p>
   </div>
 </section>
 
-<section id="agents" class="sec" aria-labelledby="agents-title">
-  <div class="wrap sec__in">
-    <p class="eyebrow">05 · Coding agents</p>
-    <h2 id="agents-title" class="h2 h2--mid">Every agent starts with the company's memory.</h2>
-    <p class="lede lede--wide">Connect Claude Code, Codex, Cursor, OpenCode or any agent that supports MCP. Before an agent writes code, it asks the brain for team conventions, past decisions, who owns what, and what was tried and failed.</p>
-
-    <div class="pair">
-      <figure class="card term">
-        <div class="tabs" role="tablist" aria-label="Agent">
-          <button class="tab" type="button" role="tab" id="tab-0" aria-controls="agent-panel" aria-selected="true" data-agent-tab>Claude Code</button>
-          <button class="tab" type="button" role="tab" id="tab-1" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Codex</button>
-          <button class="tab" type="button" role="tab" id="tab-2" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Cursor</button>
-          <button class="tab" type="button" role="tab" id="tab-3" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Other MCP</button>
-        </div>
-        <div class="term__body" id="agent-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" data-agent-panel><!-- agent-panel:start --><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--out">Added HTTP MCP server livingbrain</span></div><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--ok">✓ livingbrain connected · 14 tools</span></div><!-- agent-panel:end --></div>
-        <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
-      </figure>
-      <figure class="card session" data-play="session">
-        <div class="session__bar"><span>agent session · kestrel/routes</span><span class="tag">Illustration</span></div>
-        <div class="session__body">
-          <div data-a="fadeUp" data-d="200"><span class="ink3">you&gt; </span><span class="ink">add a migration for driver shift tables</span></div>
-          <div class="ink3" data-a="fadeUp" data-d="900">→ livingbrain.ask("what's our convention for migrations?")</div>
-          <div class="session__answer" data-a="fadeUp" data-d="1700">
-            <div class="ink">Forward-only, one migration per PR, named YYYYMMDD_slug.sql. Never edit a merged migration. Large tables get a backfill job, not an UPDATE. <span class="accent">[1][2]</span></div>
-            <div class="session__src">[1] #eng · Maya Okafor · Jan 30 &#160; [2] brain/decisions/forward-only-migrations.md</div>
-          </div>
-          <div data-a="fadeUp" data-d="2700"><span class="accent">agent&gt; </span><span class="ink2">Following the team convention. Creating migrations/20260314_driver_shifts.sql, with the backfill as a separate job.</span></div>
-        </div>
-      </figure>
-    </div>
-
-    <figure class="agents-fig" data-play="agents">
-      <div class="scroll-x" tabindex="0" role="region" aria-label="Agents and brain illustration, scrolls sideways on small screens">
-        <div class="agents-fig__box" data-brain-frame>
-          <svg class="brain-still brain-still--agents" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#bsg"></use></svg>
-          <canvas class="agents-fig__brain" data-brain="agents" aria-hidden="true"></canvas>
-          <svg class="agents-fig__svg" viewBox="0 0 1000 560" role="img" aria-label="Illustration: four coding-agent terminals around the brain. Prompts and decisions flow in, a secret is redacted on the way, and context flows back out.">
-            <path class="dash" id="ag1" d="M300 90 C 400 90, 420 240, 468 262"></path>
-            <path class="dash" id="ag2" d="M700 90 C 600 90, 580 240, 532 262"></path>
-            <path class="dash" id="ag3" d="M300 470 C 400 470, 420 320, 468 298"></path>
-            <path class="dash" id="ag4" d="M700 470 C 600 470, 580 320, 532 298"></path>
-            <g class="back-threads"><path d="M300 104 C 404 104, 424 250, 468 270"></path><path d="M700 104 C 596 104, 576 250, 532 270"></path><path d="M300 456 C 404 456, 424 310, 468 290"></path><path d="M700 456 C 596 456, 576 310, 532 290"></path></g>
-            <g><rect class="tbox" x="30" y="30" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="50" y="62">Claude Code</text><text class="t-ink" x="50" y="94">&gt; chose PG16 because…</text><text class="t-ink2" x="50" y="124">KEY=</text><text class="t-ink2 redact" data-a="redact" data-d="900" data-t="700" x="90" y="124">sk-live-9f2a4c</text><g data-a="pop" data-d="1500"><rect class="box box--on" x="196" y="108" width="88" height="22" rx="5"></rect><text class="t-accent mid s12" x="240" y="123">redacted</text></g></g>
-            <g><rect class="tbox" x="700" y="30" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="720" y="62">Codex</text><text class="t-ink" x="720" y="94">&gt; eta/tz.rs is fragile</text><text class="t-accent" x="720" y="124">← 4 facts, 2 owners</text></g>
-            <g><rect class="tbox" x="30" y="410" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="50" y="442">Cursor</text><text class="t-ink" x="50" y="474">? who owns billing/</text><text class="t-accent" x="50" y="504">← Lina Haas, since Mar 12</text></g>
-            <g><rect class="tbox" x="700" y="410" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="720" y="442">OpenCode</text><text class="t-ink" x="720" y="474">? what failed before</text><text class="t-accent" x="720" y="504">← offset patch, reverted</text></g>
-            <rect class="msg-dot" data-travel="ag1" data-dur="2600" data-off="0" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
-            <rect class="msg-dot" data-travel="ag1" data-dur="2600" data-off="0.5" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
-            <rect class="msg-dot" data-travel="ag2" data-dur="2900" data-off="0.2" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
-            <rect class="msg-dot" data-travel="ag3" data-dur="3100" data-off="0.6" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
-            <rect class="msg-dot" data-travel="ag4" data-dur="2700" data-off="0.35" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
-            <g class="pulse" data-travel="ag1" data-rev="1" data-dur="3400" data-off="0.3" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
-            <g class="pulse" data-travel="ag2" data-rev="1" data-dur="3200" data-off="0.7" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
-            <g class="pulse" data-travel="ag3" data-rev="1" data-dur="3000" data-off="0.1" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
-            <g class="pulse" data-travel="ag4" data-rev="1" data-dur="3600" data-off="0.85" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
-          </svg>
-        </div>
-      </div>
-      <figcaption class="cap">Illustration · agents ⇄ brain</figcaption>
-    </figure>
-
-    <div class="duo">
-      <div class="card card--line">
-        <h3 class="h4">Agents → brain <span class="opt">opt-in</span></h3>
-        <p>The prompts your team runs and the decisions agents make along the way ("we switched to Postgres because…", "this module is fragile") become wiki pages that link to the session they came from. Secrets are redacted before anything is stored.</p>
-      </div>
-      <div class="card card--line">
-        <h3 class="h4">Brain → agents</h3>
-        <p>Before an agent writes code, it asks for context: conventions, past decisions, owners, and what was tried and failed. Every agent on the team starts with the company's memory instead of a blank slate.</p>
-      </div>
-    </div>
-
-    <div class="sub" id="agent-logs">
-      <div class="row-head">
-        <h3 class="h3">Every agent's logs, in one place.</h3>
-        <span class="tag">Planned · Sample data</span>
-      </div>
-      <p class="lede lede--sm lede--wide">The <span class="mono">livingbrain</span> CLI collects the session logs your coding agents already write: Claude Code, Codex, Cursor, OpenCode and Colonizer colonies. It redacts secrets on your machine and sends them to the brain only if you opt in. Search every session, see tokens and cost per person, repo and model, and spot where agents keep failing. Decisions found in the logs become wiki pages with a link back to the session.</p>
-      <div class="access">
-        <div class="scroll-x" tabindex="0" role="region" aria-labelledby="logs-cap">
-        <table>
-          <caption id="logs-cap">Last 7 days, by agent (sample data)</caption>
-          <thead><tr><th scope="col">Agent</th><th scope="col">Sessions</th><th scope="col">Tokens</th><th scope="col">Cost</th><th scope="col">Ended in a merged PR</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">Claude Code</th><td>214</td><td>38.2M</td><td>$61</td><td><span class="yes">64%</span></td></tr>
-            <tr><th scope="row">Codex</th><td>97</td><td>14.9M</td><td>$22</td><td><span class="yes">58%</span></td></tr>
-            <tr><th scope="row">Colonizer colonies</th><td>31</td><td>9.4M</td><td>$14</td><td><span class="yes">71%</span></td></tr>
-            <tr><th scope="row">Cursor</th><td>122</td><td>6.1M</td><td>$9</td><td><span class="yes">49%</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="sub">
-      <div class="row-head">
-        <h3 class="h3">Team prompt library</h3>
-        <span class="tag">Sample data</span>
-      </div>
-      <p class="lede lede--sm">The team's best prompts are saved, versioned and suggested to everyone. The brain notices which ones work.</p>
-      <div class="prompts">
-        <article class="card prompt"><h4>Review a PR against our conventions</h4><div class="prompt__meta"><span>Lina Haas · v4</span><span class="ink">412 uses</span></div></article>
-        <article class="card prompt"><h4>Write a migration the Kestrel way</h4><div class="prompt__meta"><span>Maya Okafor · v2</span><span class="ink">268 uses</span></div></article>
-        <article class="card prompt"><h4>Explain a stack trace using recent incidents</h4><div class="prompt__meta"><span>Dev Patel · v3</span><span class="ink">191 uses</span></div></article>
-        <article class="card prompt"><h4>Draft a customer reply from this thread</h4><div class="prompt__meta"><span>Sam Ito · v1</span><span class="ink">144 uses</span></div></article>
-      </div>
-    </div>
-
-    <div class="sub">
-      <h3 class="h3">It learns from every session.</h3>
-      <p class="lede lede--sm lede--wide">The learning layer reasons over each person's prompts and agent sessions, not just chat. It learns how each developer works, which prompts lead to merged PRs and which lead to rework, and where agents keep getting stuck. Then it improves the prompt library, fills gaps in the wiki, and briefs each person's agent the way they like.</p>
-      <div class="pair pair--top">
-        <article class="card profile" data-play="profile">
-          <div class="profile__head">
-            <div class="avatar avatar--lg avatar--person" aria-hidden="true">MO</div>
-            <div class="profile__who"><div class="profile__name">Maya Okafor</div><div class="mono-s">profile · one sample month</div></div>
-            <span class="tag">Sample data</span>
-          </div>
-          <div class="progress" aria-hidden="true"><div data-a="growX" data-t="5000" data-e="linear"></div></div>
-          <div class="weeks" aria-hidden="true"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
-          <ul class="profile__list">
-            <li data-a="fadeUp" data-d="500"><span class="wk">W1</span><span>Prefers small PRs, under 300 lines</span></li>
-            <li data-a="fadeUp" data-d="1700"><span class="wk">W2</span><span>Writes tests first</span></li>
-            <li data-a="fadeUp" data-d="2900"><span class="wk">W3</span><span>Gets stuck on auth middleware <span class="profile__act">→ auth notes now in her agent's brief</span></span></li>
-            <li data-a="fadeUp" data-d="4100"><span class="wk">W4</span><span>Wants answers as diffs, not prose</span></li>
-          </ul>
-        </article>
-        <article class="card leader" data-play="leader" data-row="56">
-          <div class="row-head row-head--center"><h4>Prompts ranked by merged PRs</h4><span class="tag">Sample data</span></div>
-          <ol class="leader__list">
-            <li class="is-top" data-lb data-from="4" data-to="38" data-final="0" style="top:0"><span class="leader__dot"></span><span class="leader__name">Review a PR against our conventions</span><span class="leader__n" data-lbn>38</span></li>
-            <li data-lb data-from="12" data-to="31" data-final="1" style="top:56px"><span class="leader__dot"></span><span class="leader__name">Write a migration the Kestrel way</span><span class="leader__n" data-lbn>31</span></li>
-            <li data-lb data-from="9" data-to="22" data-final="2" style="top:112px"><span class="leader__dot"></span><span class="leader__name">Fix a flaky test using incident history</span><span class="leader__n" data-lbn>22</span></li>
-            <li data-lb data-from="14" data-to="6" data-final="3" style="top:168px"><span class="leader__dot"></span><span class="leader__name">Refactor this file <span class="leader__warn">· often reworked</span></span><span class="leader__n" data-lbn>6</span></li>
-          </ol>
-        </article>
-      </div>
-    </div>
-
-    <div class="sub" id="why">
-      <div class="row-head">
-        <h3 class="h3">Fewer tokens. Less rework. Faster agents.</h3>
-        <span class="tag">Planned · benchmark coming</span>
-      </div>
-      <p class="lede lede--sm lede--wide">Most agents start every task cold: they reread threads, grep the repo and rediscover what the team already decided. Living Brain does that work once, at night, and hands every agent the result.</p>
-      <div class="features">
-        <article class="feat"><span class="num">A</span><h3>Fewer tokens</h3><p>An agent asks for a short brief with citations instead of reading thirty threads and grepping the whole repo. The context is written once and reused by every agent on the team.</p></article>
-        <article class="feat"><span class="num">B</span><h3>Less rework</h3><p>Decisions and dead ends are on record, so agents stop retrying approaches the team has already ruled out.</p></article>
-        <article class="feat"><span class="num">C</span><h3>Cheaper models do more</h3><p>The hard reading happens when the wiki is written. Day to day, a small model with the right page can do work that a large model with no context gets wrong.</p></article>
-        <article class="feat"><span class="num">D</span><h3>Fast</h3><p>One Rust binary, a local cache and Cloudflare's edge. Search answers from your machine before the network does.</p></article>
-      </div>
-      <div class="pair">
-        <div class="card card--line">
-          <div class="row-head"><h4 class="h4">Without the brain</h4><span class="tag">Illustration</span></div>
-          <ol>
-            <li>Read the Slack threads about billing</li>
-            <li>Grep the repo for every place that touches invoices</li>
-            <li>Ask a teammate who owns it</li>
-            <li>Try the approach the team rejected last month</li>
-          </ol>
-        </div>
-        <div class="card card--line">
-          <div class="row-head"><h4 class="h4">With the brain</h4><span class="tag">Illustration</span></div>
-          <ol>
-            <li><span class="mono">brain_context_for("billing", task)</span></li>
-            <li>One page: the owner, the conventions, the decision, the dead end, each with its source</li>
-            <li>Start coding</li>
-          </ol>
-        </div>
-      </div>
-      <div class="card card--line">
-        <h4 class="h4">The benchmark, in the open</h4>
-        <p>We'll measure tokens, cost, time, success and rework, with and without the brain, against a plain retrieval baseline, across Claude Code, Codex and Colonizer colonies, on large and small models. The task set, the harness and the raw results will be public, and anyone can rerun them. Until then there are no numbers on this page. <a href="https://github.com/Livingbrain-wiki/livingbrain/issues/48">Follow the benchmark</a></p>
-      </div>
-    </div>
+<nav class="more" aria-label="More about Living Brain">
+  <div class="wrap more__in">
+    <a href="/how-it-works/">How it works</a>
+    <a href="/agents/">Agents</a>
+    <a href="/integrations/">Integrations</a>
+    <a href="/security/">Security</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/faq/">FAQ</a>
   </div>
-</section>
-
-<section id="colonizer" class="sec" aria-labelledby="col-title">
-  <div class="wrap sec__in">
-    <p class="eyebrow">06 · Works with Colonizer</p>
-    <h2 id="col-title" class="h2 h2--mid">From Slack to pull request.</h2>
-    <p class="lede lede--wide">When a job is bigger than an answer, the brain launches a colony on <a href="https://colonizer.dev">Colonizer</a>, a sister Factory Zero venture: an isolated microVM with a coding agent inside that comes back with a pull request.</p>
-
-    <figure class="colony" data-play="colony">
-      <div class="colony__bar" aria-hidden="true"><div data-a="growX" data-t="3600" data-e="linear"></div></div>
-      <ol class="colony__steps">
-        <li class="card cstep" data-a="fadeUp" data-d="0">
-          <span class="cstep__k">01 · ASK</span>
-          <div class="cstep__msg"><strong>Maya Okafor</strong> <span class="mono-s">#routes</span><p class="mono ink">@livingbrain fix #142</p></div>
-          <p class="cstep__note">#142 · ETA off by an hour after DST</p>
-        </li>
-        <li class="card cstep" data-a="fadeUp" data-d="700">
-          <span class="cstep__k">02 · BRIEF</span>
-          <ul class="cstep__brief"><li>repo: kestrel/routes</li><li>owner: Maya Okafor</li><li>tz logic: src/eta/tz.rs</li><li class="ink">tried: offset patch, reverted</li></ul>
-        </li>
-        <li class="card cstep" data-a="fadeUp" data-d="1400">
-          <span class="cstep__k">03 · COLONY c-7f3</span>
-          <div class="capsule"><span class="live-dot"></span><span>microVM</span></div>
-          <p class="cstep__tick" aria-live="off"><span class="ink3">$ </span><span data-ticker>opening pull request #219</span></p>
-        </li>
-        <li class="card cstep cstep--on" data-a="fadeUp" data-d="2100">
-          <span class="cstep__k">04 · PULL REQUEST</span>
-          <strong class="cstep__pr">#219 Fix ETA drift across DST</strong>
-          <span class="mono-s ink2">+42 −9 · 213 tests pass</span>
-          <span class="cstep__note">Posted back in the Slack thread</span>
-        </li>
-        <li class="card cstep" data-a="fadeUp" data-d="2800">
-          <span class="cstep__k">05 · LEARNINGS</span>
-          <ul class="cstep__learn">
-            <li data-a="fadeUp" data-d="3100"><span>+</span>DST handling notes</li>
-            <li data-a="fadeUp" data-d="3350"><span>+</span>tz.rs owner: Maya</li>
-            <li data-a="fadeUp" data-d="3600"><span>+</span>Dead end: offset patch</li>
-          </ul>
-        </li>
-      </ol>
-      <figcaption class="cap">Sample flow · works with <a href="https://colonizer.dev">colonizer.dev</a></figcaption>
-    </figure>
-
-    <div class="split split--center sub">
-      <ul class="points">
-        <li><h3 class="h4">Boots already briefed</h3><p>Each colony starts with the brain's context for that repo and task.</p></li>
-        <li><h3 class="h4">Reports back to the wiki</h3><p>When it finishes, its decisions, dead ends and the PR flow back into the brain.</p></li>
-        <li><h3 class="h4">Followed from the thread</h3><p>Start a colony from Slack and watch it work live in the same thread.</p></li>
-      </ul>
-      <figure class="colony-fig">
-        <div class="square" data-brain-frame>
-          <svg class="brain-still" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#bsg"></use></svg>
-          <canvas class="brain-canvas" data-brain="colony" role="img" aria-label="Illustration: colonies orbit the brain as small capsules tied to the nodes they work on. When one finishes it docks and new nodes appear."></canvas>
-        </div>
-        <figcaption class="legend"><span><span class="legend__capsule"></span>active colony</span><span>Illustration · colonies in the graph</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section id="privacy" class="sec" data-play="rings" data-scope="0" aria-labelledby="priv-title">
-  <div class="wrap sec__in">
-    <p class="eyebrow">07 · Private by design</p>
-    <h2 id="priv-title" class="h2 h2--mid">It only knows what you're allowed to know.</h2>
-    <p class="lede">Living Brain reads with the asker's own access. Where you ask decides which memory it can use.</p>
-    <div class="split split--center privacy">
-      <figure class="rings-fig">
-        <svg viewBox="0 0 320 320" role="img" aria-label="Three nested rings: the shared brain inside private channel memory inside your personal DM memory. The rings light up for the place the question is asked.">
-          <circle class="ring-fill r3" cx="160" cy="160" r="150"></circle>
-          <circle class="o-line o-thin" cx="160" cy="160" r="150"></circle>
-          <circle class="ring-stroke r3" cx="160" cy="160" r="150"></circle>
-          <circle class="f-bg" cx="160" cy="160" r="104"></circle>
-          <circle class="ring-fill r2" cx="160" cy="160" r="104"></circle>
-          <circle class="o-line o-thin" cx="160" cy="160" r="104"></circle>
-          <circle class="ring-stroke r2" cx="160" cy="160" r="104"></circle>
-          <circle class="f-bg" cx="160" cy="160" r="58"></circle>
-          <circle class="ring-fill" cx="160" cy="160" r="58"></circle>
-          <circle class="ring-stroke" cx="160" cy="160" r="58"></circle>
-          <text class="t-ink2 mid s12" x="160" y="36">your DMs</text>
-          <text class="t-ink2 mid s12" x="160" y="80">private channel</text>
-          <text class="t-ink mid s12" x="160" y="157">shared</text>
-          <text class="t-ink mid s12" x="160" y="173">brain</text>
-        </svg>
-        <div class="scopes" role="group" aria-label="Where the question is asked" data-js-only>
-          <button class="scope" type="button" aria-pressed="true" data-scope-btn><span class="mono">#general</span><span>Public channel</span></button>
-          <button class="scope" type="button" aria-pressed="false" data-scope-btn><span class="mono">#leadership</span><span>Private channel</span></button>
-          <button class="scope" type="button" aria-pressed="false" data-scope-btn><span class="mono">Your DMs</span><span>Direct message</span></button>
-        </div>
-      </figure>
-      <div class="access">
-        <div class="scroll-x" tabindex="0" role="region" aria-labelledby="access-cap">
-        <table>
-          <caption id="access-cap">What it can use, by where you ask</caption>
-          <thead>
-            <tr><th scope="col">Asked in</th><th scope="col">Shared brain</th><th scope="col">Private channel memory</th><th scope="col">Personal memory</th></tr>
-          </thead>
-          <tbody>
-            <tr class="row0"><th scope="row">Public channel</th><td><span class="yes">Yes</span></td><td class="no">No</td><td class="no">No</td></tr>
-            <tr class="row1"><th scope="row">Private channel</th><td><span class="yes">Yes</span></td><td><span class="yes">That channel</span></td><td class="no">No</td></tr>
-            <tr class="row2"><th scope="row">Your DMs</th><td><span class="yes">Yes</span></td><td><span class="yes">Channels you're in</span></td><td><span class="yes">Yes</span></td></tr>
-          </tbody>
-        </table>
-        </div>
-        <p class="access__note">Always limited to what the person asking can already see in Slack.</p>
-        <p class="access__note">Planned: each scope is encrypted with its own key. Search stays inside your scopes and stays fast, and deleting a scope's key erases that memory everywhere.</p>
-        <p class="access__note">Planned: connected mailboxes (Gmail, Outlook, IMAP) stay in the owner's personal memory, encrypted with their key, unless they share a specific label or folder.</p>
-        <p class="access__note">Planned: everything it reads, from Slack, mail, imports, agent logs and git, is screened for hidden text by <a href="https://promptdeco.de">PromptDecode</a>, a sister Factory Zero venture, so an invisible instruction in one message can't reach every agent's context.</p>
-      </div>
-    </div>
-
-    <div class="sub" id="encryption">
-      <div class="row-head">
-        <h3 class="h3">Encrypted per scope, searchable and fast.</h3>
-        <span class="tag">Planned</span>
-      </div>
-      <p class="lede lede--sm lede--wide">The access rules above aren't only a check in code. Each scope is its own encryption key, so a bug or a leaked key for one channel exposes that channel and nothing else.</p>
-      <figure class="card card--line crypt" aria-label="Envelope encryption: page text is encrypted with its scope key, and the scope key is wrapped by a workspace key held in a separate key service">
-        <div class="crypt__row"><span class="crypt__box">page text</span><span class="crypt__arrow">AES-256-GCM, scope key</span><span class="crypt__box crypt__box--dark">ciphertext in storage</span></div>
-        <div class="crypt__row"><span class="crypt__box crypt__box--key">scope key</span><span class="crypt__arrow">wrapped by</span><span class="crypt__box crypt__box--key">workspace key, in a separate key service</span></div>
-        <figcaption class="mono-s">Scopes: shared brain · each private channel · each person · customer-safe pages. On Teams, the workspace key can live in your own key service.</figcaption>
-      </figure>
-      <div class="features">
-        <article class="feat"><span class="num">01</span><h3>One key per scope</h3><p>The shared brain, every private channel and every person each have their own key. Your mail, imported chats and agent logs sit under yours.</p></article>
-        <article class="feat"><span class="num">02</span><h3>Search without opening everything</h3><p>Keyword search runs on keyed hashes and meaning search on one index per scope, so a query only touches the scopes you can see. Only the top matches are decrypted, in memory, for that one request.</p></article>
-        <article class="feat"><span class="num">03</span><h3>Fastest on your device</h3><p>The CLI and the app keep your scopes encrypted with a key from your keychain or passkey, and search locally without a network round trip.</p></article>
-        <article class="feat"><span class="num">04</span><h3>Delete the key, erase the memory</h3><p>Forget a channel, offboard a person or revoke a mailbox: delete that scope's key and its memory is unreadable everywhere, backups included.</p></article>
-      </div>
-      <p class="access__note"><strong>The honest limit:</strong> to write the wiki, the model has to read the text. Hosted plans protect your data at rest and scope by scope, but not from the running service itself. For "even you can't read it", self-host on the Community or Teams plan. Keyword hashes also reveal which words repeat within a scope, never across scopes.</p>
-    </div>
-  </div>
-</section>
-
-<section id="own" class="sec" aria-labelledby="own-title">
-  <div class="wrap sec__in">
-    <p class="eyebrow">08 · You own it</p>
-    <h2 id="own-title" class="h2 h2--mid">Your brain is a folder of Markdown.</h2>
-    <p class="lede">Read it, edit it, version it, move it. Your knowledge isn't locked in a black-box vector store. Planned: keep it in your own git repo, where the Living Brain GitHub App proposes every change as a pull request and edits you merge flow back in.</p>
-    <div class="pair pair--stretch">
-      <figure class="card card--xl mdfile">
-        <div class="mdfile__bar"><span>brain/projects/billing-v2.md</span><span>Markdown</span></div>
-        <div class="mdfile__body">
-          <div class="ink3">---</div>
-          <div class="ink3">type: project</div>
-          <div class="ink3">owner: [[Lina Haas]]</div>
-          <div class="ink3">ships: 2026-04-30</div>
-          <div class="ink3">updated: 2026-03-13 by living-brain</div>
-          <div class="ink3">---</div>
-          <div class="md-h"># Billing v2</div>
-          <div>Usage-based invoices for fleet customers.</div>
-          <div>Owned by <span class="wl">[[Lina Haas]]</span> since Mar 12. <span class="accent">[^1]</span></div>
-          <div class="md-gap"></div>
-          <div class="md-h">## Waiting on it</div>
-          <div>- <span class="wl">[[Alder &amp; Finch]]</span></div>
-          <div>- <span class="wl">[[Northwind Grocers]]</span></div>
-          <div class="md-gap"></div>
-          <div class="ink3">[^1]: #product · Tomás Reyes · 2026-03-12 11:20</div>
-        </div>
-      </figure>
-      <figure class="card card--xl card--line own-fig">
-        <div class="own-fig__stage" data-brain-frame>
-          <svg class="brain-still" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#bsg"></use></svg>
-          <canvas class="brain-canvas" data-brain="own" role="img" aria-label="Illustration: the same wiki as a graph, growing denser over thirty days."></canvas>
-        </div>
-        <figcaption class="own-fig__cap">Export anytime. Opens in Obsidian.</figcaption>
-      </figure>
-    </div>
-
-    <div class="card card--line growth" data-play="growth">
-      <div class="row-head">
-        <h3 class="h3 h3--sm">Thirty days of a 20-person team</h3>
-        <span class="tag">Sample data</span>
-      </div>
-      <dl class="stats">
-        <div><dt><span class="key key--ink"></span>Pages written</dt><dd data-count data-to="412" data-dur="4200" data-d="300">412</dd></div>
-        <div><dt><span class="key key--accent"></span>Links formed</dt><dd class="accent" data-count data-to="2960" data-dur="4200" data-d="300">2,960</dd></div>
-        <div><dt><span class="key key--dash"></span>Facts refreshed</dt><dd data-count data-to="738" data-dur="4200" data-d="300">738</dd></div>
-      </dl>
-      <div class="chart" data-a="reveal" data-d="300" data-t="4200" data-e="linear">
-        <svg viewBox="0 0 600 240" role="img" aria-label="Sample chart: pages, links and refreshed facts all climb over 30 days, links fastest.">
-          <g class="grid"><line x1="20" y1="36" x2="580" y2="36"></line><line x1="20" y1="94" x2="580" y2="94"></line><line x1="20" y1="153" x2="580" y2="153"></line><line x1="20" y1="212" x2="580" y2="212"></line></g>
-          <!-- growth:start --><path class="g-area" d="M20.0 212.0 L39.3 210.7 L58.6 208.4 L77.9 205.4 L97.2 202.0 L116.6 198.2 L135.9 194.1 L155.2 189.6 L174.5 184.8 L193.8 179.7 L213.1 174.4 L232.4 168.8 L251.7 163.0 L271.0 157.0 L290.3 150.8 L309.7 144.3 L329.0 137.7 L348.3 130.9 L367.6 123.9 L386.9 116.7 L406.2 109.3 L425.5 101.8 L444.8 94.1 L464.1 86.2 L483.4 78.2 L502.8 70.1 L522.1 61.8 L541.4 53.3 L560.7 44.7 L580.0 36.0 L580 212 L20 212 Z"></path><path class="g-links" d="M20.0 212.0 L39.3 210.7 L58.6 208.4 L77.9 205.4 L97.2 202.0 L116.6 198.2 L135.9 194.1 L155.2 189.6 L174.5 184.8 L193.8 179.7 L213.1 174.4 L232.4 168.8 L251.7 163.0 L271.0 157.0 L290.3 150.8 L309.7 144.3 L329.0 137.7 L348.3 130.9 L367.6 123.9 L386.9 116.7 L406.2 109.3 L425.5 101.8 L444.8 94.1 L464.1 86.2 L483.4 78.2 L502.8 70.1 L522.1 61.8 L541.4 53.3 L560.7 44.7 L580.0 36.0"></path><path class="g-pages" d="M20.0 212.0 L39.3 195.7 L58.6 180.8 L77.9 167.2 L97.2 154.7 L116.6 143.3 L135.9 132.9 L155.2 123.4 L174.5 114.7 L193.8 106.7 L213.1 99.4 L232.4 92.8 L251.7 86.7 L271.0 81.2 L290.3 76.1 L309.7 71.4 L329.0 67.2 L348.3 63.3 L367.6 59.7 L386.9 56.5 L406.2 53.5 L425.5 50.8 L444.8 48.3 L464.1 46.1 L483.4 44.0 L502.8 42.1 L522.1 40.4 L541.4 38.8 L560.7 37.3 L580.0 36.0"></path><path class="g-refreshed" d="M20.0 212.0 L39.3 212.0 L58.6 212.0 L77.9 212.0 L97.2 212.0 L116.6 212.0 L135.9 212.0 L155.2 208.5 L174.5 203.7 L193.8 198.2 L213.1 192.2 L232.4 185.9 L251.7 179.2 L271.0 172.2 L290.3 165.0 L309.7 157.5 L329.0 149.9 L348.3 142.0 L367.6 134.0 L386.9 125.7 L406.2 117.4 L425.5 108.9 L444.8 100.2 L464.1 91.4 L483.4 82.4 L502.8 73.4 L522.1 64.2 L541.4 54.9 L560.7 45.5 L580.0 36.0"></path><!-- growth:end -->
-          <text class="axis" x="20" y="232">Day 1</text>
-          <text class="axis mid" x="300" y="232">Day 15</text>
-          <text class="axis end" x="580" y="232">Day 30</text>
-        </svg>
-      </div>
-      <p class="growth__note">Each line is scaled to its own total. The graph above fills in as the chart plays.</p>
-    </div>
-  </div>
-</section>
-
-<section id="pricing" class="sec" aria-labelledby="price-title">
-  <div class="wrap sec__in">
-    <div class="eyebrow-row"><p class="eyebrow">09 · Pricing</p><span class="tag">Planned pricing</span></div>
-    <h2 id="price-title" class="h2 h2--mid">Priced per workspace, not per seat.</h2>
-    <p class="lede">Self-hosting is free for small teams. Teams and hosting are paid. Living Brain is built in Rust on Cloudflare's edge, so it's fast and very cheap to run, and the price reflects that.</p>
-    <div class="plans">
-      <article class="card plan">
-        <div class="plan__top"><h3>Community</h3><span class="plan__run">Self-hosted</span></div>
-        <p class="plan__price"><span>$0</span>per workspace</p>
-        <ul>
-          <li>Up to 5 people</li>
-          <li>Runs on your own Cloudflare account with your own LLM key</li>
-          <li>All core features: the Slack brain, the living wiki, citations, the 3D graph, MCP for coding agents, agent log aggregation, export</li>
-          <li>Storage: your own Cloudflare account, no limit from us</li>
-        </ul>
-      </article>
-      <article class="card plan">
-        <div class="plan__top"><h3>Teams</h3><span class="plan__run">Self-hosted or hosted</span></div>
-        <p class="plan__price"><span>$5</span>/mo per workspace</p>
-        <ul>
-          <li>Unlimited people</li>
-          <li>Team features: SSO, admin and audit log, the shared team prompt library, per-channel policies</li>
-          <li>Self-hosted with a license key, or hosted by us with your own LLM key</li>
-          <li>Hosted: 10 GB storage included. Self-hosted: your own storage</li>
-        </ul>
-      </article>
-      <article class="card plan plan--on">
-        <div class="plan__top"><h3>Crew</h3><span class="plan__run">Hosted</span></div>
-        <p class="plan__price"><span>$9</span>/mo per workspace</p>
-        <ul>
-          <li>Hosted by us, with $3 of DeepSeek credit included each month, or bring your own LLM</li>
-          <li>Up to 25 people</li>
-          <li>Team features included</li>
-          <li>25 GB storage included</li>
-        </ul>
-      </article>
-    </div>
-    <p class="plans__note">Storage covers wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage: $0.25 per GB a month. Every plan: Markdown export, cited answers, and access that follows Slack permissions. No hosted plan is free.</p>
-
-    <div class="card card--line meter">
-      <div class="row-head"><h3 class="h3 h3--sm">Memory, priced like memory</h3><span class="tag">Planned · hosted</span></div>
-      <div class="meter__grid">
-        <div><div class="meter__k mono">Writing the brain</div><div class="meter__v"><span>$1</span>/M tokens</div><p>Reading sources and writing pages. The nightly evolve pass is included.</p></div>
-        <div><div class="meter__k mono">Reading the brain</div><div class="meter__v"><span>Unlimited</span></div><p>Search, pages and context for your agents, over MCP, the CLI and the app.</p></div>
-        <div><div class="meter__k mono">On your own LLM key</div><div class="meter__v"><span>$0</span> from us</div><p>You pay your provider directly. No markup, no per-question fee.</p></div>
-      </div>
-    </div>
-
-    <div class="card card--line rs">
-      <div class="row-head"><h3 class="h3 h3--sm">Brain reasoning, on demand</h3><span class="tag">Planned · per question</span></div>
-      <p class="rs__lede">Ask harder questions when it matters. Pick how hard the brain thinks, per question, from the CLI, MCP or Slack. Crew's $3 monthly credit covers about 600 questions at the default level.</p>
-      <fieldset class="rs__set">
-        <legend class="vh">Reasoning level</legend>
-        <div class="rs__track">
-          <input class="rs__in" type="radio" name="rs" id="rs-minimal"><label class="rs__stop" for="rs-minimal"><span class="rs__dot" aria-hidden="true"></span><span class="rs__name">Minimal</span></label>
-          <input class="rs__in" type="radio" name="rs" id="rs-low" checked><label class="rs__stop" for="rs-low"><span class="rs__dot" aria-hidden="true"></span><span class="rs__name">Low</span></label>
-          <input class="rs__in" type="radio" name="rs" id="rs-medium"><label class="rs__stop" for="rs-medium"><span class="rs__dot" aria-hidden="true"></span><span class="rs__name">Medium</span></label>
-          <input class="rs__in" type="radio" name="rs" id="rs-high"><label class="rs__stop" for="rs-high"><span class="rs__dot" aria-hidden="true"></span><span class="rs__name">High</span></label>
-          <input class="rs__in" type="radio" name="rs" id="rs-max"><label class="rs__stop" for="rs-max"><span class="rs__dot" aria-hidden="true"></span><span class="rs__name">Max</span></label>
-        </div>
-        <div class="rs__panels">
-          <div class="rs__panel" data-level="minimal"><div class="rs__price"><span>$0.001</span>/question</div><div class="rs__speed mono">Instant</div><p>One search, one page. For quick lookups.</p></div>
-          <div class="rs__panel" data-level="low"><div class="rs__price"><span>$0.005</span>/question</div><div class="rs__speed mono">Instant</div><p>An answer with its sources and the context around them. The default.</p></div>
-          <div class="rs__panel" data-level="medium"><div class="rs__price"><span>$0.02</span>/question</div><div class="rs__speed mono">Fast</div><p>Several searches, then a directed synthesis across pages.</p></div>
-          <div class="rs__panel" data-level="high"><div class="rs__price"><span>$0.05</span>/question</div><div class="rs__speed mono">Async</div><p>Multi-pass: patterns over time, across channels, mail and agent logs.</p></div>
-          <div class="rs__panel" data-level="max"><div class="rs__price"><span>$0.25</span>/question</div><div class="rs__speed mono">Async</div><p>Research-grade. Searches the full history and writes up what it finds.</p></div>
-        </div>
-      </fieldset>
-    </div>
-
-    <figure class="card card--line cost" data-play="cost">
-      <div class="row-head">
-        <h3 class="h3 h3--sm">20 people, one month</h3>
-        <span class="tag">Illustrative comparison</span>
-      </div>
-      <div class="bars">
-        <div><div class="bars__row"><span>Per-user pricing at $45 × 20 people</span><span class="mono ink" data-count data-to="900" data-pre="$" data-dur="2800">$900</span></div><div class="bars__track"><div class="bars__fill" style="width:100%" data-a="growX" data-t="2800" data-e="cubic-bezier(.3,.1,.2,1)"></div></div></div>
-        <div><div class="bars__row"><span>Per-user pricing at $10 × 20 people</span><span class="mono ink" data-count data-to="200" data-pre="$" data-dur="1900">$200</span></div><div class="bars__track"><div class="bars__fill" style="width:22.2%" data-a="growX" data-t="1900" data-e="cubic-bezier(.3,.1,.2,1)"></div></div></div>
-        <div><div class="bars__row bars__row--us"><span>Living Brain Crew, one flat price</span><span class="mono accent" data-count data-to="9" data-pre="$" data-dur="500">$9</span></div><div class="bars__track"><div class="bars__fill bars__fill--us" style="width:1%" data-a="growX" data-t="500"></div></div></div>
-      </div>
-      <figcaption class="cost__line">Others charge $10–45 per user. We charge per team.</figcaption>
-    </figure>
-  </div>
-</section>
-
-<section id="faq" class="sec" aria-labelledby="faq-title">
-  <div class="wrap wrap--narrow sec__in">
-    <p class="eyebrow">10 · FAQ</p>
-    <h2 id="faq-title" class="h2">Questions</h2>
-    <div class="faq">
-      <details><summary><h3>Can it collect my coding agents' logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The livingbrain CLI collects the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer already write, redacts secrets on your machine, and uploads them only if you opt in. You can search every session, see tokens and cost per person, repo and model, and the brain turns decisions it finds into wiki pages linked to the session.</p></details>
-      <details><summary><h3>How much storage is included?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Hosted Teams includes 10 GB and Crew includes 25 GB, covering wiki pages, sources, search indexes and aggregated agent logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use your own Cloudflare storage, with no limit from us. Planned pricing.</p></details>
-      <details><summary><h3>Can it connect my Gmail or Outlook?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The simplest and safest way needs no mailbox access at all: forward, BCC or auto-forward mail to your brain's own address on Owlpost, our sister email service, and only what you send arrives. If you want a whole mailbox kept in sync, you can also connect Gmail, Outlook.com or Microsoft 365, or any IMAP mailbox, plus your calendar, read-only. Your mail stays in your personal memory, encrypted with your own key, and no one else can draw on it unless you share a specific label or folder. Every message is screened for spoofing and prompt injection before the brain reads it, and mail can never trigger actions. Revoke the connection at any time and its stored mail is erased. When you self-host, you use your own Google or Microsoft app, so mail never touches our servers.</p></details>
-      <details><summary><h3>Can I import my ChatGPT history?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Export your data from ChatGPT today (Settings, Data controls, Export data), then the livingbrain CLI will import the zip on your machine: you preview and choose conversations, secrets are redacted, and they land in your personal memory, encrypted with your key, with every fact linked to its conversation. Claude exports will import the same way. <a href="/guides/import-chatgpt/">Read the step-by-step guide</a>.</p></details>
-      <details><summary><h3>Can someone hide instructions in a message to trick my agents?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Every source is screened for hidden text by <a href="https://promptdeco.de">PromptDecode</a>, a sister Factory Zero venture: invisible Unicode tag characters, bidi controls and variation selectors are decoded and flagged before a page is written, and again before context is served to an agent. Anything that decodes to an instruction is held for a person to review. Mail also passes Owlpost's spoofing and prompt-injection checks.</p></details>
-      <details><summary><h3>Can it answer my customers?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned, through <a href="https://supportgeni.us">SupportGenius</a>, a sister Factory Zero venture for customer support. It answers customers only from pages your team has explicitly published to customers, with citations, and never from internal, private-channel or personal memory. When it can't answer, it asks the brain who owns the topic and routes the question to that person. Customer messages are screened for hidden instructions before they touch the brain.</p></details>
-      <details><summary><h3>What does a question cost?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned, for hosted plans: writing the brain (reading sources and writing pages, with the nightly evolve pass included) costs $1 per million tokens, and reading it (search, pages and context for agents) is unlimited. Harder questions are priced per question by reasoning level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05, Max $0.25. Crew's $3 monthly DeepSeek credit covers about 600 default-level questions. On your own LLM key you pay only your provider, with no fee from us.</p></details>
-      <details><summary><h3>Does it work with Grafana and our logs?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Connect Grafana with a read-only token and the brain can answer "is prod down?" with the current numbers and a link to the exact panel. It reads your logs too, from Loki, Elasticsearch, Datadog, CloudWatch, Cloudflare or Sentry, and says what changed: when the errors started, which deploy came before, and the most common messages, with secrets redacted. Alerts become incident pages linked to the deploy and pull request that caused them, and the nightly pass drafts the postmortem for a person to confirm. In the other direction, Living Brain exports its own metrics, traces and logs over OpenTelemetry, so you can watch it in Grafana, Datadog or Honeycomb.</p></details>
-      <details><summary><h3>Is my data encrypted?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. Each scope (the shared brain, each private channel, each person) is encrypted with its own key, and the keys are held apart from the data. Search runs only inside the scopes you can see, so it stays fast. Deleting a scope's key erases that memory everywhere, backups included. On Teams you can bring your own key. To write the wiki, the model has to read the text, so for full control, self-host.</p></details>
-      <details><summary><h3>Is my data used for training?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Your workspace's messages and pages are never used to train models, ours or anyone else's. If you bring your own LLM, requests go to your provider under your account's terms.</p></details>
-      <details><summary><h3>Does it only work in Slack?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>No. Slack is the first chat integration. You can also use it from any MCP client, such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop, or from the livingbrain command-line tool, a single Rust binary. MCP and the CLI are planned, like the rest of the product.</p></details>
-      <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet.</p></details>
-      <details><summary><h3>Can I self-host?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Yes. The Community plan is free for up to 5 people: it runs on your own Cloudflare account with your own LLM key. Larger teams need a Teams license. The plan and the code as it lands are public on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>, open core: Apache-2.0, with the Teams features under a commercial license.</p></details>
-      <details><summary><h3>Which models?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>On every plan you choose your own models, per role (triage, answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or any OpenAI-compatible endpoint, including self-hosted ones. Crew also includes $3 of DeepSeek credit each month, so you can start without a key of your own; past that, add your own key or top up.</p></details>
-      <details><summary><h3>What does "living" mean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week.</p></details>
-      <details><summary><h3>How is it different from Slack AI or Glean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding agents the same memory, and is priced per workspace instead of per seat.</p></details>
-      <details><summary><h3>Which coding agents can I connect?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Any agent that supports MCP, including Claude Code, Codex, Cursor and OpenCode. We're not affiliated with these tools; they connect through the open protocol.</p></details>
-      <details><summary><h3>Do you store my agent prompts and code?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Only if you opt in. Prompts and session notes are stored with secrets redacted first. Source code is never stored unless you allow it.</p></details>
-    </div>
-  </div>
-</section>
-
+</nav>
 </main>
 
 <footer id="waitlist" class="ft">
@@ -928,14 +228,24 @@
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
         <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
       </div>
-      <nav class="ft__nav" aria-label="Footer">
-        <a href="https://factory0.ventures">a Factory Zero venture</a>
-        <a href="https://colonizer.dev">Colonizer</a>
-        <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
-        <a href="/llms.txt">llms.txt</a>
-        <a href="/.well-known/security.txt">security.txt</a>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
       </nav>
     </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
     <div class="ft__fz">
       <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
       <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">

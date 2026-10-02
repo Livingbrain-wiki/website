@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Coding agents · Living Brain</title>
+<meta name="description" content="Living Brain is planned to give Claude Code, Codex, Cursor and any MCP agent the team's memory before they write code, gather their session logs, and save tokens. Not built yet.">
+<link rel="canonical" href="https://livingbrain.wiki/agents/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://livingbrain.wiki/agents/">
+<meta property="og:title" content="Living Brain for coding agents">
+<meta property="og:description" content="Every agent starts with the company's memory: context over MCP or the CLI, session logs in one place, fewer tokens.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Living Brain for coding agents">
+<meta name="twitter:description" content="Every agent starts with the company's memory: context over MCP or the CLI, session logs in one place, fewer tokens.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Living Brain">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/brain.js" defer></script>
+<script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://livingbrain.wiki/agents/#webpage",
+  "url": "https://livingbrain.wiki/agents/",
+  "name": "Coding agents",
+  "description": "How Living Brain is planned to work with coding agents.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://livingbrain.wiki/#website",
+    "name": "Living Brain",
+    "url": "https://livingbrain.wiki/"
+  },
+  "about": {
+    "@id": "https://livingbrain.wiki/#app"
+  }
+}
+</script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/" aria-current="page">Agents</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/" aria-current="page">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hd" aria-labelledby="page-title">
+  <div class="wrap">
+    <p class="eyebrow">Coding agents</p>
+    <h1 id="page-title" class="h2 h2--page">Every agent starts with the company's memory.</h1>
+    <p class="lede">Connect Claude Code, Codex, Cursor, OpenCode or any agent that supports MCP. Before an agent writes code, it asks the brain for team conventions, past decisions, who owns what, and what was tried and failed.</p>
+  </div>
+</section>
+<section id="connect" class="sec" aria-labelledby="connect-title">
+  <div class="wrap sec__in">
+    <div class="eyebrow-row"><h2 id="connect-title" class="h3">Connect over MCP, or use the CLI.</h2><span class="tag">Planned</span></div>
+    <p class="lede lede--sm lede--wide">Any MCP client works, including Claude Desktop. A Claude Code plugin will bundle the MCP server with skills and slash commands.</p>
+    <div class="pair">
+      <figure class="card term">
+        <div class="tabs" role="tablist" aria-label="Agent">
+          <button class="tab" type="button" role="tab" id="tab-0" aria-controls="agent-panel" aria-selected="true" data-agent-tab>Claude Code</button>
+          <button class="tab" type="button" role="tab" id="tab-1" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Codex</button>
+          <button class="tab" type="button" role="tab" id="tab-2" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Cursor</button>
+          <button class="tab" type="button" role="tab" id="tab-3" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Other MCP</button>
+        </div>
+        <div class="term__body" id="agent-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" data-agent-panel><!-- agent-panel:start --><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--out">Added HTTP MCP server livingbrain</span></div><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--ok">✓ livingbrain connected · 14 tools</span></div><!-- agent-panel:end --></div>
+        <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
+      </figure>
+      <figure class="card cli">
+        <div class="cli__bar"><span>~/kestrel</span><span class="tag">Illustration</span></div>
+        <div class="cli__body">
+          <div><span class="accent">$ </span><span class="ink">livingbrain ask "who owns billing?"</span></div>
+          <div class="ink2">Lina Haas owns Billing v2 since Mar 12. <span class="accent">[1]</span></div>
+          <div class="ink3">[1] #product · Tomás Reyes · Mar 12 · 11:20</div>
+          <div class="cli__gap"></div>
+          <div><span class="accent">$ </span><span class="ink">livingbrain mcp</span></div>
+          <div class="ink2">MCP server on stdio · reads with your own access</div>
+        </div>
+        <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
+      </figure>    </div>
+    <p class="where__rust"><strong>Built in Rust, and fast.</strong> The CLI is a single static binary that starts instantly. The same core runs the hosted service on Cloudflare's edge.</p>
+  </div>
+</section>
+
+<section id="context" class="sec" aria-labelledby="context-title">
+  <div class="wrap sec__in">
+    <h2 id="context-title" class="h3">Context in, decisions out.</h2>
+    <div class="pair pair--one">
+      <figure class="card session" data-play="session">
+        <div class="session__bar"><span>agent session · kestrel/routes</span><span class="tag">Illustration</span></div>
+        <div class="session__body">
+          <div data-a="fadeUp" data-d="200"><span class="ink3">you&gt; </span><span class="ink">add a migration for driver shift tables</span></div>
+          <div class="ink3" data-a="fadeUp" data-d="900">→ livingbrain.ask("what's our convention for migrations?")</div>
+          <div class="session__answer" data-a="fadeUp" data-d="1700">
+            <div class="ink">Forward-only, one migration per PR, named YYYYMMDD_slug.sql. Never edit a merged migration. Large tables get a backfill job, not an UPDATE. <span class="accent">[1][2]</span></div>
+            <div class="session__src">[1] #eng · Maya Okafor · Jan 30 &#160; [2] brain/decisions/forward-only-migrations.md</div>
+          </div>
+          <div data-a="fadeUp" data-d="2700"><span class="accent">agent&gt; </span><span class="ink2">Following the team convention. Creating migrations/20260314_driver_shifts.sql, with the backfill as a separate job.</span></div>
+        </div>
+      </figure>
+    </div>
+    <figure class="agents-fig" data-play="agents">
+      <div class="scroll-x" tabindex="0" role="region" aria-label="Agents and brain illustration, scrolls sideways on small screens">
+        <div class="agents-fig__box" data-brain-frame>
+          <svg class="brain-still brain-still--agents" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><use href="#bsg"></use></svg>
+          <canvas class="agents-fig__brain" data-brain="agents" aria-hidden="true"></canvas>
+          <svg class="agents-fig__svg" viewBox="0 0 1000 560" role="img" aria-label="Illustration: four coding-agent terminals around the brain. Prompts and decisions flow in, a secret is redacted on the way, and context flows back out.">
+            <path class="dash" id="ag1" d="M300 90 C 400 90, 420 240, 468 262"></path>
+            <path class="dash" id="ag2" d="M700 90 C 600 90, 580 240, 532 262"></path>
+            <path class="dash" id="ag3" d="M300 470 C 400 470, 420 320, 468 298"></path>
+            <path class="dash" id="ag4" d="M700 470 C 600 470, 580 320, 532 298"></path>
+            <g class="back-threads"><path d="M300 104 C 404 104, 424 250, 468 270"></path><path d="M700 104 C 596 104, 576 250, 532 270"></path><path d="M300 456 C 404 456, 424 310, 468 290"></path><path d="M700 456 C 596 456, 576 310, 532 290"></path></g>
+            <g><rect class="tbox" x="30" y="30" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="50" y="62">Claude Code</text><text class="t-ink" x="50" y="94">&gt; chose PG16 because…</text><text class="t-ink2" x="50" y="124">KEY=</text><text class="t-ink2 redact" data-a="redact" data-d="900" data-t="700" x="90" y="124">sk-live-9f2a4c</text><g data-a="pop" data-d="1500"><rect class="box box--on" x="196" y="108" width="88" height="22" rx="5"></rect><text class="t-accent mid s12" x="240" y="123">redacted</text></g></g>
+            <g><rect class="tbox" x="700" y="30" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="720" y="62">Codex</text><text class="t-ink" x="720" y="94">&gt; eta/tz.rs is fragile</text><text class="t-accent" x="720" y="124">← 4 facts, 2 owners</text></g>
+            <g><rect class="tbox" x="30" y="410" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="50" y="442">Cursor</text><text class="t-ink" x="50" y="474">? who owns billing/</text><text class="t-accent" x="50" y="504">← Lina Haas, since Mar 12</text></g>
+            <g><rect class="tbox" x="700" y="410" width="270" height="120" rx="12"></rect><text class="t-ink3 s14" x="720" y="442">OpenCode</text><text class="t-ink" x="720" y="474">? what failed before</text><text class="t-accent" x="720" y="504">← offset patch, reverted</text></g>
+            <rect class="msg-dot" data-travel="ag1" data-dur="2600" data-off="0" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
+            <rect class="msg-dot" data-travel="ag1" data-dur="2600" data-off="0.5" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
+            <rect class="msg-dot" data-travel="ag2" data-dur="2900" data-off="0.2" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
+            <rect class="msg-dot" data-travel="ag3" data-dur="3100" data-off="0.6" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
+            <rect class="msg-dot" data-travel="ag4" data-dur="2700" data-off="0.35" x="-6" y="-6" width="12" height="12" rx="3" style="opacity:0"></rect>
+            <g class="pulse" data-travel="ag1" data-rev="1" data-dur="3400" data-off="0.3" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
+            <g class="pulse" data-travel="ag2" data-rev="1" data-dur="3200" data-off="0.7" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
+            <g class="pulse" data-travel="ag3" data-rev="1" data-dur="3000" data-off="0.1" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
+            <g class="pulse" data-travel="ag4" data-rev="1" data-dur="3600" data-off="0.85" style="opacity:0"><circle r="11" class="pulse__halo"></circle><circle r="4"></circle></g>
+          </svg>
+        </div>
+      </div>
+      <figcaption class="cap">Illustration · agents ⇄ brain</figcaption>
+    </figure>
+
+    <div class="duo">
+      <div class="card card--line">
+        <h3 class="h4">Agents → brain <span class="opt">opt-in</span></h3>
+        <p>The prompts your team runs and the decisions agents make along the way ("we switched to Postgres because…", "this module is fragile") become wiki pages that link to the session they came from. Secrets are redacted before anything is stored.</p>
+      </div>
+      <div class="card card--line">
+        <h3 class="h4">Brain → agents</h3>
+        <p>Before an agent writes code, it asks for context: conventions, past decisions, owners, and what was tried and failed. Every agent on the team starts with the company's memory instead of a blank slate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="logs" class="sec" aria-labelledby="logs-title">
+  <div class="wrap sec__in">
+    <div class="row-head">
+      <h2 id="logs-title" class="h3">Every agent's logs, in one place.</h2>
+      <span class="tag">Planned · Sample data</span>
+    </div>
+    <p class="lede lede--sm lede--wide">The <span class="mono">livingbrain</span> CLI collects the session logs your coding agents already write: Claude Code, Codex, Cursor, OpenCode and Colonizer colonies. It redacts secrets on your machine and sends them to the brain only if you opt in. Search every session, see tokens and cost per person, repo and model, and spot where agents keep failing. Decisions found in the logs become wiki pages with a link back to the session.</p>
+    <div class="access">
+      <div class="scroll-x" tabindex="0" role="region" aria-labelledby="logs-cap">
+      <table>
+        <caption id="logs-cap">Last 7 days, by agent (sample data)</caption>
+        <thead><tr><th scope="col">Agent</th><th scope="col">Sessions</th><th scope="col">Tokens</th><th scope="col">Cost</th><th scope="col">Ended in a merged PR</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Claude Code</th><td>214</td><td>38.2M</td><td>$61</td><td><span class="yes">64%</span></td></tr>
+          <tr><th scope="row">Codex</th><td>97</td><td>14.9M</td><td>$22</td><td><span class="yes">58%</span></td></tr>
+          <tr><th scope="row">Colonizer colonies</th><td>31</td><td>9.4M</td><td>$14</td><td><span class="yes">71%</span></td></tr>
+          <tr><th scope="row">Cursor</th><td>122</td><td>6.1M</td><td>$9</td><td><span class="yes">49%</span></td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prompts" class="sec" aria-labelledby="prompts-title">
+  <div class="wrap sec__in">
+    <div class="row-head">
+      <h2 id="prompts-title" class="h3">Team prompt library</h2>
+      <span class="tag">Sample data</span>
+    </div>
+    <p class="lede lede--sm">The team's best prompts are saved, versioned and suggested to everyone. The brain notices which ones work.</p>
+    <div class="prompts">
+      <article class="card prompt"><h4>Review a PR against our conventions</h4><div class="prompt__meta"><span>Lina Haas · v4</span><span class="ink">412 uses</span></div></article>
+      <article class="card prompt"><h4>Write a migration the Kestrel way</h4><div class="prompt__meta"><span>Maya Okafor · v2</span><span class="ink">268 uses</span></div></article>
+      <article class="card prompt"><h4>Explain a stack trace using recent incidents</h4><div class="prompt__meta"><span>Dev Patel · v3</span><span class="ink">191 uses</span></div></article>
+      <article class="card prompt"><h4>Draft a customer reply from this thread</h4><div class="prompt__meta"><span>Sam Ito · v1</span><span class="ink">144 uses</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="learns" class="sec" aria-labelledby="learns-title">
+  <div class="wrap sec__in">
+    <h2 id="learns-title" class="h3">It learns from every session.</h2>
+    <p class="lede lede--sm lede--wide">The learning layer reasons over each person's prompts and agent sessions, not just chat. It learns how each developer works, which prompts lead to merged PRs and which lead to rework, and where agents keep getting stuck. Then it improves the prompt library, fills gaps in the wiki, and briefs each person's agent the way they like.</p>
+    <div class="pair pair--top">
+      <article class="card profile" data-play="profile">
+        <div class="profile__head">
+          <div class="avatar avatar--lg avatar--person" aria-hidden="true">MO</div>
+          <div class="profile__who"><div class="profile__name">Maya Okafor</div><div class="mono-s">profile · one sample month</div></div>
+          <span class="tag">Sample data</span>
+        </div>
+        <div class="progress" aria-hidden="true"><div data-a="growX" data-t="5000" data-e="linear"></div></div>
+        <div class="weeks" aria-hidden="true"><span>W1</span><span>W2</span><span>W3</span><span>W4</span></div>
+        <ul class="profile__list">
+          <li data-a="fadeUp" data-d="500"><span class="wk">W1</span><span>Prefers small PRs, under 300 lines</span></li>
+          <li data-a="fadeUp" data-d="1700"><span class="wk">W2</span><span>Writes tests first</span></li>
+          <li data-a="fadeUp" data-d="2900"><span class="wk">W3</span><span>Gets stuck on auth middleware <span class="profile__act">→ auth notes now in her agent's brief</span></span></li>
+          <li data-a="fadeUp" data-d="4100"><span class="wk">W4</span><span>Wants answers as diffs, not prose</span></li>
+        </ul>
+      </article>
+      <article class="card leader" data-play="leader" data-row="56">
+        <div class="row-head row-head--center"><h4>Prompts ranked by merged PRs</h4><span class="tag">Sample data</span></div>
+        <ol class="leader__list">
+          <li class="is-top" data-lb data-from="4" data-to="38" data-final="0" style="top:0"><span class="leader__dot"></span><span class="leader__name">Review a PR against our conventions</span><span class="leader__n" data-lbn>38</span></li>
+          <li data-lb data-from="12" data-to="31" data-final="1" style="top:56px"><span class="leader__dot"></span><span class="leader__name">Write a migration the Kestrel way</span><span class="leader__n" data-lbn>31</span></li>
+          <li data-lb data-from="9" data-to="22" data-final="2" style="top:112px"><span class="leader__dot"></span><span class="leader__name">Fix a flaky test using incident history</span><span class="leader__n" data-lbn>22</span></li>
+          <li data-lb data-from="14" data-to="6" data-final="3" style="top:168px"><span class="leader__dot"></span><span class="leader__name">Refactor this file <span class="leader__warn">· often reworked</span></span><span class="leader__n" data-lbn>6</span></li>
+        </ol>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tokens" class="sec" aria-labelledby="tokens-title">
+  <div class="wrap sec__in">
+    <div class="row-head">
+      <h2 id="tokens-title" class="h3">Fewer tokens. Less rework. Faster agents.</h2>
+      <span class="tag">Planned · benchmark coming</span>
+    </div>
+    <p class="lede lede--sm lede--wide">Most agents start every task cold: they reread threads, grep the repo and rediscover what the team already decided. Living Brain does that work once, at night, and hands every agent the result.</p>
+    <div class="features">
+      <article class="feat"><span class="num">A</span><h3>Fewer tokens</h3><p>An agent asks for a short brief with citations instead of reading thirty threads and grepping the whole repo. The context is written once and reused by every agent on the team.</p></article>
+      <article class="feat"><span class="num">B</span><h3>Less rework</h3><p>Decisions and dead ends are on record, so agents stop retrying approaches the team has already ruled out.</p></article>
+      <article class="feat"><span class="num">C</span><h3>Cheaper models do more</h3><p>The hard reading happens when the wiki is written. Day to day, a small model with the right page can do work that a large model with no context gets wrong.</p></article>
+      <article class="feat"><span class="num">D</span><h3>Fast</h3><p>One Rust binary, a local cache and Cloudflare's edge. Search answers from your machine before the network does.</p></article>
+    </div>
+    <div class="pair">
+      <div class="card card--line">
+        <div class="row-head"><h4 class="h4">Without the brain</h4><span class="tag">Illustration</span></div>
+        <ol>
+          <li>Read the Slack threads about billing</li>
+          <li>Grep the repo for every place that touches invoices</li>
+          <li>Ask a teammate who owns it</li>
+          <li>Try the approach the team rejected last month</li>
+        </ol>
+      </div>
+      <div class="card card--line">
+        <div class="row-head"><h4 class="h4">With the brain</h4><span class="tag">Illustration</span></div>
+        <ol>
+          <li><span class="mono">brain_context_for("billing", task)</span></li>
+          <li>One page: the owner, the conventions, the decision, the dead end, each with its source</li>
+          <li>Start coding</li>
+        </ol>
+      </div>
+    </div>
+    <div class="card card--line">
+      <h4 class="h4">The benchmark, in the open</h4>
+      <p>We'll measure tokens, cost, time, success and rework, with and without the brain, against a plain retrieval baseline, across Claude Code, Codex and Colonizer colonies, on large and small models. The task set, the harness and the raw results will be public, and anyone can rerun them. Until then there are no numbers on this page. <a href="https://github.com/Livingbrain-wiki/livingbrain/issues/48">Follow the benchmark</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="colonizer" class="sec" aria-labelledby="col-title">
+  <div class="wrap sec__in">
+    <p class="eyebrow">Works with Colonizer</p>
+    <h2 id="col-title" class="h2 h2--mid">From Slack to pull request.</h2>
+    <p class="lede lede--wide">When a job is bigger than an answer, the brain launches a colony on <a href="https://colonizer.dev">Colonizer</a>, a sister Factory Zero venture: an isolated microVM with a coding agent inside that comes back with a pull request.</p>
+
+    <figure class="colony" data-play="colony">
+      <div class="colony__bar" aria-hidden="true"><div data-a="growX" data-t="3600" data-e="linear"></div></div>
+      <ol class="colony__steps">
+        <li class="card cstep" data-a="fadeUp" data-d="0">
+          <span class="cstep__k">01 · ASK</span>
+          <div class="cstep__msg"><strong>Maya Okafor</strong> <span class="mono-s">#routes</span><p class="mono ink">@livingbrain fix #142</p></div>
+          <p class="cstep__note">#142 · ETA off by an hour after DST</p>
+        </li>
+        <li class="card cstep" data-a="fadeUp" data-d="700">
+          <span class="cstep__k">02 · BRIEF</span>
+          <ul class="cstep__brief"><li>repo: kestrel/routes</li><li>owner: Maya Okafor</li><li>tz logic: src/eta/tz.rs</li><li class="ink">tried: offset patch, reverted</li></ul>
+        </li>
+        <li class="card cstep" data-a="fadeUp" data-d="1400">
+          <span class="cstep__k">03 · COLONY c-7f3</span>
+          <div class="capsule"><span class="live-dot"></span><span>microVM</span></div>
+          <p class="cstep__tick" aria-live="off"><span class="ink3">$ </span><span data-ticker>opening pull request #219</span></p>
+        </li>
+        <li class="card cstep cstep--on" data-a="fadeUp" data-d="2100">
+          <span class="cstep__k">04 · PULL REQUEST</span>
+          <strong class="cstep__pr">#219 Fix ETA drift across DST</strong>
+          <span class="mono-s ink2">+42 −9 · 213 tests pass</span>
+          <span class="cstep__note">Posted back in the Slack thread</span>
+        </li>
+        <li class="card cstep" data-a="fadeUp" data-d="2800">
+          <span class="cstep__k">05 · LEARNINGS</span>
+          <ul class="cstep__learn">
+            <li data-a="fadeUp" data-d="3100"><span>+</span>DST handling notes</li>
+            <li data-a="fadeUp" data-d="3350"><span>+</span>tz.rs owner: Maya</li>
+            <li data-a="fadeUp" data-d="3600"><span>+</span>Dead end: offset patch</li>
+          </ul>
+        </li>
+      </ol>
+      <figcaption class="cap">Sample flow · works with <a href="https://colonizer.dev">colonizer.dev</a></figcaption>
+    </figure>
+
+    <div class="split split--center sub">
+      <ul class="points">
+        <li><h3 class="h4">Boots already briefed</h3><p>Each colony starts with the brain's context for that repo and task.</p></li>
+        <li><h3 class="h4">Reports back to the wiki</h3><p>When it finishes, its decisions, dead ends and the PR flow back into the brain.</p></li>
+        <li><h3 class="h4">Followed from the thread</h3><p>Start a colony from Slack and watch it work live in the same thread.</p></li>
+      </ul>
+      <figure class="colony-fig">
+        <div class="square" data-brain-frame>
+          <!-- brain-still:start --><svg class="brain-still" viewBox="0 0 600 600" aria-hidden="true" focusable="false"><defs><radialGradient id="bsg-g0"><stop offset="0" class="bs-s0" stop-opacity=".5"/><stop offset=".2" class="bs-s0" stop-opacity=".25"/><stop offset="1" class="bs-s0" stop-opacity="0"/></radialGradient><radialGradient id="bsg-g1"><stop offset="0" class="bs-s1" stop-opacity=".5"/><stop offset=".2" class="bs-s1" stop-opacity=".25"/><stop offset="1" class="bs-s1" stop-opacity="0"/></radialGradient><radialGradient id="bsg-g2"><stop offset="0" class="bs-s2" stop-opacity=".5"/><stop offset=".2" class="bs-s2" stop-opacity=".25"/><stop offset="1" class="bs-s2" stop-opacity="0"/></radialGradient><radialGradient id="bsg-g3"><stop offset="0" class="bs-s3" stop-opacity=".5"/><stop offset=".2" class="bs-s3" stop-opacity=".25"/><stop offset="1" class="bs-s3" stop-opacity="0"/></radialGradient></defs><g id="bsg"><path class="bs-e bs-e0" d="M476.1 259.4L467.1 288.6M476.1 259.4L443.9 267.2M476.1 259.4L445.1 272.7M236.9 255L234.5 246.9M236.9 255L213 275.9M236.9 255L234.4 230M182.5 283.7L197.9 275.2M182.5 283.7L202.7 275.2M194.7 407.6L187.5 428.1M194.7 407.6L197.6 377.5M226.5 413.9L228.6 431.3M226.5 413.9L194.7 407.6M226.5 413.9L246 383.6M406.8 391.2L397.3 385.3M406.8 391.2L401.2 373.4M213.2 341.7L212.9 336.5M213.2 341.7L205.2 339.1M114.3 419.4L117.2 427.4M114.3 419.4L108.1 388.2M117 348.3L139 363.4M117 348.3L145 367.2M280.5 340.9L261.9 338.8M280.5 340.9L299.7 357.8M351.1 254.7L337.8 253.1M351.1 254.7L310.9 237.3M351.1 254.7L374.6 210M389.6 349.5L381.8 326.6M389.6 349.5L360.5 361.9M389.6 349.5L355 353.9M409.6 179.7L417.2 191.7M409.6 179.7L395 159.3M318.8 336.9L314.5 355.7M318.8 336.9L314.4 313M318.8 336.9L299.7 357.8M537.1 225.6L515.8 232.9M158.1 377.3L187.5 377.9M158.1 377.3L188.4 382.5M158.1 377.3L128.2 397.9M468.1 353.9L455.3 365.1M468.1 353.9L467.4 381.1M274.2 284.1L277.9 297.9M274.2 284.1L297.1 266.4M274.2 284.1L262.8 255.7M274.2 284.1L296.5 257.7M274.2 284.1L307.4 273.7M274.2 284.1L278.9 236.4M416.4 149.2L395 159.3M416.4 149.2L416.9 161M197.9 275.2L202.7 275.2M197.9 275.2L218.1 284.9M175.8 364.8L195.4 375.9M175.8 364.8L145 367.2M175.8 364.8L139 363.4M416.2 365.6L416.3 362.6M416.2 365.6L401.2 373.4M374.6 210L349.3 197.9M374.6 210L340.6 196.5M277.9 297.9L297.1 266.4M277.9 297.9L307.4 273.7M467.1 288.6L445.1 272.7M467.1 288.6L443.9 267.2M416.3 362.6L432.8 327.7M416.3 362.6L440.7 330.6M352.6 146.9L336.1 164.5M352.6 146.9L395 159.3M234.5 246.9L210.8 261.1M234.5 246.9L207.3 213.3M439.2 200L417.2 191.7M439.2 200L409.6 179.7M221.2 333.7L219.2 329M221.2 333.7L202.6 339.1M221.2 333.7L223.8 361.9M93.4 243.7L70 246M93.4 243.7L84.3 264M349.3 197.9L340.6 196.5M349.3 197.9L318.1 207.1M112.7 306.5L117 348.3M112.7 306.5L65.7 314.8M228.6 431.3L194.7 407.6M228.6 431.3L187.5 428.1M228.6 431.3L253.2 421.7M228.6 431.3L246 383.6M228.6 431.3L235.3 381.8M294.1 372.3L286.6 373.3M294.1 372.3L299.7 357.8M209.8 301.7L227.3 320.9M209.8 301.7L210.8 261.1M249.8 219.8L242.4 222.8M249.8 219.8L234.4 230M162.8 237.9L125.5 188.6M162.8 237.9L169.9 188.4M215.2 427.5L239.3 419.3M215.2 427.5L244.2 415.7M215.2 427.5L219.2 426.3M337.8 253.1L310.9 237.3M337.8 253.1L307.4 273.7M150.4 328.3L164.5 307.4M314.4 313L277.9 297.9M187.5 428.1L188.4 382.5M430.8 290.7L410.3 298.1M430.8 290.7L445.1 272.7M430.8 290.7L443.9 267.2M239.3 419.3L244.2 415.7M360.5 361.9L355 353.9M360.5 361.9L344 353.7M125.5 188.6L169.9 188.4M125.5 188.6L175.7 164.7M237.4 342.9L222.9 364.5M237.4 342.9L240.4 365.5M254.4 357L240.4 365.5M254.4 357L223.8 361.9M340.6 196.5L318.1 207.1M296.5 257.7L297.1 266.4M296.5 257.7L307.4 273.7M197.6 377.5L187.5 377.9M197.6 377.5L188.4 382.5M197.6 377.5L222.9 364.5M445.1 272.7L443.9 267.2M299.7 357.8L314.5 355.7M299.7 357.8L286.6 373.3M188.4 382.5L187.5 377.9M188.4 382.5L195.4 375.9M401.2 373.4L416.3 362.6M145 367.2L139 363.4M145 367.2L128.2 397.9M312.9 170.2L349.3 197.9M312.9 170.2L340.6 196.5M195.5 345.4L202.6 339.1M195.5 345.4L197.6 377.5M195.5 345.4L222.9 364.5M205.2 339.1L212.9 336.5M205.2 339.1L232.7 361.2M234.4 230L242.4 222.8M234.4 230L262.1 234M221.7 297.2L210.8 261.1M221.7 297.2L227.3 320.9M286.6 373.3L271.5 372.9M271.5 372.9L294.1 372.3M262.8 255.7L262.1 234M262.8 255.7L278.9 236.4M337.7 397.3L341.9 392.3M337.7 397.3L362.3 396.5M219.2 329L227.3 320.9M219.2 329L223.8 361.9M84.3 264L70 246M279.8 400.2L284.2 388.9M279.8 400.2L253.2 421.7M279.8 400.2L246 383.6M318.1 207.1L310.9 237.3M212.9 336.5L232.7 361.2M262.1 234L278.9 236.4M262.1 234L249.8 219.8M432.8 327.7L440.7 330.6M432.8 327.7L424.8 323.6M213 275.9L218.1 284.9M336.1 164.5L312.9 170.2M336.1 164.5L395 159.3M485.7 322.1L500.5 322.5M485.7 322.1L507.3 301.6M284.2 388.9L254.4 357M284.2 388.9L253.2 421.7M202.6 339.1L222.9 364.5M397.3 385.3L401.2 373.4M261.9 338.8L271.5 372.9M202.7 275.2L218.1 284.9M507.3 301.6L500.5 322.5M507.3 301.6L519.7 281.7M314.5 355.7L294.1 372.3M223.8 361.9L195.4 375.9M240.4 365.5L235.3 381.8M240.4 365.5L246 383.6M297.1 266.4L307.4 273.7M128.2 397.9L114.3 419.4M278.9 236.4L296.5 257.7M227.3 320.9L252.3 338.4M467.4 381.1L455.3 365.1M242.4 222.8L262.1 234M341.9 392.3L362.3 396.5M454.3 388.9L455.3 365.1M70 246L54.5 305M519.7 281.7L500.5 322.5M519.7 281.7L476.1 259.4M519.7 281.7L515.8 232.9M519.7 281.7L543 292.8M519.7 281.7L485.7 322.1M440.7 330.6L424.8 323.6M246 383.6L235.3 381.8M246 383.6L222.9 364.5M410.3 298.1L424.8 323.6M410.3 298.1L432.8 327.7M344 353.7L355 353.9M344 353.7L314.5 355.7M222.9 364.5L240.4 365.5M222.9 364.5L235.3 381.8M381.8 326.6L355 353.9M381.8 326.6L360.5 361.9M310.9 237.3L296.5 257.7M310.9 237.3L278.9 236.4M310.9 237.3L297.1 266.4M362.3 396.5L401.2 373.4M362.3 396.5L416.2 365.6M362.3 396.5L416.3 362.6M362.3 396.5L406.8 391.2M307.4 273.7L310.9 237.3M232.7 361.2L213.2 341.7M252.3 338.4L223.8 361.9M252.3 338.4L254.4 357"/><path class="bs-e bs-e1" d="M57.9 253.1L66.9 259.9M57.9 253.1L58.9 276.3M481.3 186.2L503.3 194.8M481.3 186.2L491.7 205.3M481.3 186.2L483.7 207.2M481.3 186.2L458.3 198.1M481.3 186.2L531.5 175.8M481.3 186.2L489.4 170.9M174.4 370L166.3 379.2M174.4 370L191.3 395M28.5 283.7L58.9 276.3M28.5 283.7L57.9 253.1M28.5 283.7L67 323.1M101.7 354L101.4 336.2M101.7 354L95.8 365.6M145.5 130.7L171.4 131.9M145.5 130.7L161.3 104.2M145.5 130.7L167.6 104.8M126.8 374.2L95.8 365.6M126.8 374.2L149.4 392.7M216.1 483.9L233.1 477M216.1 483.9L237.8 477.2M216.1 483.9L250.3 489.6M219.2 426.3L216.5 440.8M219.2 426.3L229.9 419.9M54.5 305L65.7 314.8M54.5 305L44.4 316.1M54.5 305L66.4 308M161.3 104.2L167.6 104.8M547 252.3L562.3 284M547 252.3L573.6 262.5M406.8 391.2L454.3 388.9M219.8 162.3L217.2 183.4M219.8 162.3L214.7 213.5M219.8 162.3L175.7 164.7M229.4 435.4L229.9 419.9M229.4 435.4L216.5 440.8M425.8 249.7L449.7 268.4M425.8 249.7L438.5 294.9M425.8 249.7L458.3 198.1M295.9 358.5L288.9 350M295.9 358.5L266.6 372.1M295.9 358.5L297.6 346.3M78.9 280.3L85.8 288.9M78.9 280.3L66.9 259.9M160.1 343.1L150.4 328.3M160.1 343.1L186.6 333.3M160.1 343.1L189.7 361M117 348.3L98 333.5M117 348.3L150.4 328.3M117 348.3L108.1 388.2M117 348.3L160.1 343.1M217.2 183.4L214.7 213.5M217.2 183.4L207.3 213.3M100.5 195.1L125.5 188.6M100.5 195.1L114.1 184.8M117.6 430L119.7 406.2M117.6 430L117.2 427.4M117.6 430L114.3 419.4M288.9 350L297.6 346.3M101.4 336.2L95.8 365.6M520.3 348.2L530.9 339.5M520.3 348.2L518.8 321M573.6 262.5L562.3 284M573.6 262.5L572.1 276.9M446.4 356.8L520.3 348.2M446.4 356.8L438.5 294.9M446.4 356.8L380.2 328.7M537.1 225.6L524 247.4M382.1 396.1L363.9 389.8M382.1 396.1L397.3 385.3M382.1 396.1L337.9 383.2M169.9 188.4L175.7 164.7M169.9 188.4L207.3 213.3M318.2 372.1L337.9 383.2M318.2 372.1L299 351.1M318.2 372.1L344.8 375M80.8 182L88.8 162.2M80.8 182L79.1 202.4M79.1 202.4L88.8 162.2M79.1 202.4L66.9 259.9M79.1 202.4L57.9 253.1M515.5 353.2L527.5 321.7M515.5 353.2L518.8 321M241.5 108.8L265.9 114.5M241.5 108.8L247.7 104.7M241.5 108.8L264.4 111.9M171.4 131.9L167.6 104.8M171.4 131.9L161.3 104.2M216.5 440.8L229.9 419.9M166.2 348.1L163.3 364.3M503.3 194.8L531.5 175.8M503.3 194.8L491.7 205.3M530.9 339.5L518.8 321M530.9 339.5L540.2 316M58.9 276.3L67 323.1M66.4 308L65.7 314.8M334.7 120.9L328.6 117.1M334.7 120.9L309.9 124.4M334.7 120.9L375.4 156M66.9 259.9L85.8 288.9M88.8 162.2L114.1 184.8M545 308.3L540.2 316M545 308.3L534.6 305.7M205.2 382.4L197.2 381.9M205.2 382.4L191.3 395M205.2 382.4L189.7 361M427.4 169L416.9 161M427.4 169L453.3 185.5M112.7 306.5L98 333.5M186.6 333.3L189.7 361M186.6 333.3L221.3 342.4M512.6 336.7L505.3 291.3M512.6 336.7L520.3 348.2M512.6 336.7L530.2 288.2M405.7 123.4L375.4 156M380.2 328.7L345.1 348.5M380.2 328.7L438.5 294.9M277.2 166.3L264.4 111.9M277.2 166.3L219.8 162.3M277.2 166.3L247.7 104.7M344.8 375L337.9 383.2M344.8 375L363.9 389.8M524 247.4L515.8 232.9M524 247.4L532.8 206.1M209.8 301.7L221.7 297.2M531.5 175.8L544.2 183M197.7 104.9L167.6 104.8M197.7 104.9L171.4 131.9M197.7 104.9L247.7 104.7M416.9 161L453.3 185.5M299 351.1L337.9 383.2M299 351.1L344.8 375M530.2 288.2L507.9 267.9M530.2 288.2L505.3 291.3M175.7 164.7L217.2 183.4M266.6 372.1L289.8 356M214.7 213.5L207.3 213.3M214.7 213.5L210.8 261.1M197.2 381.9L191.3 395M197.2 381.9L189.7 361M250.3 489.6L256.5 479.5M250.3 489.6L237.8 477.2M250.3 489.6L233.1 477M250.3 489.6L216.5 440.8M250.3 489.6L229.4 435.4M239.3 419.3L219.2 426.3M119.7 406.2L149.4 392.7M221.3 342.4L245.9 349.8M219.8 372.5L204.6 380.5M219.8 372.5L238.4 366.3M219.8 372.5L266.6 372.1M90.3 387.4L108.1 388.2M90.3 387.4L119.7 406.2M90.3 387.4L117 348.3M264.4 111.9L247.7 104.7M264.4 111.9L265.9 114.5M375.4 156L419.3 163.3M375.4 156L328.6 117.1M544.2 183L532.8 206.1M544.2 183L503.3 194.8M345.1 348.5L344.8 375M345.1 348.5L337.9 383.2M532.8 206.1L531.5 175.8M438.5 294.9L449.7 268.4M438.5 294.9L505.3 291.3M438.5 294.9L397.3 314.8M438.5 294.9L412.2 290.5M245.9 349.8L238.4 366.3M245.9 349.8L299 351.1M245.9 349.8L205.2 382.4M245.9 349.8L204.6 380.5M245.9 349.8L197.2 381.9M458.3 198.1L483.7 207.2M458.3 198.1L491.7 205.3M309.9 124.4L328.6 117.1M518.8 321L527.5 321.7M518.8 321L540.2 316M489.4 170.9L506.6 168.1M489.4 170.9L508.5 199.4M489.4 170.9L453.3 185.5M204.6 380.5L238.4 366.3M114.1 184.8L80.8 182M114.1 184.8L125.5 188.6M114.1 184.8L169.9 188.4M114.1 184.8L145.5 130.7M289.8 356L295.9 358.5M505.3 291.3L507.9 267.9M166.1 160.7L161.3 104.2M166.1 160.7L145.5 130.7M483.7 207.2L491.7 205.3M508.5 199.4L506.6 168.1M508.5 199.4L537.1 225.6M256.5 479.5L237.8 477.2M67 323.1L90.5 335.2M67 323.1L44.4 311.7M98 333.5L90.5 335.2M98 333.5L66.4 308M85.8 288.9L57.9 253.1M163.3 364.3L219.8 372.5M44.4 316.1L44.4 311.7M44.4 316.1L65.7 314.8M191.3 395L166.3 379.2M363.9 389.8L337.9 383.2M453.3 185.5L506.6 168.1M467.4 381.1L454.3 388.9M166.3 379.2L149.4 392.7M90.5 335.2L95.8 365.6M323.6 205.5L277.2 166.3M237.8 477.2L233.1 477M527.5 321.7L534.6 305.7M527.5 321.7L540.2 316M543 292.8L534.6 305.7M543 292.8L552 316.8M572.1 276.9L562.3 284M552 316.8L540.2 316M552 316.8L545 308.3M552 316.8L534.6 305.7M282.8 92.2L265.9 114.5M282.8 92.2L328.6 117.1M233.1 477L256.5 479.5M233.1 477L216.5 440.8M233.1 477L219.2 426.3M540.2 316L534.6 305.7M176.9 429.8L216.5 440.8M176.9 429.8L191.3 395M164.5 307.4L160.1 343.1M164.5 307.4L186.6 333.3M44.4 311.7L54.5 305M44.4 311.7L66.4 308M44.4 311.7L65.7 314.8M44.4 311.7L98 333.5M507.9 267.9L547 252.3M265.9 114.5L309.9 124.4"/><path class="bs-e bs-e2" d="M273.5 275.5L284.8 283.8M273.5 275.5L279.4 228.1M273.5 275.5L243 237.8M328.3 126.7L352.8 124.7M328.3 126.7L318.7 149.7M328.3 126.7L304.6 113.4M291.6 197.5L279.4 228.1M291.6 197.5L263.2 204.5M378.2 136.7L399.6 154.2M378.2 136.7L412.1 147.3M378.2 136.7L352.8 124.7M378.2 136.7L328.3 126.7M378.2 136.7L395.8 210M378.2 136.7L438 186M408.4 116.5L405.7 123.4M408.4 116.5L405.8 136M408.4 116.5L419.3 163.3M294.7 319.9L276.4 320.9M294.7 319.9L281.1 348.2M405.8 136L369.6 105.7M405.8 136L453.7 131.3M424.3 273.2L412.2 290.5M424.3 273.2L432.3 248.9M424.3 273.2L404.2 250.5M231 114.3L222.7 158.1M231 114.3L304.6 113.4M231 114.3L318.7 149.7M412.1 147.3L399.6 154.2M243 237.8L263.2 204.5M243 237.8L279.4 228.1M243 237.8L217.1 248.2M281.1 348.2L276.4 320.9M405 237.3L395.8 210M405 237.3L438 186M222.7 158.1L175.6 202.6M222.7 158.1L212.8 219.5M222.7 158.1L169.8 225M222.7 158.1L291.6 197.5M222.7 158.1L263.2 204.5M79.1 202.4L116.7 168.8M181.2 271.1L169.8 225M181.2 271.1L217.1 248.2M166.2 348.1L164.6 324M412.2 290.5L397.3 314.8M412.2 290.5L395.4 325.5M404.2 250.5L432.3 248.9M371.3 228.2L395.8 210M371.3 228.2L405 237.3M371.3 228.2L354.2 278.9M371.3 228.2L438 186M371.3 228.2L399.6 154.2M371.3 228.2L341.8 297.8M369.6 105.7L352.8 124.7M164.6 324L163.3 364.3M367 321.4L371.3 327.6M367 321.4L395.9 342.6M405.7 123.4L419.3 163.3M169.8 225L175.6 202.6M284.8 283.8L276.4 320.9M284.8 283.8L322 312.2M284.8 283.8L279.4 228.1M284.8 283.8L243 237.8M284.8 283.8L341.8 297.8M116.7 168.8L166.1 160.7M318.7 149.7L304.6 113.4M332 353.7L289.8 356M332 353.7L367 321.4M332 353.7L281.1 348.2M332 353.7L395.9 342.6M332 353.7L371.3 327.6M332 353.7L395.4 325.5M375.4 156L408.4 116.5M375.4 156L405.8 136M395.4 325.5L397.3 314.8M395.4 325.5L395.9 342.6M175.6 202.6L212.8 219.5M217.1 248.2L212.8 219.5M279.4 228.1L263.2 204.5M354.2 278.9L341.8 297.8M354.2 278.9L322 312.2M438 186L395.8 210M438 186L399.6 154.2M453.7 131.3L412.1 147.3M453.7 131.3L408.4 116.5M371.3 327.6L381.1 342.8M322 312.2L341.8 297.8M322 312.2L294.7 319.9M212.8 219.5L243 237.8M381.1 342.8L367 321.4M381.1 342.8L395.5 290.9M395.5 290.9L371.3 327.6M395.5 290.9L367 321.4M341.8 297.8L371.3 327.6M341.8 297.8L294.7 319.9M341.8 297.8L381.1 342.8M395.9 342.6L371.3 327.6"/><g class="bs-0"><g fill="url(#bsg-g0)" class="bs-glow"><circle cx="274.2" cy="284.1" r="13.2"/><circle cx="117" cy="348.3" r="20.6"/><circle cx="233.1" cy="477" r="21.2"/><circle cx="114.1" cy="184.8" r="23.4"/><circle cx="481.3" cy="186.2" r="24.5"/><circle cx="438.5" cy="294.9" r="26.5"/><circle cx="332" cy="353.7" r="31.3"/><circle cx="222.7" cy="158.1" r="34.4"/><circle cx="371.3" cy="228.2" r="41"/></g><circle cx="280.5" cy="340.9" r="1.3" opacity="0.43"/><circle cx="297.1" cy="266.4" r="1" opacity="0.43"/><circle cx="277.9" cy="297.9" r="1.3" opacity="0.43"/><circle cx="278.9" cy="236.4" r="1.3" opacity="0.44"/><circle cx="274.2" cy="284.1" r="2.2" opacity="0.44"/><circle cx="271.5" cy="372.9" r="0.9" opacity="0.45"/><circle cx="344" cy="353.7" r="1.3" opacity="0.46"/><circle cx="299.7" cy="357.8" r="1.2" opacity="0.46"/><circle cx="205.2" cy="339.1" r="1.6" opacity="0.47"/><circle cx="286.6" cy="373.3" r="1.4" opacity="0.47"/><circle cx="360.5" cy="361.9" r="1.3" opacity="0.47"/><circle cx="249.8" cy="219.8" r="1" opacity="0.48"/><circle cx="374.6" cy="210" r="1.3" opacity="0.48"/><circle cx="234.4" cy="230" r="1.4" opacity="0.49"/><circle cx="197.9" cy="275.2" r="1.1" opacity="0.49"/><circle cx="222.9" cy="364.5" r="1.2" opacity="0.52"/><circle cx="312.9" cy="170.2" r="1.1" opacity="0.53"/><circle cx="430.8" cy="290.7" r="1.9" opacity="0.53"/><circle cx="440.7" cy="330.6" r="1.9" opacity="0.53"/><circle cx="443.9" cy="267.2" r="1.8" opacity="0.53"/><circle cx="432.8" cy="327.7" r="1.9" opacity="0.53"/><circle cx="337.7" cy="397.3" r="1.8" opacity="0.54"/><circle cx="467.1" cy="288.6" r="1.5" opacity="0.55"/><circle cx="341.9" cy="392.3" r="1.2" opacity="0.55"/><circle cx="188.4" cy="382.5" r="1.6" opacity="0.56"/><circle cx="401.2" cy="373.4" r="1.3" opacity="0.58"/><circle cx="219.2" cy="329" r="1.2" opacity="0.58"/><circle cx="336.1" cy="164.5" r="2.1" opacity="0.59"/><circle cx="70" cy="246" r="2.1" opacity="0.61"/><circle cx="515.8" cy="232.9" r="1.6" opacity="0.62"/><circle cx="406.8" cy="391.2" r="1.7" opacity="0.63"/><circle cx="239.3" cy="419.3" r="2.1" opacity="0.63"/><circle cx="397.3" cy="385.3" r="1.7" opacity="0.64"/><circle cx="467.4" cy="381.1" r="1.5" opacity="0.64"/><circle cx="175.7" cy="164.7" r="2.1" opacity="0.64"/><circle cx="416.9" cy="161" r="1.6" opacity="0.65"/><circle cx="117" cy="348.3" r="3.4" opacity="0.65"/><circle cx="150.4" cy="328.3" r="2.4" opacity="0.65"/><circle cx="214.7" cy="213.5" r="1.5" opacity="0.65"/><circle cx="508.5" cy="199.4" r="1.6" opacity="0.66"/><circle cx="537.1" cy="225.6" r="1.5" opacity="0.66"/><circle cx="160.1" cy="343.1" r="2.3" opacity="0.66"/><circle cx="233.1" cy="477" r="3.5" opacity="0.66"/><circle cx="219.2" cy="426.3" r="2.5" opacity="0.66"/><circle cx="66.4" cy="308" r="2.1" opacity="0.66"/><circle cx="205.2" cy="382.4" r="2.3" opacity="0.67"/><circle cx="197.2" cy="381.9" r="2.2" opacity="0.67"/><circle cx="527.5" cy="321.7" r="2" opacity="0.67"/><circle cx="216.5" cy="440.8" r="2.2" opacity="0.67"/><circle cx="515.5" cy="353.2" r="1.9" opacity="0.68"/><circle cx="489.4" cy="170.9" r="1.9" opacity="0.68"/><circle cx="532.8" cy="206.1" r="2.4" opacity="0.70"/><circle cx="363.9" cy="389.8" r="2" opacity="0.70"/><circle cx="90.5" cy="335.2" r="2" opacity="0.70"/><circle cx="114.1" cy="184.8" r="3.9" opacity="0.71"/><circle cx="544.2" cy="183" r="1.7" opacity="0.71"/><circle cx="238.4" cy="366.3" r="1.9" opacity="0.72"/><circle cx="503.3" cy="194.8" r="2.5" opacity="0.73"/><circle cx="481.3" cy="186.2" r="4.1" opacity="0.73"/><circle cx="520.3" cy="348.2" r="2.7" opacity="0.74"/><circle cx="247.7" cy="104.7" r="2.3" opacity="0.74"/><circle cx="171.4" cy="131.9" r="2" opacity="0.74"/><circle cx="380.2" cy="328.7" r="1.9" opacity="0.75"/><circle cx="101.4" cy="336.2" r="1.6" opacity="0.75"/><circle cx="145.5" cy="130.7" r="1.7" opacity="0.76"/><circle cx="219.8" cy="372.5" r="3" opacity="0.76"/><circle cx="88.8" cy="162.2" r="2.9" opacity="0.77"/><circle cx="530.2" cy="288.2" r="3" opacity="0.77"/><circle cx="288.9" cy="350" r="2.5" opacity="0.77"/><circle cx="438.5" cy="294.9" r="4.4" opacity="0.77"/><circle cx="101.7" cy="354" r="2.2" opacity="0.78"/><circle cx="161.3" cy="104.2" r="1.8" opacity="0.78"/><circle cx="505.3" cy="291.3" r="1.8" opacity="0.79"/><circle cx="282.8" cy="92.2" r="2.4" opacity="0.81"/><circle cx="397.3" cy="314.8" r="2.7" opacity="0.82"/><circle cx="395.4" cy="325.5" r="2.2" opacity="0.84"/><circle cx="164.6" cy="324" r="2.7" opacity="0.85"/><circle cx="424.3" cy="273.2" r="2.9" opacity="0.85"/><circle cx="332" cy="353.7" r="5.2" opacity="0.86"/><circle cx="395.9" cy="342.6" r="3.6" opacity="0.87"/><circle cx="405.8" cy="136" r="2.1" opacity="0.88"/><circle cx="318.7" cy="149.7" r="2.6" opacity="0.89"/><circle cx="222.7" cy="158.1" r="5.7" opacity="0.90"/><circle cx="371.3" cy="327.6" r="2.8" opacity="0.90"/><circle cx="395.5" cy="290.9" r="2.7" opacity="0.91"/><circle cx="381.1" cy="342.8" r="4.1" opacity="0.92"/><circle cx="322" cy="312.2" r="4.1" opacity="0.93"/><circle cx="412.1" cy="147.3" r="3.1" opacity="0.94"/><circle cx="263.2" cy="204.5" r="3" opacity="0.96"/><circle cx="243" cy="237.8" r="2.6" opacity="0.96"/><circle cx="371.3" cy="228.2" r="6.8" opacity="0.99"/></g><g class="bs-1"><g fill="url(#bsg-g1)" class="bs-glow"><circle cx="228.6" cy="431.3" r="15.7"/></g><circle cx="262.1" cy="234" r="1" opacity="0.44"/><circle cx="213.2" cy="341.7" r="0.9" opacity="0.45"/><circle cx="294.1" cy="372.3" r="1.5" opacity="0.45"/><circle cx="314.5" cy="355.7" r="1.6" opacity="0.45"/><circle cx="232.7" cy="361.2" r="1.1" opacity="0.46"/><circle cx="261.9" cy="338.8" r="1.5" opacity="0.46"/><circle cx="318.1" cy="207.1" r="1" opacity="0.46"/><circle cx="351.1" cy="254.7" r="1.4" opacity="0.47"/><circle cx="355" cy="353.9" r="1.2" opacity="0.47"/><circle cx="340.6" cy="196.5" r="1" opacity="0.48"/><circle cx="202.7" cy="275.2" r="1.4" opacity="0.49"/><circle cx="226.5" cy="413.9" r="1.3" opacity="0.49"/><circle cx="218.1" cy="284.9" r="1" opacity="0.49"/><circle cx="424.8" cy="323.6" r="1.5" opacity="0.51"/><circle cx="228.6" cy="431.3" r="2.6" opacity="0.51"/><circle cx="410.3" cy="298.1" r="1.4" opacity="0.52"/><circle cx="195.5" cy="345.4" r="1.1" opacity="0.53"/><circle cx="194.7" cy="407.6" r="1.2" opacity="0.53"/><circle cx="416.3" cy="362.6" r="1.5" opacity="0.53"/><circle cx="197.6" cy="377.5" r="1.4" opacity="0.53"/><circle cx="202.6" cy="339.1" r="1.4" opacity="0.53"/><circle cx="417.2" cy="191.7" r="1.2" opacity="0.54"/><circle cx="213" cy="275.9" r="1.6" opacity="0.54"/><circle cx="284.2" cy="388.9" r="1.6" opacity="0.56"/><circle cx="409.6" cy="179.7" r="1.6" opacity="0.56"/><circle cx="236.9" cy="255" r="1.2" opacity="0.56"/><circle cx="485.7" cy="322.1" r="1.8" opacity="0.57"/><circle cx="128.2" cy="397.9" r="2" opacity="0.58"/><circle cx="507.3" cy="301.6" r="1.6" opacity="0.60"/><circle cx="468.1" cy="353.9" r="2" opacity="0.60"/><circle cx="145" cy="367.2" r="2" opacity="0.61"/><circle cx="500.5" cy="322.5" r="1.3" opacity="0.61"/><circle cx="227.3" cy="320.9" r="1.8" opacity="0.61"/><circle cx="455.3" cy="365.1" r="1.4" opacity="0.61"/><circle cx="84.3" cy="264" r="2" opacity="0.62"/><circle cx="139" cy="363.4" r="1.4" opacity="0.62"/><circle cx="114.3" cy="419.4" r="2.1" opacity="0.63"/><circle cx="164.5" cy="307.4" r="2" opacity="0.63"/><circle cx="207.3" cy="213.3" r="1.3" opacity="0.64"/><circle cx="108.1" cy="388.2" r="1.9" opacity="0.65"/><circle cx="169.9" cy="188.4" r="1.6" opacity="0.65"/><circle cx="54.5" cy="305" r="1.7" opacity="0.65"/><circle cx="186.6" cy="333.3" r="1.7" opacity="0.66"/><circle cx="217.2" cy="183.4" r="1.5" opacity="0.66"/><circle cx="323.6" cy="205.5" r="2.3" opacity="0.67"/><circle cx="552" cy="316.8" r="1.4" opacity="0.68"/><circle cx="176.9" cy="429.8" r="2.5" opacity="0.68"/><circle cx="337.9" cy="383.2" r="2.1" opacity="0.68"/><circle cx="216.1" cy="483.9" r="1.6" opacity="0.69"/><circle cx="545" cy="308.3" r="2.1" opacity="0.69"/><circle cx="119.7" cy="406.2" r="2.6" opacity="0.69"/><circle cx="229.4" cy="435.4" r="2.3" opacity="0.69"/><circle cx="427.4" cy="169" r="1.5" opacity="0.70"/><circle cx="277.2" cy="166.3" r="1.5" opacity="0.71"/><circle cx="345.1" cy="348.5" r="2.4" opacity="0.71"/><circle cx="174.4" cy="370" r="2.1" opacity="0.71"/><circle cx="166.3" cy="379.2" r="2.5" opacity="0.71"/><circle cx="197.7" cy="104.9" r="2.2" opacity="0.72"/><circle cx="126.8" cy="374.2" r="2.2" opacity="0.72"/><circle cx="28.5" cy="283.7" r="2" opacity="0.74"/><circle cx="264.4" cy="111.9" r="2.3" opacity="0.74"/><circle cx="204.6" cy="380.5" r="2.3" opacity="0.74"/><circle cx="507.9" cy="267.9" r="2.5" opacity="0.75"/><circle cx="167.6" cy="104.8" r="2.1" opacity="0.75"/><circle cx="80.8" cy="182" r="1.7" opacity="0.76"/><circle cx="491.7" cy="205.3" r="2.1" opacity="0.76"/><circle cx="458.3" cy="198.1" r="3" opacity="0.76"/><circle cx="57.9" cy="253.1" r="2.3" opacity="0.77"/><circle cx="309.9" cy="124.4" r="2.3" opacity="0.77"/><circle cx="85.8" cy="288.9" r="2.2" opacity="0.80"/><circle cx="265.9" cy="114.5" r="2.8" opacity="0.80"/><circle cx="163.3" cy="364.3" r="2" opacity="0.83"/><circle cx="419.3" cy="163.3" r="3" opacity="0.83"/><circle cx="289.8" cy="356" r="2.9" opacity="0.83"/><circle cx="432.3" cy="248.9" r="3.2" opacity="0.84"/><circle cx="367" cy="321.4" r="3.7" opacity="0.88"/><circle cx="369.6" cy="105.7" r="2.5" opacity="0.89"/><circle cx="304.6" cy="113.4" r="2.7" opacity="0.89"/><circle cx="181.2" cy="271.1" r="3" opacity="0.90"/><circle cx="169.8" cy="225" r="2.8" opacity="0.91"/><circle cx="328.3" cy="126.7" r="2.6" opacity="0.93"/><circle cx="354.2" cy="278.9" r="3.3" opacity="0.95"/><circle cx="273.5" cy="275.5" r="3.6" opacity="0.95"/><circle cx="279.4" cy="228.1" r="3.5" opacity="0.95"/><circle cx="395.8" cy="210" r="4.5" opacity="0.96"/></g><g class="bs-2"><g fill="url(#bsg-g2)" class="bs-glow"><circle cx="307.4" cy="273.7" r="13.1"/><circle cx="519.7" cy="281.7" r="18.6"/><circle cx="250.3" cy="489.6" r="21.5"/><circle cx="44.4" cy="311.7" r="21.9"/><circle cx="375.4" cy="156" r="28.5"/><circle cx="378.2" cy="136.7" r="37.5"/><circle cx="284.8" cy="283.8" r="38"/></g><circle cx="307.4" cy="273.7" r="2.2" opacity="0.43"/><circle cx="337.8" cy="253.1" r="1.5" opacity="0.46"/><circle cx="242.4" cy="222.8" r="1.2" opacity="0.48"/><circle cx="389.6" cy="349.5" r="1.5" opacity="0.48"/><circle cx="349.3" cy="197.9" r="1.3" opacity="0.49"/><circle cx="445.1" cy="272.7" r="1.8" opacity="0.53"/><circle cx="187.5" cy="428.1" r="1.5" opacity="0.54"/><circle cx="235.3" cy="381.8" r="1.9" opacity="0.54"/><circle cx="416.2" cy="365.6" r="1.9" opacity="0.54"/><circle cx="187.5" cy="377.9" r="1.4" opacity="0.54"/><circle cx="158.1" cy="377.3" r="1.3" opacity="0.56"/><circle cx="253.2" cy="421.7" r="1.6" opacity="0.56"/><circle cx="254.4" cy="357" r="1.6" opacity="0.56"/><circle cx="476.1" cy="259.4" r="1.7" opacity="0.57"/><circle cx="395" cy="159.3" r="2.1" opacity="0.58"/><circle cx="195.4" cy="375.9" r="1.4" opacity="0.58"/><circle cx="162.8" cy="237.9" r="2.1" opacity="0.59"/><circle cx="519.7" cy="281.7" r="3.1" opacity="0.60"/><circle cx="416.4" cy="149.2" r="2.2" opacity="0.60"/><circle cx="112.7" cy="306.5" r="1.3" opacity="0.62"/><circle cx="210.8" cy="261.1" r="1.9" opacity="0.63"/><circle cx="65.7" cy="314.8" r="1.5" opacity="0.64"/><circle cx="221.7" cy="297.2" r="1.9" opacity="0.65"/><circle cx="453.3" cy="185.5" r="2.2" opacity="0.65"/><circle cx="454.3" cy="388.9" r="2.3" opacity="0.66"/><circle cx="221.3" cy="342.4" r="2.3" opacity="0.66"/><circle cx="98" cy="333.5" r="1.8" opacity="0.66"/><circle cx="250.3" cy="489.6" r="3.6" opacity="0.67"/><circle cx="90.3" cy="387.4" r="2.4" opacity="0.67"/><circle cx="318.2" cy="372.1" r="1.9" opacity="0.67"/><circle cx="44.4" cy="311.7" r="3.7" opacity="0.68"/><circle cx="540.2" cy="316" r="2.1" opacity="0.69"/><circle cx="229.9" cy="419.9" r="1.6" opacity="0.69"/><circle cx="149.4" cy="392.7" r="1.6" opacity="0.69"/><circle cx="191.3" cy="395" r="1.8" opacity="0.69"/><circle cx="344.8" cy="375" r="1.7" opacity="0.70"/><circle cx="67" cy="323.1" r="2.6" opacity="0.70"/><circle cx="531.5" cy="175.8" r="2.7" opacity="0.73"/><circle cx="530.9" cy="339.5" r="2.6" opacity="0.74"/><circle cx="562.3" cy="284" r="2" opacity="0.74"/><circle cx="297.6" cy="346.3" r="1.7" opacity="0.76"/><circle cx="483.7" cy="207.2" r="2.3" opacity="0.76"/><circle cx="512.6" cy="336.7" r="2" opacity="0.79"/><circle cx="66.9" cy="259.9" r="2" opacity="0.79"/><circle cx="266.6" cy="372.1" r="1.9" opacity="0.80"/><circle cx="334.7" cy="120.9" r="3.3" opacity="0.81"/><circle cx="375.4" cy="156" r="4.7" opacity="0.81"/><circle cx="166.2" cy="348.1" r="3" opacity="0.81"/><circle cx="78.9" cy="280.3" r="3.5" opacity="0.84"/><circle cx="412.2" cy="290.5" r="2.1" opacity="0.84"/><circle cx="116.7" cy="168.8" r="2.6" opacity="0.86"/><circle cx="453.7" cy="131.3" r="3.8" opacity="0.91"/><circle cx="231" cy="114.3" r="2.4" opacity="0.91"/><circle cx="352.8" cy="124.7" r="2.8" opacity="0.92"/><circle cx="276.4" cy="320.9" r="3.5" opacity="0.93"/><circle cx="217.1" cy="248.2" r="2.5" opacity="0.94"/><circle cx="378.2" cy="136.7" r="6.3" opacity="0.95"/><circle cx="284.8" cy="283.8" r="6.3" opacity="0.95"/></g><g class="bs-3"><g fill="url(#bsg-g3)" class="bs-glow"><circle cx="362.3" cy="396.5" r="17.1"/><circle cx="245.9" cy="349.8" r="22.7"/><circle cx="79.1" cy="202.4" r="27.6"/><circle cx="341.8" cy="297.8" r="36.5"/></g><circle cx="314.4" cy="313" r="1.2" opacity="0.44"/><circle cx="310.9" cy="237.3" r="0.9" opacity="0.44"/><circle cx="296.5" cy="257.7" r="1.5" opacity="0.44"/><circle cx="318.8" cy="336.9" r="1" opacity="0.44"/><circle cx="262.8" cy="255.7" r="0.9" opacity="0.44"/><circle cx="212.9" cy="336.5" r="1.3" opacity="0.45"/><circle cx="182.5" cy="283.7" r="0.9" opacity="0.46"/><circle cx="381.8" cy="326.6" r="1.3" opacity="0.49"/><circle cx="237.4" cy="342.9" r="1.1" opacity="0.50"/><circle cx="246" cy="383.6" r="1.6" opacity="0.52"/><circle cx="439.2" cy="200" r="1.7" opacity="0.54"/><circle cx="240.4" cy="365.5" r="1.4" opacity="0.54"/><circle cx="279.8" cy="400.2" r="1.9" opacity="0.55"/><circle cx="362.3" cy="396.5" r="2.8" opacity="0.55"/><circle cx="221.2" cy="333.7" r="2" opacity="0.57"/><circle cx="352.6" cy="146.9" r="1.4" opacity="0.59"/><circle cx="234.5" cy="246.9" r="1.7" opacity="0.59"/><circle cx="223.8" cy="361.9" r="1.4" opacity="0.59"/><circle cx="93.4" cy="243.7" r="2.1" opacity="0.60"/><circle cx="252.3" cy="338.4" r="1.8" opacity="0.60"/><circle cx="175.8" cy="364.8" r="2" opacity="0.61"/><circle cx="215.2" cy="427.5" r="1.4" opacity="0.61"/><circle cx="244.2" cy="415.7" r="1.4" opacity="0.62"/><circle cx="125.5" cy="188.6" r="1.8" opacity="0.63"/><circle cx="209.8" cy="301.7" r="1.9" opacity="0.64"/><circle cx="189.7" cy="361" r="2.1" opacity="0.65"/><circle cx="117.2" cy="427.4" r="1.4" opacity="0.65"/><circle cx="237.8" cy="477.2" r="1.9" opacity="0.66"/><circle cx="543" cy="292.8" r="2.1" opacity="0.66"/><circle cx="44.4" cy="316.1" r="1.8" opacity="0.66"/><circle cx="100.5" cy="195.1" r="1.8" opacity="0.66"/><circle cx="524" cy="247.4" r="1.9" opacity="0.67"/><circle cx="506.6" cy="168.1" r="2" opacity="0.67"/><circle cx="299" cy="351.1" r="1.4" opacity="0.67"/><circle cx="256.5" cy="479.5" r="2.4" opacity="0.68"/><circle cx="534.6" cy="305.7" r="1.7" opacity="0.68"/><circle cx="382.1" cy="396.1" r="2.1" opacity="0.68"/><circle cx="219.8" cy="162.3" r="2.2" opacity="0.68"/><circle cx="117.6" cy="430" r="2.5" opacity="0.68"/><circle cx="245.9" cy="349.8" r="3.8" opacity="0.69"/><circle cx="518.8" cy="321" r="1.8" opacity="0.69"/><circle cx="572.1" cy="276.9" r="2.1" opacity="0.70"/><circle cx="58.9" cy="276.3" r="1.6" opacity="0.72"/><circle cx="446.4" cy="356.8" r="1.6" opacity="0.73"/><circle cx="573.6" cy="262.5" r="1.7" opacity="0.73"/><circle cx="95.8" cy="365.6" r="2.8" opacity="0.74"/><circle cx="547" cy="252.3" r="2.3" opacity="0.75"/><circle cx="425.8" cy="249.7" r="2.4" opacity="0.76"/><circle cx="241.5" cy="108.8" r="2" opacity="0.78"/><circle cx="449.7" cy="268.4" r="3" opacity="0.79"/><circle cx="295.9" cy="358.5" r="3.1" opacity="0.79"/><circle cx="79.1" cy="202.4" r="4.6" opacity="0.79"/><circle cx="328.6" cy="117.1" r="2.5" opacity="0.81"/><circle cx="405.7" cy="123.4" r="2.9" opacity="0.83"/><circle cx="166.1" cy="160.7" r="2.4" opacity="0.83"/><circle cx="408.4" cy="116.5" r="3.3" opacity="0.86"/><circle cx="404.2" cy="250.5" r="2.2" opacity="0.86"/><circle cx="281.1" cy="348.2" r="2.9" opacity="0.89"/><circle cx="294.7" cy="319.9" r="3.5" opacity="0.91"/><circle cx="175.6" cy="202.6" r="4" opacity="0.92"/><circle cx="341.8" cy="297.8" r="6.1" opacity="0.93"/><circle cx="291.6" cy="197.5" r="3.8" opacity="0.94"/><circle cx="212.8" cy="219.5" r="3.5" opacity="0.95"/><circle cx="405" cy="237.3" r="4.2" opacity="0.95"/><circle cx="399.6" cy="154.2" r="3.7" opacity="0.95"/><circle cx="438" cy="186" r="4" opacity="0.96"/></g></g></svg><!-- brain-still:end -->
+          <canvas class="brain-canvas" data-brain="colony" role="img" aria-label="Illustration: colonies orbit the brain as small capsules tied to the nodes they work on. When one finishes it docks and new nodes appear."></canvas>
+        </div>
+        <figcaption class="legend"><span><span class="legend__capsule"></span>active colony</span><span>Illustration · colonies in the graph</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
+    <div class="join-box">
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/" aria-current="page">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

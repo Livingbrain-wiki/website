@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Security and privacy · Living Brain</title>
+<meta name="description" content="Living Brain is planned to read only with the asker's own access, encrypt every scope with its own key, screen hidden text, keep mail private, and collect only anonymous usage counts. Self-host for full control.">
+<link rel="canonical" href="https://livingbrain.wiki/security/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://livingbrain.wiki/security/">
+<meta property="og:title" content="Living Brain: security and privacy">
+<meta property="og:description" content="It only knows what you're allowed to know. One key per scope, hidden-text screening, no training on your data. All planned.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Living Brain: security and privacy">
+<meta name="twitter:description" content="It only knows what you're allowed to know. One key per scope, hidden-text screening, no training on your data. All planned.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Living Brain">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://livingbrain.wiki/security/#webpage",
+  "url": "https://livingbrain.wiki/security/",
+  "name": "Security and privacy",
+  "description": "How Living Brain is planned to keep data private.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://livingbrain.wiki/#website",
+    "name": "Living Brain",
+    "url": "https://livingbrain.wiki/"
+  },
+  "about": {
+    "@id": "https://livingbrain.wiki/#app"
+  }
+}
+</script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Agents</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/" aria-current="page">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/" aria-current="page">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+    </details>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main">
+<section class="page-hd" aria-labelledby="page-title">
+  <div class="wrap">
+    <p class="eyebrow">Security and privacy</p>
+    <h1 id="page-title" class="h2 h2--page">It only knows what you're allowed to know.</h1>
+    <p class="lede">Living Brain reads with the asker's own access, and each scope has its own key. All of it is planned, and the limits are stated plainly.</p>
+  </div>
+</section>
+<section id="access" class="sec rings-sec" data-play="rings" data-scope="0" aria-labelledby="access-title">
+  <div class="wrap sec__in">
+    <h2 id="access-title" class="h3">Where you ask decides what it can use.</h2>
+    <div class="split split--center privacy">
+      <figure class="rings-fig">
+        <svg viewBox="0 0 320 320" role="img" aria-label="Three nested rings: the shared brain inside private channel memory inside your personal DM memory. The rings light up for the place the question is asked.">
+          <circle class="ring-fill r3" cx="160" cy="160" r="150"></circle>
+          <circle class="o-line o-thin" cx="160" cy="160" r="150"></circle>
+          <circle class="ring-stroke r3" cx="160" cy="160" r="150"></circle>
+          <circle class="f-bg" cx="160" cy="160" r="104"></circle>
+          <circle class="ring-fill r2" cx="160" cy="160" r="104"></circle>
+          <circle class="o-line o-thin" cx="160" cy="160" r="104"></circle>
+          <circle class="ring-stroke r2" cx="160" cy="160" r="104"></circle>
+          <circle class="f-bg" cx="160" cy="160" r="58"></circle>
+          <circle class="ring-fill" cx="160" cy="160" r="58"></circle>
+          <circle class="ring-stroke" cx="160" cy="160" r="58"></circle>
+          <text class="t-ink2 mid s12" x="160" y="36">your DMs</text>
+          <text class="t-ink2 mid s12" x="160" y="80">private channel</text>
+          <text class="t-ink mid s12" x="160" y="157">shared</text>
+          <text class="t-ink mid s12" x="160" y="173">brain</text>
+        </svg>
+        <div class="scopes" role="group" aria-label="Where the question is asked" data-js-only>
+          <button class="scope" type="button" aria-pressed="true" data-scope-btn><span class="mono">#general</span><span>Public channel</span></button>
+          <button class="scope" type="button" aria-pressed="false" data-scope-btn><span class="mono">#leadership</span><span>Private channel</span></button>
+          <button class="scope" type="button" aria-pressed="false" data-scope-btn><span class="mono">Your DMs</span><span>Direct message</span></button>
+        </div>
+      </figure>
+      <div class="access">
+        <div class="scroll-x" tabindex="0" role="region" aria-labelledby="access-cap">
+        <table>
+          <caption id="access-cap">What it can use, by where you ask</caption>
+          <thead>
+            <tr><th scope="col">Asked in</th><th scope="col">Shared brain</th><th scope="col">Private channel memory</th><th scope="col">Personal memory</th></tr>
+          </thead>
+          <tbody>
+            <tr class="row0"><th scope="row">Public channel</th><td><span class="yes">Yes</span></td><td class="no">No</td><td class="no">No</td></tr>
+            <tr class="row1"><th scope="row">Private channel</th><td><span class="yes">Yes</span></td><td><span class="yes">That channel</span></td><td class="no">No</td></tr>
+            <tr class="row2"><th scope="row">Your DMs</th><td><span class="yes">Yes</span></td><td><span class="yes">Channels you're in</span></td><td><span class="yes">Yes</span></td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p class="access__note">Always limited to what the person asking can already see in Slack.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="encryption" class="sec" aria-labelledby="encryption-title">
+  <div class="wrap sec__in">
+    <div class="row-head">
+      <h2 id="encryption-title" class="h3">Encrypted per scope, searchable and fast.</h2>
+      <span class="tag">Planned</span>
+    </div>
+    <p class="lede lede--sm lede--wide">The access rules above aren't only a check in code. Each scope is its own encryption key, so a bug or a leaked key for one channel exposes that channel and nothing else.</p>
+    <figure class="card card--line crypt" aria-label="Envelope encryption: page text is encrypted with its scope key, and the scope key is wrapped by a workspace key held in a separate key service">
+      <div class="crypt__row"><span class="crypt__box">page text</span><span class="crypt__arrow">AES-256-GCM, scope key</span><span class="crypt__box crypt__box--dark">ciphertext in storage</span></div>
+      <div class="crypt__row"><span class="crypt__box crypt__box--key">scope key</span><span class="crypt__arrow">wrapped by</span><span class="crypt__box crypt__box--key">workspace key, in a separate key service</span></div>
+      <figcaption class="mono-s">Scopes: shared brain · each private channel · each person · customer-safe pages. On Teams, the workspace key can live in your own key service.</figcaption>
+    </figure>
+    <div class="features">
+      <article class="feat"><span class="num">01</span><h3>One key per scope</h3><p>The shared brain, every private channel and every person each have their own key. Your mail, imported chats and agent logs sit under yours.</p></article>
+      <article class="feat"><span class="num">02</span><h3>Search without opening everything</h3><p>Keyword search runs on keyed hashes and meaning search on one index per scope, so a query only touches the scopes you can see. Only the top matches are decrypted, in memory, for that one request.</p></article>
+      <article class="feat"><span class="num">03</span><h3>Fastest on your device</h3><p>The CLI and the app keep your scopes encrypted with a key from your keychain or passkey, and search locally without a network round trip.</p></article>
+      <article class="feat"><span class="num">04</span><h3>Delete the key, erase the memory</h3><p>Forget a channel, offboard a person or revoke a mailbox: delete that scope's key and its memory is unreadable everywhere, backups included.</p></article>
+    </div>
+    <p class="access__note"><strong>The honest limit:</strong> to write the wiki, the model has to read the text. Hosted plans protect your data at rest and scope by scope, but not from the running service itself. For "even you can't read it", self-host on the Community or Teams plan. Keyword hashes also reveal which words repeat within a scope, never across scopes.</p>
+  </div>
+</section>
+
+<section id="screening" class="sec sec--tight" aria-labelledby="screening-title">
+  <div class="wrap sec__in">
+    <div class="eyebrow-row"><h2 id="screening-title" class="h3">Hidden text is screened.</h2><span class="tag">Planned</span></div>
+    <p class="lede lede--sm lede--wide">Everything it reads, from Slack, mail, imports, agent logs and git, is screened for hidden text by <a href="https://promptdeco.de">PromptDecode</a>, a sister Factory Zero venture, so an invisible instruction in one message can't reach every agent's context. Anything that decodes to an instruction is held for a person to review.</p>
+  </div>
+</section>
+
+<section id="mail" class="sec sec--tight" aria-labelledby="mail-title">
+  <div class="wrap sec__in">
+    <div class="eyebrow-row"><h2 id="mail-title" class="h3">Mail stays yours.</h2><span class="tag">Planned</span></div>
+    <p class="lede lede--sm lede--wide">Connected mailboxes (Gmail, Outlook, IMAP) stay in the owner's personal memory, encrypted with their key, unless they share a specific label or folder. Every message passes Owlpost's spoofing and prompt-injection checks first, and mail can never trigger actions. Revoke a mailbox and its stored mail is erased.</p>
+  </div>
+</section>
+
+<section id="telemetry" class="sec sec--tight" aria-labelledby="telemetry-title">
+  <div class="wrap sec__in">
+    <div class="eyebrow-row"><h2 id="telemetry-title" class="h3">What leaves your machine.</h2><span class="tag">Planned</span></div>
+    <ul class="checks">
+      <li><strong>Anonymous usage counts.</strong> The CLI and a self-hosted server send counts and timings, bucketed, with no free text and no ids beyond a random one. The first run shows the exact batch, and <code>livingbrain telemetry off</code> turns it off.</li>
+      <li><strong>Never collected.</strong> Message text, page bodies and secrets. They stay out of the logs too.</li>
+      <li><strong>Your own monitoring.</strong> Living Brain exports its metrics, traces and logs over OpenTelemetry. Teams adds an audit log of who asked what and which scopes were read.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="ownership" class="sec sec--tight" aria-labelledby="ownership-title">
+  <div class="wrap sec__in">
+    <h2 id="ownership-title" class="h3">Your data, your call.</h2>
+    <ul class="checks">
+      <li><strong>Not used for training.</strong> Your messages and pages never train models, ours or anyone else's.</li>
+      <li><strong>Plain Markdown.</strong> Export the whole wiki any time, or keep it in your own git repo. <a href="/how-it-works/#own">You own it</a></li>
+      <li><strong>Self-host for full control.</strong> The Community plan is free for up to 5 people on your own Cloudflare account; larger teams need a Teams license. The code is public on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>. <a href="/pricing/">Plans</a></li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
+    <div class="join-box">
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+      </form>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Agents</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/" aria-current="page">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>
