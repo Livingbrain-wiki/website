@@ -89,7 +89,8 @@ Why it saves tokens (planned; no numbers yet):
 - Fewer tokens: agents ask for a short cited brief instead of rereading threads and grepping the repo; the
   context is written once, at night, and reused by every agent.
 - Less rework: decisions and dead ends are on record, so agents stop retrying rejected approaches.
-- Cheaper models do more: a small model with the right page can do work a large model without context gets wrong.
+- Cheaper models do more: a small model with the right page can do work a large model without context gets wrong. Yes/no decisions
+  (reply or not, remember or not) go to a fast judge model (Jev) instead of a large LLM.
 - Fast: one Rust binary, a local cache, Cloudflare's edge.
 - Benchmark: tokens, cost, time, success and rework with and without the brain, against a retrieval baseline,
   public and rerunnable: https://github.com/Livingbrain-wiki/livingbrain/issues/48 . No numbers until measured.
