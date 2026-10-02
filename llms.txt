@@ -121,6 +121,13 @@ Prices may change before launch.
   your key, with every fact linked to its conversation. Claude exports will
   import the same way. Step-by-step guide:
   https://livingbrain.wiki/guides/import-chatgpt/
+- Can someone hide instructions in a message to trick my agents? Planned.
+  Every source is screened for hidden text by PromptDecode, a sister Factory
+  Zero venture: invisible Unicode tag characters, bidi controls and variation
+  selectors are decoded and flagged before a page is written, and again before
+  context is served to an agent. Anything that decodes to an instruction is
+  held for a person to review. Mail also passes Owlpost's spoofing and prompt-
+  injection checks.
 - Is my data encrypted? Planned. Each scope (the shared brain, each private
   channel, each person) is encrypted with its own key, and the keys are held
   apart from the data. Search runs only inside the scopes you can see, so it
@@ -178,3 +185,4 @@ illustrations, not screenshots.
 - Site: https://livingbrain.wiki/
 - Factory Zero: https://factory0.ventures (Living Brain is FZ-018: https://factory0.ventures/ventures/living-brain/)
 - Colonizer: https://colonizer.dev
+- PromptDecode (hidden-text screening): https://promptdeco.de
