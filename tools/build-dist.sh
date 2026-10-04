@@ -27,6 +27,10 @@ done
 # assets/harnesses.json is the planned-harness list (#38) the logo rows are
 # generated from (tools/marks.js); shipped so agents can read it too.
 cp assets/harnesses.json dist/assets/
+# The hosted email logo: the venture's branded mail (cratefield-mail-templates)
+# loads it from https://livingbrain.wiki/assets/email/logo-64.png.
+mkdir -p dist/assets/email
+cp assets/email/logo-64.png dist/assets/email/
 
 # Logos (other companies' marks): every file needs its row in COPY.md, Marks.
 # A logo with no row fails the build instead of shipping unrecorded.
