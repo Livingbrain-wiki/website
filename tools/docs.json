@@ -1,0 +1,41 @@
+{
+  "_comment": "The /docs/ hub: one row per document, written into docs/index.html by tools/docs.js. `status` is `available` or `planned` and is shown in words on the page. An `available` entry must have a `link`; a `planned` one must not, so nothing planned can look like a working document. `more` is optional: the page that owns the detail, so a claim is said once (AGENTS.md rule 2).",
+  "docs": [
+    {
+      "title": "Origin and plan",
+      "line": "Why Living Brain exists, what it is planned to be, and what is not built yet.",
+      "status": "available",
+      "link": "https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md"
+    },
+    {
+      "title": "Import your ChatGPT history",
+      "line": "Export your ChatGPT history from ChatGPT today. The import step is planned.",
+      "status": "available",
+      "link": "/guides/import-chatgpt/"
+    },
+    {
+      "title": "Self-host",
+      "line": "Run the brain on your own machines and your own Cloudflare account. Planned. Nothing runs yet.",
+      "status": "planned",
+      "more": { "text": "Security and ownership", "href": "/security/#ownership" }
+    },
+    {
+      "title": "CLI",
+      "line": "One Rust binary for terminals and scripts. Planned. The binary does not exist yet.",
+      "status": "planned",
+      "more": { "text": "Harnesses and the CLI", "href": "/agents/#connect" }
+    },
+    {
+      "title": "MCP for coding harnesses",
+      "line": "Connect a coding harness to the brain over MCP. Planned. The server does not exist yet.",
+      "status": "planned",
+      "more": { "text": "Harnesses and the CLI", "href": "/agents/" }
+    },
+    {
+      "title": "API and SDKs",
+      "line": "An open REST API with webhooks, and SDKs for TypeScript, Python and Rust. Planned. Nothing is published yet.",
+      "status": "planned",
+      "more": { "text": "Integrations: code", "href": "/integrations/#code" }
+    }
+  ]
+}

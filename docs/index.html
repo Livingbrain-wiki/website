@@ -5,12 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
-<title>404 · Not in the brain · Living Brain</title>
-<meta name="description" content="This page isn't in the brain. It was never written, or it was merged into another.">
-<meta name="robots" content="noindex, follow">
+<title>Docs · Living Brain</title>
+<meta name="description" content="Every Living Brain document in one list. Origin and plan and the ChatGPT export guide are written today. Self-hosting, the CLI, MCP and the API are planned: nothing is built yet.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
 <meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/">
+<meta property="og:title" content="Docs · Living Brain">
+<meta property="og:description" content="Every Living Brain document in one list. Two are written today; the rest are planned.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Docs · Living Brain">
+<meta name="twitter:description" content="Every Living Brain document in one list. Two are written today; the rest are planned.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -21,6 +35,24 @@
 <link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/livingbrain.css">
 <script src="/assets/livingbrain.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://livingbrain.wiki/docs/#webpage",
+  "url": "https://livingbrain.wiki/docs/",
+  "name": "Docs",
+  "description": "Every Living Brain document in one list. Living Brain is in design and not built.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://livingbrain.wiki/#website",
+    "name": "Living Brain",
+    "url": "https://livingbrain.wiki/"
+  }
+}
+</script>
 </head>
 <body>
 <!--email_off-->
@@ -36,7 +68,7 @@
       <a href="/security/">Security</a>
       <a href="/pricing/">Pricing</a>
       <a href="/faq/">FAQ</a>
-    <a href="/docs/">Docs</a>
+      <a href="/docs/" aria-current="page">Docs</a>
     </nav>
     <details class="menu">
       <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
@@ -47,18 +79,58 @@
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
-        <a href="/docs/">Docs</a>
+        <a href="/docs/" aria-current="page">Docs</a>
       </nav>
     </details>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
 
-<main id="main" class="lost">
-  <code>404 · brain/pages/not-found.md</code>
-  <h1>This page isn't in the brain.</h1>
-  <p>It was never written, or it was merged into another. Either way, there's nothing at this address.</p>
-  <a class="btn btn--primary" href="/">Back to the homepage</a>
+<main id="main">
+<section class="page-hd" aria-labelledby="page-title">
+  <div class="wrap">
+    <div class="eyebrow-row"><p class="eyebrow">Docs</p><span class="tag">In design</span></div>
+    <h1 id="page-title" class="h2 h2--page">Every document, in one list.</h1>
+    <p class="lede">Two are written today. The rest are planned, and are listed here so you can see what is coming. Living Brain is in design and not built, so there is nothing to install or connect yet.</p>
+  </div>
+</section>
+<section class="sec" aria-label="Documents">
+  <div class="wrap sec__in sec__in--top">
+    <!-- docs:start -->
+      <ul class="doc-list">
+        <li class="doc doc--available">
+          <div class="doc__hd"><h2 class="doc__t"><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md">Origin and plan</a></h2><span class="doc__st">Available</span></div>
+          <p class="doc__line">Why Living Brain exists, what it is planned to be, and what is not built yet.</p>
+        </li>
+        <li class="doc doc--available">
+          <div class="doc__hd"><h2 class="doc__t"><a href="/guides/import-chatgpt/">Import your ChatGPT history</a></h2><span class="doc__st">Available</span></div>
+          <p class="doc__line">Export your ChatGPT history from ChatGPT today. The import step is planned.</p>
+        </li>
+        <li class="doc doc--planned">
+          <div class="doc__hd"><h2 class="doc__t">Self-host</h2><span class="doc__st">Planned</span></div>
+          <p class="doc__line">Run the brain on your own machines and your own Cloudflare account. Planned. Nothing runs yet.</p>
+          <p class="doc__more"><a href="/security/#ownership">Security and ownership</a></p>
+        </li>
+        <li class="doc doc--planned">
+          <div class="doc__hd"><h2 class="doc__t">CLI</h2><span class="doc__st">Planned</span></div>
+          <p class="doc__line">One Rust binary for terminals and scripts. Planned. The binary does not exist yet.</p>
+          <p class="doc__more"><a href="/agents/#connect">Harnesses and the CLI</a></p>
+        </li>
+        <li class="doc doc--planned">
+          <div class="doc__hd"><h2 class="doc__t">MCP for coding harnesses</h2><span class="doc__st">Planned</span></div>
+          <p class="doc__line">Connect a coding harness to the brain over MCP. Planned. The server does not exist yet.</p>
+          <p class="doc__more"><a href="/agents/">Harnesses and the CLI</a></p>
+        </li>
+        <li class="doc doc--planned">
+          <div class="doc__hd"><h2 class="doc__t">API and SDKs</h2><span class="doc__st">Planned</span></div>
+          <p class="doc__line">An open REST API with webhooks, and SDKs for TypeScript, Python and Rust. Planned. Nothing is published yet.</p>
+          <p class="doc__more"><a href="/integrations/#code">Integrations: code</a></p>
+        </li>
+      </ul>
+      <!-- docs:end -->
+    <p class="doc-note">Each line says what a document is for. The detail stays on the page that owns it, so it is said once. Questions we have not answered yet are in the <a href="/faq/">FAQ</a>; the plan itself is on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>.</p>
+  </div>
+</section>
 </main>
 
 <footer id="waitlist" class="ft">
@@ -87,7 +159,7 @@
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
-        <a href="/docs/">Docs</a>
+        <a href="/docs/" aria-current="page">Docs</a>
         <a href="/guides/import-chatgpt/">Import guide</a>
       </nav>
     </div>

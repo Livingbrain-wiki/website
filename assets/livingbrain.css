@@ -678,6 +678,17 @@ html:not(.js) .stage { opacity: 1; }
 .intg__name { font-family: var(--f-display); font-weight: 600; font-size: 19px; letter-spacing: -0.015em; color: var(--ink); }
 .intg__name a { color: inherit; }
 .intg__what { flex: 1 1 100%; color: var(--ink2); line-height: 1.55; }
+/* docs: one row per document (written by tools/docs.js from tools/docs.json) */
+.doc-list { margin: 0; padding: 0; list-style: none; max-width: 46em; }
+.doc { padding-block: 24px; border-top: 1px solid var(--line2); }
+.doc:first-child { border-top: 0; padding-top: 0; }
+.doc__hd { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.doc__t { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 19px; line-height: 1.25; letter-spacing: -0.015em; color: var(--ink); }
+.doc__st { font-family: var(--f-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink3); padding: 2px 8px; border: 1px dashed var(--line); border-radius: 999px; white-space: nowrap; }
+.doc--available .doc__st { color: var(--accent); border: 1px solid var(--accent); }
+.doc__line { margin: 8px 0 0; color: var(--ink2); line-height: 1.6; }
+.doc__more { margin: 6px 0 0; font-size: 15px; }
+.doc-note { margin: 32px 0 0; max-width: 46em; color: var(--ink3); line-height: 1.6; }
 /* security: short lists */
 .checks { margin-top: 20px; display: grid; gap: 14px; max-width: 46em; }
 .checks li { position: relative; padding-left: 20px; color: var(--ink2); line-height: 1.6; }

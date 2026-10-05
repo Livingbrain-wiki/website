@@ -22,7 +22,7 @@ design tokens and the deploy procedure.
   needs Google Chrome). Never hand-edit the PNGs.
 - **Pages:** the site is several static pages, each a `folder/index.html`
   served at `/folder/`: `/`, `/how-it-works/`, `/agents/`, `/integrations/`,
-  `/security/`, `/pricing/`, `/faq/`, `/guides/import-chatgpt/`. They share the
+  `/security/`, `/pricing/`, `/faq/`, `/docs/`, `/guides/import-chatgpt/`. They share the
   header (nav with `aria-current="page"` on the active link, plus the small-screen
   `<details>` menu) and the waitlist footer; copy those from an existing page.
   Keep the home page short: it links out, it does not repeat.

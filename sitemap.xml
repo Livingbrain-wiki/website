@@ -43,6 +43,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://livingbrain.wiki/docs/</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://livingbrain.wiki/guides/import-chatgpt/</loc>
     <lastmod>2026-10-03</lastmod>
     <changefreq>monthly</changefreq>
