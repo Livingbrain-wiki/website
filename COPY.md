@@ -66,6 +66,8 @@ carries the claim; see Information architecture below.
 | "Who else touches it": Cloudflare hosts the site today; Polar and the sister ventures are planned | /security/ #subprocessors | Same generated source, between the `subprocessors` markers; the lede above it is hand-written and says only that the site runs on Cloudflare |
 | `hello@livingbrain.wiki` (no-JS form fallback), `security@livingbrain.wiki` | Form `action`, security.txt | **Fix before launch:** neither mailbox exists yet |
 | Waitlist at `api.livingbrain.wiki/v1/waitlist` | Forms | Contract shared with sealb.in and Colonizer (Cratefield waitlist module). **Not deployed**: the form says "The list isn't open yet. Check back soon." |
+| Docs hub: every Living Brain document in one list, each with its status in words (Available or Planned); available entries link to a document that exists today, planned entries carry no link | /docs/ (the list), nav and footer of every page, llms.txt, sitemap.xml | The list lives in `tools/docs.json`; `tools/docs.js` writes it into `docs/index.html` between its markers and fails if an `available` entry has no link or a `planned` one does. The two available documents: `docs/origin-and-plan.md` in Livingbrain-wiki/livingbrain, and the site's own /guides/import-chatgpt/ |
+| On /docs/, planned entries say so in their own line (nothing runs yet, the binary does not exist yet, the server does not exist yet, nothing is published yet) and link to the page that owns the detail: self-host to /security/ #ownership, CLI and MCP to /agents/, API and SDKs to /integrations/ #code | /docs/ | The underlying claims live on those pages and are unchanged; /docs/ restates only what a document is for, so each claim stays on one page (AGENTS.md rule 2) |
 | GitHub "(soon)" | Footer | Plain text, not a link: there is no repo yet |
 
 ## Information architecture
@@ -82,6 +84,7 @@ claim lives on one page; other pages link to it instead of repeating it.
 | `/security/` | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership and self-hosting |
 | `/pricing/` | The three plans, storage, the usage meter, reasoning levels, the illustrative comparison |
 | `/faq/` | Every question, grouped, with the only `FAQPage` JSON-LD on the site |
+| `/docs/` | Every document in one list, each with its status in words; generated from `tools/docs.json`. Not a port of the design: a new page, no design counterpart |
 | `/guides/import-chatgpt/` | The ChatGPT export guide |
 
 The old eight-card "A teammate, not a search box" grid was dropped as a block:

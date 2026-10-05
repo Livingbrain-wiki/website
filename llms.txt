@@ -32,6 +32,7 @@ under those names today is not ours.
 - Security and privacy: https://livingbrain.wiki/security/
 - Pricing: https://livingbrain.wiki/pricing/
 - FAQ: https://livingbrain.wiki/faq/
+- Docs: https://livingbrain.wiki/docs/
 - Guide, import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
 
 ## Home: https://livingbrain.wiki/
@@ -321,6 +322,26 @@ Same answers as the site.
   25 GB, covering wiki pages, sources, search indexes and aggregated agent
   logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
   your own Cloudflare storage, with no limit from us. Planned pricing.
+
+## Docs: https://livingbrain.wiki/docs/
+
+A list of the documents Living Brain plans, each with its status in words.
+Nothing here is installable: the product is in design.
+
+- Available. Origin and plan: https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md
+  Why Living Brain exists, what it is planned to be, and what is not built yet.
+- Available. Import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
+  How to export your ChatGPT history from ChatGPT today. The import step is
+  planned, and the export steps are OpenAI's, not ours.
+- Planned. Self-host. Run the brain on your own machines and your own Cloudflare
+  account. Nothing runs yet. See https://livingbrain.wiki/security/#ownership
+- Planned. CLI. One Rust binary for terminals and scripts. The binary does not
+  exist yet. See https://livingbrain.wiki/agents/#connect
+- Planned. MCP for coding harnesses. Connect a coding harness to the brain over
+  MCP. The server does not exist yet. See https://livingbrain.wiki/agents/
+- Planned. API and SDKs. An open REST API with webhooks, and SDKs for
+  TypeScript, Python and Rust. Nothing is published yet. See
+  https://livingbrain.wiki/integrations/#code
 
 ## About the site's examples
 
