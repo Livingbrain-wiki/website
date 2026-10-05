@@ -69,6 +69,12 @@ carries the claim; see Information architecture below.
 | Docs hub: every Living Brain document in one list, each with its status in words (Available or Planned); available entries link to a document that exists today, planned entries carry no link | /docs/ (the list), nav and footer of every page, llms.txt, sitemap.xml | The list lives in `tools/docs.json`; `tools/docs.js` writes it into `docs/index.html` between its markers and fails if an `available` entry has no link or a `planned` one does. The two available documents: `docs/origin-and-plan.md` in Livingbrain-wiki/livingbrain, and the site's own /guides/import-chatgpt/ |
 | On /docs/, planned entries say so in their own line (nothing runs yet, the binary does not exist yet, the server does not exist yet, nothing is published yet) and link to the page that owns the detail: self-host to /security/ #ownership, CLI and MCP to /agents/, API and SDKs to /integrations/ #code | /docs/ | The underlying claims live on those pages and are unchanged; /docs/ restates only what a document is for, so each claim stays on one page (AGENTS.md rule 2) |
 | GitHub "(soon)" | Footer | Plain text, not a link: there is no repo yet |
+| Factory Zero is the controller of the data described in the privacy notice, and the party behind these terms | /privacy/ #who, /terms/ #who | Owner decision 2026-10-04. There is no legal entity beyond the name Factory Zero; no entity type, registration number or postal address is stated on the site |
+| No cookies, no analytics, no ads, no tracking; the only data the site sends anywhere is the waitlist email; one local value (`lb-theme`) in the reader's own browser; no logging of our own on top of the hosting | /privacy/ #site | True. `assets/livingbrain.js` reads and writes only `lb-theme` (line 159), with no other `localStorage`, `sessionStorage` or cookie use; the only `fetch` is the waitlist POST (line 764); `wrangler.toml` has no `[observability]` block, so no Workers Logs |
+| Cloudflare processes request data (IP address, user agent) to serve the pages; the other processors are listed separately | /privacy/ #site (the hosting fact), /security/ #subprocessors (the list) | True. Static-assets Worker on Cloudflare (`wrangler.toml`). /privacy/ #others links to /security/ #subprocessors instead of repeating the list |
+| The waitlist collects one field, the email address, on consent, kept until asked to delete it or until the list closes; with JavaScript on it goes to the Cratefield waitlist service at api.livingbrain.wiki, with JavaScript off to hello@livingbrain.wiki by the reader's own mail app. The waitlist is not open yet, so nothing is collected today | /privacy/ #join | True. The form has one `input` and posts `{email, product:"livingbrain"}` to `api.livingbrain.wiki/v1/waitlist` (`assets/livingbrain.js` 732-775), the Cratefield harness waitlist module (README, The waitlist); the `action` is `mailto:hello@livingbrain.wiki`. The Worker is not deployed, so the form shows "The list isn't open yet." |
+| Polar will be the seller of paid plans as Merchant of Record, handling checkout, invoices, tax and refunds under its own terms; nothing is on sale | /terms/ #plans | Same generated source as the subprocessors row; agrees with /security/ #subprocessors and /pricing/ "Planned pricing". No partnership implied. /privacy/ links here rather than repeating it |
+| The open-core code is on GitHub under Apache-2.0, and that licence, not these terms, covers it | /terms/ #code, every footer ("apache-2.0 open core") | Apache-2.0 stated in README (The page) and in llms.txt. The site says nothing about a licence file, a NOTICE or a commercial directory |
 
 ## Information architecture
 
@@ -86,6 +92,25 @@ claim lives on one page; other pages link to it instead of repeating it.
 | `/faq/` | Every question, grouped, with the only `FAQPage` JSON-LD on the site |
 | `/docs/` | Every document in one list, each with its status in words; generated from `tools/docs.json`. Not a port of the design: a new page, no design counterpart |
 | `/guides/import-chatgpt/` | The ChatGPT export guide |
+| `/privacy/` | Who is the controller, what the site collects (nothing but a local theme value), what the waitlist collects and where it goes, legal basis in plain words, retention, your rights, contact. Links out to /security/ #subprocessors and /terms/ #plans instead of repeating either |
+| `/terms/` | Who runs the site, the product is in design and nothing is on sale, the site is informational and provided as is, Polar as the future seller, the code's own licence, liability, names and content, changes, contact |
+
+### Legal review: pending (owner decision 2026-10-04)
+
+`/privacy/` and `/terms/` are **drafts and have not been reviewed by a lawyer.**
+Both say so in the page's own lede. Decisions taken so far:
+
+- **Controller / party:** Factory Zero (https://factory0.ventures). No legal
+  entity type, registration number or postal address is named, because none
+  exists yet. The PR flags this for the owner.
+- **Governing law and jurisdiction:** **not decided.** They are left out of the
+  terms entirely rather than guessed; the PR flags this for the owner.
+- **Contact:** `hello@livingbrain.wiki` (already the waitlist mailto target
+  and in `404.html`). **Fix before launch:** the mailbox does not exist yet.
+- **Last updated:** 2026-10-05 on both pages; changing either text means
+  changing that date.
+- The privacy notice states no processing that does not happen today, and says
+  it will be updated before any new data is collected when the product exists.
 
 The old eight-card "A teammate, not a search box" grid was dropped as a block:
 each card's claim already had a home (Remembers → integrations, mail; Answers

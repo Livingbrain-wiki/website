@@ -33,6 +33,8 @@ under those names today is not ours.
 - Pricing: https://livingbrain.wiki/pricing/
 - FAQ: https://livingbrain.wiki/faq/
 - Docs: https://livingbrain.wiki/docs/
+- Privacy: https://livingbrain.wiki/privacy/
+- Terms: https://livingbrain.wiki/terms/
 - Guide, import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
 
 ## Home: https://livingbrain.wiki/
@@ -342,6 +344,30 @@ Nothing here is installable: the product is in design.
 - Planned. API and SDKs. An open REST API with webhooks, and SDKs for
   TypeScript, Python and Rust. Nothing is published yet. See
   https://livingbrain.wiki/integrations/#code
+
+## Privacy: https://livingbrain.wiki/privacy/
+
+The site is run by Factory Zero. It sets no cookies, runs no analytics or
+tracking. The only data it sends anywhere is an email address, if you join the
+waitlist; a light or dark theme choice stays in the reader's own browser. The
+waitlist is not open yet, so nothing is collected today. Once it opens, it
+collects an email address and nothing else, on the reader's consent, and keeps
+it until asked to delete it or until the list closes. With JavaScript on the
+form sends it to the waitlist service at api.livingbrain.wiki, which runs on
+Cratefield, a Factory Zero venture; with JavaScript off the reader's own mail
+app sends it to hello@livingbrain.wiki. Cloudflare serves the site and
+processes the request data any web server needs. The full list of processors
+is on /security/#subprocessors. Draft: legal review is pending.
+
+## Terms: https://livingbrain.wiki/terms/
+
+The site is informational and sells nothing. Living Brain is in design, not
+built: every illustration and sample company is labelled as such, and the
+prices are planned. When paid plans exist, Polar will be the seller as Merchant
+of Record, handling checkout, invoices, tax and refunds under its own terms.
+The open-core code is Apache-2.0, licensed separately on GitHub. The site is
+provided as is; liability for losses from using it is limited as far as the
+law allows. Draft: legal review is pending.
 
 ## About the site's examples
 
