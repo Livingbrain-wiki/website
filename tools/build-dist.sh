@@ -49,7 +49,7 @@ cp .well-known/security.txt dist/.well-known/
 
 # pages: one folder per page, each an index.html served at /<folder>/.
 # A new page goes here AND in the CSP loop below AND in sitemap.xml and llms.txt.
-PAGES="how-it-works agents integrations security pricing faq docs guides/import-chatgpt"
+PAGES="how-it-works agents integrations security pricing faq docs privacy terms guides/import-chatgpt"
 for d in $PAGES; do
   mkdir -p "dist/$d"
   cp "$d/index.html" "dist/$d/"
