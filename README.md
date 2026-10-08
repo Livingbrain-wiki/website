@@ -28,8 +28,8 @@ follows the structure of the sealb.in and Colonizer sites.
 
 | | What it is | Status |
 | :--- | :--- | :--- |
-| **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki. The waitlist API is not deployed yet |
-| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki`, same contract as sealb.in and Colonizer. | **Not deployed.** The form says "The list isn't open yet." |
+| **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki |
+| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki` (`Livingbrain-wiki/waitlist-backend`), Turnstile-guarded, confirmation mail via Owlpost. | Wired; live once the Worker is deployed. Until then a submit shows an inline failure note |
 | **Living Brain** | The product: a brain for your team, used from coding harnesses (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
 
 > **Your company, remembered.**
@@ -148,16 +148,23 @@ generator, rerun `node tools/prerender.js`.
 
 ## The waitlist
 
-Both forms post `{ "email": "...", "product": "livingbrain" }` as JSON to
+Every waitlist form (the hero and the footer on each page) posts
+`{ "email": "...", "product": "livingbrain", "captchaToken": "..." }` as JSON to
 `https://api.livingbrain.wiki/v1/waitlist`: a Cloudflare Worker running
-[Cratefield](https://cratefield.com)'s harness `waitlist` module, the same
-contract as the sealb.in and Colonizer waitlists. **That Worker is not
-deployed yet**, so every submit fails today and the form shows a calm inline
-note: "The list isn't open yet. Check back soon." It never fakes a success.
-To open the list: deploy the Worker with its own D1 database, route
-`api.livingbrain.wiki` to it, allow the `https://livingbrain.wiki` origin, and
-test one join from the live site. No Turnstile yet. Without JavaScript the
-form falls back to `mailto:hello@livingbrain.wiki`, which needs that mailbox.
+[Cratefield](https://cratefield.com)'s harness `waitlist` module
+(`Livingbrain-wiki/waitlist-backend`), the same contract as the sealb.in and
+Shoal waitlists. `captchaToken` is a Cloudflare Turnstile token (sitekey
+`0x4AAAAAAFRBNnN2m1opjElP`, managed, action `waitlist`); the widget script loads
+on the first interaction with a form, and each form renders its own widget
+under the field. The Worker binds the token to the apex hostname
+`livingbrain.wiki` only, so `www.livingbrain.wiki` must redirect to the apex
+(Cloudflare Redirect Rule) or joins from `www` fail the human check. The Worker
+answers `202` on a join (also for an address already on the list), `400` with a
+problem type ending `/captcha-failed` for the human check, `429` when rate
+limited. It mails a confirmation link through Owlpost from
+`no-reply@send.livingbrain.wiki`, so the success note says to check the inbox.
+Any failure shows an inline note with the address; it never fakes a success.
+Without JavaScript the form falls back to `mailto:hello@livingbrain.wiki`.
 
 ## Installable
 

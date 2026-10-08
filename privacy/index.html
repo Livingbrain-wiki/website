@@ -134,7 +134,7 @@
       <li><strong>Why: to write once, when there's something to try.</strong> We will not sell it, trade it, or use it for advertising.</li>
       <li><strong>Consent.</strong> You give it by joining, and you can take it back at any time.</li>
       <li><strong>How long we keep it.</strong> Until you ask us to delete it, or until we close the waitlist. Then we delete it.</li>
-      <li><strong>Where it goes.</strong> With JavaScript on, the form sends your address, tagged with the product name, to the waitlist service at api.livingbrain.wiki, which runs on Cratefield, a Factory Zero venture (<a href="/security/#subprocessors">who else touches it</a>). With JavaScript off, your own email app sends it to <a href="mailto:hello@livingbrain.wiki">hello@livingbrain.wiki</a>.</li>
+      <li><strong>Where it goes.</strong> With JavaScript on, the form sends your address, tagged with the product name, to the waitlist service at api.livingbrain.wiki, which runs on Cratefield, a Factory Zero venture (<a href="/security/#subprocessors">who else touches it</a>). A Cloudflare Turnstile human check runs first (Cloudflare sees your browser for that check, not your address), and the service emails you one link to confirm, sent through Owlpost, another Factory Zero venture. With JavaScript off, your own email app sends it to <a href="mailto:hello@livingbrain.wiki">hello@livingbrain.wiki</a>.</li>
     </ul>
   </div>
 </section>
@@ -172,8 +172,9 @@
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
         <button class="btn btn--primary" type="submit">Join the waitlist</button>
       </form>
+      <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>You're on the list. We'll write once, when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
