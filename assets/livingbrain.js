@@ -774,7 +774,52 @@
     var waited = setTimeout(function () { settle(!!window.turnstile); }, 10000);
     document.head.appendChild(tag);
   };
-  var joined = function (email) {
+  // Success: every waitlist form on the page gives way to a "check your
+  // inbox" panel (built here, so the pages keep their one-line markup), and
+  // the panel next to the form that was used takes focus. "Use a different
+  // email" brings the forms back, prefilled, each with a fresh token.
+  var panel = function (done, email) {
+    while (done.firstChild) done.removeChild(done.firstChild);
+    done.setAttribute('aria-live', 'polite');
+    var h = document.createElement('strong');
+    h.className = 'joined__h';
+    h.textContent = 'Check your inbox';
+    var body = document.createElement('span');
+    var who = document.createElement('strong');
+    who.className = 'joined__email';
+    who.textContent = email;
+    body.append('We sent a confirmation link to ', who, '. Click it to hold your place on the Living Brain waitlist.');
+    var fine = document.createElement('span');
+    fine.className = 'joined__fine';
+    fine.textContent = 'It can take a minute — check Spam or Promotions if it isn’t there. Already confirmed before? Then you’re already on the list; nothing more to do.';
+    var more = document.createElement('span');
+    more.className = 'joined__fine';
+    var again = document.createElement('button');
+    again.type = 'button';
+    again.className = 'joined__again';
+    again.textContent = 'Use a different email';
+    again.addEventListener('click', function () { unjoin(done); });
+    var mail = document.createElement('a');
+    mail.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20waitlist';
+    mail.textContent = MAIL;
+    more.append(again, ' · Still nothing? Email ', mail, '.');
+    done.append(h, body, fine, more);
+  };
+  var resets = [];
+  var unjoin = function (from) {
+    var back = null;
+    forms.forEach(function (f) {
+      f.hidden = false;
+      var done = f.parentNode.querySelector('[data-joined]');
+      if (done) done.hidden = true;
+      if (done === from) back = f;
+    });
+    resets.forEach(function (r) { r(); });
+    var input = (back || forms[0]).elements.email;
+    input.focus();
+    input.select();
+  };
+  var joined = function (email, used) {
     forms.forEach(function (f) {
       f.hidden = true;
       var human = f.parentNode.querySelector('[data-captcha]');
@@ -783,21 +828,32 @@
       if (note) note.hidden = true;
       var done = f.parentNode.querySelector('[data-joined]');
       if (done) {
-        var who = done.querySelector('[data-joined-email]');
-        if (who) who.textContent = email;
+        panel(done, email);
         done.hidden = false;
       }
     });
-    var focusDone = document.activeElement && document.activeElement.closest && document.activeElement.closest('[data-waitlist]');
-    if (focusDone) { var d = focusDone.parentNode.querySelector('[data-joined]'); if (d) { d.tabIndex = -1; d.focus(); } }
+    var d = used.parentNode.querySelector('[data-joined]');
+    if (d) { d.tabIndex = -1; d.focus(); }
     return email;
   };
   forms.forEach(function (form) {
     var email = form.elements.email, btn = $('button[type=submit]', form), note = $('[data-form-note]', form.parentNode);
     var human = $('[data-captcha]', form.parentNode);
     var token = null, widget = null;
-    var say = function (msg) { note.textContent = msg; note.hidden = false; };
+    // Problems are alerts; the field is marked invalid only for the address.
+    var alertNote = function (bad) {
+      note.setAttribute('role', 'alert');
+      if (bad) email.setAttribute('aria-invalid', 'true'); else email.removeAttribute('aria-invalid');
+    };
+    var say = function (msg, bad) { alertNote(bad); note.textContent = msg; note.hidden = false; };
+    var badEmail = function () { say('That email address doesn’t look right. Check it and try again.', true); email.focus(); };
+    var busy = function (on) {
+      btn.disabled = on;
+      if (on) btn.setAttribute('aria-busy', 'true'); else btn.removeAttribute('aria-busy');
+      btn.textContent = on ? 'Joining…' : 'Join the waitlist';
+    };
     var sayMail = function (msg) {
+      alertNote(false);
       note.textContent = msg + ' ';
       var a = document.createElement('a');
       a.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20waitlist';
@@ -840,22 +896,23 @@
     email.addEventListener('focus', start);
     email.addEventListener('input', function () { start(); if (!/human check/.test(note.textContent)) note.hidden = true; email.removeAttribute('aria-invalid'); });
     window.addEventListener('lb-theme', function () { if (!token && widget !== null) render(); });
+    resets.push(function () {
+      note.hidden = true;
+      email.removeAttribute('aria-invalid');
+      token = null;
+      if (human && widget !== null) { human.hidden = false; if (window.turnstile) window.turnstile.reset(widget); }
+    });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var value = email.value.trim();
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
-        email.setAttribute('aria-invalid', 'true');
-        say('That email looks off. Try again?');
-        email.focus();
-        return;
-      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) { badEmail(); return; }
       if (tsState === 'broken') { unavailable(); return; }
       if (!token) {
         start();
         say('One more step: complete the human check below the field, then send.');
         return;
       }
-      btn.disabled = true; btn.textContent = 'Joining…'; note.hidden = true;
+      busy(true); note.hidden = true;
       fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: value, product: 'livingbrain', captchaToken: token }) })
         .then(function (res) {
           if (res.ok) return null;
@@ -864,18 +921,18 @@
             throw new Error(/\/captcha-failed$/.test(type) ? 'captcha' : String(res.status));
           });
         })
-        .then(function () { joined(value); })
+        .then(function () { joined(value, form); })
         .catch(function (x) {
           var why = x && x.message;
-          if (why === 'captcha') say('The human check didn’t go through. It has been reset: complete it again, then send.');
-          else if (Number(why) === 429) say('Too many tries. Give it a minute, then send again.');
-          else if (Number(why) === 400) say('That email looks off. Try again?');
-          else sayMail('That didn’t go through. Try again, or email');
+          if (why === 'captcha') say('The human check didn’t go through. It’s been reset — complete it again, then send.');
+          else if (Number(why) === 429) say('Too many tries. Wait a minute, then try again.');
+          else if (Number(why) === 400) badEmail();
+          else sayMail('We couldn’t reach the waitlist just now. Try again in a moment, or email');
         })
         .then(function () {
           token = null;
           if (window.turnstile && widget !== null) window.turnstile.reset(widget);
-          btn.disabled = false; btn.textContent = 'Join the waitlist';
+          busy(false);
         });
     });
   });
