@@ -182,7 +182,8 @@ plan is free.
   included.
 
 Extra people: +$5/month per 25 on hosted plans. Billed annually by default;
-monthly available.
+monthly available. Paid plans are sold by Polar, our Merchant of Record,
+which handles VAT and sales tax.
 
 Usage (planned, hosted): writing the brain $1 per million tokens (nightly evolve
 included); reading it unlimited. Reasoning per question: Minimal $0.001, Low $0.005
@@ -324,6 +325,8 @@ Same answers as the site.
   25 GB, covering wiki pages, sources, search indexes and aggregated agent
   logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
   your own Cloudflare storage, with no limit from us. Planned pricing.
+- Who will bill me? Paid plans are sold by Polar, our Merchant of Record,
+  which handles VAT and sales tax. Nothing is on sale yet.
 
 ## Docs: https://livingbrain.wiki/docs/
 
