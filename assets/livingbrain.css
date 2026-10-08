@@ -208,6 +208,9 @@ html:not(.js) [data-js-only] { display: none; }
 .join input[aria-invalid="true"] { border-color: var(--t-customer); }
 .join .btn { flex: 0 0 auto; }
 @media (max-width: 480px) { .join .btn { flex: 1 1 100%; } }
+.join__human { margin-top: 10px; min-height: 65px; }
+.join__human > div { width: 100%; }
+.join__note a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .join__note { margin-top: 10px; font-size: 15px; color: var(--ink2); }
 .join__note::before { content: ''; display: inline-block; width: 6px; height: 6px; margin: 0 8px 2px 2px; border-radius: 50%; background: var(--t-decision); }
 .joined { padding: 14px 16px; border: 1px solid var(--accent); border-radius: 10px; color: var(--ink); background: var(--accent-soft); }

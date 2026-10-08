@@ -730,18 +730,63 @@
   }
 
   // ---- waitlist forms ----
-  // Both forms post { email, product: "livingbrain" } as JSON to the waitlist
-  // Worker (Cratefield harness waitlist module), the same contract as the
-  // sealb.in and Colonizer sites. That Worker is not deployed yet, so a
-  // failure is expected for now and gets a calm inline note, never a fake
+  // Both forms post { email, product: "livingbrain", captchaToken } as JSON to
+  // the waitlist Worker at api.livingbrain.wiki (Cratefield harness waitlist
+  // module, Livingbrain-wiki/waitlist-backend), the same contract as the
+  // sealb.in and Shoal sites. captchaToken is a Cloudflare Turnstile token
+  // (action "waitlist") from the widget under the form; the Worker refuses a
+  // join without one (400, problem type captcha-failed). The widget script is
+  // loaded on the first interaction with either form, and each form gets its
+  // own widget, rendered when that form is first used. A token is single-use,
+  // so the widget is reset after every attempt. The Worker mails a
+  // confirmation link (via Owlpost), so success says to check the inbox. On
+  // any failure the form says so and offers the address, never a fake
   // success. Without JavaScript the forms fall back to their mailto action.
   var API = 'https://api.livingbrain.wiki/v1/waitlist';
+  var SITEKEY = '0x4AAAAAAFRBNnN2m1opjElP';
+  var TURNSTILE = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=lbTurnstileReady';
+  var MAIL = 'hello@livingbrain.wiki';
   var forms = $$('[data-waitlist]');
+  var tsState = 'idle'; // idle | loading | ready | broken
+  var tsWaiters = [];
+  var isDark = function () {
+    var t = root.getAttribute('data-theme');
+    if (t === 'light' || t === 'dark') return t === 'dark';
+    return !mq('(prefers-color-scheme: light)').matches;
+  };
+  var loadTurnstile = function (then) {
+    if (tsState === 'ready') { then(true); return; }
+    if (tsState === 'broken') { then(false); return; }
+    tsWaiters.push(then);
+    if (tsState === 'loading') return;
+    tsState = 'loading';
+    var settle = function (ok) {
+      clearTimeout(waited);
+      if (tsState !== 'loading') return;
+      tsState = ok ? 'ready' : 'broken';
+      var w = tsWaiters; tsWaiters = [];
+      w.forEach(function (f) { f(ok); });
+    };
+    window.lbTurnstileReady = function () { settle(true); };
+    var tag = document.createElement('script');
+    tag.src = TURNSTILE; tag.async = true; tag.defer = true;
+    tag.onerror = function () { settle(false); };
+    var waited = setTimeout(function () { settle(!!window.turnstile); }, 10000);
+    document.head.appendChild(tag);
+  };
   var joined = function (email) {
     forms.forEach(function (f) {
       f.hidden = true;
+      var human = f.parentNode.querySelector('[data-captcha]');
+      if (human) human.hidden = true;
+      var note = f.parentNode.querySelector('[data-form-note]');
+      if (note) note.hidden = true;
       var done = f.parentNode.querySelector('[data-joined]');
-      if (done) done.hidden = false;
+      if (done) {
+        var who = done.querySelector('[data-joined-email]');
+        if (who) who.textContent = email;
+        done.hidden = false;
+      }
     });
     var focusDone = document.activeElement && document.activeElement.closest && document.activeElement.closest('[data-waitlist]');
     if (focusDone) { var d = focusDone.parentNode.querySelector('[data-joined]'); if (d) { d.tabIndex = -1; d.focus(); } }
@@ -749,8 +794,52 @@
   };
   forms.forEach(function (form) {
     var email = form.elements.email, btn = $('button[type=submit]', form), note = $('[data-form-note]', form.parentNode);
+    var human = $('[data-captcha]', form.parentNode);
+    var token = null, widget = null;
     var say = function (msg) { note.textContent = msg; note.hidden = false; };
-    email.addEventListener('input', function () { note.hidden = true; email.removeAttribute('aria-invalid'); });
+    var sayMail = function (msg) {
+      note.textContent = msg + ' ';
+      var a = document.createElement('a');
+      a.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20waitlist';
+      a.textContent = MAIL;
+      note.appendChild(a);
+      note.appendChild(document.createTextNode('.'));
+      note.hidden = false;
+    };
+    var unavailable = function () {
+      token = null;
+      if (human) human.hidden = true;
+      sayMail('The human check didn’t load, so the form can’t send. A content blocker may be stopping challenges.cloudflare.com. Reload to try again, or email');
+    };
+    var render = function () {
+      if (!window.turnstile || !human) return;
+      if (widget !== null) { window.turnstile.remove(widget); widget = null; }
+      human.innerHTML = '';
+      human.hidden = false;
+      var box = document.createElement('div');
+      human.appendChild(box);
+      widget = window.turnstile.render(box, {
+        sitekey: SITEKEY,
+        action: 'waitlist',
+        theme: isDark() ? 'dark' : 'light',
+        size: 'flexible',
+        callback: function (t) { token = t; if (/human check/.test(note.textContent)) note.hidden = true; },
+        'expired-callback': function () { token = null; },
+        'timeout-callback': function () { token = null; },
+        'error-callback': function () {
+          token = null;
+          sayMail('The human check hit an error. Reload the page and try again, or email');
+          return true;
+        }
+      });
+    };
+    var start = function () {
+      if (widget !== null) return;
+      loadTurnstile(function (ok) { if (!ok) unavailable(); else if (widget === null) render(); });
+    };
+    email.addEventListener('focus', start);
+    email.addEventListener('input', function () { start(); if (!/human check/.test(note.textContent)) note.hidden = true; email.removeAttribute('aria-invalid'); });
+    window.addEventListener('lb-theme', function () { if (!token && widget !== null) render(); });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var value = email.value.trim();
@@ -760,14 +849,34 @@
         email.focus();
         return;
       }
+      if (tsState === 'broken') { unavailable(); return; }
+      if (!token) {
+        start();
+        say('One more step: complete the human check below the field, then send.');
+        return;
+      }
       btn.disabled = true; btn.textContent = 'Joining…'; note.hidden = true;
-      fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: value, product: 'livingbrain' }) })
-        .then(function (res) { if (!res.ok) throw new Error(String(res.status)); joined(value); })
-        .catch(function (x) {
-          var status = Number(x && x.message);
-          say(status === 429 ? 'Too many tries. Give it a minute, then send again.' : 'The list isn’t open yet. Check back soon.');
+      fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: value, product: 'livingbrain', captchaToken: token }) })
+        .then(function (res) {
+          if (res.ok) return null;
+          return res.json().catch(function () { return null; }).then(function (p) {
+            var type = p && typeof p.type === 'string' ? p.type : '';
+            throw new Error(/\/captcha-failed$/.test(type) ? 'captcha' : String(res.status));
+          });
         })
-        .then(function () { btn.disabled = false; btn.textContent = 'Join the waitlist'; });
+        .then(function () { joined(value); })
+        .catch(function (x) {
+          var why = x && x.message;
+          if (why === 'captcha') say('The human check didn’t go through. It has been reset: complete it again, then send.');
+          else if (Number(why) === 429) say('Too many tries. Give it a minute, then send again.');
+          else if (Number(why) === 400) say('That email looks off. Try again?');
+          else sayMail('That didn’t go through. Try again, or email');
+        })
+        .then(function () {
+          token = null;
+          if (window.turnstile && widget !== null) window.turnstile.reset(widget);
+          btn.disabled = false; btn.textContent = 'Join the waitlist';
+        });
     });
   });
 })();
