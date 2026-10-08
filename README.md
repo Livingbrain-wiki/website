@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/SITE-NOT%20DEPLOYED-8E9B9E?style=flat-square&labelColor=070F11" alt="Site: not deployed">
+  <img src="https://img.shields.io/badge/SITE-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Site: live">
   <img src="https://img.shields.io/badge/LIVING%20BRAIN-IN%20DESIGN-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: in design">
   <img src="https://img.shields.io/badge/PAGES-11-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 11">
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
@@ -29,7 +29,7 @@ follows the structure of the sealb.in and Colonizer sites.
 | | What it is | Status |
 | :--- | :--- | :--- |
 | **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki |
-| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki` (`Livingbrain-wiki/waitlist-backend`), Turnstile-guarded, confirmation mail via Owlpost. | Wired; live once the Worker is deployed. Until then a submit shows an inline failure note |
+| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki` (`Livingbrain-wiki/waitlist-backend`), Turnstile-guarded, confirmation mail via Owlpost. | **Not deployed.** The Worker is wired but not live, so a submit shows an inline failure note |
 | **Living Brain** | The product: a brain for your team, used from coding harnesses (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
 
 > **Your company, remembered.**
