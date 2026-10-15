@@ -1,5 +1,5 @@
 {
-  "about": "Coding harnesses Living Brain plans to support. Source of truth: Livingbrain-wiki/livingbrain#38. Every entry is planned; none is tested yet. tools/marks.js generates the logo rows on /, /agents/ and /integrations/ from this file. Logos: Simple Icons 16.33.0 (CC0 SVG path data); the names and marks are trademarks of their owners and are used only to say what Living Brain is planned to work with. Not affiliated with or endorsed by these companies.",
+  "about": "Coding harnesses Living Brain plans to support. Source of truth: Livingbrain-wiki/livingbrain#38. Every entry is planned; none is tested yet. tools/marks.js generates the logo rows on /, /agents/ and /integrations/ from this file. Logos: Simple Icons 16.33.0 (CC0 SVG path data), or the owner's own SVG imported with tools/import-mark.py where Simple Icons has no mark; the names and marks are trademarks of their owners and are used only to say what Living Brain is planned to work with. Not affiliated with or endorsed by these companies.",
   "issue": "https://github.com/Livingbrain-wiki/livingbrain/issues/38",
   "simpleIcons": "16.33.0",
   "status": "planned",
@@ -8,8 +8,8 @@
       "source": "https://code.claude.com", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Anthropic", "guideline": "No published third-party logo guidelines found; nominative \"works with\" use, unaltered" },
     { "id": "codex", "name": "Codex", "wave": 1, "featured": true, "logo": null,
       "source": "https://openai.com/brand/", "terms": "Trademark of OpenAI", "guideline": "Name only: OpenAI's brand guidelines ask for permission to use its marks, and Simple Icons removed OpenAI's icon for that reason (simple-icons#13944)" },
-    { "id": "hermes", "name": "Hermes", "wave": 1, "featured": true, "logo": null,
-      "source": "https://github.com/NousResearch/hermes-agent", "terms": "Nous Research hermes-agent", "guideline": "Name only: no press kit or published mark from Nous Research; the Simple Icons \"Hermes\" icon is an unrelated parcel company" },
+    { "id": "hermes", "name": "Hermes", "wave": 1, "featured": true, "logo": "logos/hermes.svg", "logoDark": "logos/hermes-dark.svg", "external": true,
+      "source": "https://github.com/NousResearch/hermes-agent/blob/c2b69de66d847318f05356c666f21e046d2e9468/assets/icon-master.svg", "sourceDark": "https://github.com/NousResearch/hermes-agent/blob/c2b69de66d847318f05356c666f21e046d2e9468/assets/icon-master-dark.svg", "terms": "Nous Research's own icon from the hermes-agent repository (MIT code license; the mark stays Nous Research's), imported with tools/import-mark.py: the light and dark versions it publishes, path data only, without the rounded-square background", "guideline": "No published logo guidelines found; nominative use, unaltered. The Simple Icons \"Hermes\" icon is an unrelated parcel company" },
     { "id": "cursor", "name": "Cursor", "wave": 1, "featured": true, "logo": "logos/cursor.svg", "si": "cursor", "brand": "#000000",
       "source": "https://cursor.com/brand", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Anysphere", "guideline": "Brand page cursor.com/brand provides the mark; nominative use, unaltered" },
     { "id": "opencode", "name": "OpenCode", "wave": 1, "featured": true, "logo": "logos/opencode.svg", "si": "opencode", "brand": "#000000",
@@ -20,16 +20,18 @@
       "source": "https://gemini.google.com", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Google", "guideline": "Gemini mark, nominative use, unaltered. Check against Google's brand permissions before launch" },
     { "id": "github-copilot", "name": "GitHub Copilot", "wave": 2, "logo": "logos/github-copilot.svg", "si": "githubcopilot", "brand": "#000000",
       "source": "https://primer.style/foundations/icons/copilot-24", "terms": "Simple Icons 16.33.0; icon from GitHub Primer Octicons, MIT; trademark of GitHub", "guideline": "github.com/logos: nominative use allowed, unaltered" },
-    { "id": "goose", "name": "Goose", "wave": 2, "logo": null,
-      "source": "https://github.com/block/goose", "terms": "Block's goose", "guideline": "Name only: no Simple Icons mark and no press kit found" },
+    { "id": "goose", "name": "Goose", "wave": 2, "logo": "logos/goose.svg",
+      "source": "https://github.com/block/goose/blob/bf760fd630b9accd1eff63adba24798d6bf7413a/documentation/static/img/goose.svg", "terms": "Block's goose mark from the project's own repository (the same bird as its desktop app icon; Apache-2.0 code license, which grants no trademark rights), imported with tools/import-mark.py", "guideline": "No published logo guidelines found; nominative use, unaltered" },
     { "id": "cline", "name": "Cline", "wave": 2, "logo": "logos/cline.svg", "si": "cline", "brand": "#18181B",
       "source": "https://cline.bot/assets/branding/logos/cline-wordmark-black.svg", "terms": "Simple Icons 16.33.0, CC0 path data; from Cline's own branding assets", "guideline": "Nominative use, unaltered" },
-    { "id": "aider", "name": "Aider", "wave": 2, "logo": null,
-      "source": "https://aider.chat", "terms": "Aider", "guideline": "Name only: no Simple Icons mark and no press kit found" },
+    { "id": "aider", "name": "Aider", "wave": 2, "logo": "logos/aider.svg",
+      "source": "https://github.com/Aider-AI/aider/blob/22a494bb59e11e9cfa7842a8c1a8b6324b2ade67/aider/website/assets/icons/safari-pinned-tab.svg", "terms": "Aider's own one-colour mask icon (aider.chat's mask-icon), from the project's repository (Apache-2.0 code license, which grants no trademark rights), imported with tools/import-mark.py", "guideline": "No published logo guidelines found; nominative use, unaltered" },
     { "id": "kimi-cli", "name": "Kimi CLI", "wave": 2, "logo": "logos/kimi.svg", "si": "kimi", "brand": "#000000",
       "source": "https://moonshotai.github.io/Branding-Guide", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Moonshot AI", "guideline": "Moonshot AI branding guide; nominative use, unaltered" },
     { "id": "qwen-code", "name": "Qwen Code", "wave": 2, "logo": "logos/qwen.svg", "si": "qwen", "brand": "#6950EF",
-      "source": "https://qwen.ai", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Alibaba Cloud", "guideline": "No published third-party logo guidelines found; nominative use, unaltered" }
+      "source": "https://qwen.ai", "terms": "Simple Icons 16.33.0, CC0 path data; trademark of Alibaba Cloud", "guideline": "No published third-party logo guidelines found; nominative use, unaltered" },
+    { "id": "pi", "name": "Pi", "wave": 3, "logo": "logos/pi.svg", "si": "pi", "brand": "#000000",
+      "source": "https://pi.dev/press-kit", "terms": "Simple Icons 16.33.0, CC0 path data (from pi.dev/favicon.svg, the press kit's badge); trademark of Earendil", "guideline": "The press kit offers the mark with no usage rules; nominative use, unaltered" }
   ],
   "plus": "Any MCP client"
 }

@@ -17,7 +17,8 @@ design tokens and the deploy procedure.
 - **Logos and harness list:** edit `assets/harnesses.json` or
   `tools/integrations.json`, then `node tools/marks.js` (it writes the
   `marks-*` regions; never hand-edit between them). A new logo needs
-  `tools/fetch-simple-icons.sh` first and a COPY.md Marks row.
+  `tools/fetch-simple-icons.sh` first (or, for an official mark Simple Icons
+  lacks, `tools/import-mark.py` from the owner's own SVG) and a COPY.md Marks row.
 - **Images:** edit `tools/*-render.html`, then `tools/render-og.sh` (macOS,
   needs Google Chrome). Never hand-edit the PNGs.
 - **Pages:** the site is several static pages, each a `folder/index.html`

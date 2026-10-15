@@ -1124,6 +1124,14 @@ html:not(.js) .sw__tabs { display: none; }
 .mk:hover .mk__i { color: var(--mk-d, var(--ink)); }
 :root[data-theme="light"] .mk:hover .mk__i { color: var(--mk-l, var(--ink)); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .mk:hover .mk__i { color: var(--mk-l, var(--ink)); } }
+/* A mark whose owner publishes a separate dark-background version (tools/marks.js "logoDark"): show the one for the theme. */
+.mk__i--l { display: none; }
+:root[data-theme="light"] .mk__i--l { display: block; }
+:root[data-theme="light"] .mk__i--d { display: none; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .mk__i--l { display: block; }
+  :root:not([data-theme="dark"]) .mk__i--d { display: none; }
+}
 .mk__plus { display: inline-grid; place-items: center; width: 20px; height: 20px; font-family: var(--f-mono); font-size: 18px; line-height: 1; color: var(--accent); }
 .mk-legal { margin-top: 14px; max-width: 60em; font-size: 13px; line-height: 1.5; color: var(--ink3); }
 
