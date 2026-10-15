@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Terms · Living Brain</title>
-<meta name="description" content="The terms for livingbrain.wiki. The site is informational; Living Brain is in design and nothing is on sale. Draft. Legal review pending.">
+<meta name="description" content="The terms for livingbrain.wiki. The site is informational; Living Brain is in early access and nothing is on sale. Draft. Legal review pending.">
 <link rel="canonical" href="https://livingbrain.wiki/terms/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -18,18 +18,18 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://livingbrain.wiki/terms/">
 <meta property="og:title" content="Terms of use">
-<meta property="og:description" content="The site is informational. Living Brain is in design, not built, and nothing is on sale. Draft. Legal review pending.">
+<meta property="og:description" content="The site is informational. Living Brain is in early access, and nothing is on sale. Draft. Legal review pending.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Terms of use">
-<meta name="twitter:description" content="The site is informational. Living Brain is in design, not built, and nothing is on sale. Draft. Legal review pending.">
+<meta name="twitter:description" content="The site is informational. Living Brain is in early access, and nothing is on sale. Draft. Legal review pending.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
-<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -92,8 +92,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
         <a href="/docs/">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -103,7 +105,7 @@
   <div class="wrap">
     <p class="eyebrow">Terms</p>
     <h1 id="page-title" class="h2 h2--page">Terms for this site.</h1>
-    <p class="lede">This site tells you what Living Brain is planned to be. It does not sell anything. <strong>Draft. Legal review pending.</strong> Last updated 2026-10-05.</p>
+    <p class="lede">This site tells you what Living Brain is planned to be. It does not sell anything. <strong>Draft. Legal review pending.</strong> Last updated 2026-10-15.</p>
   </div>
 </section>
 
@@ -116,9 +118,9 @@
 
 <section id="product" class="sec sec--tight" aria-labelledby="product-title">
   <div class="wrap sec__in">
-    <h2 id="product-title" class="h3">The product is in design.</h2>
+    <h2 id="product-title" class="h3">The product is in early access.</h2>
     <ul class="checks">
-      <li><strong>Nothing is built.</strong> Living Brain is in design. There is no MCP server, no command-line tool, no app and no hosted service to sign up for. Nothing on the site can be installed or connected.</li>
+      <li><strong>It is early.</strong> Living Brain is open in early access at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>. Anything this site marks as planned is not available yet.</li>
       <li><strong>Nothing is on sale.</strong> The prices on <a href="/pricing/">the pricing page</a> are planned. You cannot buy anything here today.</li>
       <li><strong>The examples are examples.</strong> Every illustration and every sample company on this site (Kestrel Freight, its people, its numbers) is made up. It is not a working product and not a screenshot.</li>
     </ul>
@@ -172,21 +174,23 @@
 <footer id="waitlist" class="ft">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>

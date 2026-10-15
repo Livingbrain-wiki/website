@@ -23,13 +23,13 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Privacy notice">
 <meta name="twitter:description" content="No cookies, no ads, no tracking. The waitlist takes an email and nothing else. Draft. Legal review pending.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
-<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -92,8 +92,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
         <a href="/docs/">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -103,14 +105,14 @@
   <div class="wrap">
     <p class="eyebrow">Privacy</p>
     <h1 id="page-title" class="h2 h2--page">What this site collects, and why.</h1>
-    <p class="lede">No cookies, no ads, no tracking. The only data this site sends anywhere is your email, if you join the waitlist. <strong>Draft. Legal review pending.</strong> Last updated 2026-10-05.</p>
+    <p class="lede">No cookies, no ads, no tracking. The only data this site sends anywhere is your email, if you join the waitlist. <strong>Draft. Legal review pending.</strong> Last updated 2026-10-15.</p>
   </div>
 </section>
 
 <section id="who" class="sec sec--tight" aria-labelledby="who-title">
   <div class="wrap sec__in">
     <h2 id="who-title" class="h3">Who is responsible.</h2>
-    <p class="lede lede--sm lede--wide">This site is run by <a href="https://factory0.ventures">Factory Zero</a>, the venture behind Living Brain. Factory Zero is the controller of the data described here. Living Brain itself is in design: only this website exists.</p>
+    <p class="lede lede--sm lede--wide">This site is run by <a href="https://factory0.ventures">Factory Zero</a>, the venture behind Living Brain. Factory Zero is the controller of the data described here. This notice covers this website only, not the Living Brain app at app.livingbrain.wiki.</p>
   </div>
 </section>
 
@@ -128,10 +130,10 @@
 <section id="join" class="sec sec--tight" aria-labelledby="waitlist-title">
   <div class="wrap sec__in">
     <h2 id="waitlist-title" class="h3">Joining the waitlist.</h2>
-    <p class="lede lede--sm lede--wide">The waitlist is not open yet, so nothing is collected today. The form says so if you try. Here is what it will do once it opens.</p>
+    <p class="lede lede--sm lede--wide">The form on every page signs you up for product updates. Here is what it does.</p>
     <ul class="checks">
       <li><strong>One field: your email address.</strong> That is all the form collects.</li>
-      <li><strong>Why: to write once, when there's something to try.</strong> We will not sell it, trade it, or use it for advertising.</li>
+      <li><strong>Why: to write when something ships.</strong> We will not sell it, trade it, or use it for advertising.</li>
       <li><strong>Consent.</strong> You give it by joining, and you can take it back at any time.</li>
       <li><strong>How long we keep it.</strong> Until you ask us to delete it, or until we close the waitlist. Then we delete it.</li>
       <li><strong>Where it goes.</strong> With JavaScript on, the form sends your address, tagged with the product name, to the waitlist service at api.livingbrain.wiki, which runs on Cratefield, a Factory Zero venture (<a href="/security/#subprocessors">who else touches it</a>). A Cloudflare Turnstile human check runs first (Cloudflare sees your browser for that check, not your address), and the service emails you one link to confirm, sent through Owlpost, another Factory Zero venture. With JavaScript off, your own email app sends it to <a href="mailto:hello@livingbrain.wiki">hello@livingbrain.wiki</a>.</li>
@@ -165,21 +167,23 @@
 <footer id="waitlist" class="ft">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>

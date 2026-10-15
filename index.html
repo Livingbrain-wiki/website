@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Living Brain · A brain for your team</title>
-<meta name="description" content="A brain for your team, used from coding harnesses, the terminal and team chat. Living Brain turns your conversations into a company wiki and keeps it true. Not built yet: early access, in design.">
+<meta name="description" content="A brain for your team, used from coding harnesses, the terminal and team chat. Living Brain turns your conversations into a company wiki and keeps it true. Early access: live at app.livingbrain.wiki.">
 <link rel="canonical" href="https://livingbrain.wiki/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -23,13 +23,13 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain · Your company, remembered.">
 <meta name="twitter:description" content="A brain for your team, used from coding harnesses, the terminal and team chat. It turns your conversations into a company wiki and keeps it true.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
-<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -56,7 +56,7 @@
       "name": "Living Brain",
       "alternateName": "livingbrain.wiki",
       "url": "https://livingbrain.wiki/",
-      "description": "Living Brain is designing a brain for your team, used from coding harnesses, the terminal and team chat. It builds and keeps a company wiki in plain Markdown. Not built yet.",
+      "description": "Living Brain is a brain for your team, used from coding harnesses, the terminal and team chat. It builds and keeps a company wiki in plain Markdown. In early access at https://app.livingbrain.wiki/.",
       "slogan": "Your company, remembered.",
       "logo": {
         "@type": "ImageObject",
@@ -87,7 +87,7 @@
       "name": "Living Brain",
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Knowledge management",
-      "description": "In design, not built or available yet. A brain for your team, used from coding harnesses, the terminal and team chat: from any MCP client, from the livingbrain command line tool, a single Rust binary, from a web app that installs as a PWA, and from Slack or Discord. It turns conversations in the chat channels you invite it to into a Markdown wiki of people, projects, decisions and customers, cites the source message behind every fact, keeps the wiki current on a schedule, acts in your tools, and gives the agents in your coding harnesses the team's memory over MCP. Planned to run on Cloudflare's edge, built in Rust, with the wiki exportable as plain Markdown.",
+      "description": "In early access at https://app.livingbrain.wiki/; features marked planned are not available yet. A brain for your team, used from coding harnesses, the terminal and team chat: from any MCP client, from the livingbrain command line tool, a single Rust binary, from a web app that installs as a PWA, and from Slack or Discord. It turns conversations in the chat channels you invite it to into a Markdown wiki of people, projects, decisions and customers, cites the source message behind every fact, keeps the wiki current on a schedule, acts in your tools, and gives the agents in your coding harnesses the team's memory over MCP. Planned to run on Cloudflare's edge, built in Rust, with the wiki exportable as plain Markdown.",
       "creator": {
         "@id": "https://livingbrain.wiki/#organization"
       },
@@ -123,8 +123,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
         <a href="/docs/">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -134,20 +136,25 @@
 <section id="top" class="hero" aria-labelledby="hero-title">
   <div class="wrap hero__in">
     <div class="hero__copy">
-      <p class="status"><span class="live-dot" aria-hidden="true"></span>EARLY ACCESS · IN DESIGN</p>
+      <p class="status"><span class="live-dot" aria-hidden="true"></span>EARLY ACCESS · LIVE</p>
       <h1 id="hero-title" class="display">A brain for your <span class="accent">team.</span></h1>
       <p class="hero__lede">It turns your conversations into a company wiki and keeps it true. Use it from your coding harness, your terminal, or your team chat.</p>
-      <div class="join-box">
-        <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a>
+        <p class="fine">Sign in with your email. Your first sign-in sets up your team's workspace.</p>
+      </div>
+      <div class="join-box join-box--updates">
+        <p class="join__lead">Not ready yet? Get product updates by email.</p>
+        <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
           <label class="sr" for="email-hero">Work email</label>
           <input id="email-hero" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-hero">
-          <button class="btn btn--primary" type="submit">Join the waitlist</button>
+          <button class="btn btn--ghost" type="submit">Get updates</button>
         </form>
         <div class="join__human" data-captcha hidden></div>
         <p class="join__note" id="note-hero" data-form-note role="status" hidden></p>
-        <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+        <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
       </div>
-      <p class="hero__more fine">No spam. One email when it's ready.</p>
+      <p class="hero__more fine">No spam. Only product updates.</p>
     </div>
     <figure class="hero__fig">
       <div class="brain-frame" data-brain-frame>
@@ -345,21 +352,23 @@
 <footer id="waitlist" class="ft ft--glow">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>

@@ -27,7 +27,7 @@
     },
     {
       "title": "MCP for coding harnesses",
-      "line": "Connect a coding harness to the brain over MCP. Planned. The server does not exist yet.",
+      "line": "Connect a coding harness to the brain over MCP. The server is in early access; this guide is planned.",
       "status": "planned",
       "more": { "text": "Harnesses and the CLI", "href": "/agents/" }
     },

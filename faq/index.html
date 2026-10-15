@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>FAQ · Living Brain</title>
-<meta name="description" content="Questions about Living Brain: coding harnesses, the CLI, Slack and Discord, mail and imports, encryption, self-hosting, models and planned pricing. Not built yet: early access, in design.">
+<meta name="description" content="Questions about Living Brain: coding harnesses, the CLI, Slack and Discord, mail and imports, encryption, self-hosting, models and planned pricing. Early access: live at app.livingbrain.wiki.">
 <link rel="canonical" href="https://livingbrain.wiki/faq/">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
@@ -23,13 +23,13 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta property="og:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Living Brain FAQ">
 <meta name="twitter:description" content="Every question about Living Brain, from coding harnesses and team chat to encryption, self-hosting and pricing.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
-<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, in design.">
+<meta name="twitter:image:alt" content="Living Brain. Your company, remembered. A rotating knowledge-graph brain beside the wordmark. Early access, live.">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -99,7 +99,7 @@
           "name": "Is there an app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet."
+            "text": "Yes, in early access: sign in with your email at app.livingbrain.wiki. Planned: it will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away."
           }
         },
         {
@@ -262,8 +262,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/" aria-current="page">FAQ</a>
         <a href="/docs/">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -273,7 +275,7 @@
   <div class="wrap">
     <p class="eyebrow">FAQ</p>
     <h1 id="page-title" class="h2 h2--page">Questions.</h1>
-    <p class="lede">Every answer here describes a plan. Living Brain is in design and not built yet.</p>
+    <p class="lede">Living Brain is open in early access at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>. Answers marked planned describe what is coming.</p>
   </div>
 </section>
 <section class="sec" aria-label="Questions by topic">
@@ -283,7 +285,7 @@
       <details><summary><h3>What does "living" mean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Most wikis start going stale the day they're written. Living Brain revisits its own pages on a schedule: it merges duplicates, flags contradictions, retires facts that are no longer true and rewrites summaries. It also learns how each person works, so its answers improve every week.</p></details>
       <details><summary><h3>How is it different from Slack AI or Glean?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Search tools find what already exists. Living Brain writes and maintains a wiki you own as Markdown, cites the message behind every fact, acts in your tools, gives your coding harnesses the same memory, and is priced per workspace instead of per seat.</p></details>
       <details><summary><h3>Which chat apps does it work with?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Slack and Discord, as equals. Both are planned. WhatsApp and Telegram come later. You don't need a chat app at all: coding harnesses such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop connect over MCP, and the livingbrain command-line tool, a single Rust binary, and the app work on their own. All of it is planned, like the rest of the product.</p></details>
-      <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. The web app will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away. Like the rest of Living Brain, it is not built yet.</p></details>
+      <details><summary><h3>Is there an app?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Yes, in early access: sign in with your email at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>. Planned: it will install from your browser on phone and desktop as a PWA, keep pages readable offline, open on one box to search or ask, and keep the 3D brain one tap away.</p></details>
       <details><summary><h3>Can we put our own brand on it, or build on it?</h3><span class="faq__x" aria-hidden="true"></span></summary><p>Planned. On Teams and Crew, the app runs on your own domain with your name, logo and colours, and installs on phones and desktops as your app. A small "powered by" link is optional. There's also an open API with webhooks and SDKs for TypeScript, Python and Rust, so you can build the brain into your own tools. If you self-host, the code is yours to rebrand.</p></details>
     </div>
     <h2 id="agents" class="h4 faq__group">Coding harnesses</h2>
@@ -320,21 +322,23 @@
 <footer id="waitlist" class="ft">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>

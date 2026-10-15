@@ -4,7 +4,8 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/SITE-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Site: live">
-  <img src="https://img.shields.io/badge/LIVING%20BRAIN-IN%20DESIGN-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: in design">
+  <img src="https://img.shields.io/badge/LIVING%20BRAIN-EARLY%20ACCESS-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: early access">
+  <img src="https://img.shields.io/badge/WAITLIST-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Waitlist: live">
   <img src="https://img.shields.io/badge/PAGES-11-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 11">
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
   <img src="https://img.shields.io/badge/BUILD%20STEP-NONE-E9F0F0?style=flat-square&labelColor=070F11" alt="Build step: none">
@@ -29,8 +30,8 @@ follows the structure of the sealb.in and Colonizer sites.
 | | What it is | Status |
 | :--- | :--- | :--- |
 | **Site** | This repository: the landing page, its metadata, `llms.txt`, the Open Graph card. | **Live** at livingbrain.wiki |
-| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki` (`Livingbrain-wiki/waitlist-backend`), Turnstile-guarded, confirmation mail via Owlpost. | **Not deployed.** The Worker is wired but not live, so a submit shows an inline failure note |
-| **Living Brain** | The product: a brain for your team, used from coding harnesses (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **In design.** The page says so |
+| **Waitlist** | A Cratefield waitlist Worker at `api.livingbrain.wiki` (`Livingbrain-wiki/waitlist-backend`), Turnstile-guarded, confirmation mail via Owlpost. The site now presents it as "product updates". | **Live** |
+| **Living Brain** | The product: a brain for your team, used from coding harnesses (MCP server), the `livingbrain` CLI, the PWA and team chat (Slack and Discord); hosted service. | **Early access, live** at [app.livingbrain.wiki](https://app.livingbrain.wiki/) (web app and API, email sign-in; the first sign-in creates a workspace). MCP at `https://mcp.livingbrain.wiki/v1/pages/mcp`. Features the site marks planned are not live |
 
 > **Your company, remembered.**
 
@@ -44,7 +45,7 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 
 | Page | What's on it |
 | :--- | :--- |
-| [`/`](index.html) | Short on purpose: the pitch, the waitlist and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher over a device frame, with a row of harness logos; pricing as three cards; six link tiles; the footer waitlist |
+| [`/`](index.html) | Short on purpose: the pitch, "Get started" (to the app) with the product-updates form under it, and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher over a device frame, with a row of harness logos; pricing as three cards; six link tiles; the footer waitlist |
 | [`/how-it-works/`](how-it-works/index.html) | The team-chat thread (Slack shown) with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | [`/agents/`](agents/index.html) | Coding harnesses: the planned harnesses as a logo grid (`#harnesses`), connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | [`/integrations/`](integrations/index.html) | Code, chat, mail, imports, monitoring and logs, models, sister ventures. Names with logos where allowed |
@@ -53,11 +54,12 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 | [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
 | [`/docs/`](docs/index.html) | Every document in one list with its status in words, generated from `tools/docs.json` by `tools/docs.js` |
 | [`/privacy/`](privacy/index.html) | What the site collects: nothing beyond serving the pages, the theme choice in your own browser, and the waitlist email. Links to /security/ #subprocessors. Draft, legal review pending |
-| [`/terms/`](terms/index.html) | The site is informational; Living Brain is in design and nothing is on sale; Polar as the future seller; Apache-2.0 open core. Draft, legal review pending |
+| [`/terms/`](terms/index.html) | The site is informational; Living Brain is in early access and nothing is on sale; Polar as the future seller; Apache-2.0 open core. Draft, legal review pending |
 | [`/guides/import-chatgpt/`](guides/import-chatgpt/index.html) | Export your ChatGPT history; the planned import |
 
-Every page shares the header (a `<details>` menu under 860px) and the footer
-with the second waitlist form.
+Every page shares the header (a `<details>` menu under 980px, and a "Sign in"
+button to https://app.livingbrain.wiki/) and the footer with "Get started" and
+the second product-updates form.
 
 Plus `404.html`, `llms.txt`, `sitemap.xml`, `robots.txt`, `site.webmanifest`,
 `.well-known/security.txt` and the images.
@@ -148,7 +150,10 @@ generator, rerun `node tools/prerender.js`.
 
 ## The waitlist
 
-Every waitlist form (the hero and the footer on each page) posts
+The forms are labelled "Get product updates" since the app went live; the
+primary call to action is "Get started", a plain link to
+https://app.livingbrain.wiki/ (no CSP change needed). Every form (the hero and
+the footer on each page) posts
 `{ "email": "...", "product": "livingbrain", "captchaToken": "..." }` as JSON to
 `https://api.livingbrain.wiki/v1/waitlist`: a Cloudflare Worker running
 [Cratefield](https://cratefield.com)'s harness `waitlist` module
@@ -190,7 +195,7 @@ A Cloudflare Worker with static assets, `livingbrain-website` (`wrangler.toml`),
 the Factory0 account. It has no script: Cloudflare serves `dist/` and applies
 `_headers` and `_redirects`. `livingbrain.wiki` and `www.livingbrain.wiki` are its
 custom domains, attached by the deploy itself. The `api.livingbrain.wiki` waitlist
-Worker does not exist yet. For every merge to `main`:
+Worker is a separate repository (`Livingbrain-wiki/waitlist-backend`). For every merge to `main`:
 
 ```sh
 tools/deploy.sh              # deploy origin/main
@@ -205,8 +210,10 @@ metadata points at `https://livingbrain.wiki`.
 
 ## House rules for edits
 
-1. **The product is in design.** Every mock is labelled; prices are planned;
-   `llms.txt` tells agents nothing can be installed. See [`COPY.md`](COPY.md).
+1. **The product is in early access.** It is live at app.livingbrain.wiki, but
+   most features on the site are still planned: every mock is labelled, prices
+   are planned, and `llms.txt` tells agents what is live and what is not. See
+   [`COPY.md`](COPY.md).
 2. **The design file is the source.** Visual changes start in the Claude
    Design project, then get ported; note anything that diverges in `COPY.md`.
 3. **The FAQ moves together.** The visible FAQ on `/faq/`, its JSON-LD `FAQPage` and
