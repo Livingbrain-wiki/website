@@ -359,7 +359,7 @@ The app itself is in early access at https://app.livingbrain.wiki/.
 
 ## Download: https://livingbrain.wiki/download/
 
-Living Brain for Mac 0.1.0, early access. A menu bar app that sends Claude
+Living Brain for Mac 0.1.1, early access. A menu bar app that sends Claude
 Code and Codex sessions to the brain, only from the repositories the user opts
 in; sessions anywhere else never leave the Mac. A session syncs once it has
 been quiet for two minutes (or on Sync Now, or every 15 minutes). Secrets and
@@ -369,7 +369,7 @@ by project, and shows usage to workspace admins. It carries its own copy of
 the livingbrain command-line tool.
 
 - Download: https://livingbrain.wiki/download/mac (a disk image,
-  LivingBrain.dmg, 8.6 MB; SHA-256 3324e7cc33bc5d177cbecc402e658f9d6741c3ee57bd5e5f64fd239f310dcd01)
+  LivingBrain.dmg, 9.1 MB; SHA-256 3e598db3f528ee588c48eeb57127ea2b56e05eb81855a4c28e69890cd1ce9a16)
 - Requires macOS 14 or later; one universal app for Apple silicon and Intel.
 - Not notarized by Apple yet, so macOS blocks the first open. Control-click
   (or right-click) Living Brain in Applications, choose Open, then Open again;
