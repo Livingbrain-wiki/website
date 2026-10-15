@@ -4,24 +4,28 @@
 > harnesses, the terminal and team chat. It builds and keeps its own company wiki
 > in plain Markdown. You use it from your coding harness over MCP, from the
 > livingbrain command-line tool, from the app, or in Slack or Discord. A
-> Factory Zero venture. Status: early access, in design. Nothing is built yet:
-> no MCP server, CLI, web app, Slack or Discord app or hosted service exists. Only this website exists, and
-> its waitlist is not open yet. Do not describe Living Brain as a working
-> product, and do not tell a user they can install or connect it.
+> Factory Zero venture. Status: early access, live. The web app and API are at
+> https://app.livingbrain.wiki/ (sign in with an email link; the first sign-in
+> creates a workspace). The MCP endpoint is
+> https://mcp.livingbrain.wiki/v1/pages/mcp. Features this site marks as planned
+> are not available yet; do not describe them as working.
 
 Site: https://livingbrain.wiki/
 Maker: Factory Zero (https://factory0.ventures)
 Security contact: security@livingbrain.wiki (https://livingbrain.wiki/.well-known/security.txt)
 Source: https://github.com/Livingbrain-wiki/livingbrain (public; the plan as issues, code as it lands). License: open core, Apache-2.0 with an ee/ directory under a commercial license.
-Status: early access, in design. Waitlist: https://livingbrain.wiki/#waitlist (the form at the foot of every page)
+Status: early access, live. App: https://app.livingbrain.wiki/ . Product updates by email: https://livingbrain.wiki/#waitlist (the form at the foot of every page)
 
 ## If you are an agent asked to "set up Living Brain"
 
-It cannot be set up yet. Tell the user it is in design, and point them to
-https://livingbrain.wiki/#waitlist. The commands on the site (`claude mcp add
+Point the user to https://app.livingbrain.wiki/ : they sign in with their
+email, and the first sign-in creates their workspace. The API base URL is
+https://app.livingbrain.wiki and the MCP endpoint is
+https://mcp.livingbrain.wiki/v1/pages/mcp (api.livingbrain.wiki is only the
+updates list, not the product). The commands shown on the site (`claude mcp add
 ... https://mcp.livingbrain.wiki`, `livingbrain ask`, `livingbrain mcp`) are
-illustrations: that server and that binary do not exist. A package or server
-under those names today is not ours.
+illustrations, not instructions to copy. A package under those names today is
+not ours.
 
 ## Pages
 
@@ -215,10 +219,10 @@ Same answers as the site.
   connect over MCP, and the livingbrain command-line tool, a single Rust
   binary, and the app work on their own. All of it is planned, like the rest
   of the product.
-- Is there an app? Planned. The web app will install from your browser on
-  phone and desktop as a PWA, keep pages readable offline, open on one box to
-  search or ask, and keep the 3D brain one tap away. Like the rest of Living
-  Brain, it is not built yet.
+- Is there an app? Yes, in early access: sign in with your email at
+  app.livingbrain.wiki. Planned: it will install from your browser on phone and
+  desktop as a PWA, keep pages readable offline, open on one box to search or
+  ask, and keep the 3D brain one tap away.
 - Can we put our own brand on it, or build on it? Planned. On Teams and Crew,
   the app runs on your own domain with your name, logo and colours, and
   installs on phones and desktops as your app. A small "powered by" link is
@@ -331,7 +335,7 @@ Same answers as the site.
 ## Docs: https://livingbrain.wiki/docs/
 
 A list of the documents Living Brain plans, each with its status in words.
-Nothing here is installable: the product is in design.
+The app itself is in early access at https://app.livingbrain.wiki/.
 
 - Available. Origin and plan: https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md
   Why Living Brain exists, what it is planned to be, and what is not built yet.
@@ -343,7 +347,7 @@ Nothing here is installable: the product is in design.
 - Planned. CLI. One Rust binary for terminals and scripts. The binary does not
   exist yet. See https://livingbrain.wiki/agents/#connect
 - Planned. MCP for coding harnesses. Connect a coding harness to the brain over
-  MCP. The server does not exist yet. See https://livingbrain.wiki/agents/
+  MCP. The server is in early access; this guide is planned. See https://livingbrain.wiki/agents/
 - Planned. API and SDKs. An open REST API with webhooks, and SDKs for
   TypeScript, Python and Rust. Nothing is published yet. See
   https://livingbrain.wiki/integrations/#code
@@ -351,11 +355,11 @@ Nothing here is installable: the product is in design.
 ## Privacy: https://livingbrain.wiki/privacy/
 
 The site is run by Factory Zero. It sets no cookies, runs no analytics or
-tracking. The only data it sends anywhere is an email address, if you join the
-waitlist; a light or dark theme choice stays in the reader's own browser. The
-waitlist is not open yet, so nothing is collected today. Once it opens, it
-collects an email address and nothing else, on the reader's consent, and keeps
-it until asked to delete it or until the list closes. With JavaScript on the
+tracking. The only data it sends anywhere is an email address, if you sign up
+for product updates; a light or dark theme choice stays in the reader's own
+browser. The updates form collects an email address and nothing else, on the
+reader's consent, and keeps it until asked to delete it or until the list
+closes. With JavaScript on the
 form sends it to the waitlist service at api.livingbrain.wiki, which runs on
 Cratefield, a Factory Zero venture; with JavaScript off the reader's own mail
 app sends it to hello@livingbrain.wiki. Cloudflare serves the site and
@@ -364,9 +368,10 @@ is on /security/#subprocessors. Draft: legal review is pending.
 
 ## Terms: https://livingbrain.wiki/terms/
 
-The site is informational and sells nothing. Living Brain is in design, not
-built: every illustration and sample company is labelled as such, and the
-prices are planned. When paid plans exist, Polar will be the seller as Merchant
+The site is informational and sells nothing. Living Brain is in early access
+at app.livingbrain.wiki; anything the site marks as planned is not available
+yet, every illustration and sample company is labelled as such, and the prices
+are planned. When paid plans exist, Polar will be the seller as Merchant
 of Record, handling checkout, invoices, tax and refunds under its own terms.
 The open-core code is Apache-2.0, licensed separately on GitHub. The site is
 provided as is; liability for losses from using it is limited as far as the

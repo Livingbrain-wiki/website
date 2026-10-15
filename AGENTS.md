@@ -37,9 +37,12 @@ design tokens and the deploy procedure.
 
 Rules that matter most:
 
-1. Living Brain is **in design, not built**. Never write copy that implies it
-   works. Status badge stays "EARLY ACCESS · IN DESIGN"; every mock is labelled
-   "Illustration" or "Sample data"; prices are labelled planned.
+1. Living Brain is **in early access**: the app is live at
+   https://app.livingbrain.wiki/ (email sign-in), but most features on the site
+   are still planned. Never write copy that implies a planned feature works.
+   Status badge says "EARLY ACCESS · LIVE"; every mock is labelled
+   "Illustration" or "Sample data"; prices are labelled planned (no billing
+   exists). Every page's header carries "Sign in" to the app.
 2. A claim on the site must have a row in [COPY.md](COPY.md), and lives on one
    page (others link to it). The FAQ on `/faq/`, its JSON-LD `FAQPage` (the only
    one on the site) and `llms.txt` must agree word for word.

@@ -79,8 +79,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
         <a href="/docs/">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -118,28 +120,30 @@
     <h2 class="h3">Also from Claude</h2>
     <p>Claude's export (<strong>Settings → Privacy → Export data</strong>) will import the same way: <span class="mono">livingbrain import claude ~/Downloads/claude-export.zip</span>. <span class="tag">Planned</span></p>
 
-    <p class="guide__back"><a class="btn btn--ghost" href="/faq/">All questions</a> <a class="btn btn--primary" href="#waitlist">Join the waitlist</a></p>
+    <p class="guide__back"><a class="btn btn--ghost" href="/faq/">All questions</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
   </div>
 </main>
 
 <footer id="waitlist" class="ft">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>

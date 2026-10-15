@@ -788,7 +788,7 @@
     var who = document.createElement('strong');
     who.className = 'joined__email';
     who.textContent = email;
-    body.append('We sent a confirmation link to ', who, '. Click it to hold your place on the Living Brain waitlist.');
+    body.append('We sent a confirmation link to ', who, '. Click it to get Living Brain product updates.');
     var fine = document.createElement('span');
     fine.className = 'joined__fine';
     fine.textContent = 'It can take a minute — check Spam or Promotions if it isn’t there. Already confirmed before? Then you’re already on the list; nothing more to do.';
@@ -800,7 +800,7 @@
     again.textContent = 'Use a different email';
     again.addEventListener('click', function () { unjoin(done); });
     var mail = document.createElement('a');
-    mail.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20waitlist';
+    mail.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20updates';
     mail.textContent = MAIL;
     more.append(again, ' · Still nothing? Email ', mail, '.');
     done.append(h, body, fine, more);
@@ -838,6 +838,7 @@
   };
   forms.forEach(function (form) {
     var email = form.elements.email, btn = $('button[type=submit]', form), note = $('[data-form-note]', form.parentNode);
+    var label = btn.textContent;
     var human = $('[data-captcha]', form.parentNode);
     var token = null, widget = null;
     // Problems are alerts; the field is marked invalid only for the address.
@@ -850,13 +851,13 @@
     var busy = function (on) {
       btn.disabled = on;
       if (on) btn.setAttribute('aria-busy', 'true'); else btn.removeAttribute('aria-busy');
-      btn.textContent = on ? 'Joining…' : 'Join the waitlist';
+      btn.textContent = on ? 'Sending…' : label;
     };
     var sayMail = function (msg) {
       alertNote(false);
       note.textContent = msg + ' ';
       var a = document.createElement('a');
-      a.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20waitlist';
+      a.href = 'mailto:' + MAIL + '?subject=Living%20Brain%20updates';
       a.textContent = MAIL;
       note.appendChild(a);
       note.appendChild(document.createTextNode('.'));
@@ -927,7 +928,7 @@
           if (why === 'captcha') say('The human check didn’t go through. It’s been reset — complete it again, then send.');
           else if (Number(why) === 429) say('Too many tries. Wait a minute, then try again.');
           else if (Number(why) === 400) badEmail();
-          else sayMail('We couldn’t reach the waitlist just now. Try again in a moment, or email');
+          else sayMail('We couldn’t reach the updates list just now. Try again in a moment, or email');
         })
         .then(function () {
           token = null;

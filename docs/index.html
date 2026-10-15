@@ -6,7 +6,7 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Docs · Living Brain</title>
-<meta name="description" content="Every Living Brain document in one list. Origin and plan and the ChatGPT export guide are written today. Self-hosting, the CLI, MCP and the API are planned: nothing is built yet.">
+<meta name="description" content="Every Living Brain document in one list. Origin and plan and the ChatGPT export guide are written today. Self-hosting, the CLI, MCP and the API guides are planned. The app is in early access.">
 <link rel="canonical" href="https://livingbrain.wiki/docs/">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
@@ -43,7 +43,7 @@
   "@id": "https://livingbrain.wiki/docs/#webpage",
   "url": "https://livingbrain.wiki/docs/",
   "name": "Docs",
-  "description": "Every Living Brain document in one list. Living Brain is in design and not built.",
+  "description": "Every Living Brain document in one list. Living Brain is in early access.",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -80,8 +80,10 @@
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
         <a href="/docs/" aria-current="page">Docs</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
     </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
     <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
   </div>
 </header>
@@ -89,9 +91,9 @@
 <main id="main">
 <section class="page-hd" aria-labelledby="page-title">
   <div class="wrap">
-    <div class="eyebrow-row"><p class="eyebrow">Docs</p><span class="tag">In design</span></div>
+    <div class="eyebrow-row"><p class="eyebrow">Docs</p><span class="tag">Early access</span></div>
     <h1 id="page-title" class="h2 h2--page">Every document, in one list.</h1>
-    <p class="lede">Two are written today. The rest are planned, and are listed here so you can see what is coming. Living Brain is in design and not built, so there is nothing to install or connect yet.</p>
+    <p class="lede">Two are written today. The rest are planned, and are listed here so you can see what is coming. Living Brain itself is open in early access at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>.</p>
   </div>
 </section>
 <section class="sec" aria-label="Documents">
@@ -118,7 +120,7 @@
         </li>
         <li class="doc doc--planned">
           <div class="doc__hd"><h2 class="doc__t">MCP for coding harnesses</h2><span class="doc__st">Planned</span></div>
-          <p class="doc__line">Connect a coding harness to the brain over MCP. Planned. The server does not exist yet.</p>
+          <p class="doc__line">Connect a coding harness to the brain over MCP. The server is in early access; this guide is planned.</p>
           <p class="doc__more"><a href="/agents/">Harnesses and the CLI</a></p>
         </li>
         <li class="doc doc--planned">
@@ -136,21 +138,23 @@
 <footer id="waitlist" class="ft">
   <div class="wrap ft__in">
     <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
-    <p class="lede lede--sm">Join the waitlist. We'll write once, when there's something to try.</p>
-    <div class="join-box">
-      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20waitlist" method="post" enctype="text/plain" novalidate aria-label="Join the waitlist">
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
         <label class="sr" for="email-foot">Work email</label>
         <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
-        <button class="btn btn--primary" type="submit">Join the waitlist</button>
+        <button class="btn btn--ghost" type="submit">Get updates</button>
       </form>
       <div class="join__human" data-captcha hidden></div>
       <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
-      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to hold your place. After that, one email when there's something to try.</p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
     </div>
     <div class="ft__bar">
       <div class="ft__brand">
         <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
-        <span class="mono-s">EARLY ACCESS · IN DESIGN</span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
       </div>
       <nav class="ft__nav" aria-label="Pages">
         <a href="/">Home</a>
