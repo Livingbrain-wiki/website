@@ -108,7 +108,7 @@ to 360px with no horizontal scroll.
 │   ├── brain.js                the 3D brain renderer (2D canvas, no dependencies), from the design
 │   ├── fonts/                  Bricolage Grotesque, Hanken Grotesk, JetBrains Mono (OFL, latin, variable)
 │   ├── favicon.svg             the mark
-│   ├── logos/                  other companies' marks (Simple Icons), written by tools/marks.js
+│   ├── logos/                  other companies' marks (Simple Icons, or the owner's SVG via tools/import-mark.py), written by tools/marks.js
 │   ├── harnesses.json          the planned coding harnesses (#38), source of the logo rows
 │   ├── og.png                  Open Graph card
 │   ├── icon-192.png  icon-512.png  icon-maskable-512.png  apple-touch-icon.png
@@ -121,6 +121,7 @@ to 360px with no horizontal scroll.
 │   ├── docs.js                 writes that list into docs/index.html between its markers
 │   ├── integrations.json       the other planned integrations' marks and where each row goes
 │   ├── fetch-simple-icons.sh   downloads the pinned Simple Icons release into tools/vendor/ (not committed)
+│   ├── import-mark.py          imports an official mark Simple Icons lacks, from the owner's SVG, as one 24x24 path
 │   ├── build-dist.sh           assembles dist/ from an allowlist, stamps cache hashes, checks the CSP hash
 │   ├── deploy.sh               builds main in a throwaway worktree and deploys it
 │   ├── og-render.html          source for og.png

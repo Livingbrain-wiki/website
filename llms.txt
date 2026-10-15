@@ -81,8 +81,8 @@ Where you use it (planned):
 - Works with your coding harness (planned, in waves; each stays planned until
   its integration test passes). First wave: Claude Code, Codex, Hermes (Nous
   Research hermes-agent), Cursor, OpenCode, Claude Desktop. Next: Gemini CLI,
-  GitHub Copilot, Goose, Cline, Aider, Kimi CLI, Qwen Code. Plus any MCP
-  client. Not affiliated with or endorsed by these companies; names and logos
+  GitHub Copilot, Goose, Cline, Aider, Kimi CLI, Qwen Code, Pi (Earendil's
+  pi coding agent). Plus any MCP client. Not affiliated with or endorsed by these companies; names and logos
   are trademarks of their owners.
 - A Claude Code plugin will bundle the MCP server with skills and slash
   commands. Not affiliated with these tools.
@@ -234,8 +234,8 @@ Same answers as the site.
 
 - Which coding harnesses can I connect? Any harness that supports MCP.
   Planned first: Claude Code, Codex, Hermes, Cursor, OpenCode and Claude
-  Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI and
-  Qwen Code. We're not affiliated with these tools; they connect through the
+  Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI,
+  Qwen Code and Pi. We're not affiliated with these tools; they connect through the
   open protocol.
 - Do you store my agent prompts and code? Only if you opt in. Prompts and
   session notes are stored with secrets redacted first. Source code is never
