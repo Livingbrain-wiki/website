@@ -7,3 +7,7 @@
 /demo       /how-it-works/#demo       302
 /how        /how-it-works/            302
 /security   /security/                302
+
+# The Mac app: one stable link for the current release, so a new release
+# changes only this line. The DMG is a GitHub release asset (macos-v* tags).
+/download/mac  https://github.com/Livingbrain-wiki/livingbrain/releases/download/macos-v0.1.0/LivingBrain.dmg  302

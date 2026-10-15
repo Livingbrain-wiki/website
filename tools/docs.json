@@ -14,28 +14,46 @@
       "link": "/guides/import-chatgpt/"
     },
     {
+      "title": "Living Brain for Mac",
+      "line": "The menu bar app that syncs your Claude Code and Codex sessions from opted-in repositories. Download it and open it the first time.",
+      "status": "available",
+      "link": "/download/"
+    },
+    {
       "title": "Self-host",
       "line": "Run the brain on your own machines and your own Cloudflare account. Planned. Nothing runs yet.",
       "status": "planned",
-      "more": { "text": "Security and ownership", "href": "/security/#ownership" }
+      "more": {
+        "text": "Security and ownership",
+        "href": "/security/#ownership"
+      }
     },
     {
       "title": "CLI",
-      "line": "One Rust binary for terminals and scripts. Planned. The binary does not exist yet.",
+      "line": "One Rust binary for terminals and scripts. It ships inside the Mac app; a separate download and this guide are planned.",
       "status": "planned",
-      "more": { "text": "Harnesses and the CLI", "href": "/agents/#connect" }
+      "more": {
+        "text": "Living Brain for Mac",
+        "href": "/download/"
+      }
     },
     {
       "title": "MCP for coding harnesses",
       "line": "Connect a coding harness to the brain over MCP. The server is in early access; this guide is planned.",
       "status": "planned",
-      "more": { "text": "Harnesses and the CLI", "href": "/agents/" }
+      "more": {
+        "text": "Harnesses and the CLI",
+        "href": "/agents/"
+      }
     },
     {
       "title": "API and SDKs",
       "line": "An open REST API with webhooks, and SDKs for TypeScript, Python and Rust. Planned. Nothing is published yet.",
       "status": "planned",
-      "more": { "text": "Integrations: code", "href": "/integrations/#code" }
+      "more": {
+        "text": "Integrations: code",
+        "href": "/integrations/#code"
+      }
     }
   ]
 }

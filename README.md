@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/SITE-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Site: live">
   <img src="https://img.shields.io/badge/LIVING%20BRAIN-EARLY%20ACCESS-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: early access">
   <img src="https://img.shields.io/badge/WAITLIST-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Waitlist: live">
-  <img src="https://img.shields.io/badge/PAGES-11-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 11">
+  <img src="https://img.shields.io/badge/PAGES-12-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 12">
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
   <img src="https://img.shields.io/badge/BUILD%20STEP-NONE-E9F0F0?style=flat-square&labelColor=070F11" alt="Build step: none">
   <img src="https://img.shields.io/badge/DEPENDENCIES-ZERO-56F1B0?style=flat-square&labelColor=070F11" alt="Dependencies: zero">
@@ -53,12 +53,13 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 | [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams (from $5; hosted $9), Crew ($15); storage, usage, reasoning levels; planned |
 | [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
 | [`/docs/`](docs/index.html) | Every document in one list with its status in words, generated from `tools/docs.json` by `tools/docs.js` |
+| [`/download/`](download/index.html) | Living Brain for Mac: "Download for Mac" (to `/download/mac`, a 302 in `_redirects` to the DMG on the `macos-v*` GitHub release, so a new release changes one line), version, size, requirements, SHA-256, what the app does, the first-open steps for an unnotarized build, then sign in |
 | [`/privacy/`](privacy/index.html) | What the site collects: nothing beyond serving the pages, the theme choice in your own browser, and the waitlist email. Links to /security/ #subprocessors. Draft, legal review pending |
 | [`/terms/`](terms/index.html) | The site is informational; Living Brain is in early access and nothing is on sale; Polar as the future seller; Apache-2.0 open core. Draft, legal review pending |
 | [`/guides/import-chatgpt/`](guides/import-chatgpt/index.html) | Export your ChatGPT history; the planned import |
 
-Every page shares the header (a `<details>` menu under 980px, and a "Sign in"
-button to https://app.livingbrain.wiki/) and the footer with "Get started" and
+Every page shares the header (a `<details>` menu under 980px, "Download" to
+`/download/`, and a "Sign in" button to https://app.livingbrain.wiki/) and the footer with "Get started" and
 the second product-updates form.
 
 Plus `404.html`, `llms.txt`, `sitemap.xml`, `robots.txt`, `site.webmanifest`,
@@ -98,7 +99,7 @@ to 360px with no horizontal scroll.
 .
 ├── index.html                  the home page (short)
 ├── how-it-works/ agents/ integrations/ security/ pricing/ faq/ docs/
-│   privacy/ terms/
+│   download/ privacy/ terms/
 │                               one index.html each, served at /<folder>/
 ├── guides/import-chatgpt/      the ChatGPT export guide
 ├── 404.html

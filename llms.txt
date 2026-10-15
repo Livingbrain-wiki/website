@@ -37,6 +37,7 @@ not ours.
 - Pricing: https://livingbrain.wiki/pricing/
 - FAQ: https://livingbrain.wiki/faq/
 - Docs: https://livingbrain.wiki/docs/
+- Download, Living Brain for Mac: https://livingbrain.wiki/download/
 - Privacy: https://livingbrain.wiki/privacy/
 - Terms: https://livingbrain.wiki/terms/
 - Guide, import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
@@ -342,15 +343,40 @@ The app itself is in early access at https://app.livingbrain.wiki/.
 - Available. Import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
   How to export your ChatGPT history from ChatGPT today. The import step is
   planned, and the export steps are OpenAI's, not ours.
+- Available. Living Brain for Mac: https://livingbrain.wiki/download/
+  The menu bar app that syncs your Claude Code and Codex sessions from
+  opted-in repositories. Download it and open it the first time.
 - Planned. Self-host. Run the brain on your own machines and your own Cloudflare
   account. Nothing runs yet. See https://livingbrain.wiki/security/#ownership
-- Planned. CLI. One Rust binary for terminals and scripts. The binary does not
-  exist yet. See https://livingbrain.wiki/agents/#connect
+- Planned. CLI. One Rust binary for terminals and scripts. It ships inside the
+  Mac app; a separate download and this guide are planned. See
+  https://livingbrain.wiki/download/
 - Planned. MCP for coding harnesses. Connect a coding harness to the brain over
   MCP. The server is in early access; this guide is planned. See https://livingbrain.wiki/agents/
 - Planned. API and SDKs. An open REST API with webhooks, and SDKs for
   TypeScript, Python and Rust. Nothing is published yet. See
   https://livingbrain.wiki/integrations/#code
+
+## Download: https://livingbrain.wiki/download/
+
+Living Brain for Mac 0.1.0, early access. A menu bar app that sends Claude
+Code and Codex sessions to the brain, only from the repositories the user opts
+in; sessions anywhere else never leave the Mac. A session syncs once it has
+been quiet for two minutes (or on Sync Now, or every 15 minutes). Secrets and
+email addresses are redacted on the Mac before anything is sent. Its window
+reads and edits the wiki, asks with citations, browses synced agent sessions
+by project, and shows usage to workspace admins. It carries its own copy of
+the livingbrain command-line tool.
+
+- Download: https://livingbrain.wiki/download/mac (a disk image,
+  LivingBrain.dmg, 8.6 MB; SHA-256 3324e7cc33bc5d177cbecc402e658f9d6741c3ee57bd5e5f64fd239f310dcd01)
+- Requires macOS 14 or later; one universal app for Apple silicon and Intel.
+- Not notarized by Apple yet, so macOS blocks the first open. Control-click
+  (or right-click) Living Brain in Applications, choose Open, then Open again;
+  on macOS 15 and later use System Settings → Privacy & Security → Open
+  Anyway. Once is enough. A notarized build is planned.
+- Then choose Sign In… in the menu bar and approve in the browser, and Add
+  Project… to opt in a repository.
 
 ## Privacy: https://livingbrain.wiki/privacy/
 
