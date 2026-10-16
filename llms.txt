@@ -406,7 +406,7 @@ Brain jobs can run on the user's own Claude Code or Codex subscription. It
 carries its own copy of the livingbrain command-line tool.
 
 - Download: https://livingbrain.wiki/download/mac (a disk image,
-  LivingBrain.dmg, 9.1 MB; SHA-256 0c1631d8f74924e576172cd09bcc6c89e393012744329404b3a677b465004f3f)
+  LivingBrain.dmg, 9.5 MB; SHA-256 0c1631d8f74924e576172cd09bcc6c89e393012744329404b3a677b465004f3f)
 - Requires macOS 14 or later; one universal app for Apple silicon and Intel.
 - Not notarized by Apple yet, so macOS blocks the first open. Control-click
   (or right-click) Living Brain in Applications, choose Open, then Open again;
