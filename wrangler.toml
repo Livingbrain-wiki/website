@@ -2,6 +2,8 @@
 # No script runs; Cloudflare serves dist/ and applies _headers and _redirects.
 # Build and deploy with tools/deploy.sh, never `wrangler deploy` from a working copy.
 name = "livingbrain-website"
+# Factory0. Pinned so a login that sees several accounts deploys non-interactively.
+account_id = "53e50d9dab2b9b72e39ce243d0a79e7f"
 compatibility_date = "2026-10-01"
 
 [assets]
