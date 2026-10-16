@@ -147,8 +147,8 @@ plain text; no partnership is implied.
 ## Security and privacy: https://livingbrain.wiki/security/
 
 Live in the web app: grants, roles, agent accounts with keys shown once, and the
-audit log for owners and admins. Planned: per-scope encryption, mail, screening
-and telemetry.
+audit log for owners and admins, and encryption at rest per scope (live). Planned:
+bring-your-own key, mail, screening and telemetry.
 - Reads only with the asker's own access, following your chat's permissions
   (Slack channels, Discord roles). A public channel sees the shared
   brain; a private channel adds that channel's memory; your DMs add your
@@ -310,12 +310,16 @@ Same answers as the site.
 
 ### Security
 
-- Is my data encrypted? Planned. Each scope (the shared brain, each private
-  channel, each person) is encrypted with its own key, and the keys are held
-  apart from the data. Search runs only inside the scopes you can see, so it
-  stays fast. Deleting a scope's key erases that memory everywhere, backups
-  included. On Teams you can bring your own key. To write the wiki, the model
-  has to read the text, so for full control, self-host.
+- Is my data encrypted? Yes, for pages, sources and temporal facts. Each
+  scope (the shared brain, each person, each private scope) has its own data
+  key, wrapped by a key held by the service and stored as a Worker secret.
+  Page bodies and fact values are sealed with XChaCha20-Poly1305, and search
+  uses a blind index, so a query touches only the scopes you can see. The
+  server holds the wrapping key and decrypts to serve and answer, so this is
+  encryption at rest, not end-to-end: the service can read your data. Slugs,
+  subjects and attribute names are stored in plain text. Forgetting a scope
+  deletes its rows and destroys its key. Bring your own key on Teams, and
+  self-hosting for full control, are planned.
 - Is my data used for training? No. Your workspace's messages and pages are
   never used to train models, ours or anyone else's. If you bring your own
   LLM, requests go to your provider under your account's terms.
