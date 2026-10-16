@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>MCP · Living Brain docs</title>
+<meta name="description" content="The MCP endpoint: its five tools, how every read is scoped to the person asking, and citations.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/mcp/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/mcp/">
+<meta property="og:title" content="MCP · Living Brain docs">
+<meta property="og:description" content="The MCP endpoint: its five tools, how every read is scoped to the person asking, and citations.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MCP · Living Brain docs">
+<meta name="twitter:description" content="The MCP endpoint: its five tools, how every read is scoped to the person asking, and citations.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">MCP</h1>
+    <p class="lede">The MCP endpoint: its five tools, how every read is scoped to the person asking, and citations.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/mcp.md">docs/mcp.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p>One endpoint, four tools, and every read scoped to the person asking.</p>
+<p><strong><code>https://mcp.livingbrain.wiki/v1/pages/mcp</code></strong> — Streamable HTTP, POST only, no trailing slash.</p>
+<h2 id="connect">Connect</h2>
+<pre class="doc-code"><code>claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki/v1/pages/mcp
+codex mcp add livingbrain --url https://mcp.livingbrain.wiki/v1/pages/mcp
+cursor mcp add livingbrain --url https://mcp.livingbrain.wiki/v1/pages/mcp
+opencode mcp add livingbrain --url https://mcp.livingbrain.wiki/v1/pages/mcp</code></pre>
+<p>Then ask it something about a repository. <code>claude</code> calls <code>brain_context_for</code> and answers with a cited brief.</p>
+<h2 id="tools">Tools</h2>
+<div class="doc-table"><table><thead><tr><th scope="col">tool</th><th scope="col">what it does</th></tr></thead><tbody><tr><td><code>brain_search(query, limit?)</code></td><td>pages you may read holding <strong>every</strong> word of the query</td></tr><tr><td><code>brain_page(slug)</code></td><td>one page's Markdown, by slug</td></tr><tr><td><code>brain_context_for(repo, task)</code></td><td>a brief: the pages that mention the task, full text, cited</td></tr><tr><td><code>brain_note(text, title?, facts?)</code></td><td>writes to your own private memory, redacted first; <code>facts</code> are temporal facts the note states (<a href="/docs/facts/">format</a>)</td></tr><tr><td><code>brain_facts(subject?, attribute?, as_of?)</code></td><td>what is true about an entity now, or as of a date, with the history of earlier values (<a href="/docs/facts/">format</a>)</td></tr></tbody></table></div>
+<p>Every page a tool quotes comes back as a numbered citation — title, <code>scope/slug</code> ref and URL — and <code>initialize</code> tells the model to cite the <code>[n]</code> markers.</p>
+<h2 id="what-an-agent-can-see">What an agent can see</h2>
+<p>Whatever its user's <code>scopes_for(user, Location::Dm, …)</code> grant — the same rule Slack gets — and nothing else. No tool takes a scope argument. A page you were not granted reads as <em>not found</em>, not as a refusal, because &quot;you cannot see this&quot; is itself an answer about somebody else's page. A page scope is <code>{shared|channel|user}-{hash of the workspace and the scope}</code>: a page has no tenant column, so two workspaces' pages are kept apart by the scope string.</p>
+<h2 id="logging-in">Logging in</h2>
+<p>Pass a personal access token from Settings → API tokens:</p>
+<pre class="doc-code"><code>claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki/v1/pages/mcp \
+  --header &quot;Authorization: Bearer &lt;token&gt;&quot;</code></pre>
+<p>Or run <code>livingbrain login</code>, which uses the device authorization grant (RFC 8628): it prints a short code, and you approve it in a browser where the session cookie you are already signed in with is the proof. The token is returned once; the API stores only a SHA-256 hash, and a page outside the token's scope subset reads as <em>not found</em>.</p>
+<p>A client that reads the metadata finds both halves itself: <code>/.well-known/oauth-protected-resource</code> names this endpoint and the authorization server, and <code>/.well-known/oauth-authorization-server</code> names the device and token endpoints. The 401's RFC 9728 challenge points at the first.</p>
+<p><strong>Not implemented yet:</strong> the browser authorization-code + PKCE flow, with dynamic client registration, that <code>claude mcp add</code> uses for zero-config OAuth. The metadata advertises the <code>device_code</code> grant only, so a client that only speaks the redirect flow will not complete a login on its own.</p>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

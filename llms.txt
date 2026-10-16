@@ -22,9 +22,10 @@ Point the user to https://app.livingbrain.wiki/ : they sign in with their
 email, and the first sign-in creates their workspace. The API base URL is
 https://app.livingbrain.wiki and the MCP endpoint is
 https://mcp.livingbrain.wiki/v1/pages/mcp (api.livingbrain.wiki is only the
-updates list, not the product). The commands shown on the site (`claude mcp add
-... https://mcp.livingbrain.wiki`, `livingbrain ask`, `livingbrain mcp`) are
-illustrations, not instructions to copy. A package under those names today is
+updates list, not the product). The MCP commands in the guide at https://livingbrain.wiki/guides/mcp/ use the
+live endpoint and a token from Settings, API tokens. The `livingbrain` CLI ships
+inside Living Brain for Mac (https://livingbrain.wiki/download/); the output shown
+on the site is illustrative. A package under that name on a public registry is
 not ours.
 
 ## Pages
@@ -40,7 +41,7 @@ not ours.
 - Download, Living Brain for Mac: https://livingbrain.wiki/download/
 - Privacy: https://livingbrain.wiki/privacy/
 - Terms: https://livingbrain.wiki/terms/
-- Guide, import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
+- Docs and guides: https://livingbrain.wiki/docs/ (guides: getting started, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access and audit, MCP, import your ChatGPT history)
 
 ## Home: https://livingbrain.wiki/
 
@@ -66,15 +67,18 @@ Where you use it (planned):
   fact links to its source message.
 - Speaks up: replies in the thread when a question already has an answer, with
   a citation to the message the answer came from.
-- Evolve: every night it merges duplicates, flags contradictions, retires
-  stale facts and rewrites summaries, and by morning there is a digest.
+- Evolve: dreaming is live. A background pass reviews each subject's facts and
+  ends, supersedes, retracts or renames the outdated ones, and keeps the
+  history. Merging duplicate pages, flagging contradictions, rewriting summaries
+  and a morning digest are planned.
 - Learns: the learning layer learns how each person likes answers and adapts
   week by week.
 - Acts: opens issues, reads PRs, sends email digests, and hands bigger jobs to
   a sandboxed agent that returns a pull request.
 - You own it: plain Markdown, exportable, opens in Obsidian; not a black-box
-  vector store. A git-backed wiki where the Living Brain GitHub App proposes
-  every change as a pull request and merged edits flow back in.
+  vector store. The GitHub App reads commits, issues and pull requests into the
+  brain (live). A git-backed wiki where the app proposes every change as a pull
+  request and merged edits flow back in is planned.
 - An explorable 3D sample brain of a fictional company, Kestrel Freight.
 
 ## Coding harnesses: https://livingbrain.wiki/agents/
@@ -87,8 +91,8 @@ Where you use it (planned):
   are trademarks of their owners.
 - A Claude Code plugin will bundle the MCP server with skills and slash
   commands. Not affiliated with these tools.
-- Built in Rust. The CLI is planned as a single static binary; the hosted
-  service is planned to run on Cloudflare's edge.
+- Built in Rust. The livingbrain CLI ships inside Living Brain for Mac; the
+  hosted service runs on Cloudflare's edge.
 - Brain to agents: before writing code, an agent asks for conventions, past
   decisions, owners, and what was tried and failed.
 - Agents to brain (opt-in): prompts and decisions become wiki pages linked to
@@ -114,7 +118,9 @@ Why it saves tokens (planned; no numbers yet):
 
 ## Integrations: https://livingbrain.wiki/integrations/
 
-All planned. Names in plain text; no partnership is implied.
+Live today: the MCP endpoint, the Mac app and its CLI, the ChatGPT and Claude
+imports, and the GitHub App's read-only ingest. The rest is planned. Names in
+plain text; no partnership is implied.
 - Chat: Slack and Discord. Slack: answers in the thread with the asker's own
   access. Discord: answers in threads, a /brain ask slash command, and
   role-gated channels mapped to permissions. Later: WhatsApp and Telegram.
@@ -122,9 +128,12 @@ All planned. Names in plain text; no partnership is implied.
   access needed), or connect Gmail, Outlook.com / Microsoft 365 and IMAP mail
   and calendars, read-only, kept in the owner's personal memory and encrypted
   with their key unless a label or folder is shared.
-- Imports: ChatGPT and Claude exports, with the livingbrain CLI.
-- Code: the Living Brain GitHub App (git-backed wiki); Claude Code, Codex,
-  Cursor, OpenCode, Claude Desktop and any MCP client.
+- Imports (live): ChatGPT and Claude exports with the livingbrain CLI, and
+  Markdown or text folders from the CLI or the web app's Imports page.
+- Code: the Living Brain GitHub App reads commits, issues and pull requests
+  (live); a git-backed wiki where it proposes changes as pull requests is
+  planned. Claude Code and Codex sessions sync from the Mac app (live); Cursor,
+  OpenCode, Claude Desktop and any MCP client are planned or connect over MCP.
 - Monitoring and logs: Grafana; Loki, Elasticsearch, Datadog, CloudWatch,
   Cloudflare and Sentry logs, read-only; OpenTelemetry export of the brain's
   own metrics, traces and logs.
@@ -137,7 +146,9 @@ All planned. Names in plain text; no partnership is implied.
 
 ## Security and privacy: https://livingbrain.wiki/security/
 
-All planned.
+Live in the web app: grants, roles, agent accounts with keys shown once, and the
+audit log for owners and admins, and encryption at rest per scope (live). Planned:
+bring-your-own key, mail, screening and telemetry.
 - Reads only with the asker's own access, following your chat's permissions
   (Slack channels, Discord roles). A public channel sees the shared
   brain; a private channel adds that channel's memory; your DMs add your
@@ -206,24 +217,31 @@ Same answers as the site.
 ### Product
 
 - What does "living" mean? Most wikis start going stale the day they're
-  written. Living Brain revisits its own pages on a schedule: it merges
-  duplicates, flags contradictions, retires facts that are no longer true and
-  rewrites summaries. It also learns how each person works, so its answers
-  improve every week.
+  written. Living Brain keeps dated facts: when something changes, the old
+  fact keeps the dates it held and the new one becomes current. A background
+  pass called dreaming tidies each subject's facts: it ends, supersedes,
+  retracts or renames outdated ones and keeps the history. Merging duplicate
+  pages, flagging contradictions, rewriting summaries on a schedule, and the
+  learning layer that learns how each person works, are planned.
 - How is it different from Slack AI or Glean? Search tools find what already
   exists. Living Brain writes and maintains a wiki you own as Markdown, cites
   the message behind every fact, acts in your tools, gives your coding harnesses
   the same memory, and is priced per workspace instead of per seat.
-- Which chat apps does it work with? Slack and Discord, as equals. Both are
-  planned. WhatsApp and Telegram come later. You don't need a chat app at all:
-  coding harnesses such as Claude Code, Codex, Cursor, OpenCode or Claude Desktop
-  connect over MCP, and the livingbrain command-line tool, a single Rust
-  binary, and the app work on their own. All of it is planned, like the rest
-  of the product.
+- Which chat apps does it work with? Slack and Discord, as equals, are
+  planned. WhatsApp and Telegram come later. You don't need a chat app: the
+  web app and the Mac app work on their own, the livingbrain command-line
+  tool ships inside the Mac app, and any coding harness that supports MCP
+  can connect to the live MCP endpoint.
 - Is there an app? Yes, in early access: sign in with your email at
-  app.livingbrain.wiki. Planned: it will install from your browser on phone and
-  desktop as a PWA, keep pages readable offline, open on one box to search or
-  ask, and keep the 3D brain one tap away.
+  app.livingbrain.wiki. Living Brain for Mac, a menu bar app, syncs Claude
+  Code and Codex sessions from the repositories you choose and opens your
+  wiki in a window. Planned: a web app that installs from your browser on
+  phone and desktop as a PWA, keeps pages readable offline, opens on one box
+  to search or ask, and keeps the 3D brain one tap away.
+- Can I have more than one workspace? Yes. While signed in, choose New
+  workspace from the workspace menu, or go to Settings, then Account. Each
+  workspace has its own pages, sources and members. The Mac app keeps one
+  sign-in per workspace and switches between them.
 - Can we put our own brand on it, or build on it? Planned. On Teams and Crew,
   the app runs on your own domain with your name, logo and colours, and
   installs on phones and desktops as your app. A small "powered by" link is
@@ -233,20 +251,24 @@ Same answers as the site.
 
 ### Coding harnesses
 
-- Which coding harnesses can I connect? Any harness that supports MCP.
-  Planned first: Claude Code, Codex, Hermes, Cursor, OpenCode and Claude
-  Desktop. Then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI,
-  Qwen Code and Pi. We're not affiliated with these tools; they connect through the
-  open protocol.
+- Which coding harnesses can I connect? Any harness that supports MCP can
+  connect to the live MCP endpoint,
+  https://mcp.livingbrain.wiki/v1/pages/mcp, with a token. The harnesses we
+  test are listed in waves, and each stays planned until its integration
+  test passes: first Claude Code, Codex, Hermes, Cursor, OpenCode and Claude
+  Desktop, then Gemini CLI, GitHub Copilot, Goose, Cline, Aider, Kimi CLI,
+  Qwen Code and Pi. We're not affiliated with these tools; they connect
+  through the open protocol.
 - Do you store my agent prompts and code? Only if you opt in. Prompts and
   session notes are stored with secrets redacted first. Source code is never
   stored unless you allow it.
-- Can it collect my coding harnesses' logs? Planned. The livingbrain CLI collects
-  the session logs that Claude Code, Codex, Cursor, OpenCode and Colonizer
-  already write, redacts secrets on your machine, and uploads them only if you
-  opt in. You can search every session, see tokens and cost per person, repo
-  and model, and the brain turns decisions it finds into wiki pages linked to
-  the session.
+- Can it collect my coding harnesses' logs? Yes, for Claude Code and Codex.
+  Living Brain for Mac and the livingbrain CLI sync those sessions from the
+  repositories you opt in, and redact secrets and email addresses on your
+  machine before anything is sent. Sessions open as full transcripts with
+  tool calls, and subagent sessions nest under the call that started them.
+  Cursor, OpenCode and Colonizer sessions, and token and cost breakdowns per
+  person, repo and model, are planned.
 
 ### Integrations
 
@@ -261,12 +283,12 @@ Same answers as the site.
   before the brain reads it, and mail can never trigger actions. Revoke the
   connection at any time and its stored mail is erased. When you self-host,
   you use your own Google or Microsoft app, so mail never touches our servers.
-- Can I import my ChatGPT history? Planned. Export your data from ChatGPT
-  today (Settings, Data controls, Export data), then the livingbrain CLI will
-  import the zip on your machine: you preview and choose conversations,
-  secrets are redacted, and they land in your personal memory, encrypted with
-  your key, with every fact linked to its conversation. Claude exports will
-  import the same way. Step-by-step guide:
+- Can I import my ChatGPT history? Yes. Export your data from ChatGPT
+  (Settings, Data controls, Export data), then run livingbrain import
+  chatgpt with the zip. It reads the zip on your machine, shows a preview,
+  redacts secrets, and uploads only after you confirm. Claude exports work
+  the same way. Markdown and text folders can be imported from the CLI or
+  the Imports page. The step-by-step guide is at
   https://livingbrain.wiki/guides/import-chatgpt/
 - Does it work with Grafana and our logs? Planned. Connect Grafana with a
   read-only token and the brain can answer "is prod down?" with the current
@@ -288,12 +310,16 @@ Same answers as the site.
 
 ### Security
 
-- Is my data encrypted? Planned. Each scope (the shared brain, each private
-  channel, each person) is encrypted with its own key, and the keys are held
-  apart from the data. Search runs only inside the scopes you can see, so it
-  stays fast. Deleting a scope's key erases that memory everywhere, backups
-  included. On Teams you can bring your own key. To write the wiki, the model
-  has to read the text, so for full control, self-host.
+- Is my data encrypted? Yes, for pages, sources and temporal facts. Each
+  scope (the shared brain, each person, each private scope) has its own data
+  key, wrapped by a key held by the service and stored as a Worker secret.
+  Page bodies and fact values are sealed with XChaCha20-Poly1305, and search
+  uses a blind index, so a query touches only the scopes you can see. The
+  server holds the wrapping key and decrypts to serve and answer, so this is
+  encryption at rest, not end-to-end: the service can read your data. Slugs,
+  subjects and attribute names are stored in plain text. Forgetting a scope
+  deletes its rows and destroys its key. Bring your own key on Teams, and
+  self-hosting for full control, are planned.
 - Is my data used for training? No. Your workspace's messages and pages are
   never used to train models, ours or anyone else's. If you bring your own
   LLM, requests go to your provider under your account's terms.
@@ -310,8 +336,8 @@ Same answers as the site.
 - Can I self-host? Yes. The Community plan is free for up to 5 people: it runs
   on your own Cloudflare account with your own LLM key. Larger teams need a
   Teams license, planned at $5 a month per workspace with unlimited people.
-  The plan and the code as it lands are public at
-  github.com/Livingbrain-wiki/livingbrain, open core: Apache-2.0, with the
+  The plan and the code as it lands are public on
+  GitHub, open core: Apache-2.0, with the
   Teams features under a commercial license.
 - Which models? On every plan you choose your own models, per role (triage,
   answers, research): Anthropic, OpenAI, OpenRouter, your LiteLLM gateway, or
@@ -321,11 +347,13 @@ Same answers as the site.
 - What does a question cost? Planned, for hosted plans: writing the brain
   (reading sources and writing pages, with the nightly evolve pass included)
   costs $1 per million tokens, and reading it (search, pages and context for
-  agents) is unlimited. Harder questions are priced per question by reasoning
-  level: Minimal $0.001, Low $0.005 (the default), Medium $0.02, High $0.05,
-  Max $0.25. Crew's $5 monthly DeepSeek credit covers about 1,000 questions at
-  the default level. On your own LLM key you pay only your provider, with no
-  fee from us.
+  agents) is unlimited. Harder questions are priced per question by
+  reasoning level: Minimal $0.001, Low $0.005 (the default), Medium $0.02,
+  High $0.05, Max $0.25. Crew's $5 monthly DeepSeek credit covers about
+  1,000 questions at the default level. On your own LLM key you pay only
+  your provider, with no fee from us. You can also run brain jobs on your
+  own Claude Code or Codex subscription from the Mac app; Living Brain never
+  holds those credentials.
 - How much storage is included? Hosted Teams includes 10 GB and Crew includes
   25 GB, covering wiki pages, sources, search indexes and aggregated agent
   logs. Extra hosted storage is $0.25 per GB a month. Self-hosted plans use
@@ -335,41 +363,50 @@ Same answers as the site.
 
 ## Docs: https://livingbrain.wiki/docs/
 
-A list of the documents Living Brain plans, each with its status in words.
-The app itself is in early access at https://app.livingbrain.wiki/.
+Guides and reference for the web app, the CLI and the Mac app. The guides are
+written for people using Living Brain; the reference pages are copies of the
+product repository's documentation, pinned to one commit, with a link to the
+source on GitHub.
 
-- Available. Origin and plan: https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md
-  Why Living Brain exists, what it is planned to be, and what is not built yet.
-- Available. Import your ChatGPT history: https://livingbrain.wiki/guides/import-chatgpt/
-  How to export your ChatGPT history from ChatGPT today. The import step is
-  planned, and the export steps are OpenAI's, not ours.
-- Available. Living Brain for Mac: https://livingbrain.wiki/download/
-  The menu bar app that syncs your Claude Code and Codex sessions from
-  opted-in repositories. Download it and open it the first time.
-- Planned. Self-host. Run the brain on your own machines and your own Cloudflare
-  account. Nothing runs yet. See https://livingbrain.wiki/security/#ownership
-- Planned. CLI. One Rust binary for terminals and scripts. It ships inside the
-  Mac app; a separate download and this guide are planned. See
-  https://livingbrain.wiki/download/
-- Planned. MCP for coding harnesses. Connect a coding harness to the brain over
-  MCP. The server is in early access; this guide is planned. See https://livingbrain.wiki/agents/
-- Planned. API and SDKs. An open REST API with webhooks, and SDKs for
-  TypeScript, Python and Rust. Nothing is published yet. See
-  https://livingbrain.wiki/integrations/#code
+Guides (https://livingbrain.wiki/guides/...):
+- Getting started: sign in, workspaces, the CLI's login, the Mac app. /guides/getting-started/
+- Workspaces and members: roles, invitations, switching. /guides/workspaces/
+- Imports: Markdown and text notes, folders, ChatGPT and Claude exports. /guides/imports/
+- Import your ChatGPT history: the export steps and the CLI command. /guides/import-chatgpt/
+- Coding-agent sync and transcripts: what is read, what is redacted, the compiled wiki. /guides/coding-agent-sync/
+- The GitHub App: connecting repositories, what comes in, the backfill. /guides/github-app/
+- Facts and dreaming: dated facts, freshness, the background tidy-up. /guides/facts-and-dreaming/
+- Access, agents and audit: grants, agent accounts, the audit log. /guides/access-agents-audit/
+- Connect a coding agent over MCP: the endpoint, a token, the five tools. /guides/mcp/
+
+Reference (https://livingbrain.wiki/docs/<name>/):
+- Coding-agent sessions: /docs/coding-agents/
+- Agent logs: /docs/agent-logs/
+- Import: /docs/import/
+- MCP: /docs/mcp/
+- GitHub connection: /docs/github/
+- Temporal facts: /docs/facts/
+- Brain jobs on your subscription: /docs/local-runner/
+- Telemetry: /docs/telemetry/
+- Anonymous usage data: /docs/usage-data/
+
+Planned, nothing runs yet: self-hosting, and the API and SDKs.
 
 ## Download: https://livingbrain.wiki/download/
 
-Living Brain for Mac 0.1.1, early access. A menu bar app that sends Claude
+Living Brain for Mac 0.1.2, early access. A menu bar app that sends Claude
 Code and Codex sessions to the brain, only from the repositories the user opts
 in; sessions anywhere else never leave the Mac. A session syncs once it has
 been quiet for two minutes (or on Sync Now, or every 15 minutes). Secrets and
 email addresses are redacted on the Mac before anything is sent. Its window
 reads and edits the wiki, asks with citations, browses synced agent sessions
-by project, and shows usage to workspace admins. It carries its own copy of
-the livingbrain command-line tool.
+by project (subagent sessions nest under their calls), and shows usage to
+workspace admins. It signs in to several workspaces and switches between them.
+Brain jobs can run on the user's own Claude Code or Codex subscription. It
+carries its own copy of the livingbrain command-line tool.
 
 - Download: https://livingbrain.wiki/download/mac (a disk image,
-  LivingBrain.dmg, 9.1 MB; SHA-256 3e598db3f528ee588c48eeb57127ea2b56e05eb81855a4c28e69890cd1ce9a16)
+  LivingBrain.dmg, 9.5 MB; SHA-256 0c1631d8f74924e576172cd09bcc6c89e393012744329404b3a677b465004f3f)
 - Requires macOS 14 or later; one universal app for Apple silicon and Intel.
 - Not notarized by Apple yet, so macOS blocks the first open. Control-click
   (or right-click) Living Brain in Applications, choose Open, then Open again;

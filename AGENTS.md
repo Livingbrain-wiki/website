@@ -8,7 +8,9 @@ design tokens and the deploy procedure.
 
 - **Preview:** `python3 -m http.server 8080` from the repo root.
 - **Build check:** `tools/build-dist.sh` must pass (it fails if a cache stamp
-  does not apply or the CSP hash is stale). Never commit `dist/`.
+  does not apply or the CSP hash is stale). Never commit `dist/`. Also run
+  `node tools/build-docs.js --check` (docs and guides are fresh, the mirror is
+  intact, every internal link resolves).
 - **Deploy:** only `tools/deploy.sh`, and only when the user asks. It deploys
   `origin/main`, not your working copy.
 - **No-JS state:** after changing the sample data in `assets/livingbrain.js`
@@ -21,6 +23,12 @@ design tokens and the deploy procedure.
   lacks, `tools/import-mark.py` from the owner's own SVG) and a COPY.md Marks row.
 - **Images:** edit `tools/*-render.html`, then `tools/render-og.sh` (macOS,
   needs Google Chrome). Never hand-edit the PNGs.
+- **Docs and guides:** `docs/<name>/` and `docs/index.html` are generated.
+  Never hand-edit them or `docs-src/`: fix the product repo, run
+  `tools/sync-docs.sh`, then `node tools/build-docs.js`. Guides are written in
+  `guides-src/*.md` (front matter: title, blurb, eyebrow, order) and rendered to
+  `guides/<name>/`. New reference docs go in `tools/sync-docs.sh` and the
+  `REFERENCE` list in `tools/build-docs.js`; the sitemap block is generated.
 - **Pages:** the site is several static pages, each a `folder/index.html`
   served at `/folder/`: `/`, `/how-it-works/`, `/agents/`, `/integrations/`,
   `/security/`, `/pricing/`, `/faq/`, `/docs/`, `/download/`, `/guides/import-chatgpt/`. They share the

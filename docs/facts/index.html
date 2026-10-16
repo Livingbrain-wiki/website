@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Temporal facts · Living Brain docs</title>
+<meta name="description" content="Facts with dates: supersession, freshness, reconciliation and dreaming, and the read API.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/facts/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/facts/">
+<meta property="og:title" content="Temporal facts · Living Brain docs">
+<meta property="og:description" content="Facts with dates: supersession, freshness, reconciliation and dreaming, and the read API.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Temporal facts · Living Brain docs">
+<meta name="twitter:description" content="Facts with dates: supersession, freshness, reconciliation and dreaming, and the read API.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Temporal facts</h1>
+    <p class="lede">Facts with dates: supersession, freshness, reconciliation and dreaming, and the read API.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/temporal-facts.md">docs/temporal-facts.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p><strong>Status: format v1, stable.</strong> Compilers, extractors and agents that write to the brain emit facts in exactly this shape. Additive changes only; anything that would change the meaning of an existing field gets a new <code>format</code> number.</p>
+<p>A page says what something <em>is</em>. A fact says what was true <em>when</em>. The brain keeps both, and never answers &quot;what is my shoe size?&quot; by overwriting the old answer: it keeps the old value with the dates it was true, and says which one holds now.</p>
+<pre class="doc-code"><code class="language-text">2025  note: &quot;my shoe size is 40&quot;      -&gt; fact A: shoe_size(person/nick) = 40 EU, valid 2025..
+2026  note: &quot;my shoe size is now 41&quot;  -&gt; fact B: shoe_size(person/nick) = 41 EU, valid 2026..
+                                         fact A is closed: valid 2025..2026, superseded by B
+ask &quot;what's my shoe size?&quot;            -&gt; 41 EU (was 40 EU 2025..2026)
+ask as_of 2025                        -&gt; 40 EU</code></pre>
+<p>The model is bi-temporal, the way Graphiti/Zep and most temporal knowledge graphs are: <strong>valid time</strong> (when the claim is true in the world) is kept apart from <strong>observation time</strong> (when the brain learned it). Both are on every fact, and neither is ever rewritten to mean the other.</p>
+<h2 id="1-a-fact">1. A fact</h2>
+<div class="doc-table"><table><thead><tr><th scope="col">Field</th><th scope="col">Type</th><th scope="col">Who sets it</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code>id</code></td><td>string</td><td>server</td><td><code>fact-&lt;ULID&gt;</code>. Stable; everything cites by it.</td></tr><tr><td><code>subject</code></td><td>string</td><td>writer</td><td>The entity, as <code>&lt;entity_type&gt;/&lt;slug&gt;</code>: <code>person/nick</code>, <code>project/checkout</code>, <code>system/postgres</code>. <code>entity_type</code> is one of the page entity types (<code>person</code>, <code>project</code>, <code>decision</code>, <code>customer</code>, <code>system</code>, <code>glossary</code>, <code>radar</code>); <code>slug</code> follows the page slug rule (lowercase ascii letters, digits, <code>-</code>, 1..=128). The subject is the same key the entity's page has, so a page and its facts meet without a lookup table. <code>me</code> is accepted on write and resolves to the writer's own person subject (<code>person/&lt;user id, slugified&gt;</code>).</td></tr><tr><td><code>attribute</code></td><td>string</td><td>writer</td><td>The predicate, normalised: lowercase <code>snake_case</code>, <code>[a-z0-9_]</code>, 1..=64 chars, e.g. <code>shoe_size</code>, <code>employer</code>, <code>uses_tool</code>, <code>lives_in</code>. The server normalises <code>Shoe Size</code> and <code>shoe-size</code> to <code>shoe_size</code>; emitters should send the normal form.</td></tr><tr><td><code>value</code></td><td>string</td><td>writer</td><td>The object, as text: <code>41</code>, <code>Acme GmbH</code>, <code>ripgrep</code>. Not interpreted. A number stays a string so <code>41</code> and <code>41.0</code> are the writer's choice, not a float's.</td></tr><tr><td><code>unit</code></td><td>string?</td><td>writer</td><td>The unit or system of the value, when it has one: <code>EU</code>, <code>kg</code>, <code>EUR/month</code>. Part of the value's identity: <code>41 EU</code> and <code>41 US</code> are different values.</td></tr><tr><td><code>valid_from</code></td><td>partial date?</td><td>writer</td><td>When it became true in the world. Omitted means &quot;not known&quot;: the server uses the observation time (precision <code>second</code>).</td></tr><tr><td><code>valid_to</code></td><td>partial date?</td><td>writer, then server</td><td>When it stopped being true, <strong>exclusive</strong>. Omitted and nothing later = still true (open-ended, rendered <code>now</code>). The server sets it when a later fact supersedes this one.</td></tr><tr><td><code>observed_at</code></td><td>RFC 3339</td><td>writer or server</td><td>When the brain learned it — normally the time of the source message. Defaults to the time of the write. Never in the future.</td></tr><tr><td><code>source</code></td><td>string?</td><td>writer</td><td>The citation: a page (<code>page:&lt;scope&gt;/&lt;slug&gt;</code>), a source (<code>source:&lt;id&gt;</code> or <code>source:&lt;id&gt;#&lt;message-id&gt;</code>), a note (<code>note:&lt;scope&gt;/&lt;slug&gt;</code>), a conversation (<code>conversation:&lt;id&gt;#&lt;message-id&gt;</code>). Notes fill it in themselves.</td></tr><tr><td><code>quote</code></td><td>string?</td><td>writer</td><td>The exact words the fact was read from, redacted. What makes a fact arguable.</td></tr><tr><td><code>confidence</code></td><td>number?</td><td>writer</td><td>0..=1, the writer's belief that the extraction is right. Default <code>1.0</code> for a person's own write, the compiler's number otherwise.</td></tr><tr><td><code>cardinality</code></td><td><code>one</code> | <code>many</code>?</td><td>writer or registry</td><td>Whether the attribute holds one value at a time (<code>shoe_size</code>, <code>employer</code>) or several (<code>uses_tool</code>, <code>speaks</code>). See §3.</td></tr><tr><td><code>status</code></td><td>enum</td><td>server</td><td><code>current</code>, <code>superseded</code>, <code>retracted</code> or <code>disputed</code>. See §2.</td></tr><tr><td><code>supersedes</code></td><td>fact id?</td><td>server</td><td>The fact this one replaced.</td></tr><tr><td><code>superseded_by</code></td><td>fact id?</td><td>server</td><td>The fact that replaced this one.</td></tr><tr><td><code>scope</code></td><td><code>personal</code> | <code>shared</code> | <code>channel</code></td><td>server</td><td>Which memory it is in. Facts are scoped exactly like pages (§6).</td></tr></tbody></table></div>
+<h3 id="partial-dates">Partial dates</h3>
+<p>A date is as precise as the writer knows, and says so:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Written</th><th scope="col">Precision</th><th scope="col">Starts at (UTC)</th></tr></thead><tbody><tr><td><code>2026</code></td><td><code>year</code></td><td><code>2026-01-01T00:00:00Z</code></td></tr><tr><td><code>2026-10</code></td><td><code>month</code></td><td><code>2026-10-01T00:00:00Z</code></td></tr><tr><td><code>2026-10-15</code></td><td><code>day</code></td><td><code>2026-10-15T00:00:00Z</code></td></tr><tr><td><code>2026-10-15T09:12:00Z</code></td><td><code>second</code></td><td>that instant</td></tr></tbody></table></div>
+<p>The written form is stored and shown as written; the start instant is what sorts and compares. A range <code>[valid_from, valid_to)</code> runs from the start of <code>valid_from</code> to the start of <code>valid_to</code>, so <code>2025..2026</code> is all of 2025.</p>
+<h2 id="2-status-and-supersession">2. Status and supersession</h2>
+<p>Status is about the <strong>belief</strong>; the validity range is about the <strong>world</strong>. A fact can be <code>current</code> (nobody has replaced it) and still not valid today (its <code>valid_to</code> is in the past).</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Status</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code>current</code></td><td>The latest belief for its subject+attribute (or, for a <code>many</code> attribute, for that value).</td></tr><tr><td><code>superseded</code></td><td>A later fact replaced it. Its <code>valid_to</code> is the successor's <code>valid_from</code> (or its own stated <code>valid_to</code>, if earlier), and <code>superseded_by</code> names the successor. Kept forever: it is the history.</td></tr><tr><td><code>retracted</code></td><td>Somebody said it was never true (<code>POST /v1/facts/{id}/retract</code>). Not used to answer; shown in history struck through.</td></tr><tr><td><code>disputed</code></td><td>Two facts claim different values for overlapping validity and nothing orders them. Both are kept, both are shown, neither is preferred; a person settles it by retracting one.</td></tr></tbody></table></div>
+<p><strong>New information never overwrites.</strong> For a <code>one</code> attribute, every write re-resolves that subject+attribute's timeline in its scope, deterministically:</p>
+<ol><li>Retracted facts take no part.</li><li>A fact whose value+unit equals a live fact that is valid at the new fact's <code>valid_from</code> is a <strong>corroboration</strong>: no new fact is stored, the write answers with the existing one (<code>outcome: &quot;corroborated&quot;</code>).</li><li>The rest are ordered by the start of <code>valid_from</code>.</li><li>Facts with the <strong>same</strong> <code>valid_from</code> start and different values are <code>disputed</code> — nothing says which came first.</li><li>Each fact's effective <code>valid_to</code> is the earlier of its own stated <code>valid_to</code> and the next fact's <code>valid_from</code>; it is <code>superseded</code> by that next fact, which <code>supersedes</code> it.</li><li>A stated <code>valid_to</code> that runs <strong>past</strong> the next fact's start, on a fact observed <strong>after</strong> that next fact, is a conflict: the newer observation says the old value still held. Both are <code>disputed</code>.</li><li>The last fact in the order is <code>current</code>.</li></ol>
+<p>Backfilling works the same way: learning today that the shoe size was 39 in 2024 inserts a fact that ends where the 40 begins, <code>superseded</code> by it, without touching the current 41.</p>
+<h2 id="3-cardinality">3. Cardinality</h2>
+<p>A <code>one</code> attribute has one value at a time; a new value ends the old one. A <code>many</code> attribute (<code>uses_tool</code>, <code>speaks</code>, <code>member_of</code>) accumulates: each distinct value has its own timeline, a new value ends nothing, and a value ends only by a stated <code>valid_to</code> or a retraction.</p>
+<p>The cardinality is a property of the attribute, decided by the first of:</p>
+<ol><li>the <code>cardinality</code> stored on the attribute's existing facts in that scope (a write that disagrees is refused with <code>422 facts/cardinality-mismatch</code>);</li><li>the <code>cardinality</code> field of the write;</li><li>the built-in registry: <code>many</code> for <code>uses_tool</code>, <code>uses</code>, <code>speaks</code>, <code>knows</code>, <code>member_of</code>, <code>works_on</code>, <code>owns</code>, <code>skill</code>, <code>skills</code>, <code>likes</code>, <code>dislikes</code>, <code>tag</code>, <code>tags</code>, <code>alias</code>, <code>aliases</code>, <code>depends_on</code>, <code>reports</code>, <code>contributor</code>, <code>contributors</code>; <code>one</code> for everything else.</li></ol>
+<h2 id="4-writing-facts">4. Writing facts</h2>
+<h3 id="json-an-emitter-sends-format-1">JSON an emitter sends (<code>format: 1</code>)</h3>
+<pre class="doc-code"><code class="language-json">{
+  &quot;format&quot;: 1,
+  &quot;facts&quot;: [
+    {
+      &quot;subject&quot;: &quot;person/nick&quot;,
+      &quot;attribute&quot;: &quot;shoe_size&quot;,
+      &quot;value&quot;: &quot;41&quot;,
+      &quot;unit&quot;: &quot;EU&quot;,
+      &quot;valid_from&quot;: &quot;2026&quot;,
+      &quot;observed_at&quot;: &quot;2026-10-15T09:12:00Z&quot;,
+      &quot;source&quot;: &quot;conversation:c-123#m-9&quot;,
+      &quot;quote&quot;: &quot;my shoe size is now 41&quot;,
+      &quot;confidence&quot;: 0.9
+    }
+  ],
+  &quot;shared&quot;: false
+}</code></pre>
+<p>JSON Schema for one fact (the array is <code>facts</code>, at most 50 per request):</p>
+<pre class="doc-code"><code class="language-json">{
+  &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+  &quot;$id&quot;: &quot;https://livingbrain.wiki/schemas/temporal-fact.v1.json&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;required&quot;: [&quot;subject&quot;, &quot;attribute&quot;, &quot;value&quot;],
+  &quot;additionalProperties&quot;: false,
+  &quot;properties&quot;: {
+    &quot;subject&quot;:     { &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^(me|(person|project|decision|customer|system|glossary|radar)/[a-z0-9-]{1,128})$&quot; },
+    &quot;attribute&quot;:   { &quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 64 },
+    &quot;value&quot;:       { &quot;type&quot;: &quot;string&quot;, &quot;minLength&quot;: 1, &quot;maxLength&quot;: 2000 },
+    &quot;unit&quot;:        { &quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 32 },
+    &quot;valid_from&quot;:  { &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^\\d{4}(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2}))?)?)?$&quot; },
+    &quot;valid_to&quot;:    { &quot;type&quot;: &quot;string&quot;, &quot;pattern&quot;: &quot;^\\d{4}(-\\d{2}(-\\d{2}(T\\d{2}:\\d{2}:\\d{2}(\\.\\d+)?(Z|[+-]\\d{2}:\\d{2}))?)?)?$&quot; },
+    &quot;observed_at&quot;: { &quot;type&quot;: &quot;string&quot;, &quot;format&quot;: &quot;date-time&quot; },
+    &quot;source&quot;:      { &quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 512 },
+    &quot;quote&quot;:       { &quot;type&quot;: &quot;string&quot;, &quot;maxLength&quot;: 2000 },
+    &quot;confidence&quot;:  { &quot;type&quot;: &quot;number&quot;, &quot;minimum&quot;: 0, &quot;maximum&quot;: 1 },
+    &quot;cardinality&quot;: { &quot;enum&quot;: [&quot;one&quot;, &quot;many&quot;] }
+  }
+}</code></pre>
+<p>Rules for a compiler or a model emitting facts:</p>
+<ul><li><strong>One fact per claim.</strong> &quot;Nick moved to Berlin and wears 41&quot; is two facts.</li><li><strong>Resolve the subject</strong> to the entity's page subject; use <code>me</code> only when writing for the person who is speaking.</li><li><strong>Normalise the attribute</strong> to a short stable <code>snake_case</code> key. Prefer an existing attribute over a near-synonym (<code>employer</code>, not <code>works_at</code> and <code>company</code> on alternate days). Units go in <code>unit</code>, not in <code>value</code>.</li><li><strong>Date it as precisely as the text does</strong>, and no more: &quot;this year&quot; in a 2026 message is <code>2026</code>, &quot;since October&quot; is <code>2026-10</code>, &quot;on the 15th&quot; is <code>2026-10-15</code>. Do not invent a day. Omit <code>valid_from</code> when the text gives no time; never put the message time in <code>valid_from</code> unless the text says the change happened then (&quot;I just switched to...&quot;).</li><li><strong><code>observed_at</code> is the message's time</strong>, not the extraction run's.</li><li><strong>Do not resolve conflicts yourself.</strong> Emit what the source says; the server orders, supersedes and disputes. Never emit <code>status</code>, <code>supersedes</code> or <code>superseded_by</code>.</li><li><strong>Quote</strong> the sentence and <strong>cite</strong> the message. A fact with no source is allowed but ranks below one with a source.</li><li>Redaction runs on every text field before storage; secrets do not belong in a fact.</li></ul>
+<h3 id="routes">Routes</h3>
+<ul><li><code>POST /v1/facts</code> — body as above; bearer, or the web app's session cookie (a cookie write must pass the same-origin check, like every cookie write). Answers <code>201</code> with <code>{ &quot;facts&quot;: [ { &quot;id&quot;, &quot;outcome&quot;: &quot;created&quot; | &quot;corroborated&quot;, &quot;fact&quot;: {...} } ] }</code>.</li><li><code>POST /v1/facts/{id}/retract</code> — marks one fact <code>retracted</code> and re-resolves its timeline. Same auth.</li><li><code>GET /v1/facts?subject=&amp;attribute=&amp;as_of=</code> — see §5.</li><li><code>POST /v1/notes</code> accepts an optional <code>facts</code> array (same shape, no <code>format</code>); each fact's <code>source</code> defaults to the note (<code>note:&lt;scope&gt;/&lt;slug&gt;</code>) and its <code>quote</code> to nothing.</li><li>The MCP <code>brain_note</code> tool accepts the same <code>facts</code> array; <code>brain_facts</code> reads them (§5).</li></ul>
+<p>Facts land in the writer's <strong>personal</strong> scope unless <code>shared: true</code>, which writes to the workspace's shared memory and needs a credential that may read it.</p>
+<h2 id="5-reading-facts">5. Reading facts</h2>
+<p><code>GET /v1/facts?subject=person/nick&amp;attribute=shoe_size&amp;as_of=2025</code></p>
+<ul><li><code>subject</code> and <code>attribute</code> are optional filters (<code>subject=me</code> works); without either the answer is every fact the asker may read, newest first, capped at 500.</li><li><code>as_of</code> (a partial date, default <strong>now</strong>) chooses which facts count as true: with a partial date it means <strong>the last instant of that period</strong> — <code>as_of=2025</code> is &quot;as of the end of 2025&quot;.</li></ul>
+<pre class="doc-code"><code class="language-json">{
+  &quot;as_of&quot;: &quot;2025&quot;,
+  &quot;as_of_instant&quot;: &quot;2025-12-31T23:59:59Z&quot;,
+  &quot;keys&quot;: [
+    {
+      &quot;subject&quot;: &quot;person/nick&quot;,
+      &quot;attribute&quot;: &quot;shoe_size&quot;,
+      &quot;cardinality&quot;: &quot;one&quot;,
+      &quot;current&quot;: [ { &quot;id&quot;: &quot;fact-01...&quot;, &quot;value&quot;: &quot;40&quot;, &quot;unit&quot;: &quot;EU&quot;, &quot;valid_from&quot;: &quot;2025&quot;, &quot;valid_to&quot;: &quot;2026&quot;, &quot;status&quot;: &quot;superseded&quot;, ... } ],
+      &quot;history&quot;: [ { ...41..., &quot;status&quot;: &quot;current&quot; }, { ...40... } ],
+      &quot;line&quot;: &quot;shoe_size(person/nick) = 40 EU [valid 2025..2026, observed 2025-03-02, source note:user-…/note-…] (later 41 EU 2026..now)&quot;
+    }
+  ]
+}</code></pre>
+<p>In <code>GET /v1/facts</code> a line cites each fact by its own <code>source</code>; in a brief (<code>ask</code>, <code>brain_context_for</code>, <code>brain_facts</code>) sources are numbered <code>F1</code>, <code>F2</code>, … and listed in the answer's <code>citations</code> as <code>{title: &quot;F1&quot;, source, quote}</code>.</p>
+<p><code>current</code> is <strong>the facts valid at <code>as_of</code></strong> (for a <code>one</code> attribute: at most one, unless disputed — then all disputed ones), whatever their status; a newer observation wins when two could answer. <code>history</code> is every fact for the key, newest <code>valid_from</code> first, retracted ones included.</p>
+<p><code>/v1/search</code> answers a <code>facts</code> array beside <code>results</code> (the timelines <code>q</code> is about, as of now), <code>/v1/ask</code> puts the fact lines at the top of its brief and answers <code>facts</code> and <code>as_of</code> beside <code>answer</code>, and the page view (<code>GET /v1/pages/{slug}</code>) carries <code>subject</code>, <code>facts</code> and <code>facts_markdown</code>. Which timelines a question is about is decided on the plaintext index alone (attribute words, subject slug, <code>my</code>/<code>me</code> for the asker's own person) before anything is decrypted. <code>ask</code> takes an <code>as_of</code> field (<code>livingbrain ask --as-of 2025 …</code> on the CLI). Without one, a question that names a time — &quot;in 2025&quot;, &quot;as of 2025-06&quot;, &quot;in June 2025&quot;, &quot;last month&quot; — is asked as of the end of that time.</p>
+<h2 id="6-scope-privacy-storage">6. Scope, privacy, storage</h2>
+<p>Facts are stored in the <code>facts</code> table of the pages module (migration <code>0006_facts</code>), under the same page scopes as pages: <code>user-…</code> (personal), <code>channel-…</code>, <code>shared-…</code>, each folded with the workspace id, so two workspaces never share a row. A read only ever names the scopes the credential grants (<code>page_scopes</code>), and no route accepts a scope from the client; a narrowed token reads only its narrowed scopes.</p>
+<p>The <code>value</code>, <code>unit</code>, <code>quote</code> and <code>source</code> are <strong>sealed</strong> with the scope's data key (XChaCha20-Poly1305, the same envelope as page bodies, AAD bound to the scope, the fact id and the key version) and stored as base64 in the row. The <code>subject</code> and <code>attribute</code> are plaintext, like page slugs, so a timeline can be selected without decrypting. Forgetting a scope deletes its fact rows and destroys the key; key rotation re-seals them with the bodies.</p>
+<h2 id="7-rendering">7. Rendering</h2>
+<h3 id="on-an-entity-page-markdown-deterministic">On an entity page (Markdown, deterministic)</h3>
+<p>The page for <code>person/nick</code> shows its facts below the body, generated — never stored in the body, so a page edit cannot desynchronise them:</p>
+<pre class="doc-code"><code class="language-markdown">## Facts
+
+### Current
+
+| Attribute | Value | Valid | Observed | Source |
+| :--- | :--- | :--- | :--- | :--- |
+| shoe_size | 41 EU | 2026 – now | 2026-10-15 | note:user-3f…/note-91c… |
+
+### History
+
+- **2026 – now** · shoe_size = 41 EU · observed 2026-10-15 · current
+- **2025 – 2026** · shoe_size = 40 EU · observed 2025-03-02 · superseded by fact-01J…</code></pre>
+<p>Order: Current sorted by attribute; History newest <code>valid_from</code> first, then newest <code>observed_at</code>. Retracted entries render as <code>~~…~~ · retracted</code>.</p>
+<h3 id="for-a-model-one-line-per-subjectattribute">For a model (one line per subject+attribute)</h3>
+<pre class="doc-code"><code class="language-text">shoe_size(person/nick) = 41 EU [valid 2026..now, observed 2026-10-15, source F1] (was 40 EU 2025..2026)</code></pre>
+<ul><li><code>attribute(subject) = value unit</code> — the answer as of the asked time.</li><li><code>[valid FROM..TO, observed DATE, source Fn]</code> — <code>TO</code> is <code>now</code> when open; <code>Fn</code> indexes the brief's fact citations.</li><li><code>(was …)</code> — earlier values, newest first, each with its range; <code>(later …)</code> — values after <code>as_of</code> when answering historically.</li><li><code>{disputed: A | B}</code> replaces the value when the timeline is disputed.</li><li><code>many</code> attributes list their values valid at that time: <code>uses_tool(person/nick) = {ripgrep, jj} [...]</code>.</li></ul>
+<p>The brief that <code>ask</code> builds starts with this convention, so the model reads it as an instruction:</p>
+<blockquote><p>Facts below are temporal. Each line is <code>attribute(subject) = value [valid FROM..TO, observed DATE, source]</code>. Prefer the value valid now (or at the time the question asks about). When a value changed and the change is relevant, say so (&quot;41, was 40 until 2026&quot;). Treat <code>disputed</code> as unsettled and say so. Cite the source.</p></blockquote>
+<h3 id="in-the-web-app">In the web app</h3>
+<p>A page whose subject has facts shows a <strong>Facts</strong> card under the body — the Current table and the History list, with an &quot;As of&quot; date picker that re-reads <code>GET /v1/facts?subject=…&amp;as_of=…</code>. <code>wiki.html?view=facts</code> lists every timeline the reader may see, with the same picker. Both are built from DOM nodes and <code>textContent</code> only.</p>
+<h3 id="decision-and-learning-pages">Decision and learning pages</h3>
+<p>A decision page may carry <code>decided_at</code>, <code>valid_from</code>, <code>valid_to</code>, <code>supersedes</code> and <code>superseded_by</code> in its frontmatter (partial dates for the first three, page slugs for the last two), so a decision that was reversed reads as history, not as a contradiction.</p>
+<h2 id="8-the-shoe-size-example-end-to-end">8. The shoe-size example, end to end</h2>
+<p>(<code>person/u0nick</code> is the asker's own subject: <code>me</code> resolves to <code>person/</code> plus the user id, lowercased, with anything outside <code>[a-z0-9-]</code> turned into <code>-</code>.)</p>
+<ol><li>2025-03-02, the note <code>POST /v1/notes</code> <code>{&quot;body&quot;: &quot;my shoe size is 40&quot;, &quot;facts&quot;: [{&quot;subject&quot;: &quot;me&quot;, &quot;attribute&quot;: &quot;shoe_size&quot;, &quot;value&quot;: &quot;40&quot;, &quot;unit&quot;: &quot;EU&quot;, &quot;valid_from&quot;: &quot;2025&quot;}]}</code> stores fact A: <code>shoe_size(person/u0nick) = 40 EU</code>, valid <code>2025..</code>, <code>current</code>, source <code>note:user-…/note-…</code>.</li><li>2026-10-15, the note <code>{&quot;body&quot;: &quot;my shoe size is now 41&quot;, &quot;facts&quot;: [{&quot;subject&quot;: &quot;me&quot;, &quot;attribute&quot;: &quot;shoe_size&quot;, &quot;value&quot;: &quot;41&quot;, &quot;unit&quot;: &quot;EU&quot;, &quot;valid_from&quot;: &quot;2026&quot;}]}</code> stores fact B, valid <code>2026..</code>, <code>current</code>, <code>supersedes: A</code>; fact A becomes valid <code>2025..2026</code>, <code>superseded</code>, <code>superseded_by: B</code>.</li><li><code>ask &quot;what's my shoe size?&quot;</code> — the brief carries <code>shoe_size(person/u0nick) = 41 EU [valid 2026..now, observed 2026-10-15, source F1] (was 40 EU 2025..2026)</code>, so the answer is &quot;41 EU (it was 40 until 2026)&quot;.</li><li><code>ask {&quot;question&quot;: &quot;what's my shoe size?&quot;, &quot;as_of&quot;: &quot;2025&quot;}</code> (or &quot;what was my shoe size in 2025?&quot;) — the brief carries <code>shoe_size(person/u0nick) = 40 EU [valid 2025..2026, observed 2025-03-02, source F1] (later 41 EU 2026..now)</code>, so the answer is 40 EU.</li></ol>
+<h2 id="9-freshness-reconciliation-and-dreaming">9. Freshness, reconciliation and dreaming</h2>
+<p>A fact that nobody confirms goes stale, and an event (a cost, an outage, an incident) was never a fact at all. Three mechanisms keep the timelines honest: freshness shows what is still confirmed, reconciliation stops new duplicates at write time, and dreaming tidies the facts that were stored before either existed. The migration is <code>0042_pages_0008_dreaming</code>.</p>
+<h3 id="freshness">Freshness</h3>
+<ul><li><code>last_confirmed_at</code> is set to the observation time on insert. A write that repeats a live fact (same subject, attribute, value and unit) is answered with that fact and moves its <code>last_confirmed_at</code> forward, never back: no second row is stored.</li><li>The Facts view shows the current facts confirmed within 90 days, measured from the date being viewed. &quot;Show stale&quot; reveals the rest. History always shows everything, since it is what was true before.</li></ul>
+<h3 id="source-dated-facts-compiler">Source-dated facts (compiler)</h3>
+<ul><li>A compiled fact is observed at its session's own time (never after the compile), and valid from the day the model gave, else the session's day.</li><li>A session with no time at all yields undated facts, which are refused and named in the log. A fact is never dated to the day it was compiled.</li></ul>
+<h3 id="reconciliation-at-write-time-compiler">Reconciliation at write time (compiler)</h3>
+<ul><li>Before a model call the compiler reads the current facts of the session's project and agent subjects (newest 60) and shows them as EXISTING FACTS, by id. The model reuses an existing attribute when the same property changes, and ends a fact it no longer holds with <code>&quot;ended&quot;: [{&quot;id&quot;, &quot;valid_to&quot;}]</code>. An answer without <code>ended</code> is an answer with none.</li><li>Facts are state, not events. The compiler refuses, with a logged reason: an attribute with a number token (<code>issue_335_status</code>, <code>pr_12_state</code>: one issue, not a shared key that would supersede every other issue), and an attribute with an event word (<code>cost</code>, <code>outage</code>, <code>incident</code>, <code>error</code>, <code>failure</code>, <code>recovery</code>, <code>limitation</code>, <code>crash</code>, <code>timeout</code>, <code>rate_limit</code>).</li></ul>
+<h3 id="dreaming">Dreaming</h3>
+<p>Dreaming is the background pass over one subject's facts. It runs in the Worker's cron tick, after the compile drain.</p>
+<ul><li><strong>When.</strong> A subject with at least 20 current facts is due when it has never been tidied, when its last pass is 7 or more days old, or when 10 or more facts were stored since its last pass. A failed or skipped pass is asked again after 24 hours.</li><li><strong>Queue.</strong> <code>fact_dreams</code> holds one row per (scope, subject): <code>queued</code>, <code>running</code>, then <code>done</code>, <code>failed</code> or <code>skipped</code>, with the time of the last completed pass (<code>dreamt_at</code>) and what it applied.</li><li><strong>Budget.</strong> A pass is a model call and is spent from the same daily and monthly compile budget as a compile (reserve, then settle). It stops as soon as that budget is spent, leaves the subject queued, and a rate limit ends the tick. At most two passes run per tick.</li><li><strong>Decisions.</strong> The model sees every current fact of the one subject and may return <code>supersede</code> (an older fact replaced by a newer one of the same attribute), <code>end</code> (stopped at a date), <code>retract</code> (an event, or a duplicate) or <code>rename</code> (move to the ordinary key). Ids must be ones it was shown. Each decision goes through the store's own operations (<code>end</code>, <code>retract</code>, <code>emit</code>), so history is kept: a superseded or ended fact stays, with the date it stopped. A rename copies the fact under the new key and retracts the original as a duplicate.</li><li><strong>Log.</strong> Every decision is written to <code>fact_dream_decisions</code> whether or not it was applied: the pass key, the op, the fact ids, the new end or key, the reason (a short lowercase word), and the ids the model was shown as JSON. That log is the record of why a fact changed, and training data for a later model that learns ADD / UPDATE / DELETE / NOOP over facts. The <code>model</code> column records the call's role (<code>dreaming</code>), not the model id.</li><li><strong>Read.</strong> A timeline in <code>GET /v1/facts</code> carries <code>dream</code> (<code>at</code>, <code>facts_seen</code>, <code>decisions</code>, <code>applied</code>) when it was tidied, and each fact a decision applied to carries <code>dreamed</code> (<code>retract</code>, <code>end</code>, <code>supersede</code> or <code>rename</code>). The web app shows these as &quot;Last dreamt 2 days ago · 5 facts updated&quot; and &quot;Ended while dreaming&quot;.</li><li><strong>Forgetting.</strong> <code>forget_scope</code> deletes both tables' rows with the scope's facts.</li></ul>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

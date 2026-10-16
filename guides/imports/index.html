@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Imports · Living Brain</title>
+<meta name="description" content="Bring Markdown notes, folders, and ChatGPT or Claude exports into a personal or shared brain. Nothing uploads until you confirm.">
+<link rel="canonical" href="https://livingbrain.wiki/guides/imports/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/guides/imports/">
+<meta property="og:title" content="Imports · Living Brain">
+<meta property="og:description" content="Bring Markdown notes, folders, and ChatGPT or Claude exports into a personal or shared brain. Nothing uploads until you confirm.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Imports · Living Brain">
+<meta name="twitter:description" content="Bring Markdown notes, folders, and ChatGPT or Claude exports into a personal or shared brain. Nothing uploads until you confirm.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Guide · Imports</p>
+    <h1 class="h2">Imports</h1>
+    <p class="lede">Bring Markdown notes, folders, and ChatGPT or Claude exports into a personal or shared brain. Nothing uploads until you confirm.</p>
+    <div class="prose">
+<p>Imports add <em>sources</em> to the brain: files that came from outside. The brain reads them, writes pages from them, and cites them. Each source is kept once, so importing the same file again adds nothing new.</p>
+<h2 id="what-is-taken">What is taken</h2>
+<ul><li><strong>Markdown and plain text</strong>: files ending in <code>.md</code>, <code>.markdown</code> or <code>.txt</code>.</li><li><strong>At most 1 MB</strong> per file. Larger files are skipped and counted.</li><li><strong>Plain UTF-8 text</strong>. Binary files are skipped.</li><li><strong>Hidden folders are skipped</strong>, such as <code>.git</code> or <code>.obsidian</code>.</li></ul>
+<h2 id="from-the-web-app">From the web app</h2>
+<p>Open <strong>Imports</strong> in the sidebar. Drop notes or a whole folder on the box, or choose files or a folder. Then pick:</p>
+<ul><li><strong>Scope</strong>: your personal brain, or the shared one.</li><li><strong>Project</strong> (optional): files the brain should file under a project name.</li></ul>
+<p>The browser reads and sends each file; the server checks and redacts every body and path again before storing it.</p>
+<h2 id="from-the-cli">From the CLI</h2>
+<pre class="doc-code"><code class="language-sh">livingbrain import markdown ~/vault
+livingbrain import markdown ~/vault --exclude 'drafts/**' --shared</code></pre>
+<p>The command reads and redacts everything on your machine, prints a preview (file count, bytes, what was skipped, how many secrets will be redacted, and which brain the files go to), and asks before uploading. Answering anything but <code>y</code> uploads nothing.</p>
+<h2 id="chatgpt-and-claude-exports">ChatGPT and Claude exports</h2>
+<p>Request your export first. In ChatGPT, use <strong>Settings → Data controls → Export data</strong>; in Claude, use <strong>Settings → Privacy → Export data</strong>. The download link arrives by email and expires, so download the zip promptly. Then:</p>
+<pre class="doc-code"><code class="language-sh">livingbrain import chatgpt ~/Downloads/conversations.zip
+livingbrain import claude ~/Downloads/claude-export.zip --keyword migration</code></pre>
+<p>You can keep only some conversations with <code>--since</code>, <code>--until</code>, <code>--keyword</code> or <code>--id</code>. The zip is read in memory and never unpacked to disk. Each conversation becomes one Markdown source, with its live branch only: edited or regenerated answers that were abandoned are left out, and so are hidden system messages.</p>
+<p>For the step-by-step ChatGPT guide, see <a href="/guides/import-chatgpt/">Import your ChatGPT history</a>. The full flag reference is on <a href="/docs/import/">the import reference</a>.</p>
+<h2 id="redaction">Redaction</h2>
+<p>Secrets are redacted on your machine before anything is sent, and the server runs the same redaction again on every body and path. Redaction is not a guarantee: read the preview, and do not import files you would not share with the people who can read that scope.</p>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

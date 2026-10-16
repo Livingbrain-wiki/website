@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Import · Living Brain docs</title>
+<meta name="description" content="livingbrain import: Markdown folders, ChatGPT and Claude exports, previews, exclusions and redaction.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/import/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/import/">
+<meta property="og:title" content="Import · Living Brain docs">
+<meta property="og:description" content="livingbrain import: Markdown folders, ChatGPT and Claude exports, previews, exclusions and redaction.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Import · Living Brain docs">
+<meta name="twitter:description" content="livingbrain import: Markdown folders, ChatGPT and Claude exports, previews, exclusions and redaction.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Import</h1>
+    <p class="lede">livingbrain import: Markdown folders, ChatGPT and Claude exports, previews, exclusions and redaction.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/import.md">docs/import.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p><code>livingbrain import</code> brings data in from elsewhere, one <strong>source</strong> per file or conversation. A source is a file that came in from outside, as opposed to a page, which the brain wrote. Three formats today: a directory of notes (<code>markdown</code>), and the chat vendors' own data exports (<code>chatgpt</code>, <code>claude</code>).</p>
+<h2 id="use-it">Use it</h2>
+<pre class="doc-code"><code>livingbrain import markdown ~/vault
+livingbrain import markdown ~/vault --exclude 'drafts/**' --shared
+livingbrain import markdown ~/vault --max-bytes 262144 --json</code></pre>
+<div class="doc-table"><table><thead><tr><th scope="col">flag</th><th scope="col">what it does</th></tr></thead><tbody><tr><td><code>--shared</code></td><td>import into the shared brain instead of your personal one (default <code>personal</code>)</td></tr><tr><td><code>--yes</code></td><td>upload without the confirmation prompt</td></tr><tr><td><code>--exclude &lt;glob&gt;</code></td><td>skip files matching a glob; repeatable, e.g. <code>--exclude 'drafts/**'</code></td></tr><tr><td><code>--max-bytes &lt;n&gt;</code></td><td>skip files over this size (default and maximum 1 MiB, redaction's own cap)</td></tr></tbody></table></div>
+<p><code>--json</code> prints one object: <code>root</code>, <code>scope</code>, <code>files</code>, <code>created</code>, <code>unchanged</code>, <code>redacted</code>, <code>skipped</code> (<code>not_markdown</code>, <code>too_large</code>, <code>binary</code>) and a <code>sources</code> array of <code>{path, id, created}</code>. The preview always goes to stderr, so stdout stays one object.</p>
+<h2 id="nothing-leaves-the-machine-before-you-say-yes">Nothing leaves the machine before you say yes</h2>
+<p>The command walks the directory, reads and redacts every candidate <strong>locally</strong>, prints a preview (file count, bytes, what was skipped, how many secrets are about to be redacted, which brain the files would land in) and only then asks:</p>
+<pre class="doc-code"><code>Upload 412 files to your personal brain? [y/N]</code></pre>
+<p>Only <code>y</code> or <code>yes</code> proceeds — anything else, and a closed stdin, is a no. The token is read from the keychain and the socket opened <em>after</em> that answer, so answering <code>n</code> leaves the machine exactly as it found it: a declined import exits non-zero, uploads nothing, and makes no request at all. A run that finds nothing to import is a successful no-op, not an error.</p>
+<h2 id="what-is-uploaded-and-what-is-skipped">What is uploaded, and what is skipped</h2>
+<p>The walk honours the vault's own <code>.gitignore</code> (whether or not it is a git checkout) and skips dotfiles and dot-directories, which is what takes a vault's own bookkeeping — <code>.obsidian/</code>, <code>.trash/</code> — out of the walk. Of what is left, a file is a candidate only if it ends <code>.md</code>, <code>.markdown</code> or <code>.txt</code>; it is skipped when it is over <code>--max-bytes</code>, or when its bytes are not UTF-8 text or contain a NUL. The preview counts each of those reasons instead of swallowing them. What goes up is one POST per file: the path <strong>relative to the root</strong>, <code>/</code>-separated, and the body. A path that is not relative to the root is an error, never a fallback that would put a local absolute path on the wire.</p>
+<h2 id="redaction-happens-on-both-sides">Redaction happens on both sides</h2>
+<p>Redaction is local and not optional. <code>livingbrain-redact</code> — the same library the server runs on every ingest path — runs over the body <em>and</em> over the relative path before the socket opens, so a secret in a vault never crosses the wire; a filename carries an API key just as well as a body does. The server redacts both again on arrival, whatever the client did: the client does not hold that decision.</p>
+<h2 id="scope-and-idempotency">Scope and idempotency</h2>
+<p>The request names <code>personal</code> or <code>shared</code>. The server folds that with the workspace into a page scope and checks the result against the asker's own grant: a caller cannot name a scope that is not theirs, because the string they send is not the scope it becomes.</p>
+<p>The ledger's primary key is <code>(scope, body_sha256)</code> — the SHA-256 of the <strong>redacted</strong> body. The same document imported twice is one source; the second import reads the first one's row back rather than sealing a second copy, so re-running over an unchanged vault creates nothing new. The same body arriving at two different paths is <strong>one</strong> source, stored under the path the first import used — which is why the answer reports the <strong>stored</strong> path: a deduplicated upload answers <code>200</code> with the path already on file, not the one this call sent. A body is sealed under the scope's active data key at a blob key carrying its own id, and the row records the key version that opens it, so a source written before a rotation still reads after one and forgetting a scope makes every body it sealed unreadable.</p>
+<p>Each row also carries the <code>[[wiki-links]]</code> the file names, parsed leniently Obsidian-style: <code>[[My Note]]</code>, <code>[[My Note|an alias]]</code>, <code>[[folder/Other#heading]]</code> and <code>![[an embed]]</code> all count, and a target need not be a slug a page could carry. Aliases and headings are stripped, duplicates dropped in first-seen order, targets over 512 bytes ignored, the list capped at 256.</p>
+<h2 id="the-wire-post-v1pagessources">The wire: <code>POST /v1/pages/sources</code></h2>
+<p>The credential is the MCP endpoint's bearer token; a missing or rejected one gets the same 401 and <code>WWW-Authenticate</code> challenge. <code>path</code> and <code>body</code> are required, <code>scope</code> defaults to <code>personal</code>, <code>kind</code> to <code>import</code>; anything else in the object is ignored. A path must be relative, at most 1024 bytes, and carry no <code>..</code> segment, backslash or NUL.</p>
+<pre class="doc-code"><code class="language-json">{&quot;kind&quot;: &quot;import&quot;, &quot;path&quot;: &quot;notes/one.md&quot;, &quot;body&quot;: &quot;# One&quot;, &quot;scope&quot;: &quot;personal&quot;}</code></pre>
+<p><code>201</code> when the row was created, <code>200</code> when the body was already there:</p>
+<pre class="doc-code"><code class="language-json">{&quot;id&quot;: &quot;01J…&quot;, &quot;kind&quot;: &quot;import&quot;, &quot;scope&quot;: &quot;personal&quot;, &quot;path&quot;: &quot;notes/one.md&quot;,
+ &quot;sha256&quot;: &quot;…&quot;, &quot;wikilinks&quot;: [&quot;Other Note&quot;], &quot;redacted&quot;: 1, &quot;created&quot;: true,
+ &quot;created_at&quot;: &quot;2026-10-08T12:00:00Z&quot;}</code></pre>
+<p>Every refusal is an RFC 9457 problem document (<code>application/problem+json</code>) of <code>type</code>, <code>title</code>, <code>status</code> and <code>detail</code>; the CLI prints the detail, so the reader sees the server's sentence rather than the JSON.</p>
+<div class="doc-table"><table><thead><tr><th scope="col">status</th><th scope="col">problem</th><th scope="col">when</th></tr></thead><tbody><tr><td><code>400</code></td><td><code>sources/bad-body</code></td><td>not JSON, or <code>path</code>/<code>body</code> missing or not a string</td></tr><tr><td><code>400</code></td><td><code>sources/invalid-path</code></td><td>not a relative name inside a vault</td></tr><tr><td><code>400</code></td><td><code>sources/unknown-scope</code></td><td>a <code>scope</code> that is not <code>personal</code> or <code>shared</code></td></tr><tr><td><code>400</code></td><td><code>sources/unknown-kind</code></td><td>a <code>kind</code> that is not <code>import</code> or <code>agent_log</code></td></tr><tr><td><code>401</code></td><td>—</td><td>no bearer token, or one that names nobody</td></tr><tr><td><code>403</code></td><td><code>sources/not-your-scope</code></td><td>the folded scope is not in the asker's grant</td></tr><tr><td><code>413</code></td><td><code>sources/too-large</code></td><td>the body is over redaction's cap</td></tr><tr><td><code>422</code></td><td><code>sources/not-redactable</code></td><td>redaction refused the body; nothing was stored</td></tr><tr><td><code>500</code></td><td>—</td><td>a store failure; the detail stays server-side</td></tr></tbody></table></div>
+<h2 id="chat-exports-import-chatgpt-and-import-claude">Chat exports: <code>import chatgpt</code> and <code>import claude</code></h2>
+<pre class="doc-code"><code>livingbrain import chatgpt ~/Downloads/conversations.zip
+livingbrain import claude ~/Downloads/claude-export.zip --keyword migration
+livingbrain import chatgpt conversations.json --since 2026-01-01</code></pre>
+<p>The argument is the vendor's export zip — read in memory, straight out of the archive, never extracted to disk — or a bare <code>conversations.json</code>. Get the exports from ChatGPT (Settings → Data controls → Export data; the download link arrives by email) and Claude (Settings → Privacy → Export data).</p>
+<div class="doc-table"><table><thead><tr><th scope="col">flag</th><th scope="col">what it does</th></tr></thead><tbody><tr><td><code>--shared</code></td><td>import into the shared brain instead of your personal one (default <code>personal</code>)</td></tr><tr><td><code>--yes</code></td><td>upload without the confirmation prompt</td></tr><tr><td><code>--since &lt;date&gt;</code> / <code>--until &lt;date&gt;</code></td><td>keep conversations created on or after / before <code>YYYY-MM-DD</code></td></tr><tr><td><code>--keyword &lt;text&gt;</code></td><td>keep conversations whose title or messages contain the text, case-insensitively; repeatable, and any match keeps a conversation</td></tr><tr><td><code>--id &lt;id&gt;</code></td><td>keep the conversation with this id; repeatable</td></tr></tbody></table></div>
+<p>Both formats normalise into one conversation record. A branched chat — an edited or regenerated answer — keeps only the live branch: ChatGPT's <code>current_node</code> path up the <code>mapping</code> tree, Claude's branch whose leaf is the latest message. The system prompt, messages hidden from the conversation and abandoned siblings never leave the machine, and a parent chain that loops is cut rather than walked forever. The parsers are versioned — ChatGPT's and Claude's are both <code>1</code> today — and the number is recorded in every body as <code>parser-version</code>.</p>
+<p>Each conversation renders to one deterministic Markdown source at <code>chatgpt/&lt;conversation-id&gt;</code> or <code>claude/&lt;conversation-id&gt;</code>: a header with the title, source, parser version, conversation id and creation date, then one section per message whose heading is its citation key —</p>
+<pre class="doc-code"><code>## conversation:&lt;conversation-id&gt;#&lt;message-id&gt; (user · 2026-04-15T09:41:00Z · gpt-4o)</code></pre>
+<p>— which is the anchor any page generated from this source must cite. Non-text parts (image pointers) and file attachments become <code>Attachments:</code> references. A body that would pass the wire cap splits at a message boundary into <code>…/part-2</code>, <code>…/part-3</code>, …, each repeating the header; a single message too big for its section is truncated with a visible <code>[truncated]</code> marker.</p>
+<p>The order of the work is <code>markdown</code>'s: parse, select, render, redact — all locally — then the preview (the selected conversations oldest first, then the per-class redaction summary, e.g. <code>redaction: email: 2, openai_key: 1</code>), then the one <code>y/N</code> question, and only then the token and the socket; answering <code>n</code> makes no request at all. <code>--json</code> prints one object: <code>source</code>, <code>export</code>, <code>scope</code>, <code>conversations</code>, <code>files</code>, <code>created</code>, <code>unchanged</code>, <code>redacted</code>, <code>redaction</code> (counts per class) and a <code>sources</code> array of <code>{path, id, created}</code>. An unchanged export re-imports byte-identically, so the ledger's <code>(scope, sha256)</code> key reads rows back: the second run creates nothing.</p>
+<h2 id="not-built-here">Not built here</h2>
+<ul><li>Turning sources into pages — extraction is a later issue (#77). <code>wikilinks</code> are stored for the importer that will resolve them; nothing reads them yet.</li><li>An import UI in the web app (<code>app/</code>). The app exists; it has no import surface, and the path to a source today is this CLI and this route.</li><li>Listing, reading back or deleting sources over HTTP. The route answers <code>POST</code> only; <code>SourceStore::get</code>/<code>open</code> exist with no endpoint mounted over them.</li><li>A dry run. The preview is a preview, not a run: answering <code>n</code> is the way to stop.</li></ul>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

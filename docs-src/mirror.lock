@@ -1,0 +1,16 @@
+# Mirrored from Livingbrain-wiki/livingbrain. Regenerate with tools/sync-docs.sh.
+# The site does not edit these files: fix the product repo, then re-sync.
+repo    Livingbrain-wiki/livingbrain
+ref     main
+commit  7163b59102998029b594d2eccd5008a79346f641
+date    2026-10-16T07:51:17Z
+
+045d1c24e19dc7941f81d846060c66424ef72b8ee8f162dac1edf839d9c4c6d5  coding-agents.md
+71d47d948a1e317b3da2b178aec30e71498f696d969b8ed276197f4d69a1cea7  github.md
+794123d57d7f7562b13bae7f1c42306e6516ddc05d6605e12fef5187564090aa  import.md
+3ef7733268e8d27f31fc0bb721f52cbed09e665c5411c0541023e35eca455b9e  local-runner.md
+9b17f7e4a399431f44d77e2e624bd2db7286c44bf1a651ae5f273dbebbb3da6a  logs.md
+f053fbd169e4e7d51a50827f588f6675075da4056db0b722795e85885a7c4b8f  mcp.md
+6e8d5f032e0ca609649078cc7035e7afc4b12e44e125d18fff9e7fd8a5e93541  temporal-facts.md
+e522401d50fd5ca01aff8e1563229f4e56e25db73f885ad717eae8bc3639274b  usage-data.md
+70e700e9e3958bebce43614af6c5b41c08cc84a6c671fb8b6839c67fd5b981e7  telemetry.md
