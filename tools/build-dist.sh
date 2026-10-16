@@ -42,6 +42,15 @@ for f in assets/logos/*.svg; do
   cp "$f" dist/assets/logos/
 done
 
+# Films (the home page's 30-second film and its poster). A file with no row in
+# COPY.md (Films) fails the build, as logos do.
+mkdir -p dist/assets/films
+for f in assets/films/*; do
+  n=$(basename "$f")
+  grep -q "\`assets/films/$n\`" COPY.md || { echo "assets/films/$n has no row in COPY.md (Films)" >&2; exit 1; }
+  cp "$f" dist/assets/films/
+done
+
 for f in bricolage-grotesque.woff2 hanken-grotesk.woff2 jetbrains-mono.woff2; do
   cp "assets/fonts/$f" dist/assets/fonts/
 done

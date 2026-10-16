@@ -45,7 +45,7 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 
 | Page | What's on it |
 | :--- | :--- |
-| [`/`](index.html) | Short on purpose: the pitch, "Get started" (to the app) with the product-updates form under it, and the rotating 3D brain; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher over a device frame, with a row of harness logos; pricing as three cards; six link tiles; the footer waitlist |
+| [`/`](index.html) | Short on purpose: the pitch, "Get started" (to the app) with the product-updates form under it, and the rotating 3D brain; the 30-second film (`#film`) right after the hero; Listen, Write, Evolve as a bento of three looping illustrations; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher over a device frame, with a row of harness logos; pricing as three cards; six link tiles; the footer waitlist |
 | [`/how-it-works/`](how-it-works/index.html) | The team-chat thread (Slack shown) with its citation trail, the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | [`/agents/`](agents/index.html) | Coding harnesses: the planned harnesses as a logo grid (`#harnesses`), connect tabs and the CLI, agents ⇄ brain, agent logs, the prompt library, the learning layer, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | [`/integrations/`](integrations/index.html) | Code, chat, mail, imports, monitoring and logs, models, sister ventures. Names with logos where allowed |

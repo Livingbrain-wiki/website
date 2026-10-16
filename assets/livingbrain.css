@@ -830,6 +830,14 @@ html:not(.js) .stage { opacity: 1; }
 .kick__n { color: var(--accent); padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; letter-spacing: .06em; }
 .hs .go { margin-top: 32px; }
 
+/* home: the 30-second film (#film). Native controls; never autoplays. */
+#film.hs .sec__in { padding-top: clamp(48px, 6vw, 80px); }
+.film { margin: clamp(32px, 4vw, 48px) 0 0; min-width: 0; }
+.film__frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 20px; border: 1px solid var(--line2); background: #000; }
+.film__video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.film__video:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.film__cap { margin-top: 14px; font-size: clamp(16px, 1.6vw, 18px); color: var(--ink2); }
+
 /* scroll reveal: fade and rise, staggered by --i */
 .rv-wait { opacity: 0; transform: translateY(22px); }
 .rv-in { transition: opacity .8s var(--ease), transform .8s var(--ease), border-color .2s, background-color .2s; transition-delay: calc(var(--i, 0) * 90ms); }

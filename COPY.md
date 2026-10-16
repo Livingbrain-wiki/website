@@ -94,7 +94,7 @@ claim lives on one page; other pages link to it instead of repeating it.
 
 | Page | Job |
 | :--- | :--- |
-| `/` | Four short parts: the pitch with "Get started" (to the app), the product-updates form and the 3D brain; Listen, Write, Evolve in one sentence each, each over a small looping illustration; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher; pricing as three short cards. Then six link tiles to the subpages and the footer waitlist. No FAQ |
+| `/` | Five short parts: the pitch with "Get started" (to the app), the product-updates form and the 3D brain; the 30-second film (`#film`) under "See it in 30 seconds"; Listen, Write, Evolve in one sentence each, each over a small looping illustration; where you use it (coding harnesses, CLI, app, team chat: Slack and Discord) as one switcher; pricing as three short cards. Then six link tiles to the subpages and the footer waitlist. No FAQ |
 | `/how-it-works/` | The team-chat moment (Slack shown), the three animated steps and the pipeline, the nightly loop and one night in the brain, the explorable sample brain, acts and learns, You own it (`#own`) |
 | `/agents/` | Coding harnesses (nav label "Harnesses"; the URL stays `/agents/`): the planned harnesses as a logo grid (`#harnesses`), connecting over MCP or the CLI, context in and decisions out, agent logs, the prompt library, learning from sessions, fewer tokens and the open benchmark (`#tokens`), Colonizer (`#colonizer`) |
 | `/integrations/` | Grouped names, each with its logo where allowed: chat, mail, imports, code, monitoring and logs, models, sister ventures |
@@ -374,3 +374,17 @@ Rows added or changed for the product update. Each is backed by the product repo
 | Imports: upload Markdown or text (or a folder) into personal or shared scope, optional project | /guides/imports/, /integrations/ #imports | `app/assets/imports.js`, `app/wiki.html` Imports, PR #208 |
 | Temporal facts, and the GitHub App ingest | /guides/facts-and-dreaming/, /guides/github-app/ | `docs/temporal-facts.md`, `docs/github.md` |
 | Living Brain for Mac 0.1.2 and bundled CLI 0.1.2 | /download/, llms.txt, COPY row above | `macos-v0.1.2` (to be published: see the PR's merge note) |
+
+## Films
+
+The 30-second film on the home page, right after the hero (`#film`), with its
+poster. One MP4 and one JPEG under `assets/films/`; the build fails if a file
+there has no row in this section.
+
+| Claim | Where | Backed by |
+| :--- | :--- | :--- |
+| "See it in 30 seconds": a 30-second motion film, labelled "Illustration". It shows a team deciding things, agent sessions with a decision and a merged PR, a fact card with its history, the brain forming, a question ("Who owns billing?") with a cited answer, and the end card "A brain for your team." | `/` #film | `assets/films/livingbrain-film.mp4` (1920×1080, H.264, AAC, 30 s). Illustration with sample data only: the names, PR numbers and facts in it are invented. It makes no claim beyond the rows above (team chat and agent sessions, cited answers, facts with history), each already marked planned or live where it stands |
+| Caption: "A brain for your team. 30 seconds." | `/` #film, under the film | Same claim as the hero row "A brain for your team…" |
+| Poster: the film's end card, shown before play | `/` #film | `assets/films/livingbrain-poster.jpg` (1920×1080) |
+| Film music: Mixkit "Uplifting Bass" | Film only (not on the page) | Mixkit stock music; the licence is Mixkit's, see its terms. Attribution not shown on the page |
+| Film narration: synthetic voice from MiniMax | Film only (not on the page) | Generated with MiniMax text-to-speech; not a recording of a person |
