@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Brain jobs on your subscription · Living Brain docs</title>
+<meta name="description" content="Let your own Claude Code or Codex answer brain jobs on your Mac, with tools off and a read-only sandbox.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/local-runner/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/local-runner/">
+<meta property="og:title" content="Brain jobs on your subscription · Living Brain docs">
+<meta property="og:description" content="Let your own Claude Code or Codex answer brain jobs on your Mac, with tools off and a read-only sandbox.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Brain jobs on your subscription · Living Brain docs">
+<meta name="twitter:description" content="Let your own Claude Code or Codex answer brain jobs on your Mac, with tools off and a read-only sandbox.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Brain jobs on your subscription</h1>
+    <p class="lede">Let your own Claude Code or Codex answer brain jobs on your Mac, with tools off and a read-only sandbox.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/local-runner.md">docs/local-runner.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p>Living Brain can use a <strong>Claude Pro/Max</strong> or <strong>ChatGPT Plus/Pro</strong> subscription as the model for the brain's jobs (compiling your coding-agent sessions, answering Ask) — but only the way those subscriptions are allowed to be used: inside the vendor's own client, on your own machine.</p>
+<h2 id="the-rule-this-is-built-around">The rule this is built around</h2>
+<p>Anthropic and OpenAI permit consumer subscriptions only inside their own clients (Claude Code, Codex). So a subscription's credentials — the Claude.ai OAuth token, the &quot;Sign in with ChatGPT&quot; token — are <strong>never</strong> sent to, stored on, or used from the Living Brain server. Instead:</p>
+<ol><li>You choose &quot;run my jobs on my device&quot; (Settings → Models, the <em>Claude subscription</em> or <em>ChatGPT subscription</em> card).</li><li>When one of your jobs needs a model, the server queues it instead of calling an API. The job holds the same redacted prompt an API model would have been sent.</li><li><code>livingbrain jobs run</code> (or the Mac app, which runs it for you) claims the job, runs <strong>your</strong> <code>claude</code> or <code>codex</code> with the prompt, and posts the text back. The server redacts and validates the answer again on arrival.</li></ol>
+<p>Only the job's owner can claim it; a claim is a lease, and a job whose runner went away becomes claimable again when the lease lapses. Tokens the CLI reports are recorded as usage at no cost to the workspace.</p>
+<h2 id="which-jobs-and-how-they-wait">Which jobs, and how they wait</h2>
+<ul><li><strong>Compiling your coding-agent sessions</strong> (<code>docs/coding-agents.md</code>): each model call becomes a job and the compile shows <code>waiting-runner</code>. When your runner posts the answer, it must parse as the compile's closed edit list or the job fails (<code>model-runner-bad-output</code>) and the compile retries. A valid answer continues the compile in the same request, from the chunk where it stopped.</li><li><strong>Ask</strong> (<code>POST /v1/ask</code>): retrieval runs as always, over your own scopes. The answer is then written by your runner instead of the workspace's model, and the route returns <code>202 {&quot;status&quot;: &quot;pending&quot;, &quot;job&quot;, &quot;poll&quot;, &quot;retry_after&quot;, &quot;citations&quot;, …}</code>. The client polls <code>GET /v1/model-jobs/{job}</code> until it leaves <code>queued</code>/<code>claimed</code>, then sends the same ask again. That second ask reads the runner's answer, redacted and citation-checked exactly like a model's (<code>mode: &quot;model&quot;</code>, <code>model.provider: &quot;local-runner:claude&quot;</code>). <code>livingbrain ask</code>, the web app and the Mac app all wait up to 5 minutes and say what they are waiting for. Because the answer costs the workspace nothing, the monthly model budget does not gate it.</li></ul>
+<h2 id="what-runs">What runs</h2>
+<p>The prompt (the job's user turn) goes on <strong>stdin</strong>. Each job runs in a fresh, empty, private temp directory that is deleted afterwards, with the Living Brain token removed from the child's environment. Verified against Claude Code 2.1.300 and codex-cli 0.148.0:</p>
+<pre class="doc-code"><code class="language-sh"># Claude Code — no tools, no MCP servers, no settings, no slash commands, one turn
+claude -p --output-format json --tools &quot;&quot; --permission-mode dontAsk \
+  --strict-mcp-config --setting-sources &quot;&quot; --disable-slash-commands \
+  --no-session-persistence --max-turns 1 --system-prompt &lt;instructions&gt; \
+  [--model &lt;sonnet|opus|haiku|fable|full id&gt;]
+
+# Codex — the read-only sandbox, ephemeral, user config and rules ignored;
+# stdin is the instructions, a blank line, then the prompt
+codex exec --sandbox read-only --skip-git-repo-check --ephemeral \
+  --ignore-user-config --ignore-rules --json --color never \
+  -C &lt;tmpdir&gt; -o &lt;tmpdir&gt;/last-message.txt [-m &lt;model&gt;] -</code></pre>
+<p><code>--setting-sources user</code> replaces <code>&quot;&quot;</code> only for a job set up as &quot;Claude Code pointed at Z.AI's GLM Coding Plan&quot;, which lives in your own Claude Code settings. No permission-bypass flag (<code>--dangerously-skip-permissions</code>, <code>bypassPermissions</code>, <code>--dangerously-bypass-approvals-and-sandbox</code>, <code>danger-full-access</code>) is ever passed; the CLI refuses to run a job whose command line would hold one.</p>
+<p>Nothing of a prompt, an answer or the CLI's own output is logged. A failure is reported (locally and to the server) as one of <code>timeout</code>, <code>cli-missing</code>, <code>not-logged-in</code>, <code>cli-error</code>, <code>bad-output</code>.</p>
+<h2 id="commands">Commands</h2>
+<pre class="doc-code"><code class="language-sh">livingbrain jobs agents            # which CLIs are installed and signed in
+livingbrain jobs run               # run your jobs until Ctrl-C (one at a time)
+livingbrain jobs run --once        # at most one job, then exit
+livingbrain jobs run --agent codex # use Codex for every job
+livingbrain --json jobs run        # one JSON event per line (the Mac app reads these)</code></pre>
+<p>Options: <code>--poll &lt;s&gt;</code> (default 5) between polls when idle, <code>--timeout &lt;s&gt;</code> (default 300) per job, <code>--claude &lt;path&gt;</code> / <code>--codex &lt;path&gt;</code> when the binary is not on <code>PATH</code>. A signed-out Living Brain token exits with status 2.</p>
+<p><code>--json</code> events: <code>started</code>, <code>claimed</code> (<code>job</code>, <code>kind</code>, <code>agent</code>, <code>model</code>), <code>done</code> (<code>job</code>, <code>kind</code>, <code>seconds</code>, <code>prompt_tokens</code>, <code>completion_tokens</code>), <code>failed</code> (<code>job</code>, <code>reason</code>), <code>error</code> (<code>message</code>; the runner keeps going with backoff), <code>stopped</code>.</p>
+<h2 id="headless-a-server-colony1-omarchy-any-linux-box">Headless (a server, colony1, omarchy, any Linux box)</h2>
+<pre class="doc-code"><code class="language-sh">livingbrain login                 # device flow: approve in any browser
+claude auth login                 # or: codex login — on this machine, once
+livingbrain jobs run --agent claude</code></pre>
+<p>As a systemd user service:</p>
+<pre class="doc-code"><code class="language-ini"># ~/.config/systemd/user/livingbrain-jobs.service
+[Unit]
+Description=Living Brain jobs on my Claude subscription
+After=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/livingbrain jobs run --agent claude
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target</code></pre>
+<pre class="doc-code"><code class="language-sh">systemctl --user daemon-reload
+systemctl --user enable --now livingbrain-jobs
+journalctl --user -u livingbrain-jobs -f   # job ids, timings and token counts only</code></pre>
+<p>On a headless Linux box the CLI's token lives in the Secret Service keychain; where there is none, set <code>LIVINGBRAIN_TOKEN</code> in the unit's environment from a personal access token (Settings → Tokens).</p>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

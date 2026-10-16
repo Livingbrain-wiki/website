@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Anonymous usage data · Living Brain docs</title>
+<meta name="description" content="The counted batch the CLI and self-hosted servers may send, field by field, and what is never in it.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/usage-data/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/usage-data/">
+<meta property="og:title" content="Anonymous usage data · Living Brain docs">
+<meta property="og:description" content="The counted batch the CLI and self-hosted servers may send, field by field, and what is never in it.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anonymous usage data · Living Brain docs">
+<meta name="twitter:description" content="The counted batch the CLI and self-hosted servers may send, field by field, and what is never in it.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Anonymous usage data</h1>
+    <p class="lede">The counted batch the CLI and self-hosted servers may send, field by field, and what is never in it.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/usage-data.md">docs/usage-data.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p>Living Brain is open-core and self-hostable, so the answer to &quot;what do you send, and when&quot; has to be readable rather than reassuring. This page is that answer for the usage batch: what it is meant to send is <strong>a counted batch of numbers</strong> — how much Living Brain was used, never by whom. It is <strong>on by default</strong>.</p>
+<p><strong>Nothing in this repository sends it.</strong> What you can check today is the batch itself: <code>livingbrain telemetry status</code> prints the exact batch it would send — every key, every number, verbatim — when you ask for it. The batch is <strong>off with one command or one environment variable</strong>, and the environment variable always wins over the stored preference.</p>
+<p>The code is <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-telemetry">undefined</a>; <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-telemetry/src/usage.rs">undefined</a> is the whole of the payload, and every name on this page is a name in that file.</p>
+<h2 id="what-is-in-a-batch">What is in a batch</h2>
+<p>One <code>UsageBatch</code> per on-period. The key set is fixed, and <code>UsageBatch::new</code> is the constructor that stamps <code>payload_version</code> and starts the maps empty. <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-telemetry/tests/anonymity.rs">undefined</a> asserts the serialised payload has <strong>exactly</strong> these nine top-level keys and no others.</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Key</th><th scope="col">JSON type</th><th scope="col">Meaning</th><th scope="col">Allowed values</th></tr></thead><tbody><tr><td><code>payload_version</code></td><td>integer</td><td>The wire version this build produces (<code>USAGE_PAYLOAD_VERSION</code>, currently <code>1</code>). A receiver checks it before reading anything else.</td><td>—</td></tr><tr><td><code>usage_id</code></td><td>string</td><td>A random id for this on-period, 16 characters of <code>[a-z0-9]</code>.</td><td>validated by <code>UsageId::new</code></td></tr><tr><td><code>version</code></td><td>string</td><td>The sender's own crate version.</td><td>validated by <code>Version::new</code></td></tr><tr><td><code>platform</code></td><td>string</td><td>Which host this was.</td><td><code>linux</code>, <code>macos</code>, <code>windows</code>, <code>wasm</code>, <code>other</code></td></tr><tr><td><code>period_end_unix</code></td><td>integer</td><td>When the on-period ends, in seconds since the Unix epoch. A timestamp, not an interval, so two batches can be ordered without trusting either sender's clock arithmetic.</td><td>—</td></tr><tr><td><code>counters</code></td><td>object</td><td>Magnitudes, keyed by <code>Count</code>. Value is an integer.</td><td>keys: <code>workspaces</code>, <code>pages</code>, <code>brain_turns</code>, <code>mcp_calls</code></td></tr><tr><td><code>latencies</code></td><td>object</td><td>Bucketed durations, keyed by <code>Latency</code>. Value is a bucket string.</td><td>keys: <code>search</code></td></tr><tr><td><code>outcomes</code></td><td>object</td><td>The last outcome of each unit of work, keyed by <code>OutcomeMetric</code>. Value is an <code>Outcome</code> string.</td><td>keys: <code>nightly_evolve</code>, <code>brain_turn</code>, <code>mcp_call</code></td></tr><tr><td><code>errors</code></td><td>object</td><td>Failures, classified and counted, keyed by <code>ErrorKind</code>. Value is an integer.</td><td>keys: <code>config</code>, <code>upstream</code>, <code>timeout</code>, <code>decode</code>, <code>permission</code>, <code>internal</code></td></tr></tbody></table></div>
+<p>An empty map is an <strong>absent fact</strong>, not a zero: a receiver can tell &quot;no search ran this period&quot; from &quot;no search was measured&quot;, which a pre-filled zero in every bucket could not. The maps are <code>BTreeMap</code>s, so the wire is sorted and a diff of two batches is readable.</p>
+<h3 id="the-two-string-fields">The two string fields</h3>
+<p>Both are newtypes whose only constructor is a validator, and <code>UsageBatch</code> has no <code>String</code> field at all. The fields themselves are <code>pub</code>, so this is a <strong>validator-based</strong> guarantee rather than a sealed-constructor one: a caller that writes a struct literal — <code>UsageBatch { payload_version: 999, .. }</code> — compiles and serialises, and so does assigning to a field after <code>new</code>. What the types do guarantee is that a value which could carry free text cannot be put in these two fields through their constructors.</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Field</th><th scope="col">Rule</th><th scope="col">Refused</th></tr></thead><tbody><tr><td><code>usage_id</code></td><td>exactly 16 characters, <code>[a-z0-9]</code> only</td><td>uppercase, hyphens, a UUID, anything shorter or longer</td></tr><tr><td><code>version</code></td><td><code>major.minor.patch</code>, each part one or more ASCII digits with no leading zero unless the number is exactly <code>0</code>; then optionally exactly one <code>-&lt;word&gt;.&lt;number&gt;</code>, where <code>word</code> is one of exactly four: <code>rc</code>, <code>alpha</code>, <code>beta</code>, <code>dev</code>. At most 32 characters, and no other character anywhere.</td><td><code>main</code>, <code>v0.1.0</code>, <code>01.1.0</code>, <code>0.1</code>, <code>1.2.3.4</code>, <code>1.2.3-rc1</code>, <code>0.1.0-dirty</code>, <code>/home/alice/src/livingbrain</code>, <code>alice@example.com</code>, a 40-character commit hash (over the cap — which is why the cap is 32), and the fingerprint-shaped values below</td></tr></tbody></table></div>
+<p>The version grammar is deliberately tighter than semver, because a looser &quot;digits, dots and hyphens&quot; rule is still free text: a person's checkout and this crate's released versions are the same characters in the same order. Verified against the crate:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Value</th><th scope="col">Result</th></tr></thead><tbody><tr><td><code>0.1.0</code></td><td>accepted</td></tr><tr><td><code>1.2.3-rc.1</code>, <code>0.2.0-beta.3</code>, <code>1.0.0-alpha.1</code>, <code>1.0.0-dev.12</code></td><td>accepted</td></tr><tr><td><code>2026.10.08</code></td><td><strong>refused</strong> — <code>08</code> has a leading zero</td></tr><tr><td><code>1.2.3-rc1</code></td><td>refused — a prerelease suffix is <code>-rc.N</code>, not <code>-rc1</code></td></tr><tr><td><code>0.1.0-dirty</code></td><td>refused — <code>dirty</code> is not one of the four words</td></tr><tr><td><code>v0.1.0</code></td><td>refused — <code>v</code> is not part of the grammar</td></tr><tr><td><code>0.1.0-3-gabc1234-dirty</code></td><td>refused — a second hyphen group: this is <code>git describe</code></td></tr><tr><td><code>2026.10.08-alice-laptop</code></td><td>refused — a build stamped with a person's name</td></tr><tr><td><code>1jane-doe-macbook-2026</code></td><td>refused — the same, spelled differently</td></tr><tr><td><code>1workspace-acme-corp</code></td><td>refused — a build stamped with a workspace</td></tr></tbody></table></div>
+<p>The last four are refused <strong>because</strong> they carry somebody's machine onto the wire while looking like a version number, not because they are untidy. Semver is looser in exactly the two places that matter here: it accepts any dot-separated identifier as a prerelease tag and any dot-separated identifier as build metadata, and either can be a name.</p>
+<h3 id="how-a-batch-is-filled">How a batch is filled</h3>
+<p><code>UsageBatch</code> exposes four <code>&amp;mut self</code> methods, so a caller counts rather than sets and never has to read the batch first:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Method</th><th scope="col">Effect</th></tr></thead><tbody><tr><td><code>count_by(Count, u64)</code></td><td>adds to a counter, creating it at zero first. <strong>Saturating</strong>, not <code>+=</code>: a debug build panics on overflow and a release build wraps, so a plain add would make the count a reader sees depend on how the binary was compiled. A counter that reaches <code>u64::MAX</code> is already nonsense, and pinning it there is the honest reading of &quot;more than we can count&quot;.</td></tr><tr><td><code>observe_latency(Latency, Duration)</code></td><td>buckets the duration immediately, so no caller can pass a number that would later be recognised</td></tr><tr><td><code>record_outcome(OutcomeMetric, Outcome)</code></td><td>sets the outcome of a unit of work</td></tr><tr><td><code>count_error(ErrorKind, u64)</code></td><td>adds to a classified failure count</td></tr></tbody></table></div>
+<h2 id="the-closed-vocabularies">The closed vocabularies</h2>
+<p>Every non-numeric value in the payload is a variant of one of these. The wire string is the same one <code>as_str()</code> returns, and <code>tests/anonymity.rs</code> asserts the two agree for every variant, so a rename on one side is a failing test rather than a silently new vocabulary word.</p>
+<p><strong><code>platform</code></strong></p>
+<div class="doc-table"><table><thead><tr><th scope="col">Variant</th><th scope="col">Wire string</th></tr></thead><tbody><tr><td><code>Platform::Linux</code></td><td><code>linux</code></td></tr><tr><td><code>Platform::Macos</code></td><td><code>macos</code></td></tr><tr><td><code>Platform::Windows</code></td><td><code>windows</code></td></tr><tr><td><code>Platform::Wasm</code></td><td><code>wasm</code></td></tr><tr><td><code>Platform::Other</code></td><td><code>other</code></td></tr></tbody></table></div>
+<p><code>other</code> is a real bucket rather than an <code>Unknown</code>: an unrecognised platform is a fact about a platform, and dropping it would make the total number of installs disagree with the number of known platforms.</p>
+<p><strong><code>Count</code> — the keys of <code>counters</code></strong>: <code>Count::Workspaces</code> → <code>workspaces</code>, <code>Count::Pages</code> → <code>pages</code>, <code>Count::BrainTurns</code> → <code>brain_turns</code>, <code>Count::McpCalls</code> → <code>mcp_calls</code>.</p>
+<p><strong><code>Latency</code> — the keys of <code>latencies</code></strong>: <code>Latency::Search</code> → <code>search</code>. One variant today, and that is the point: measuring a new latency is a deliberate addition to the schema.</p>
+<p><strong><code>LatencyBucket</code> — the values in <code>latencies</code></strong></p>
+<div class="doc-table"><table><thead><tr><th scope="col">Variant</th><th scope="col">Wire string</th><th scope="col">Duration</th></tr></thead><tbody><tr><td><code>LatencyBucket::Under50ms</code></td><td><code>lt_50ms</code></td><td>under 50 ms</td></tr><tr><td><code>LatencyBucket::Under250ms</code></td><td><code>lt_250ms</code></td><td>50 ms up to but not including 250 ms</td></tr><tr><td><code>LatencyBucket::Under1s</code></td><td><code>lt_1s</code></td><td>250 ms up to but not including 1 s</td></tr><tr><td><code>LatencyBucket::Under5s</code></td><td><code>lt_5s</code></td><td>1 s up to but not including 5 s</td></tr><tr><td><code>LatencyBucket::Over5s</code></td><td><code>gt_5s</code></td><td>5 s and over</td></tr></tbody></table></div>
+<p>The convention is <strong>half-open, lower bound inclusive</strong>: a bucket covers <code>[lower, next lower)</code>, so 50 ms is <code>lt_250ms</code> and 250 ms is <code>lt_1s</code>. No gap, no double count. The boundaries are chosen so the interesting one — under a second, which is whether an interaction feels instant — is a boundary, and so that a slow call cannot be told from a fast one by the shape of its bucket.</p>
+<p><strong><code>OutcomeMetric</code> — the keys of <code>outcomes</code></strong>: <code>OutcomeMetric::NightlyEvolve</code> → <code>nightly_evolve</code>, <code>OutcomeMetric::BrainTurn</code> → <code>brain_turn</code>, <code>OutcomeMetric::McpCall</code> → <code>mcp_call</code>.</p>
+<p><strong><code>Outcome</code> — the values in <code>outcomes</code></strong>: <code>Outcome::Success</code> → <code>success</code>, <code>Outcome::Failure</code> → <code>failure</code>, <code>Outcome::Skipped</code> → <code>skipped</code>. An <code>Outcome</code>, not a number, because &quot;how many brain turns failed&quot; is a fact about the software and &quot;which page failed&quot; is a fact about a person.</p>
+<p><strong><code>ErrorKind</code> — the keys of <code>errors</code></strong>: <code>ErrorKind::Config</code> → <code>config</code>, <code>ErrorKind::Upstream</code> → <code>upstream</code>, <code>ErrorKind::Timeout</code> → <code>timeout</code>, <code>ErrorKind::Decode</code> → <code>decode</code>, <code>ErrorKind::Permission</code> → <code>permission</code>, <code>ErrorKind::Internal</code> → <code>internal</code>. Closed so a new kind is a code change someone reviewed: an open error taxonomy is where &quot;the model returned an error mentioning the user's question&quot; would arrive.</p>
+<h2 id="a-batch-on-the-wire">A batch on the wire</h2>
+<p>Produced by running the crate against a fully populated batch — every key used, every vocabulary word exercised once:</p>
+<pre class="doc-code"><code class="language-json">{&quot;payload_version&quot;:1,&quot;usage_id&quot;:&quot;k3m9q7w2x5b8n4c1&quot;,&quot;version&quot;:&quot;0.1.0&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;period_end_unix&quot;:1700000000,&quot;counters&quot;:{&quot;workspaces&quot;:3,&quot;pages&quot;:3,&quot;brain_turns&quot;:3,&quot;mcp_calls&quot;:3},&quot;latencies&quot;:{&quot;search&quot;:&quot;lt_250ms&quot;},&quot;outcomes&quot;:{&quot;nightly_evolve&quot;:&quot;success&quot;,&quot;brain_turn&quot;:&quot;success&quot;,&quot;mcp_call&quot;:&quot;success&quot;},&quot;errors&quot;:{&quot;config&quot;:1,&quot;upstream&quot;:1,&quot;timeout&quot;:1,&quot;decode&quot;:1,&quot;permission&quot;:1,&quot;internal&quot;:1}}</code></pre>
+<h2 id="what-can-never-be-in-the-payload">What can never be in the payload</h2>
+<p>This is a claim about the type system, not about a filter, and it is worth stating precisely because a claim like it is worth nothing as a comment.</p>
+<p><strong>Every scalar is an integer or a word from a closed compile-time vocabulary.</strong> The four maps are keyed by <code>Count</code>, <code>Latency</code>, <code>OutcomeMetric</code> and <code>ErrorKind</code> and valued by <code>u64</code>, <code>LatencyBucket</code> and <code>Outcome</code> — all <code>Copy</code> enums with no data in their variants. <code>tests/anonymity.rs</code> walks the serialised payload of a fully-populated batch to every depth and asserts that every number is a <code>u64</code> or <code>i64</code>, every string is either <code>usage_id</code>, <code>version</code> or a member of a vocabulary built by iterating the enums themselves, and every map key is a vocabulary word too — so a counter cannot be filed under a name somebody typed.</p>
+<p><strong>Everything measured is a count or a duration bucket, never a raw measurement.</strong> <code>observe_latency</code> calls <code>bucket_latency</code> before it stores anything, so the exact figure is not available to be sent — and the open-ended top bucket is deliberate: the exact figure is the interesting part, and this payload is not where it can go.</p>
+<p><strong>Adding a new measurement means adding an enum variant</strong>, which is a reviewable code change. There is no <code>&amp;str</code> field on <code>UsageBatch</code> a caller could fill with a sentence, and there is no sanitising step that could get the answer wrong. <code>the_only_string_fields_are_the_two_validated_ids</code> in <code>tests/anonymity.rs</code> pins every field to its concrete type by assignment (<code>let _: u64 = batch.period_end_unix;</code> and so on), so changing what a field holds is a change a compiler sees; adding a free-text field is a change a reviewer sees.</p>
+<h3 id="the-two-ids-and-the-one-thing-that-gets-through">The two ids, and the one thing that gets through</h3>
+<p>A charset cannot tell a ULID from a token. Any string matching <code>[A-Za-z0-9._:-]</code> of at most 128 characters passes the opaque-id validators used by the event log — and <strong>hyphens are in that charset</strong>, so a real, hyphenated Slack bot token fits it. Reproduced against the crate: <code>Event::new(BrainTurn, &quot;&lt;slack-token-shaped id&gt;&quot;, 1)</code> — the placeholder stands for a real hyphenated Slack bot token, not printed here so a secret scan of the source bytes never matches it — returns <code>Ok</code>, and that token lands verbatim in the emitted line. The same is true of <code>Subject::new</code> and of <code>Event::with_colony</code>.</p>
+<p><strong>That limitation is not about this payload.</strong> A Slack token is 39 characters, not 16, so <code>UsageId::new</code> refuses it; and it is not <code>major.minor.patch</code>, so <code>Version::new</code> refuses it. Both refusals are asserted in <code>tests/anonymity.rs</code>, which is where &quot;the token cannot reach the wire&quot; is checked from outside the crate. Why the event-log half is tolerable today, and what would make it matter, is stated on <a href="/docs/telemetry/#the-two-guarantees">telemetry.md</a>; the redaction layer designed to sit upstream of it is on <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md#redaction">logging.md</a>.</p>
+<h2 id="turning-it-off">Turning it off</h2>
+<p>Two switches, both named verbatim in the announcement:</p>
+<pre class="doc-code"><code>livingbrain telemetry off      # for good: the stored preference
+LIVINGBRAIN_TELEMETRY=0        # for a run</code></pre>
+<p>Both exist today. <code>Telemetry::resolve</code> decides, and the rules are exact:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Environment value</th><th scope="col">Result</th></tr></thead><tbody><tr><td><code>0</code>, <code>false</code>, <code>off</code>, <code>no</code></td><td>forced <strong>off</strong>, whatever the stored preference says</td></tr><tr><td><code>1</code>, <code>true</code>, <code>on</code>, <code>yes</code></td><td>forced <strong>on</strong>, whatever the stored preference says</td></tr><tr><td>anything else, unset, or empty</td><td>the stored preference, unchanged</td></tr></tbody></table></div>
+<p>Matching is case-insensitive and surrounding whitespace is ignored, so <code>OFF</code>, <code>&quot; Yes &quot;</code> and <code> No </code> all work. <strong>An unrecognised value is ignored, not guessed at</strong> — a typo must not silently switch telemetry on or off, so <code>garbage</code> returns the stored preference in both directions.</p>
+<p><strong>The environment always wins over the stored preference.</strong> A variable set for one run is a deliberate act, and it should beat a preference written months ago.</p>
+<p>The default is <code>Telemetry::On</code>, and that is the part a reader of the licence deserves to notice: Living Brain sends counted usage out of the box. The way that is made honest is that the default is visible.</p>
+<h3 id="where-the-preference-is-stored">Where the preference is stored</h3>
+<p>The <strong>OS keychain</strong>, under the same service name the CLI's own auth uses — <code>wiki.livingbrain.cli</code> — with two keys:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Key</th><th scope="col">Holds</th><th scope="col">Default when absent</th></tr></thead><tbody><tr><td><code>telemetry.usage</code></td><td>the anonymous usage preference, <code>on</code> or <code>off</code></td><td><code>on</code> (<code>Telemetry::default</code>)</td></tr><tr><td><code>telemetry.live-map</code></td><td>the live-map preference, read-only from this command</td><td><code>off</code></td></tr></tbody></table></div>
+<p>The keychain rather than a dotfile, and the reason is not that these values are secret — they are not, they are two words — but that <strong>it is the only place the CLI already knows how to persist anything</strong>. A dotfile would be a <em>config file</em>, and this CLI has no config-file mechanism, no XDG lookup, no precedence rules and no migration story. Inventing one here for a two-word preference would add all of that, and a second thing to forget to wipe. The keychain gives a per-user, per-machine store that is wiped with the token and honours the same <code>LIVINGBRAIN_TEST_KEYRING=mock</code> seam that <code>auth</code> installs before any command runs, so the telemetry command needs no new test hook at all.</p>
+<p><strong>No dotfile is written.</strong> <code>the_preference_is_never_written_to_a_file</code> in <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-cli/tests/telemetry.rs">undefined</a> runs <code>telemetry off</code> in a scratch working directory with a scratch <code>$HOME</code> and asserts that the string <code>telemetry.usage</code> appears nowhere under either tree afterwards.</p>
+<h2 id="livingbrain-telemetry-on-off-status"><code>livingbrain telemetry on | off | status</code></h2>
+<p><code>on</code>, <code>off</code> and <code>status</code> are registered subcommands of the <code>livingbrain</code> CLI in <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-cli/src/telemetry.rs">undefined</a>, every one of them honours the global <code>--json</code> flag, and none needs a token or opens a socket, so all three work while logged out. <code>logout</code> qualifies too, since it only deletes one keychain entry.</p>
+<p><code>livingbrain telemetry --help</code>:</p>
+<pre class="doc-code"><code>Turn anonymous usage data on or off, and show what would be sent
+
+Usage: livingbrain telemetry [OPTIONS] &lt;COMMAND&gt;
+
+Commands:
+  on      Turn anonymous usage data on
+  off     Turn anonymous usage data off
+  status  Show what telemetry would send, and where it would go
+  help    Print this message or the help of the given subcommand(s)
+
+Options:
+      --json               Print a machine-readable JSON result (accepted by every command)
+      --api-url &lt;API_URL&gt;  Living Brain API base URL [env: LIVINGBRAIN_API_URL=] [default: https://app.livingbrain.wiki]
+  -h, --help               Print help</code></pre>
+<p><code>livingbrain telemetry status</code>:</p>
+<pre class="doc-code"><code>anonymous usage data: on  (stored on, LIVINGBRAIN_TELEMETRY unset)
+live map:              off — no install id exists, so nothing is sent
+sent to:               https://telemetry.livingbrain.wiki/v1/telemetry/events
+
+Living Brain sends anonymous usage data once per period: counts, bucketed durations and outcomes, with a random id and nothing that names a workspace, a person or a page.
+
+the period ending at unix 1791504000 (the next UTC midnight)
+
+turn it off for good:  livingbrain telemetry off
+turn it off for a run: LIVINGBRAIN_TELEMETRY=0
+
+exactly what this batch says, and nothing else does:
+{
+  &quot;payload_version&quot;: 1,
+  &quot;usage_id&quot;: &quot;deeb11daaa8cf1ef&quot;,
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;platform&quot;: &quot;linux&quot;,
+  &quot;period_end_unix&quot;: 1791504000,
+  &quot;counters&quot;: {},
+  &quot;latencies&quot;: {},
+  &quot;outcomes&quot;: {},
+  &quot;errors&quot;: {}
+}</code></pre>
+<p><code>status</code> prints the next batch <strong>verbatim</strong> — the same nine keys, serialised by the same <code>Serialize</code> impl the sender would use, not a rendering of one. Every map is empty, and that is on purpose: the command counts nothing, so inventing a plausible <code>3</code> for <code>counters.pages</code> would be a self-hoster looking at a number and believing their install reported three pages. While the preference resolves to off, the same batch is still printed under the line <code>the batch that would go, and nothing else would:</code>, with no announcement around it.</p>
+<p>The <code>live map:</code> line reads <code>opted in — no heartbeat from this command, which sends nothing</code> when <code>telemetry.live-map</code> is stored <code>on</code>, and the live map is otherwise not switchable from here — see <a href="/docs/telemetry/#the-cli-switch-is-read-only-for-the-map">telemetry.md</a>.</p>
+<p>Every one of these commands is machine-readable too. <code>livingbrain telemetry status --json</code> prints one object with the two halves side by side — <code>usage</code> (stored, resolved, the raw environment value, <code>env_var</code>, <code>endpoint</code>, and <code>next_batch</code>) and <code>live_map</code> (stored, <code>sends_heartbeat</code>, <code>endpoint</code>):</p>
+<pre class="doc-code"><code class="language-json">{&quot;live_map&quot;:{&quot;endpoint&quot;:&quot;https://telemetry.livingbrain.wiki/v1/telemetry/heartbeat&quot;,&quot;sends_heartbeat&quot;:false,&quot;stored&quot;:&quot;off&quot;},&quot;usage&quot;:{&quot;endpoint&quot;:&quot;https://telemetry.livingbrain.wiki/v1/telemetry/events&quot;,&quot;env&quot;:null,&quot;env_var&quot;:&quot;LIVINGBRAIN_TELEMETRY&quot;,&quot;next_batch&quot;:{&quot;counters&quot;:{},&quot;errors&quot;:{},&quot;latencies&quot;:{},&quot;outcomes&quot;:{},&quot;payload_version&quot;:1,&quot;period_end_unix&quot;:1791504000,&quot;platform&quot;:&quot;linux&quot;,&quot;usage_id&quot;:&quot;69d84b09690b4552&quot;,&quot;version&quot;:&quot;0.1.0&quot;},&quot;resolved&quot;:&quot;on&quot;,&quot;stored&quot;:&quot;on&quot;}}</code></pre>
+<p><code>livingbrain telemetry off</code>:</p>
+<pre class="doc-code"><code>Anonymous usage data is off. Nothing is collected and nothing is sent.
+turn it back on:       livingbrain telemetry on
+turn it on for a run:  LIVINGBRAIN_TELEMETRY=1</code></pre>
+<p><code>on</code> and <code>off</code> report the <strong>resolved</strong> value, not the stored one, so a run with <code>LIVINGBRAIN_TELEMETRY=0</code> cannot look like it worked:</p>
+<pre class="doc-code"><code>Anonymous usage data is on.
+turn it off for good:  livingbrain telemetry off
+turn it off for a run: LIVINGBRAIN_TELEMETRY=0
+
+note: LIVINGBRAIN_TELEMETRY is set to &quot;0&quot;, so it is off for this run whatever the stored preference says.</code></pre>
+<h4 id="how-the-id-is-minted">How the id is minted</h4>
+<p><strong>There is no period state in this repository.</strong> <code>status</code> mints a <strong>fresh</strong> <code>usage_id</code> on every invocation, by hashing the constant label <code>&quot;livingbrain-usage-id&quot;</code> through a freshly constructed <code>std::collections::hash_map::RandomState</code> and formatting the result as sixteen lowercase hex characters. Because each <code>RandomState</code> draws a different key from the operating system, three runs produce three different ids — checked, not assumed:</p>
+<pre class="doc-code"><code>$ for i in 1 2 3; do livingbrain telemetry status --json | jq -r .usage.next_batch.usage_id; done
+0f30b22a0231d9f3
+936597588ea62025
+f8ba212265fdc1cf</code></pre>
+<p>So &quot;the same id for every batch in the period&quot; is the <strong>contract the type intends</strong> (<code>UsageId</code>'s doc comment says the id is shared by every batch in a period) and is what a sender with real periods would do — but nothing here implements a period, and nothing persists an id. <code>cratefield_core::IdGen</code> is not used by this command or by this crate at all; in the workspace it is used by <code>livingbrain-models</code> to mint encryption nonces, and by the pages and workspaces crates for their own ids. The id is display-only: <code>status</code> shows it and sends nothing.</p>
+<h3 id="the-command-sends-nothing">The command sends nothing</h3>
+<p><code>on</code>, <code>off</code> and <code>status</code> are the switch and the local view. The transport belongs to whoever sends. Nothing in the <code>telemetry</code> command path constructs a <code>ureq</code> client at all: <code>main.rs</code> dispatches <code>Command::Telemetry</code> to <code>telemetry::run</code> without going through <code>client(&amp;cli)</code>, which is what every network-touching command does.</p>
+<p><code>no_connection_is_opened_by_on_off_or_status</code> in <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-cli/tests/telemetry.rs">undefined</a> is the regression guard for that. It sets the <code>LIVINGBRAIN_API_URL</code> <strong>environment variable</strong> — not the <code>--api-url</code> flag — plus all six proxy variables (<code>ALL_PROXY</code>, <code>HTTP_PROXY</code>, <code>HTTPS_PROXY</code> and their lowercase spellings) at one <code>TcpListener</code> the test owns, and blanks <code>NO_PROXY</code>/<code>no_proxy</code>. Blanking the two <code>NO_PROXY</code> variables is the load-bearing part of the redirect: an inherited <code>NO_PROXY</code> exempts the trap's own host by name, and the trap is on <code>127.0.0.1</code>, so it would answer every request itself and the test would prove nothing. The test then runs <code>status</code>, <code>off</code> and <code>on</code>, in the normal and the <code>LIVINGBRAIN_TELEMETRY=0</code> configurations, and fails if that listener ever accepts a connection — not if a request arrives, but if a socket is opened at all.</p>
+<p>Be precise about what that is worth: it is a guard against a <strong>sender being added</strong>, not a demonstration that a dial was ever in play. The trap is a sound one rather than a vacuous one — running <code>livingbrain login</code> through the same setup does land one accepted connection in it — but today it guards a path that has nothing to dial with. Its value is that the day someone wires a transport into this command, the test fails rather than the claim quietly becoming false.</p>
+<h2 id="the-announcement">The announcement</h2>
+<p><code>Telemetry::notice(&amp;batch, body)</code> builds it: both off switches verbatim, then the batch exactly as it will be sent, pretty. <code>body</code> is the sender's own line about the period (when it started, what it covered), included verbatim, so a caller cannot make the announcement say something the batch does not show. Its shape is the block reproduced under <a href="#livingbrain-telemetry-on--off--status">undefined</a> above, which is <code>notice</code> output verbatim with an empty batch; with a populated batch the trailing object is the same nine keys with every value filled in.</p>
+<p><strong><code>notice</code> returns a <code>String</code> and writes nothing.</strong> It is a pure function; there is no <code>eprintln!</code>, no <code>println!</code> and no file handle anywhere in <code>livingbrain-telemetry</code> — <code>usage.rs</code> and <code>events.rs</code> between them contain no output call at all. Its doc comment calls it &quot;the one announcement, printed once per on-period&quot;, and that is the <strong>intended behaviour of a future sender</strong>, not present tense.</p>
+<p><strong>Where it is printed today: <code>livingbrain telemetry status</code>, on stdout.</strong> <code>render_status</code> calls <code>print!(&quot;{}&quot;, Telemetry::notice(batch, &amp;body()))</code>, which is stdout, and it does so only because you ran <code>status</code>. The same command's <code>--json</code> form puts the batch under <code>usage.next_batch</code> instead. Nothing else prints the notice, and nothing prints it without being asked.</p>
+<p>The intended behaviour of the future sender — <strong>not built</strong> — is to print this same string once per on-period, on <strong>stderr</strong>, immediately before posting the batch, so it cannot be confused with command output. <strong>No such sender exists in this repository</strong>, and nothing prints the notice once per period by anything.</p>
+<h2 id="where-it-goes">Where it goes</h2>
+<p><code>USAGE_ENDPOINT</code>, a constant rather than a setting, because the question a self-hoster asks first is <em>where does my data go</em> and the answer should be one line they can read:</p>
+<pre class="doc-code"><code>https://telemetry.livingbrain.wiki/v1/telemetry/events</code></pre>
+<p>Counts are aggregated in the project's own store. There is no third-party analytics anywhere in the payload or the dependency graph: no segment, no mixpanel, no posthog, no vendor SDK that could see a batch.</p>
+<p><strong>What this crate does not do, honestly.</strong> It does not send anything. There is no HTTP client, no queue, no retry and no timer in <code>livingbrain-telemetry</code>: the endpoint is a constant, and the transport, the schedule, the storage of the preference and the minting of the random id all belong to the caller. The crate also generates no randomness, holds no clock and reads no configuration, so it pulls in no dependency that could do any of those behind its back. It has two dependencies: <code>serde</code> and <code>serde_json</code>.</p>
+<h2 id="related">Related</h2>
+<ul><li><a href="/docs/telemetry/">telemetry.md</a> — the opt-in live map, the structured event log, <code>x-trace-id</code>, OTLP and the dashboard</li><li><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md">logging.md</a> — which stream leaves the machine, how to read the event log, and the redaction rules</li></ul>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

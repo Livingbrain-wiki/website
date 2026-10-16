@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Agent logs · Living Brain docs</title>
+<meta name="description" content="The livingbrain logs commands: what is read, what is redacted, and what is sent when you opt in.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/agent-logs/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/agent-logs/">
+<meta property="og:title" content="Agent logs · Living Brain docs">
+<meta property="og:description" content="The livingbrain logs commands: what is read, what is redacted, and what is sent when you opt in.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Agent logs · Living Brain docs">
+<meta name="twitter:description" content="The livingbrain logs commands: what is read, what is redacted, and what is sent when you opt in.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Agent logs</h1>
+    <p class="lede">The livingbrain logs commands: what is read, what is redacted, and what is sent when you opt in.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logs.md">docs/logs.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p><code>livingbrain logs sync</code> reads the session logs your local coding agents already wrote — Claude Code under <code>~/.claude/projects</code>, Codex under <code>~/.codex/sessions</code> — and uploads the sessions whose repository you have opted in, one normalised <strong>source</strong> per session — and beside each one a short <strong>note</strong>, a searchable page filed under the repository's name, so the session turns up in <code>livingbrain search</code> and <code>livingbrain ask</code>. Nothing is read that you did not already have on disk; nothing is sent that you did not allow.</p>
+<h2 id="use-it">Use it</h2>
+<pre class="doc-code"><code>cd ~/work/demo
+livingbrain logs allow          # opt this repository in (detail: full)
+livingbrain logs allow --detail messages  # …or send messages only, no tool I/O
+livingbrain logs sync           # read local logs, upload this repo's sessions
+livingbrain logs sync --dry-run # report what would go, send nothing
+livingbrain logs status
+livingbrain logs deny</code></pre>
+<div class="doc-table"><table><thead><tr><th scope="col">command</th><th scope="col">what it does</th></tr></thead><tbody><tr><td><code>logs allow [path] [--detail full|messages|summary]</code></td><td>allow sessions whose log records a working directory inside <code>path</code> (default: the current directory), at a detail level (default <code>full</code> for a new path; an allowed path keeps its level unless <code>--detail</code> names one)</td></tr><tr><td><code>logs deny [path]</code></td><td>revoke a path <code>logs allow</code> added</td></tr><tr><td><code>logs status</code></td><td>print what is opted in, at which detail level, and where that is recorded</td></tr><tr><td><code>logs sync</code></td><td>read both agents' logs and upload the opted-in sessions</td></tr><tr><td><code>logs show &lt;file&gt;</code></td><td>print the redacted record <code>logs sync</code> would send for one session file, opted in or not; never touches the network. <code>--json</code> gives <code>{file, opted_in, redacted, body, record}</code>: <code>body</code> is the exact text, <code>record</code> its parse (<code>null</code> if redaction left it unparseable)</td></tr></tbody></table></div>
+<div class="doc-table"><table><thead><tr><th scope="col">flag</th><th scope="col">what it does</th></tr></thead><tbody><tr><td><code>--claude-dir &lt;dir&gt;</code></td><td>read Claude Code sessions from here instead of <code>~/.claude/projects</code></td></tr><tr><td><code>--codex-dir &lt;dir&gt;</code></td><td>read Codex sessions from here instead of <code>~/.codex/sessions</code></td></tr><tr><td><code>--dry-run</code></td><td>parse, normalise and report, but never touch the network</td></tr><tr><td><code>--session &lt;file&gt;</code></td><td><code>logs sync</code> only: scan just this session file (repeatable). It must sit under one of the two trees, and its repo must still be opted in</td></tr></tbody></table></div>
+<p><code>--json</code> prints one object: <code>scanned</code>, <code>uploaded</code>, <code>unchanged</code>, <code>skipped</code>, <code>unreadable</code> (a file that could not be read at all), <code>unparsed</code> (read, but no session in it), <code>redacted</code>, <code>dry_run</code> and a <code>sessions</code> array of <code>{agent, session_id, repo, models, turns, tool_calls, totals, truncated, detail, status, branch, started_at, ended_at, file, note?}</code> (<code>file</code> is the local path of the log; it is printed, never sent) — the status one of <code>uploaded</code>, <code>unchanged</code>, <code>skipped</code> (<code>reason: &quot;repo not opted in&quot;</code>) or <code>would_upload</code> under <code>--dry-run</code>. Every opted-in session also carries <code>note</code>: <code>{slug, project, status, id?, url?, error?}</code>, the status one of <code>written</code>, <code>unchanged</code>, <code>failed</code> or <code>would_write</code> under <code>--dry-run</code> (<code>null</code> for a session that recorded no repository), and the top level counts them in <code>notes</code>, e.g. <code>{&quot;written&quot;: 2}</code>.</p>
+<h2 id="find-a-session-again">Find a session again</h2>
+<p>A source in the ledger is not yet a page, and <code>search</code> and <code>ask</code> read pages. So once a session's source is in the ledger — uploaded, or already there — <code>logs sync</code> also writes it a note through <code>POST /v1/notes</code>, in your personal scope, filed under the <strong>project</strong> named after the repository's directory (<code>~/work/demo</code> files under <code>demo</code>). Filter on it:</p>
+<pre class="doc-code"><code>livingbrain search --project demo &quot;migration&quot;
+livingbrain ask --project demo &quot;what did we decide about the migration?&quot;</code></pre>
+<p>The project filter runs before the result limit, so <code>--project</code> answers with up to <code>--limit</code> of that project's pages however many other pages match too.</p>
+<p>The note is the session, readable: a header (agent, session id, repository, branch, first and last timestamp, models, message and tool-call counts, token and cost totals, detail level, the id of the source and a link to its full transcript), then the conversation in order — every user and assistant message, reasoning summaries quoted, events (an interruption, a compaction) as a line, and each tool call as a compact block: its name, file and outcome (<code>ok</code>/<code>error</code>, exit code), its command or patch in a fenced block, and its result in another, clipped to head and tail.</p>
+<p>A page must fit the notes route's 64 KiB request limit, so the note is held to 48 KiB (measured as the JSON-escaped text it travels as). A long session is first quoted less — each message, input and result clipped harder, down to commands without results — and if it still does not fit, the page keeps the opening turns and the most recent ones, with a line saying how many sit between and linking the full transcript. It is built from the same home-elided, redacted record as the source and redacted again on this machine before it is sent; the notes route redacts again on arrival.</p>
+<h2 id="read-the-whole-transcript">Read the whole transcript</h2>
+<p>The web app's <strong>Agent sessions</strong> view (<code>wiki.html?view=sessions</code>) lists your sessions, one row per session (a re-sync after an upgrade files a new source beside the old one; the newest is the one listed). Each opens its transcript at <code>wiki.html?view=sessions&amp;source=&lt;id&gt;</code>, read from <code>GET /v1/sources/{id}</code> — which returns the body to its owner under the same rules as the listing, by bearer token or by the web app's session cookie — and drawn turn by turn: messages in full (the agent's as markdown, the person's as typed), reasoning summaries folded, tool calls with their commands, patches and results, long results folded. Nothing is drawn with <code>innerHTML</code>: every node is built element by element, so nothing in a transcript can become markup.</p>
+<p>A subagent is a card inside the call that launched it — <code>🤖 name · model · duration · tokens · status</code>, its task, its final answer — indented on a rule, with its other turns drawn only when <strong>Show steps</strong> is pressed (a subagent can run hundreds). The session's header names its main model and its subagents, and a turn names its model where it changed.</p>
+<p>The Mac app's Recent Sessions view shows the same record, built locally by <code>livingbrain logs show &lt;file&gt;</code>, subagents nested the same way.</p>
+<p>Notes are idempotent too. Each is keyed by agent and session — <code>agent-log-&lt;agent&gt;-&lt;session-id&gt;</code> — so a session that grew updates its one page in place, and a re-sync of an unchanged session sends the same note, which the server recognises and does not write (<code>status: &quot;unchanged&quot;</code>). A note the server refuses — say, because someone edited that page by hand — is reported as <code>failed</code> with the reason; the session's source is in the ledger regardless, and the next sync tries the note again.</p>
+<p>A note is a <strong>session</strong> page (entity type <code>session</code>), not a wiki page: it is a source the coding-agents wiki is compiled from, so the web app lists it under Sources → Agent sessions and keeps it out of Pages (search and <code>ask</code> still find and cite it). Its title names the session the way a person would: <code>EarthOS.world · Claude Code · 2026-10-15 · Fix the login redirect loop</code> — the project, the agent, the day it started and the first thing asked, cut to 60 characters. A client that sends only an id-shaped title (<code>colonizer session a15f…</code>) gets one the server reads from the note itself; for a Colonizer colony that is the issue it worked on, else its pull request, else its outcome (<code>EarthOS.world · Colony a15fba01 · #123 Fix auth redirect</code>). Notes synced before this were decisions titled by id: the notes module's cron moves them to <code>session</code> and renames them, a batch every 5 minutes, and a session's next sync does the same for its own page.</p>
+<h2 id="opt-in-is-per-repository">Opt-in is per repository</h2>
+<p>The opt-in is a small JSON file in the CLI's config directory (<code>$XDG_CONFIG_HOME/livingbrain/logs-allow.json</code>, else <code>~/.config/livingbrain/logs-allow.json</code>), listing absolute paths. A session counts as opted in when the working directory its log records sits <strong>inside</strong> an allowed path — so allowing a repository's root covers its subdirectories, which is what a monorepo needs and what running <code>logs allow</code> at the root means.</p>
+<p>Each allowed path also has a <strong>detail level</strong>, kept beside it in the same file (<code>&quot;detail&quot;: {&quot;/abs/path&quot;: &quot;messages&quot;}</code>); a path with no level — every entry written before levels existed — is <code>full</code>:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">level</th><th scope="col">what a session's record carries</th></tr></thead><tbody><tr><td><code>full</code></td><td>every user and assistant message in full, reasoning summaries, events, and each tool call with its input and its clipped result</td></tr><tr><td><code>messages</code></td><td>every message in full and each tool call's name — no tool input or output, no reasoning</td></tr><tr><td><code>summary</code></td><td>each message cut to 2 000 characters and tool names only — what every record carried before levels existed</td></tr></tbody></table></div>
+<p>When a session's directories fall under several allowed paths, each directory takes the level of the most specific path it sits in, and the session is sent at the most restrictive of those. A level this build does not know makes the file unreadable rather than guessed at; a build that predates levels ignores them and sends <code>summary</code>. A path that does not exist on this machine is allowed all the same: a checkout need not be mounted here to be opted in. A symlinked checkout matches too: a directory counts when either its recorded form or the path it really is sits inside an allowed root.</p>
+<p>A session may run in more than one directory, and the decision covers all of them: a session whose log shows a working directory outside every allowed path is skipped, however opted-in its first repo was. Fail closed, on purpose — half a session is still a leak.</p>
+<p>A corrupt opt-in file, or one written by a newer version of the CLI, is an error rather than an empty allowlist: silently reading it as empty would sync exactly the sessions you meant to keep off the wire.</p>
+<h2 id="what-a-session-becomes">What a session becomes</h2>
+<p>Both formats normalise into one record, versioned with <code>schema_version</code> (3) and a per-collector <code>collector_version</code> (3): the agent, the <code>detail</code> level it was built at, session id, repository, branch, models, first and last timestamp, the turns, totals (tokens in/out, cache read/write, reasoning, cost when the log reports one — the main agent's own; each subagent carries its own), <code>truncated</code>, <code>omitted_turns</code> and <code>omitted_subagent_turns</code>.</p>
+<p>The turns are the conversation in order. Each has a <code>role</code>, a timestamp, its <code>text</code> and its <code>tool_calls</code>:</p>
+<ul><li><code>user</code> — what the person typed, with the agents' own machinery taken out: Claude Code's <code>&lt;system-reminder&gt;</code> blocks, slash-command wrappers (a <code>/review src/lib.rs</code> stays, <code>&lt;local-command-stdout&gt;</code> goes), <code>!</code> shell output, task notifications and meta lines; Codex's <code>developer</code> messages, <code>&lt;permissions instructions&gt;</code>, <code>&lt;environment_context&gt;</code>, <code>&lt;user_instructions&gt;</code>, AGENTS.md dumps and the like. A user line that was only machinery is no turn.</li><li><code>assistant</code> — the agent's text, the <code>model</code> that wrote it (named only where it differs from the list's previous assistant turn, so a session on one model names it once), and the tool calls of that step, each <code>{name, format?, path?, input?, output?, status?, exit_code?, subagent?}</code>: <code>input</code> is the command (<code>exec_command</code>'s <code>cmd</code>, <code>Bash</code>'s <code>command</code>), the patch (<code>apply_patch</code>), the diff of an <code>Edit</code> under its <code>path</code>, or the arguments as compact JSON; <code>format</code> (<code>shell</code>, <code>diff</code>, <code>json</code>, <code>text</code>) says how to show it. <code>output</code> is the result — clipped to its first and last 2 KiB around a <code>… N bytes omitted …</code> line — with <code>status</code> (<code>ok</code>, <code>error</code>, <code>interrupted</code>) and <code>exit_code</code> when the log records them. An input is clipped the same way at 16 KiB.</li><li><code>reasoning</code> — a reasoning summary, when the log carries one in the clear (Codex's <code>summary</code>, Claude Code's visible thinking). Encrypted reasoning is never read.</li><li><code>event</code> — something that happened rather than something said: an interruption (Codex's <code>&lt;turn_aborted&gt;</code>, Claude Code's <code>[Request interrupted by user]</code>), a context compaction, or the turns the size cap removed.</li></ul>
+<p>A message is kept whole up to 256 KiB (beyond that, its first and last 128 KiB); what bounds a session is the body cap below. Under <code>messages</code> and <code>summary</code>, the tool-call objects carry <code>name</code> alone.</p>
+<p>A version-1 record (from a build before this one) reads the same way: its tool calls are names, it has no <code>reasoning</code> or <code>event</code> turns, and its text was cut to 2 000 characters. A version-2 record has no <code>subagent</code>, no turn <code>model</code> and no <code>omitted_subagent_turns</code>; it reads the same way too.</p>
+<h3 id="subagents">Subagents</h3>
+<p>A tool call that launched a subagent carries the subagent's whole session in <code>subagent</code>, every field always present, in this order:</p>
+<pre class="doc-code"><code class="language-json">{&quot;name&quot;: &quot;Agent&quot;, &quot;format&quot;: &quot;text&quot;, &quot;input&quot;: &quot;Find every logger in src/&quot;,
+ &quot;output&quot;: &quot;Two loggers: src/a.rs and src/b.rs.&quot;, &quot;status&quot;: &quot;ok&quot;,
+ &quot;subagent&quot;: {
+   &quot;id&quot;: &quot;a1111&quot;, &quot;name&quot;: &quot;Explore&quot;, &quot;description&quot;: &quot;Survey logging&quot;,
+   &quot;models&quot;: [&quot;claude-haiku-4-5&quot;],
+   &quot;started_at&quot;: &quot;2026-10-02T10:00:06.500Z&quot;, &quot;ended_at&quot;: &quot;2026-10-02T10:01:30.000Z&quot;,
+   &quot;status&quot;: &quot;completed&quot;,
+   &quot;totals&quot;: {&quot;input_tokens&quot;: 180, &quot;output_tokens&quot;: 45, &quot;cache_read_tokens&quot;: 0,
+              &quot;cache_creation_tokens&quot;: 0, &quot;reasoning_tokens&quot;: 0, &quot;cost_usd&quot;: null},
+   &quot;turns&quot;: [ …the same turn shape, recursively: its own tool calls and subagents… ],
+   &quot;truncated&quot;: false, &quot;omitted_turns&quot;: 0}}</code></pre>
+<p><code>name</code> is the kind of agent (Claude Code's <code>subagent_type</code>, Codex's agent role, Colonizer's subagent), <code>description</code> what the launch said it was for, <code>status</code> one of <code>completed</code>, <code>failed</code>, <code>stopped</code>, <code>running</code> (or <code>null</code> when the log does not say). The call's <code>output</code> is the subagent's last words, as a foreground call's result already is — a background launch's receipt is replaced by them. The detail level, home elision, redaction and the clips all apply inside a subagent exactly as outside it.</p>
+<ul><li><strong>Claude Code</strong> writes each subagent's transcript beside the session: <code>~/.claude/projects/&lt;dir&gt;/&lt;session&gt;/subagents/agent-&lt;id&gt;.jsonl</code>, and its launch in <code>agent-&lt;id&gt;.meta.json</code> (<code>agentType</code>, <code>description</code>, the launching <code>toolUseId</code>, <code>parentAgentId</code> for one a subagent launched). The transcript nests in the call with that id — the session's own, or the parent subagent's — and the status is the last <code>&lt;task-notification&gt;</code> for that call (else the call's result). The subagent's working directories count for the opt-in like the session's own.</li><li><strong>Codex</strong> writes a spawned agent's rollout as a file of its own, whose <code>session_meta</code> names <code>source.subagent.thread_spawn</code> (<code>parent_thread_id</code>, <code>agent_path</code>, <code>agent_role</code>, <code>agent_nickname</code>). It nests in the <code>spawn_agent</code> call whose result names that path, and is no longer synced as a session of its own. Codex's own helpers (<code>source.subagent.other</code>) are still sessions of their own.</li></ul>
+<p>Two formats, two rules worth knowing:</p>
+<ul><li><strong>Claude Code</strong> streams one assistant message as several JSONL lines that repeat the same <code>message.id</code>, the same usage and the same <code>costUSD</code>. All three are counted once per id — five blocks are one request. A tool's result arrives on a later user line and is paired with its call by id.</li><li><strong>Codex</strong> writes <code>token_count</code> events whose <code>total_token_usage</code> is cumulative, so the <strong>last</strong> one is the session's totals; summing them would multiply every turn in. A call's output is paired with it by <code>call_id</code>.</li></ul>
+<h2 id="redaction-happens-on-both-sides">Redaction happens on both sides</h2>
+<p>Redaction is local and not optional. Before anything serialises, the real home prefix becomes <code>~</code> — in the recorded repository path and in every string a turn carries (text, tool paths, inputs, outputs) — including Claude Code's dash-encoded project-dir form of directories under <code>$HOME</code> (<code>-home-alice-…</code>). Every one of those strings then goes through <code>livingbrain-redact</code>, the same library the server runs on every ingest path, <strong>value by value, before the record is serialised</strong>: redacting the serialised JSON instead can let a match straddle an escape (an address after a <code>\n</code> read as <code>nname@host</code>) and leave bytes that no longer parse. The serialised body is checked once more as a whole, the way the server will read it, and the redacted bytes are what the socket sends. A secret in a tool's output is redacted like one in a message.</p>
+<h2 id="size-limits">Size limits</h2>
+<div class="doc-table"><table><thead><tr><th scope="col">what</th><th scope="col">limit</th></tr></thead><tbody><tr><td>one tool result in the record</td><td>first and last 2 KiB</td></tr><tr><td>one tool input in the record</td><td>first and last 8 KiB (16 KiB)</td></tr><tr><td>one message in the record</td><td>256 KiB (first and last 128 KiB beyond)</td></tr><tr><td>the record's body</td><td>768 KiB (three quarters of redaction's 1 MiB input cap, which the server applies to the whole body on arrival) and 992 KiB once JSON-escaped (what <code>GET /v1/sources/{id}</code> answers it inside, under the edge's 1 MiB response buffer)</td></tr><tr><td>the note</td><td>48 KiB JSON-escaped (the notes route takes 64 KiB)</td></tr></tbody></table></div>
+<p>A session past the body cap loses its subagents' detail first: subagent by subagent, oldest first, each loses its inner turns from the oldest on — never its header or its final answer — until the body fits; the removed run becomes one <code>event</code> turn in the subagent, which says so in its own <code>truncated</code> and <code>omitted_turns</code>, and the record counts them in <code>omitted_subagent_turns</code>. Still past the cap, the session keeps its opening turn and its most recent ones: the oldest turns after the opening are removed whole, an <code>event</code> turn says how many, <code>truncated</code> is <code>true</code> and <code>omitted_turns</code> counts them. One session is one source either way, so the ledger's <code>(scope, sha256)</code> key still holds.</p>
+<h2 id="idempotency">Idempotency</h2>
+<p>Sessions land as <code>kind: &quot;agent_log&quot;</code> in the source ledger, filed as <code>&lt;agent&gt; session &lt;id&gt;</code>, in your personal memory — there is no <code>--shared</code> for logs. The ledger's key is <code>(scope, sha256 of the redacted body)</code>, and a record serialises deterministically: struct order is wire order, and nothing in it is read from the clock or the environment. The same session therefore always yields the same bytes, and re-running <code>logs sync</code> reads rows back (<code>200</code>, <code>unchanged</code>) instead of storing copies.</p>
+<p>A session whose record changed — it grew, its repository's detail level changed, or a CLI upgrade changed the schema — yields different bytes, so the next sync uploads it as a new source (<code>201</code>) and rewrites its note in place (same slug, a new version). There is no local cache that could skip it: the ledger's own key is the only dedupe.</p>
+<h2 id="projects-and-listing-what-was-synced">Projects, and listing what was synced</h2>
+<p>Each upload also names a <strong>project</strong>: the basename of the session's repository (<code>~/code/livingbrain</code> files as <code>livingbrain</code>), cut to the server's project rule — ASCII letters, digits, <code>.</code>, <code>_</code> and <code>-</code>, starting with a letter or digit, at most 64 bytes; any other character becomes <code>-</code>. A session that recorded no repository names none. Only the basename travels in this field; the full home-elided path is already inside the record. The server redacts the project like any other free text and drops it, rather than storing it, if redaction finds anything in it.</p>
+<p>The project is a column of the ledger row, not part of the body, so it does not change the <code>(scope, sha256)</code> key: a session synced before projects existed is filed under its project the next time <code>logs sync</code> runs (<code>200</code>, <code>unchanged</code> — the existing row gains the project; a row that already has one keeps it).</p>
+<p>List what is there, newest first, without opening a single body:</p>
+<pre class="doc-code"><code class="language-sh">livingbrain sources --kind agent_log                 # every synced session
+livingbrain sources --kind agent_log --project demo  # one repository's
+livingbrain sources --projects                       # the projects, with counts
+livingbrain sources --cursor &lt;next_cursor&gt;           # the next page</code></pre>
+<p>The same lists back the web app's <strong>Agent sessions</strong> view (<code>wiki.html?view=sessions</code>) and the project filter beside the wiki's search box. The listing is strictly yours: your personal sources, plus the workspace's shared ones — never another member's, never another workspace's.</p>
+<h3 id="get-v1sources"><code>GET /v1/sources</code></h3>
+<p><code>?kind=&amp;project=&amp;agent=&amp;limit=&amp;cursor=</code>, bearer-authenticated exactly like <code>GET /v1/sources/{id}</code>. <code>agent</code> narrows to the sessions one agent wrote (<code>claude_code</code>, <code>codex</code>, <code>colonizer</code>: the first word of the session's <code>path</code>). <code>limit</code> defaults to 50 and is clamped to 100; a <code>kind</code> or <code>project</code> outside its rule is a <code>400 validation-failed</code>, not an empty list. Rows are newest first (ULID order); <code>next_cursor</code> is the last id of a full page, <code>null</code> on the last one.</p>
+<pre class="doc-code"><code class="language-json">{
+  &quot;sources&quot;: [
+    {
+      &quot;id&quot;: &quot;01JA7Q8ZK3T5V9X2B4N6M8P0RC&quot;,
+      &quot;kind&quot;: &quot;agent_log&quot;,
+      &quot;scope&quot;: &quot;personal&quot;,
+      &quot;path&quot;: &quot;claude-code session 3f2a9c1e-5b7d-4e8a-9c1f-2a4b6d8e0f1a&quot;,
+      &quot;project&quot;: &quot;livingbrain&quot;,
+      &quot;held&quot;: false,
+      &quot;created_at&quot;: &quot;2026-10-15T04:32:12.801Z&quot;
+    }
+  ],
+  &quot;next_cursor&quot;: null
+}</code></pre>
+<h3 id="get-v1sourcesprojects"><code>GET /v1/sources/projects</code></h3>
+<p><code>?kind=</code> optional. The distinct projects your sources are filed under, alphabetically, with a count each — the names <code>GET /v1/sources?project=</code> can find something under, and no others (at most 500).</p>
+<pre class="doc-code"><code class="language-json">{ &quot;projects&quot;: [ { &quot;project&quot;: &quot;demo&quot;, &quot;sources&quot;: 2 }, { &quot;project&quot;: &quot;livingbrain&quot;, &quot;sources&quot;: 14 } ] }</code></pre>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Telemetry · Living Brain docs</title>
+<meta name="description" content="What the CLI and a self-hosted server may send as anonymous usage counts, the live map, and the OpenTelemetry export.">
+<link rel="canonical" href="https://livingbrain.wiki/docs/telemetry/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/docs/telemetry/">
+<meta property="og:title" content="Telemetry · Living Brain docs">
+<meta property="og:description" content="What the CLI and a self-hosted server may send as anonymous usage counts, the live map, and the OpenTelemetry export.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Telemetry · Living Brain docs">
+<meta name="twitter:description" content="What the CLI and a self-hosted server may send as anonymous usage counts, the live map, and the OpenTelemetry export.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
+<script src="/assets/livingbrain.js" defer></script>
+
+
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Reference</p>
+    <h1 class="h2">Telemetry</h1>
+    <p class="lede">What the CLI and a self-hosted server may send as anonymous usage counts, the live map, and the OpenTelemetry export.</p>
+    <p class="doc-source">Source: <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/telemetry.md">docs/telemetry.md on GitHub</a>, at commit <code>7163b59</code> (2026-10-16).</p>
+    <div class="prose">
+<p><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-telemetry">undefined</a> is three things that share one idea: <strong>what leaves is a closed set of types, and the types are the promise</strong>. No constructor in the crate takes content as input, and there is no field anywhere that can hold it. (The string fields on <code>Event</code> are <code>pub</code> and validated rather than sealed — see <a href="#the-two-guarantees">The two guarantees</a> — so &quot;nothing takes content as input&quot; is a statement about the API a caller is meant to use, and the id validators are what back it.)</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Piece</th><th scope="col">Default</th><th scope="col">Leaves the machine?</th></tr></thead><tbody><tr><td>Anonymous counted usage (<a href="/docs/usage-data/">usage-data.md</a>)</td><td><strong>on</strong> (<code>Telemetry::default()</code> is <code>On</code>)</td><td>intended: yes, once per on-period. <strong>Nothing in this repository sends it.</strong></td></tr><tr><td>The live map of installs</td><td><strong>off</strong> (<code>LiveMap::disabled()</code>; <code>LiveMap::default()</code> is disabled)</td><td>only after you switch it on — and no sender exists here</td></tr><tr><td>The structured event log</td><td><strong>no writer</strong>: a format and a validated type, nothing writes it</td><td><strong>no</strong> — it would stay local</td></tr></tbody></table></div>
+<p>The first is documented on its own page because it is the only one whose preference defaults to on. This page covers the other two plus the trace id and the operational half. <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md">logging.md</a> covers operating all three, and holds the list of what is not built yet.</p>
+<p>Read the third row carefully: the event log is not a stream that is switched on. It is a versioned line format and the Rust type that produces it. Nothing in this repository constructs an <code>Event</code> outside tests, and <code>Event::to_json_line()</code> has no non-test caller, so no such file exists to tail.</p>
+<h2 id="the-live-map">The live map</h2>
+<p><strong>Off until someone switches it on.</strong> A disabled instance emits nothing at all: no id exists, there is nothing to send and there is nothing to forget. <code>LiveMap::disabled()</code> is the whole of an install that never opted in, and <code>LiveMap::heartbeat</code> — the only send path — returns <code>None</code>. A caller that retries does not start sending.</p>
+<h3 id="turning-it-on">Turning it on</h3>
+<p><code>LiveMap::enable</code> mints nothing itself: the id is the caller's, because this crate holds no RNG and no id source. The caller passes one, and it is validated exactly like a usage id — sixteen lowercase characters of <code>[a-z0-9]</code> — because the threat is the same: an id that carried anything derived from the machine or its owner would turn a pin on a map into a fingerprint. An <code>InstallId</code> is not a workspace id, a page id, a Slack team id or a user, and it is dropped rather than kept &quot;in case it is wanted again&quot;, because a kept id is a kept position on a map.</p>
+<p>Re-enabling is refused with <code>AlreadyEnabled</code>. Re-enabling with a second id would leave the first one on the map forever with no way to send the <code>online: false</code> beat that retires it, so it is refused rather than papered over.</p>
+<h3 id="the-beat">The beat</h3>
+<p><code>Heartbeat</code> has five fields and no more:</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Key</th><th scope="col">JSON type</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code>install_id</code></td><td>string</td><td>The random install id, 16 lowercase characters</td></tr><tr><td><code>version</code></td><td>string</td><td>The sender's own version (validated)</td></tr><tr><td><code>platform</code></td><td>string</td><td><code>linux</code>, <code>macos</code>, <code>windows</code>, <code>wasm</code>, <code>other</code></td></tr><tr><td><code>pages</code></td><td>integer</td><td>Page count as a bucket: <code>0</code> for 0–9, <code>1</code> for 10–99, <code>2</code> for 100 or more</td></tr><tr><td><code>online</code></td><td>boolean</td><td>Whether this install is currently on the map</td></tr></tbody></table></div>
+<p>The first beat and the periodic beats are the same shape. Real output:</p>
+<pre class="doc-code"><code class="language-json">{&quot;install_id&quot;:&quot;k3m9q7w2x5b8n4c1&quot;,&quot;version&quot;:&quot;0.1.0&quot;,&quot;platform&quot;:&quot;linux&quot;,&quot;pages&quot;:2,&quot;online&quot;:true}</code></pre>
+<p>When to beat is the caller's scheduling decision; <code>LiveMap</code> has no interval and no last-sent timestamp, and the answer to &quot;is it on&quot; does not depend on whether a beat happened to fire. <code>pages</code> is a bucket rather than a count, the top bucket is open-ended rather than stopping at some ceiling — a hard ceiling would only be a place for an off-by-one to leak an exact count — and <code>PagesBucket::of</code> is the only way to make one, so the count a caller measured cannot reach the wire from anywhere else.</p>
+<p>Beats go to <code>LIVE_MAP_ENDPOINT</code>, a constant rather than a setting, as with the usage endpoint:</p>
+<pre class="doc-code"><code>https://telemetry.livingbrain.wiki/v1/telemetry/heartbeat</code></pre>
+<p>As with everything in this crate, the transport is the caller's: there is no HTTP client here.</p>
+<h3 id="turning-it-off">Turning it off</h3>
+<p><code>LiveMap::disable</code> returns the one <code>online: false</code> beat that must reach the map so an install is not left showing as permanently online, and then <strong>forgets the id</strong>. The id is not kept in a file for later: switching it back on mints a new one, so a forgotten id cannot be resumed and cannot be reconstructed from elsewhere. Switching off something that was never switched on sends <strong>nothing at all</strong> — there is nothing to take off the map, and sending an empty beat would be inventing traffic.</p>
+<p>The three descriptive fields of the retraction beat are neutral placeholders: <code>version</code> is <code>&quot;0.0.0&quot;</code>, <code>platform</code> is <code>&quot;other&quot;</code>, <code>pages</code> is <code>0</code>. <code>disable</code> takes no version, platform or page count to put in them, and that is deliberate: a retraction is not a description of an install, and a beat that claimed a version on the way out would be a second claim about an install that is leaving the map. Real output:</p>
+<pre class="doc-code"><code class="language-json">{&quot;install_id&quot;:&quot;k3m9q7w2x5b8n4c1&quot;,&quot;version&quot;:&quot;0.0.0&quot;,&quot;platform&quot;:&quot;other&quot;,&quot;pages&quot;:0,&quot;online&quot;:false}</code></pre>
+<p><code>0.0.0</code> rather than <code>0</code> because <code>Version</code>'s grammar is <code>major.minor.patch</code> and <code>0</code> is not a version under it. The value has to pass the same validator as any other version, so it is a <code>const</code> that a compile-time assertion checks against the grammar: if the grammar is ever tightened under this constant, the crate stops compiling rather than becoming a <code>disable()</code> that quietly sends nothing.</p>
+<h3 id="the-cli-switch-is-read-only-for-the-map">The CLI switch is read-only for the map</h3>
+<p><code>telemetry on</code> and <code>telemetry off</code> are switches for <strong>anonymous usage data only</strong>: they write exactly one key, <code>telemetry.usage</code>. <code>status</code> shows the live map, and only shows it:</p>
+<pre class="doc-code"><code>anonymous usage data: on  (stored on, LIVINGBRAIN_TELEMETRY unset)
+live map:              off — no install id exists, so nothing is sent
+sent to:               https://telemetry.livingbrain.wiki/v1/telemetry/events</code></pre>
+<p>The <code>live map:</code> line reads <code>opted in — no heartbeat from this command, which sends nothing</code> when <code>telemetry.live-map</code> is stored <code>on</code>. <code>status</code> never writes that key, and there is no <code>telemetry live-map on</code> flag to imply a switch that is not wired. The write side of the opt-in belongs to whoever mints the install id and sends the beat: an id created for a status display would have to be kept, and a kept id is a kept position on a map. The same is true in <code>--json</code>, where <code>live_map.sends_heartbeat</code> is <code>false</code> because <code>LiveMap::heartbeat</code> is asked and returns <code>None</code> — that is the crate's answer, not an assumption.</p>
+<p>Where the map's setting would live, and the full command surface, are on <a href="/docs/usage-data/#where-the-preference-is-stored">usage-data.md</a>.</p>
+<h3 id="the-25-km-cell-is-derived-server-side">The 25 km cell is derived server-side</h3>
+<p><strong>The client never sends a coordinate.</strong> The 25 km cell is worked out by the server from the address the request came from, which means the coarse location is derived from something the operator's network already knows and the client never volunteers. A client that already knows where it is does not get to say so.</p>
+<p><code>Heartbeat</code> deliberately has no latitude and longitude field, and it must not gain one. It does not have a <code>cell</code> field either: naming one on the wire would imply the client computed it. The reasoning is that a coordinate is an address and an address is a person, and adding the field would be the single change that breaks the promise this feature is made of — a coordinate in the payload would be free text in a struct that promises to carry none.</p>
+<p>The guarantee is asserted by shape from outside the crate: <code>tests/live_map.rs</code> checks the serialised key set is exactly <code>[&quot;install_id&quot;, &quot;online&quot;, &quot;pages&quot;, &quot;platform&quot;, &quot;version&quot;]</code> and asserts that <code>lat</code>, <code>lon</code>, <code>latitude</code>, <code>longitude</code>, <code>geo</code>, <code>cell</code>, <code>ip</code>, <code>address</code>, <code>host</code> and <code>hostname</code> are absent. Checked by key, not by substring: <code>lat</code> is inside <code>platform</code>, and a substring check that fires on a real field teaches the next reader to ignore it.</p>
+<h2 id="the-structured-event-log">The structured event log</h2>
+<p><strong>A format and a validated type, ready to be written — not yet wired to a writer.</strong> One JSON line per brain turn, nightly-evolve change, MCP call and colony hand-off, plus <code>operational</code> for work that is not about anyone's content. Nothing in this repository produces those lines outside its tests: there is no sink, no file appender and no rotation, and <code>Event::to_json_line()</code> has zero non-test callers. What exists is the contract they would be written to.</p>
+<p>The lines are versioned against <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/brain-events.schema.json">undefined</a> (<code>EVENT_SCHEMA_VERSION</code>, currently <code>1</code>) — adding a kind or a field is a bump of that number, not an edit in place, because a log that outlives a release is read by something that was not built with it.</p>
+<p><code>Event::to_json_line</code> is the only way to get a line out, and <code>Event::schema</code> describes the same fields to a reader that a schema file or a dashboard would want. Both are generated from the same types that serialise the data, so the schema cannot drift from the lines; <code>docs/brain-events.schema.json</code> is checked against it.</p>
+<div class="doc-table"><table><thead><tr><th scope="col">Key</th><th scope="col">JSON type</th><th scope="col">Meaning</th><th scope="col">Allowed values</th></tr></thead><tbody><tr><td><code>schema_version</code></td><td>integer</td><td>The event schema version this build writes</td><td><code>1</code></td></tr><tr><td><code>trace_id</code></td><td>string</td><td>Opaque id carried across Slack, Worker, MCP and CLI</td><td>non-empty, ≤128 chars, <code>[A-Za-z0-9._:-]</code></td></tr><tr><td><code>kind</code></td><td>string</td><td>What happened</td><td><code>brain_turn</code>, <code>nightly_evolve</code>, <code>mcp_call</code>, <code>colony_handoff</code>, <code>operational</code></td></tr><tr><td><code>at_unix</code></td><td>integer</td><td>When, in seconds since the Unix epoch</td><td>—</td></tr><tr><td><code>outcome</code></td><td>string</td><td>Whether it worked, and if it was attempted at all</td><td><code>success</code>, <code>failure</code>, <code>skipped</code></td></tr><tr><td><code>duration_ms</code></td><td>integer</td><td>How long it took, in milliseconds. <strong>Not bucketed</strong>, unlike the usage payload — this line stays on the machine that wrote it and is read by whoever is debugging that machine, so bucketing here would cost the reader the thing they opened the log for.</td><td>—</td></tr><tr><td><code>subject</code></td><td>object or null</td><td><code>{ kind, id }</code> — what it was about, by opaque id. Never the content.</td><td><code>kind</code> is one of <code>page</code>, <code>message</code>, <code>workspace</code>, <code>tool</code></td></tr><tr><td><code>error_kind</code></td><td>string or null</td><td>How it failed</td><td><code>config</code>, <code>upstream</code>, <code>timeout</code>, <code>decode</code>, <code>permission</code>, <code>internal</code></td></tr><tr><td><code>tool</code></td><td>string or null</td><td>The MCP tool called</td><td><code>brain_search</code>, <code>brain_page</code>, <code>brain_note</code></td></tr><tr><td><code>colonizer_colony</code></td><td>string or null</td><td>Opaque colony id for a hand-off</td><td>non-empty, ≤128 chars, <code>[A-Za-z0-9._:-]</code></td></tr></tbody></table></div>
+<p>Four real lines, produced by running the crate:</p>
+<pre class="doc-code"><code class="language-json">{&quot;schema_version&quot;:1,&quot;trace_id&quot;:&quot;01JABCDEF.123-4&quot;,&quot;kind&quot;:&quot;mcp_call&quot;,&quot;at_unix&quot;:1700000000,&quot;outcome&quot;:&quot;success&quot;,&quot;duration_ms&quot;:88,&quot;subject&quot;:{&quot;kind&quot;:&quot;page&quot;,&quot;id&quot;:&quot;01JABCDEF.123-4&quot;},&quot;error_kind&quot;:null,&quot;tool&quot;:&quot;brain_search&quot;,&quot;colonizer_colony&quot;:null}
+{&quot;schema_version&quot;:1,&quot;trace_id&quot;:&quot;01JABCDEF.123-4&quot;,&quot;kind&quot;:&quot;brain_turn&quot;,&quot;at_unix&quot;:1700000000,&quot;outcome&quot;:&quot;success&quot;,&quot;duration_ms&quot;:420,&quot;subject&quot;:null,&quot;error_kind&quot;:null,&quot;tool&quot;:null,&quot;colonizer_colony&quot;:null}
+{&quot;schema_version&quot;:1,&quot;trace_id&quot;:&quot;trace-1&quot;,&quot;kind&quot;:&quot;colony_handoff&quot;,&quot;at_unix&quot;:1700000004,&quot;outcome&quot;:&quot;success&quot;,&quot;duration_ms&quot;:1800,&quot;subject&quot;:null,&quot;error_kind&quot;:null,&quot;tool&quot;:null,&quot;colonizer_colony&quot;:&quot;colony-9&quot;}
+{&quot;schema_version&quot;:1,&quot;trace_id&quot;:&quot;trace-2&quot;,&quot;kind&quot;:&quot;nightly_evolve&quot;,&quot;at_unix&quot;:1700000900,&quot;outcome&quot;:&quot;failure&quot;,&quot;duration_ms&quot;:9200,&quot;subject&quot;:{&quot;kind&quot;:&quot;workspace&quot;,&quot;id&quot;:&quot;01JWS.99&quot;},&quot;error_kind&quot;:&quot;upstream&quot;,&quot;tool&quot;:null,&quot;colonizer_colony&quot;:null}</code></pre>
+<p>Note the first two share a <code>trace_id</code>: one MCP call and the brain turn it served are one trace. Note also what is absent — no question, no answer, no page title, no slug. <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md#reading-the-event-log">logging.md</a> has the shell recipes for reading lines like these.</p>
+<h3 id="the-two-guarantees">The two guarantees</h3>
+<p><strong>Content is referenced by page or message id and never copied into the line.</strong> There is no field named for content: a <code>Subject</code> is a kind and an opaque id, and the reader of the log is expected to fetch the page by id if it wants the page. The three strings on an event — the trace id, the subject id and the colony id — are validated as opaque ids by <code>validate_opaque_id</code>, because a <code>String</code> field with no rule on it would be a back door around every closed enum in the crate.</p>
+<p>This is not a style preference. An event log is the artefact most likely to be shipped somewhere — to an aggregator, a support engineer, a bug report — and the moment a page body is allowed into a line, that text has left the machine in a form nobody chose to send it. <code>Event</code> has no <code>Deserialize</code>, so a line that arrived from elsewhere cannot be read back into a typed event and re-serialised into something the compiler thinks was vetted.</p>
+<p><strong>What is structural and what is only validated — both matter, neither is enough.</strong> There is no content <em>field</em> on <code>Event</code>, so the struct shape discourages one; that part is real. But the three id strings are <code>pub</code>, the type is not <code>#[non_exhaustive]</code>, and <code>Subject.id</code> is a plain <code>String</code>. From another crate this compiles and serialises:</p>
+<pre class="doc-code"><code class="language-rust">let mut event = Event::new(EventKind::BrainTurn, &quot;trace-1&quot;, 1)?;
+event.trace_id = &quot;the quarterly plan is to migrate the ingest path&quot;.into();
+// …or, equivalently, on a Subject: subject.id = &quot;page body&quot;.into();</code></pre>
+<p><code>events.rs</code> says so on the field itself — &quot;the field is public so a reader can read it, and assigning to it directly is the one way to bypass the validator — so do not&quot;. <strong>The validators are the real guarantee; the struct shape only discourages.</strong> What they stop is free text with a space or an <code>@</code> in it: <code>Subject::new</code> refuses <code>&quot;a page body&quot;</code> and <code>alice@example.com</code>, <code>Event::new</code> refuses <code>&quot;trace 1&quot;</code>.</p>
+<p><strong>The honest limit, stated rather than softened.</strong> Any string matching <code>[A-Za-z0-9._:-]</code> of at most 128 characters passes all three validators — <strong>including a hyphenated Slack bot token</strong>. Reproduced against the crate: <code>Event::new(EventKind::BrainTurn, &quot;&lt;slack-token-shaped id&gt;&quot;, 1)</code> — the placeholder stands for a real hyphenated Slack bot token, kept out of this file so a secret scan of the source bytes never matches it — returns <code>Ok</code>, and <code>to_json_line()</code> emits that token verbatim as <code>trace_id</code>. The same holds for <code>Subject::new</code> and <code>Event::with_colony</code>. This is not a rare edge case to be waved at; it is what the charset is.</p>
+<p>Why it is tolerable today, and what would have to change for it not to be:</p>
+<ul><li><strong>No writer exists.</strong> Nothing constructs or writes an <code>Event</code> outside tests, so there is no log for a leaked id to land in. The limitation is documented <em>before</em> it can hurt, which is the only good time to document one.</li><li><strong>The discipline a caller must hold</strong> is: pass ids <strong>only</strong> from its <code>IdGen</code>, never from content. Nothing enforces that from outside the crate.</li><li><strong>The upstream mitigation is designed but not wired.</strong> <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/crates/livingbrain-redact">undefined</a> is the intended redactor for ingest paths and would sit <em>before</em> this line. It is currently a dependency of no other crate in the workspace, is called from no ingest path, and is exercised only by its own tests — so from this repository alone the upstream half of the defence cannot be verified. <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md#redaction">logging.md</a> describes it.</li></ul>
+<p>The usage batch is not affected by any of this, for reasons stated on <a href="/docs/usage-data/#the-two-ids-and-the-one-thing-that-gets-through">usage-data.md</a>.</p>
+<h3 id="trace-ids-across-components">Trace ids across components</h3>
+<p>One turn is followed from the message that caused it to the page it produced by a single opaque id. It is minted where the work starts and carried across <strong>Slack → Worker → MCP/CLI → Colonizer</strong>: the Worker puts it on the response, the MCP server and the CLI pass it through on the calls they make, and a colony hand-off records it alongside <code>colonizer_colony</code>. Every line the turn produces carries the same <code>trace_id</code>, which is what makes <code>grep trace_id</code> across a log, or a trace query in your backend, one operation rather than a correlation effort.</p>
+<p><strong>The header carry is not plumbed anywhere.</strong> Nothing in this repository reads or writes an <code>x-trace-id</code> header: there is no propagation in the Worker, no header on the MCP server's requests and none in the CLI's client. What is described here is the contract the event log is built for; the plumbing that moves the value between those components is a later piece of work.</p>
+<h2 id="operational-logs-and-otlp">Operational logs and OTLP</h2>
+<p><strong>This half is specified, not built.</strong> The plan is that a self-hoster points <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> — plus headers for the ones that need them, e.g. <code>OTEL_EXPORTER_OTLP_HEADERS</code> — at whatever backend they already run, and Living Brain exports over OTLP:</p>
+<ul><li><strong>Metrics</strong> — brain turns, latency, queue depth, nightly-evolve duration, search p95 and token spend. These are counts and durations from the running system, which is a different thing from the anonymous usage batch: they are about your instance's health, not a report to us.</li><li><strong>Traces</strong> — one span tree per brain turn, so a slow turn is a trace you can read rather than a number you can only compare.</li><li><strong>Logs</strong> — the operational lines, alongside the structured event log.</li></ul>
+<p>The same redaction is intended to apply to all three: no message text and no page body would reach a span attribute or a log line, and <code>livingbrain-redact</code> is meant to run on the ingest paths upstream of anything being written — though, as above, nothing calls it yet.</p>
+<p>Why OTLP is the choice: it is the one standard that covers all of them, so a self-hoster points one variable at whichever they already run — Grafana Cloud, self-hosted Grafana with Prometheus and Loki and Tempo, Datadog, Honeycomb — rather than integrating twice.</p>
+<p><strong>Not landed in this repository:</strong> there is no OTLP exporter, no span creation and no metrics instrumentation in the Worker yet, and <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> is read nowhere in the repository — it is the agreed configuration surface and nothing reads it today. The dashboard in <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/grafana/livingbrain.json">undefined</a> is written against the metric names above and will be empty until the exporter is wired in; that is stated in the dashboard's own description so nobody debugs an empty panel. The consolidated list of what is planned but absent is on <a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md#what-is-not-in-this-repository-yet">logging.md</a>.</p>
+<h2 id="related">Related</h2>
+<ul><li><a href="/docs/usage-data/">usage-data.md</a> — the anonymous counted batch, on by default</li><li><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/logging.md">logging.md</a> — operating all three, the redaction rules, and what is not built yet</li><li><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/7163b59102998029b594d2eccd5008a79346f641/docs/brain-events.schema.json">brain-events.schema.json</a> — the versioned schema</li></ul>
+    </div>
+    <p class="guide__back"><a class="btn btn--ghost" href="/docs/">All docs</a> <a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>

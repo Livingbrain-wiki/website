@@ -6,24 +6,24 @@
 <script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
 
 <title>Docs · Living Brain</title>
-<meta name="description" content="Every Living Brain document in one list. Origin and plan, the ChatGPT export guide and the Mac app download are available today. Self-hosting, the CLI, MCP and the API guides are planned. The app is in early access.">
+<meta name="description" content="Guides and reference for Living Brain: sign in, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access, and MCP.">
 <link rel="canonical" href="https://livingbrain.wiki/docs/">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
 <meta name="color-scheme" content="dark light">
 
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="Living Brain">
 <meta property="og:url" content="https://livingbrain.wiki/docs/">
 <meta property="og:title" content="Docs · Living Brain">
-<meta property="og:description" content="Every Living Brain document in one list. Three are available today; the rest are planned.">
+<meta property="og:description" content="Guides and reference for Living Brain: sign in, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access, and MCP.">
 <meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Docs · Living Brain">
-<meta name="twitter:description" content="Every Living Brain document in one list. Three are available today; the rest are planned.">
+<meta name="twitter:description" content="Guides and reference for Living Brain: sign in, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access, and MCP.">
 <meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
 
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -34,25 +34,10 @@
 <link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/livingbrain.css">
+<link rel="stylesheet" href="/assets/docs.css">
 <script src="/assets/livingbrain.js" defer></script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://livingbrain.wiki/docs/#webpage",
-  "url": "https://livingbrain.wiki/docs/",
-  "name": "Docs",
-  "description": "Every Living Brain document in one list. Living Brain is in early access.",
-  "inLanguage": "en",
-  "isPartOf": {
-    "@type": "WebSite",
-    "@id": "https://livingbrain.wiki/#website",
-    "name": "Living Brain",
-    "url": "https://livingbrain.wiki/"
-  }
-}
-</script>
+
 </head>
 <body>
 <!--email_off-->
@@ -68,7 +53,7 @@
       <a href="/security/">Security</a>
       <a href="/pricing/">Pricing</a>
       <a href="/faq/">FAQ</a>
-      <a href="/docs/" aria-current="page">Docs</a>
+      <a href="/docs/">Docs</a>
       <a href="/download/">Download</a>
     </nav>
     <details class="menu">
@@ -80,7 +65,7 @@
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
-        <a href="/docs/" aria-current="page">Docs</a>
+        <a href="/docs/">Docs</a>
         <a href="/download/">Download</a>
         <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
       </nav>
@@ -90,55 +75,36 @@
   </div>
 </header>
 
-<main id="main">
-<section class="page-hd" aria-labelledby="page-title">
-  <div class="wrap">
-    <div class="eyebrow-row"><p class="eyebrow">Docs</p><span class="tag">Early access</span></div>
-    <h1 id="page-title" class="h2 h2--page">Every document, in one list.</h1>
-    <p class="lede">Three are available today. The rest are planned, and are listed here so you can see what is coming. Living Brain itself is open in early access at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>.</p>
+<main id="main" class="guide doc-page"><div class="wrap wrap--narrow">
+    <p class="eyebrow">Docs · Early access</p>
+    <h1 class="h2">Guides and reference.</h1>
+    <p class="lede">Start with the guides to sign in, set up a workspace and connect the Mac app. The reference pages describe each part in detail. Living Brain is open in early access at <a href="https://app.livingbrain.wiki/">app.livingbrain.wiki</a>; anything marked planned on the site is not built yet.</p>
+    <h2 class="h3" id="guides">Guides</h2>
+    <ul class="doc-hub">
+        <li class="doc-hub__item"><a href="/guides/getting-started/">Getting started</a><p>Sign in, set up your workspace, then connect the CLI or the Mac app. The web app needs no install.</p></li>
+        <li class="doc-hub__item"><a href="/guides/workspaces/">Workspaces and members</a><p>What a workspace holds, who may do what (owner, admin, member, viewer), and how people join.</p></li>
+        <li class="doc-hub__item"><a href="/guides/imports/">Imports</a><p>Bring Markdown notes, folders, and ChatGPT or Claude exports into a personal or shared brain. Nothing uploads until you confirm.</p></li>
+        <li class="doc-hub__item"><a href="/guides/coding-agent-sync/">Coding-agent sync and transcripts</a><p>How your Claude Code and Codex sessions reach the brain, what is sent and what never leaves your Mac, and how the compiled wiki reads them.</p></li>
+        <li class="doc-hub__item"><a href="/guides/github-app/">The GitHub App</a><p>Connect repositories so their commits, issues and pull requests are read into the brain, with a backfill that runs on the server.</p></li>
+        <li class="doc-hub__item"><a href="/guides/facts-and-dreaming/">Facts and dreaming</a><p>How the brain keeps dated facts, shows which are still confirmed, and tidies old ones in a background pass that keeps the history.</p></li>
+        <li class="doc-hub__item"><a href="/guides/access-agents-audit/">Access, agents and audit</a><p>Who can read what, how agent accounts get their own limited keys, and how owners and admins see every change to settings and access.</p></li>
+        <li class="doc-hub__item"><a href="/guides/mcp/">Connect a coding agent over MCP</a><p>Point an MCP client at the Living Brain endpoint, sign in with a token, and use the five tools it offers.</p></li>
+        <li class="doc-hub__item"><a href="/guides/import-chatgpt/">Import your ChatGPT history</a><p>Export your ChatGPT history from ChatGPT, then import it with the livingbrain CLI. The preview comes first; nothing uploads until you confirm.</p></li>
+    </ul>
+    <h2 class="h3" id="reference">Reference</h2>
+    <p class="doc-source">Reference pages are copies of the product repository's documentation, pinned to commit <code>7163b59</code>. The source is on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>.</p>
+    <ul class="doc-hub">
+        <li class="doc-hub__item"><a href="/docs/coding-agents/">Coding-agent sessions</a><p>How synced coding-agent sessions become a compiled wiki: queue, compiler, schedule and transcripts.</p></li>
+        <li class="doc-hub__item"><a href="/docs/agent-logs/">Agent logs</a><p>The livingbrain logs commands: what is read, what is redacted, and what is sent when you opt in.</p></li>
+        <li class="doc-hub__item"><a href="/docs/import/">Import</a><p>livingbrain import: Markdown folders, ChatGPT and Claude exports, previews, exclusions and redaction.</p></li>
+        <li class="doc-hub__item"><a href="/docs/mcp/">MCP</a><p>The MCP endpoint: its five tools, how every read is scoped to the person asking, and citations.</p></li>
+        <li class="doc-hub__item"><a href="/docs/github/">GitHub connection</a><p>The GitHub App: which events and records come in, how the backfill runs, and what is stored.</p></li>
+        <li class="doc-hub__item"><a href="/docs/facts/">Temporal facts</a><p>Facts with dates: supersession, freshness, reconciliation and dreaming, and the read API.</p></li>
+        <li class="doc-hub__item"><a href="/docs/local-runner/">Brain jobs on your subscription</a><p>Let your own Claude Code or Codex answer brain jobs on your Mac, with tools off and a read-only sandbox.</p></li>
+        <li class="doc-hub__item"><a href="/docs/telemetry/">Telemetry</a><p>What the CLI and a self-hosted server may send as anonymous usage counts, the live map, and the OpenTelemetry export.</p></li>
+        <li class="doc-hub__item"><a href="/docs/usage-data/">Anonymous usage data</a><p>The counted batch the CLI and self-hosted servers may send, field by field, and what is never in it.</p></li>
+    </ul>
   </div>
-</section>
-<section class="sec" aria-label="Documents">
-  <div class="wrap sec__in sec__in--top">
-    <!-- docs:start -->
-      <ul class="doc-list">
-        <li class="doc doc--available">
-          <div class="doc__hd"><h2 class="doc__t"><a href="https://github.com/Livingbrain-wiki/livingbrain/blob/main/docs/origin-and-plan.md">Origin and plan</a></h2><span class="doc__st">Available</span></div>
-          <p class="doc__line">Why Living Brain exists, what it is planned to be, and what is not built yet.</p>
-        </li>
-        <li class="doc doc--available">
-          <div class="doc__hd"><h2 class="doc__t"><a href="/guides/import-chatgpt/">Import your ChatGPT history</a></h2><span class="doc__st">Available</span></div>
-          <p class="doc__line">Export your ChatGPT history from ChatGPT today. The import step is planned.</p>
-        </li>
-        <li class="doc doc--available">
-          <div class="doc__hd"><h2 class="doc__t"><a href="/download/">Living Brain for Mac</a></h2><span class="doc__st">Available</span></div>
-          <p class="doc__line">The menu bar app that syncs your Claude Code and Codex sessions from opted-in repositories. Download it and open it the first time.</p>
-        </li>
-        <li class="doc doc--planned">
-          <div class="doc__hd"><h2 class="doc__t">Self-host</h2><span class="doc__st">Planned</span></div>
-          <p class="doc__line">Run the brain on your own machines and your own Cloudflare account. Planned. Nothing runs yet.</p>
-          <p class="doc__more"><a href="/security/#ownership">Security and ownership</a></p>
-        </li>
-        <li class="doc doc--planned">
-          <div class="doc__hd"><h2 class="doc__t">CLI</h2><span class="doc__st">Planned</span></div>
-          <p class="doc__line">One Rust binary for terminals and scripts. It ships inside the Mac app; a separate download and this guide are planned.</p>
-          <p class="doc__more"><a href="/download/">Living Brain for Mac</a></p>
-        </li>
-        <li class="doc doc--planned">
-          <div class="doc__hd"><h2 class="doc__t">MCP for coding harnesses</h2><span class="doc__st">Planned</span></div>
-          <p class="doc__line">Connect a coding harness to the brain over MCP. The server is in early access; this guide is planned.</p>
-          <p class="doc__more"><a href="/agents/">Harnesses and the CLI</a></p>
-        </li>
-        <li class="doc doc--planned">
-          <div class="doc__hd"><h2 class="doc__t">API and SDKs</h2><span class="doc__st">Planned</span></div>
-          <p class="doc__line">An open REST API with webhooks, and SDKs for TypeScript, Python and Rust. Planned. Nothing is published yet.</p>
-          <p class="doc__more"><a href="/integrations/#code">Integrations: code</a></p>
-        </li>
-      </ul>
-      <!-- docs:end -->
-    <p class="doc-note">Each line says what a document is for. The detail stays on the page that owns it, so it is said once. Questions we have not answered yet are in the <a href="/faq/">FAQ</a>; the plan itself is on <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>.</p>
-  </div>
-</section>
 </main>
 
 <footer id="waitlist" class="ft">
@@ -170,9 +136,9 @@
         <a href="/security/">Security</a>
         <a href="/pricing/">Pricing</a>
         <a href="/faq/">FAQ</a>
-        <a href="/docs/" aria-current="page">Docs</a>
+        <a href="/docs/">Docs</a>
         <a href="/download/">Download</a>
-        <a href="/guides/import-chatgpt/">Import guide</a>
+        <a href="/guides/import-chatgpt/" aria-current="page">Import guide</a>
       </nav>
     </div>
     <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
@@ -191,19 +157,6 @@
         <span>FZ-018 · &copy; 2026 Factory Zero</span>
       </a></span>
     </div>
-    <!-- built-with:start -->
-    <ul class="built-with" aria-label="Built with">
-      <li class="bw"><span class="bw__role">Hosted on</span> <a class="bw__name" href="https://www.cloudflare.com">Cloudflare</a></li>
-      <li class="bw bw--planned"><span class="bw__role">Built with</span> <a class="bw__name" href="https://cratefield.com/">Cratefield</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Email by</span> <a class="bw__name" href="https://owlpost.to/">Owlpost</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Support by</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Bug reports to</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Payments by</span> <a class="bw__name" href="https://polar.sh">Polar</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Screened by</span> <a class="bw__name" href="https://promptdeco.de/">promptdecode</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Deploys by</span> <a class="bw__name" href="https://keepshipping.run/">Keep Shipping</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--source"><span class="bw__role">Listed by</span> <a class="bw__name" href="https://factory0.ventures/ventures/living-brain/">Factory Zero</a></li>
-    </ul>
-    <!-- built-with:end -->
   </div>
 </footer>
 <!--/email_off-->

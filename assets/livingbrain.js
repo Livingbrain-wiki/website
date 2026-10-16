@@ -95,10 +95,10 @@
     var growth = { pages: line(P), links: line(L), refreshed: line(R), linksArea: line(L) + ' L580 212 L20 212 Z' };
 
     var agents = [
-      { label: 'Claude Code', lines: [['$', 'claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added HTTP MCP server livingbrain', 'out'], ['$', 'claude', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
-      { label: 'Codex', lines: [['$', 'codex mcp add livingbrain --url https://mcp.livingbrain.wiki', 'cmd'], ['', 'Added livingbrain to ~/.codex/config.toml', 'out'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
-      { label: 'Cursor', lines: [['', '// .cursor/mcp.json', 'com'], ['', '{ "mcpServers": { "livingbrain": {', 'cmd'], ['', '    "url": "https://mcp.livingbrain.wiki" } } }', 'cmd'], ['', '✓ livingbrain connected · 14 tools', 'ok']] },
-      { label: 'Other MCP', lines: [['', '# any agent that speaks MCP', 'com'], ['', 'url:  https://mcp.livingbrain.wiki', 'cmd'], ['', 'auth: sign in to your workspace', 'cmd'], ['', '✓ reads with your own access', 'ok']] }
+      { label: 'Claude Code', lines: [['$', 'claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki/v1/pages/mcp --header "Authorization: Bearer <token>"', 'cmd'], ['', 'Added HTTP MCP server livingbrain', 'out'], ['$', 'claude', 'cmd'], ['', '✓ livingbrain connected · 5 tools', 'ok']] },
+      { label: 'Codex', lines: [['$', 'codex mcp add livingbrain --url https://mcp.livingbrain.wiki/v1/pages/mcp', 'cmd'], ['', 'Added livingbrain to ~/.codex/config.toml', 'out'], ['', '✓ livingbrain connected · 5 tools', 'ok']] },
+      { label: 'Cursor', lines: [['', '// .cursor/mcp.json', 'com'], ['', '{ "mcpServers": { "livingbrain": {', 'cmd'], ['', '    "url": "https://mcp.livingbrain.wiki/v1/pages/mcp" } } }', 'cmd'], ['', '✓ livingbrain connected · 5 tools', 'ok']] },
+      { label: 'Other MCP', lines: [['', '# any agent that speaks MCP', 'com'], ['', 'url:  https://mcp.livingbrain.wiki/v1/pages/mcp', 'cmd'], ['', 'auth: a token from Settings → API tokens', 'cmd'], ['', '✓ reads with your own access', 'ok']] }
     ];
 
     // ---- HTML for the parts that change on interaction ----

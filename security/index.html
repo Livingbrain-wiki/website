@@ -107,7 +107,7 @@
   <div class="wrap">
     <p class="eyebrow">Security and privacy</p>
     <h1 id="page-title" class="h2 h2--page">It only knows what you're allowed to know.</h1>
-    <p class="lede">Living Brain reads with the asker's own access, and each scope has its own key. All of it is planned, and the limits are stated plainly.</p>
+    <p class="lede">Living Brain reads with the asker's own access. Grants, roles, agent keys and the audit log are live in the web app. Per-scope encryption and hidden-text screening are planned, and the limits are stated plainly.</p>
   </div>
 </section>
 <section id="access" class="sec rings-sec" data-play="rings" data-scope="0" aria-labelledby="access-title">
@@ -151,7 +151,7 @@
           </tbody>
         </table>
         </div>
-        <p class="access__note">Always limited to what the person asking can already see. It follows your chat's permissions (Slack channels, Discord roles).</p>
+        <p class="access__note">Always limited to what the person asking can already see. It follows your chat's permissions (Slack channels, Discord roles), which are planned. In the web app and over MCP, reads follow the grants an owner or admin sets for each person, role, agent account, folder or project. <a href="/guides/access-agents-audit/">How grants work</a>.</p>
       </div>
     </div>
   </div>
@@ -199,7 +199,7 @@
     <ul class="checks">
       <li><strong>Anonymous usage counts.</strong> The CLI and a self-hosted server send counts and timings, bucketed, with no free text and no ids beyond a random one. The first run shows the exact batch, and <code>livingbrain telemetry off</code> turns it off.</li>
       <li><strong>Never collected.</strong> Message text, page bodies and secrets. They stay out of the logs too.</li>
-      <li><strong>Your own monitoring.</strong> Living Brain exports its metrics, traces and logs over OpenTelemetry. Teams adds an audit log of who asked what and which scopes were read.</li>
+      <li><strong>Your own monitoring.</strong> Living Brain exports its metrics, traces and logs over OpenTelemetry. The audit log in the web app, for owners and admins, records settings and access changes.</li>
     </ul>
   </div>
 </section>
@@ -218,14 +218,12 @@
 <section id="subprocessors" class="sec sec--tight" aria-labelledby="subprocessors-title">
   <div class="wrap sec__in">
     <h2 id="subprocessors-title" class="h3">Who else touches it.</h2>
-    <p class="lede lede--sm lede--wide">Today only the site runs, hosted on Cloudflare. Everything else here is planned, and labelled so.</p>
-    <!-- subprocessors:start -->
+    <p class="lede lede--sm lede--wide">Today the marketing site and the hosted app run on Cloudflare. Everything else here is planned, and labelled so.</p>
     <ul class="subprocessors">
     <li><a href="https://www.cloudflare.com">Cloudflare</a> (hosting). The site.</li>
     <li><a href="https://polar.sh">Polar</a> (payments) <em>(planned, not in use yet)</em>. Hosted plans through Polar as Merchant of Record. Nothing is on sale yet.</li>
     </ul>
     <p class="subprocessors__sister">Factory Zero ventures this site uses or will use: <a href="https://cratefield.com/">Cratefield</a> (framework, planned); <a href="https://owlpost.to/">Owlpost</a> (email, planned); <a href="https://supportgeni.us/">SupportGenius</a> (support, planned); <a href="https://supportgeni.us/">SupportGenius</a> (bug reports, planned); <a href="https://promptdeco.de/">promptdecode</a> (security screening, planned); <a href="https://keepshipping.run/">Keep Shipping</a> (deploys, planned). The full list, with what is live and what is planned, is in the <a href="https://factory0.ventures/ventures/living-brain/">Factory Zero registry</a>.</p>
-    <!-- subprocessors:end -->
   </div>
 </section>
 </main>
@@ -280,19 +278,6 @@
         <span>FZ-018 · &copy; 2026 Factory Zero</span>
       </a></span>
     </div>
-    <!-- built-with:start -->
-    <ul class="built-with" aria-label="Built with">
-      <li class="bw"><span class="bw__role">Hosted on</span> <a class="bw__name" href="https://www.cloudflare.com">Cloudflare</a></li>
-      <li class="bw bw--planned"><span class="bw__role">Built with</span> <a class="bw__name" href="https://cratefield.com/">Cratefield</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Email by</span> <a class="bw__name" href="https://owlpost.to/">Owlpost</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Support by</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Bug reports to</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Payments by</span> <a class="bw__name" href="https://polar.sh">Polar</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Screened by</span> <a class="bw__name" href="https://promptdeco.de/">promptdecode</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Deploys by</span> <a class="bw__name" href="https://keepshipping.run/">Keep Shipping</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--source"><span class="bw__role">Listed by</span> <a class="bw__name" href="https://factory0.ventures/ventures/living-brain/">Factory Zero</a></li>
-    </ul>
-    <!-- built-with:end -->
   </div>
 </footer>
 <!--/email_off-->

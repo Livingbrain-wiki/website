@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/SITE-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Site: live">
   <img src="https://img.shields.io/badge/LIVING%20BRAIN-EARLY%20ACCESS-56F1B0?style=flat-square&labelColor=070F11" alt="Living Brain: early access">
   <img src="https://img.shields.io/badge/WAITLIST-LIVE-56F1B0?style=flat-square&labelColor=070F11" alt="Waitlist: live">
-  <img src="https://img.shields.io/badge/PAGES-12-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 12">
+  <img src="https://img.shields.io/badge/PAGES-29-E9F0F0?style=flat-square&labelColor=070F11" alt="Pages: 29">
   <img src="https://img.shields.io/badge/STACK-VANILLA%20JS-E9F0F0?style=flat-square&labelColor=070F11" alt="Stack: vanilla JS">
   <img src="https://img.shields.io/badge/BUILD%20STEP-NONE-E9F0F0?style=flat-square&labelColor=070F11" alt="Build step: none">
   <img src="https://img.shields.io/badge/DEPENDENCIES-ZERO-56F1B0?style=flat-square&labelColor=070F11" alt="Dependencies: zero">
@@ -52,7 +52,8 @@ markup and styles are static, and `assets/livingbrain.js` reimplements its logic
 | [`/security/`](security/index.html) | Access rings and table, per-scope encryption, hidden-text screening, mail, telemetry, ownership |
 | [`/pricing/`](pricing/index.html) | Community (free, self-hosted), Teams (from $5; hosted $9), Crew ($15); storage, usage, reasoning levels; planned |
 | [`/faq/`](faq/index.html) | Every question, grouped, native `<details>`, with the `FAQPage` JSON-LD |
-| [`/docs/`](docs/index.html) | Every document in one list with its status in words, generated from `tools/docs.json` by `tools/docs.js` |
+| [`/docs/`](docs/index.html) | The hub: guides first, then the reference pages. Reference pages are copies of the product repository's docs (`docs-src/`, pinned by `docs-src/mirror.lock`), rendered by `tools/build-docs.js` into `docs/<name>/` |
+| [`/guides/`](guides/getting-started/index.html) | Hand-written guides (`guides-src/*.md`), rendered into `guides/<name>/` by `tools/build-docs.js`: getting started, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access and audit, MCP, import your ChatGPT history |
 | [`/download/`](download/index.html) | Living Brain for Mac: "Download for Mac" (to `/download/mac`, a 302 in `_redirects` to the DMG on the `macos-v*` GitHub release, so a new release changes one line), version, size, requirements, SHA-256, what the app does, the first-open steps for an unnotarized build, then sign in |
 | [`/privacy/`](privacy/index.html) | What the site collects: nothing beyond serving the pages, the theme choice in your own browser, and the waitlist email. Links to /security/ #subprocessors. Draft, legal review pending |
 | [`/terms/`](terms/index.html) | The site is informational; Living Brain is in early access and nothing is on sale; Polar as the future seller; Apache-2.0 open core. Draft, legal review pending |
@@ -98,7 +99,7 @@ to 360px with no horizontal scroll.
 ```
 .
 ├── index.html                  the home page (short)
-├── how-it-works/ agents/ integrations/ security/ pricing/ faq/ docs/
+├── how-it-works/ agents/ integrations/ security/ pricing/ faq/ docs/ guides/
 │   download/ privacy/ terms/
 │                               one index.html each, served at /<folder>/
 ├── guides/import-chatgpt/      the ChatGPT export guide
@@ -118,8 +119,9 @@ to 360px with no horizontal scroll.
 ├── tools/
 │   ├── prerender.js            writes the no-JS state into the pages (still brain, demo, tabs, chart)
 │   ├── marks.js                writes the logo rows and sprites from harnesses.json and integrations.json
-│   ├── docs.json               the /docs/ list: one row per document and its status
-│   ├── docs.js                 writes that list into docs/index.html between its markers
+│   ├── sync-docs.sh            mirrors the product repo's docs into docs-src/ and writes mirror.lock
+│   ├── build-docs.js           renders docs-src/ and guides-src/ into docs/ and guides/; --check for CI
+│   ├── docs-shell.html         the masthead, footer and head every docs and guides page uses
 │   ├── integrations.json       the other planned integrations' marks and where each row goes
 │   ├── fetch-simple-icons.sh   downloads the pinned Simple Icons release into tools/vendor/ (not committed)
 │   ├── import-mark.py          imports an official mark Simple Icons lacks, from the owner's SVG, as one 24x24 path

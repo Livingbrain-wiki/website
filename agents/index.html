@@ -121,8 +121,8 @@
 </section>
 <section id="connect" class="sec" aria-labelledby="connect-title">
   <div class="wrap sec__in">
-    <div class="eyebrow-row"><h2 id="connect-title" class="h3">Connect over MCP, or use the CLI.</h2><span class="tag">Planned</span></div>
-    <p class="lede lede--sm lede--wide">Any MCP client works, including Claude Desktop. A Claude Code plugin will bundle the MCP server with skills and slash commands.</p>
+    <div class="eyebrow-row"><h2 id="connect-title" class="h3">Connect over MCP, or use the CLI.</h2><span class="tag">MCP live</span></div>
+    <p class="lede lede--sm lede--wide">The MCP endpoint is live at <span class="mono">https://mcp.livingbrain.wiki/v1/pages/mcp</span>. Any MCP client works, including Claude Desktop, and the server offers five tools: <span class="mono">brain_search</span>, <span class="mono">brain_page</span>, <span class="mono">brain_context_for</span>, <span class="mono">brain_note</span> and <span class="mono">brain_facts</span>. A Claude Code plugin will bundle it with skills and slash commands. <a href="/guides/mcp/">Connect a coding agent</a></p>
     <div class="pair">
       <figure class="card term">
         <div class="tabs" role="tablist" aria-label="Agent">
@@ -131,8 +131,8 @@
           <button class="tab" type="button" role="tab" id="tab-2" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Cursor</button>
           <button class="tab" type="button" role="tab" id="tab-3" aria-controls="agent-panel" aria-selected="false" tabindex="-1" data-agent-tab>Other MCP</button>
         </div>
-        <div class="term__body" id="agent-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" data-agent-panel><!-- agent-panel:start --><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--out">Added HTTP MCP server livingbrain</span></div><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--ok">✓ livingbrain connected · 14 tools</span></div><!-- agent-panel:end --></div>
-        <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
+        <div class="term__body" id="agent-panel" role="tabpanel" aria-labelledby="tab-0" tabindex="0" data-agent-panel><!-- agent-panel:start --><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude mcp add --transport http livingbrain https://mcp.livingbrain.wiki/v1/pages/mcp --header &quot;Authorization: Bearer &lt;token&gt;&quot;</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--out">Added HTTP MCP server livingbrain</span></div><div class="term__l"><span class="term__p" aria-hidden="false">$</span><span class="term__t term__t--cmd">claude</span></div><div class="term__l"><span class="term__p" aria-hidden="true"></span><span class="term__t term__t--ok">✓ livingbrain connected · 5 tools</span></div><!-- agent-panel:end --></div>
+        <figcaption class="cap cap--in">Commands from the MCP guide · the endpoint is live · output illustrative</figcaption>
       </figure>
       <figure class="card cli">
         <div class="cli__bar"><span>~/kestrel</span><span class="tag">Illustration</span></div>
@@ -144,9 +144,9 @@
           <div><span class="accent">$ </span><span class="ink">livingbrain mcp</span></div>
           <div class="ink2">MCP server on stdio · reads with your own access</div>
         </div>
-        <figcaption class="cap cap--in">Illustrative commands · not live yet</figcaption>
+        <figcaption class="cap cap--in">Illustration · the CLI ships in the Mac app</figcaption>
       </figure>    </div>
-    <p class="where__rust"><strong>Built in Rust, and fast.</strong> The CLI is a single static binary that starts instantly. The same core runs the hosted service on Cloudflare's edge.</p>
+    <p class="where__rust"><strong>Built in Rust, and fast.</strong> The <span class="mono">livingbrain</span> CLI is a Rust binary that ships inside Living Brain for Mac. The hosted service runs on Cloudflare's edge.</p>
   </div>
 </section>
 
@@ -213,10 +213,10 @@
 <section id="logs" class="sec" aria-labelledby="logs-title">
   <div class="wrap sec__in">
     <div class="row-head">
-      <h2 id="logs-title" class="h3">Every agent's logs, in one place.</h2>
-      <span class="tag">Planned · Sample data</span>
+      <h2 id="logs-title" class="h3">Coding-agent sessions, in one place.</h2>
+      <span class="tag">Claude Code and Codex sync today · Sample data</span>
     </div>
-    <p class="lede lede--sm lede--wide">The <span class="mono">livingbrain</span> CLI collects the session logs your coding harnesses already write: Claude Code, Codex, Cursor, OpenCode and Colonizer colonies. It redacts secrets on your machine and sends them to the brain only if you opt in. Search every session, see tokens and cost per person, repo and model, and spot where agents keep failing. Decisions found in the logs become wiki pages with a link back to the session.</p>
+    <p class="lede lede--sm lede--wide">Living Brain for Mac and the <span class="mono">livingbrain</span> CLI sync Claude Code and Codex sessions from the repositories you opt in, and redact secrets on your machine before anything is sent. Sessions open as full transcripts with their tool calls, and subagent sessions nest under the call that started them. The compiled pages cite the session they came from. Cursor, OpenCode and Colonizer, and cost and token breakdowns per person and model, are planned. The sample figures below are not real data. <a href="/guides/coding-agent-sync/">How syncing works</a></p>
     <div class="access">
       <div class="scroll-x" tabindex="0" role="region" aria-labelledby="logs-cap">
       <table>
@@ -431,19 +431,6 @@
         <span>FZ-018 · &copy; 2026 Factory Zero</span>
       </a></span>
     </div>
-    <!-- built-with:start -->
-    <ul class="built-with" aria-label="Built with">
-      <li class="bw"><span class="bw__role">Hosted on</span> <a class="bw__name" href="https://www.cloudflare.com">Cloudflare</a></li>
-      <li class="bw bw--planned"><span class="bw__role">Built with</span> <a class="bw__name" href="https://cratefield.com/">Cratefield</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Email by</span> <a class="bw__name" href="https://owlpost.to/">Owlpost</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Support by</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Bug reports to</span> <a class="bw__name" href="https://supportgeni.us/">SupportGenius</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Payments by</span> <a class="bw__name" href="https://polar.sh">Polar</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Screened by</span> <a class="bw__name" href="https://promptdeco.de/">promptdecode</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--planned"><span class="bw__role">Deploys by</span> <a class="bw__name" href="https://keepshipping.run/">Keep Shipping</a> <span class="bw__tag"><span class="bw__paren">(</span>planned<span class="bw__paren">)</span></span></li>
-      <li class="bw bw--source"><span class="bw__role">Listed by</span> <a class="bw__name" href="https://factory0.ventures/ventures/living-brain/">Factory Zero</a></li>
-    </ul>
-    <!-- built-with:end -->
   </div>
 </footer>
 <!--/email_off-->
