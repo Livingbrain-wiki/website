@@ -97,7 +97,8 @@ html:not(.js) [data-js-only] { display: none; }
 
 /* ---- layout ---- */
 .wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: var(--gutter); }
-.wrap--narrow { max-width: 880px; }
+/* Every page uses the home page's column (1180px); long text keeps its own measure (46em). */
+.wrap--narrow { max-width: var(--wrap); }
 .sec { border-top: 1px solid var(--line2); }
 .sec__in { padding-block: var(--sec-pad); }
 .sub { margin-top: clamp(56px, 7vw, 80px); }
