@@ -388,3 +388,19 @@ there has no row in this section.
 | Poster: the film's end card, shown before play | `/` #film | `assets/films/livingbrain-poster.jpg` (1920×1080) |
 | Film music: Mixkit "Uplifting Bass" | Film only (not on the page) | Mixkit stock music; the licence is Mixkit's, see its terms. Attribution not shown on the page |
 | Film narration: synthetic voice from MiniMax | Film only (not on the page) | Generated with MiniMax text-to-speech; not a recording of a person |
+
+## Setup skill (2026-10-17)
+
+The `/skills/` page and `skills/livingbrain-setup/` (SKILL.md, reference.md). The
+files are copies of the product repository's `skills/livingbrain-setup/` (PR in
+Livingbrain-wiki/livingbrain, branch `docs/setup-skill`); keep them identical.
+
+| Claim | Where | Backed by |
+| :--- | :--- | :--- |
+| A setup skill for agents, `livingbrain-setup`: install with one `curl` per file into `~/.claude/skills/livingbrain-setup/` (you) or `.claude/skills/livingbrain-setup/` (one repository) | /skills/ #install, llms.txt | Claude Code skill folders (`SKILL.md` with a `name` and `description` in its front matter); the two files in `skills/livingbrain-setup/` |
+| The skill covers the workspace, the CLI, GitHub per organisation, Mac session sync, MCP for Claude Code, Codex and connectors, imports and invites, and separates the steps the agent runs from the steps a person clicks | /skills/ #steps | `skills/livingbrain-setup/SKILL.md` sections 0 to 11, checked against the product code (reference.md section 8) |
+| Agents have no delete tools; the skill never runs a GitHub backfill or a compile by hand; an import asks before it uploads and only the person answers | /skills/ #rules | MCP tools (`docs/mcp.md`: five tools, none deletes); `docs/github.md` (backfill and ingest run only inside Living Brain); `docs/import.md` (confirmation prompt before upload) |
+| Each GitHub organisation binds to one workspace; only an owner or admin connects GitHub | /skills/ (via the skill's GitHub section) | `docs/github.md`; `app/assets/github.js` (`bound-elsewhere`, `forbidden`); `app/settings.html` (`#github`) |
+| Routing one repository's sessions to a chosen workspace is coming soon; until then, sign the CLI in to the workspace first | /skills/ #later | Not released. Branch `feat/per-repo-workspace` on the product repository; `macos/LivingBrainBar/README.md` (sessions use the CLI's sign-in) |
+| The Mac app syncs only opted-in repositories; secrets are redacted on the Mac before upload | /skills/ (intro of section 5 in the skill) | `docs/logs.md`; `macos/LivingBrainBar/README.md` |
+| The skill's facts were checked against the product code on `origin/main` (2b47fc5 at writing); where the docs and code differ, the code is followed | /skills/ #read, reference.md section 7 | Product repository, `skills/livingbrain-setup/reference.md` |

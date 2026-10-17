@@ -41,6 +41,12 @@
   Cache-Control: public, max-age=3600
   Content-Type: text/plain; charset=utf-8
 
+# The setup skill (SKILL.md, reference.md): Markdown, shown as text in a browser
+# and read as text by curl, not downloaded under a guessed type.
+/skills/*.md
+  Cache-Control: public, max-age=3600
+  Content-Type: text/markdown; charset=utf-8
+
 /.well-known/security.txt
   Content-Type: text/plain; charset=utf-8
 

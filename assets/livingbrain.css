@@ -744,6 +744,9 @@ html:not(.js) .stage { opacity: 1; }
 .guide__note { padding: 14px 16px; border: 1px solid var(--line2); border-radius: 12px; background: var(--bg2); font-size: 15px; }
 .guide__cmd { margin: 0 0 18px; padding: 16px 18px; border: 1px solid var(--line2); border-radius: 12px; background: var(--bg2); overflow-x: auto; font-family: var(--f-mono); font-size: 14px; color: var(--ink); }
 .guide__back { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 12px; }
+.cmdbox { margin: 0 0 22px; }
+.cmdbox .guide__cmd { margin: 0 0 10px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.cmdbox .btn { display: inline-flex; }
 .guide__steps { list-style: decimal; }
 .guide__list { list-style: disc; }
 .guide__steps li::marker, .guide__list li::marker { color: var(--accent); font-family: var(--f-mono); }

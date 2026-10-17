@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){var d=document.documentElement,t=null;d.classList.add('js');try{t=localStorage.getItem('lb-theme')}catch(e){}if(t!=='light'&&t!=='dark'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}d.setAttribute('data-theme',t)})()</script>
+
+<title>Setup skill · Living Brain</title>
+<meta name="description" content="The livingbrain-setup agent skill: it takes an agent and a team through setting up Living Brain, and says which steps the agent runs and which a person clicks. Install with one command.">
+<link rel="canonical" href="https://livingbrain.wiki/skills/">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#070f11">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f2f8f8">
+<meta name="color-scheme" content="dark light">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Living Brain">
+<meta property="og:url" content="https://livingbrain.wiki/skills/">
+<meta property="og:title" content="Setup skill · Living Brain">
+<meta property="og:description" content="An agent skill that sets up Living Brain for a team: workspace, CLI, GitHub, Mac session sync, MCP, imports and invites.">
+<meta property="og:image" content="https://livingbrain.wiki/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="livingbrain.wiki. Your company, remembered.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Setup skill · Living Brain">
+<meta name="twitter:description" content="An agent skill that sets up Living Brain for a team: workspace, CLI, GitHub, Mac session sync, MCP, imports and invites.">
+<meta name="twitter:image" content="https://livingbrain.wiki/assets/og.png">
+
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt">
+
+<link rel="preload" href="/assets/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/hanken-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/livingbrain.css">
+<script src="/assets/livingbrain.js" defer></script>
+</head>
+<body>
+<!--email_off-->
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="brand" href="/" aria-label="Living Brain, home"><span class="mark" aria-hidden="true"><span></span></span><span class="brand__word">livingbrain<span>.wiki</span></span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/how-it-works/">How it works</a>
+      <a href="/agents/">Harnesses</a>
+      <a href="/integrations/">Integrations</a>
+      <a href="/security/">Security</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/faq/">FAQ</a>
+      <a href="/docs/">Docs</a>
+      <a href="/download/">Download</a>
+    </nav>
+    <details class="menu">
+      <summary class="menu__btn"><span class="menu__icon" aria-hidden="true"></span>Menu</summary>
+      <nav class="menu__panel" aria-label="Primary, small screens">
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a class="menu__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+      </nav>
+    </details>
+    <a class="btn btn--primary btn--sm hd__cta" href="https://app.livingbrain.wiki/">Sign in</a>
+    <button class="theme-btn" type="button" data-theme-toggle hidden><span class="theme-btn__icon" aria-hidden="true"></span><span class="theme-btn__label" data-theme-label>Light</span></button>
+  </div>
+</header>
+
+<main id="main" class="guide">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">Skills · Agents</p>
+    <h1 class="h2">Set up Living Brain with your agent.</h1>
+    <p class="lede">The <span class="mono">livingbrain-setup</span> skill takes an agent through setting up Living Brain for a team: the workspace, the CLI, GitHub per organisation, Mac session sync, MCP for Claude Code, Codex and Claude connectors, imports and invites. It says which steps the agent runs, and which ones a person clicks.</p>
+
+    <dl class="dl__facts">
+      <div><dt>Skill</dt><dd><span class="mono">livingbrain-setup</span></dd></div>
+      <div><dt>Files</dt><dd><span class="mono">SKILL.md</span> and <span class="mono">reference.md</span></dd></div>
+      <div><dt>Format</dt><dd>Plain Markdown. Installs as a Claude Code skill.</dd></div>
+      <div><dt>Needs</dt><dd>A Living Brain account. An owner or admin for GitHub.</dd></div>
+    </dl>
+    <p class="guide__status"><span class="tag">Early access · Follows the live app</span></p>
+
+    <h2 class="h3" id="install">Install it</h2>
+    <p>Pick one. Both put the same two files in place. Start a new Claude Code session after you install.</p>
+
+    <h3 class="h4">For you, in every project</h3>
+    <div class="cmdbox">
+      <pre class="guide__cmd"><code id="cmd-user">mkdir -p ~/.claude/skills/livingbrain-setup &amp;&amp; \
+curl -fsSL https://livingbrain.wiki/skills/livingbrain-setup/SKILL.md -o ~/.claude/skills/livingbrain-setup/SKILL.md &amp;&amp; \
+curl -fsSL https://livingbrain.wiki/skills/livingbrain-setup/reference.md -o ~/.claude/skills/livingbrain-setup/reference.md</code></pre>
+      <button class="btn btn--ghost btn--sm" type="button" data-copy="cmd-user">Copy</button>
+    </div>
+
+    <h3 class="h4">For one repository</h3>
+    <p>Run this from the repository's root. It commits nothing: add the folder to git if your team should share it.</p>
+    <div class="cmdbox">
+      <pre class="guide__cmd"><code id="cmd-project">mkdir -p .claude/skills/livingbrain-setup &amp;&amp; \
+curl -fsSL https://livingbrain.wiki/skills/livingbrain-setup/SKILL.md -o .claude/skills/livingbrain-setup/SKILL.md &amp;&amp; \
+curl -fsSL https://livingbrain.wiki/skills/livingbrain-setup/reference.md -o .claude/skills/livingbrain-setup/reference.md</code></pre>
+      <button class="btn btn--ghost btn--sm" type="button" data-copy="cmd-project">Copy</button>
+    </div>
+
+    <h2 class="h3" id="ask">Then ask your agent</h2>
+    <p class="guide__note">&ldquo;Set up Living Brain for our team.&rdquo;</p>
+    <p>The agent asks for the company's name, the GitHub organisations and the people to invite. Then it works through the steps below, and stops where a person has to click.</p>
+
+    <h2 class="h3" id="steps">What it covers</h2>
+    <ol class="guide__steps">
+      <li><strong>Preflight.</strong> <span class="mono">Agent.</span> Company, workspace, GitHub organisations, Mac users, imports, invites.</li>
+      <li><strong>Choose the workspace.</strong> <span class="mono">You.</span> One company, one workspace. Never two companies in one.</li>
+      <li><strong>Install the CLI.</strong> <span class="mono">You, then agent.</span> From the Mac app, or from a checkout.</li>
+      <li><strong>Sign the CLI in.</strong> <span class="mono">Agent starts, you approve</span> in the browser for the right workspace.</li>
+      <li><strong>Connect GitHub.</strong> <span class="mono">You install</span> the Living Brain GitHub App, as an owner or admin, per organisation. The agent checks the projects.</li>
+      <li><strong>Sync Mac sessions.</strong> <span class="mono">You install and opt in</span> each repository. The agent verifies with a dry run.</li>
+      <li><strong>Connect MCP.</strong> <span class="mono">Agent</span> for Claude Code and Codex. <span class="mono">You</span> for a Claude connector.</li>
+      <li><strong>Import.</strong> <span class="mono">Agent</span> runs the import. <span class="mono">You</span> answer its upload prompt.</li>
+      <li><strong>Invite people.</strong> <span class="mono">You</span>, with Member, Admin or Owner.</li>
+      <li><strong>Verify and troubleshoot.</strong> <span class="mono">Agent.</span> A table of the real error messages, and what to do for each.</li>
+    </ol>
+
+    <h2 class="h3" id="rules">Rules it follows</h2>
+    <ul class="guide__list">
+      <li><strong>No secrets in chat.</strong> Tokens stay in the keychain or in an environment variable. The agent never prints one.</li>
+      <li><strong>No deletes, no hand backfills.</strong> Agents have no delete tools. GitHub history and compiles run in the cron, not by script.</li>
+      <li><strong>You answer the prompts that send data.</strong> An import asks before it uploads, and only you say yes.</li>
+    </ul>
+
+    <h2 class="h3" id="later">Coming soon</h2>
+    <p>Routing one repository's sessions to a chosen workspace is coming soon. Until it ships, sign the CLI in to the workspace you want before you sync.</p>
+
+    <h2 class="h3" id="read">Read it first</h2>
+    <p>The skill is plain Markdown, so you can read it before you install it. Every fact in it was checked against the product&rsquo;s code; the reference file lists where.</p>
+    <p class="guide__back"><a class="btn btn--ghost" href="/skills/livingbrain-setup/SKILL.md">View SKILL.md</a> <a class="btn btn--ghost" href="/skills/livingbrain-setup/reference.md">View reference.md</a> <a class="btn btn--ghost" href="/guides/mcp/">The MCP guide</a> <a class="btn btn--ghost" href="/download/">Living Brain for Mac</a></p>
+  </div>
+</main>
+
+<footer id="waitlist" class="ft">
+  <div class="wrap ft__in">
+    <h2 class="display display--ft">A <span class="accent">living</span> brain for your crew.</h2>
+    <p class="lede lede--sm">Living Brain is open in early access. Sign in with your email and start your team's brain.</p>
+    <p class="cta-row"><a class="btn btn--primary" href="https://app.livingbrain.wiki/">Get started <span aria-hidden="true">→</span></a></p>
+    <div class="join-box join-box--updates">
+      <p class="join__lead">Not ready yet? Get product updates by email.</p>
+      <form class="join" data-waitlist action="mailto:hello@livingbrain.wiki?subject=Living%20Brain%20updates" method="post" enctype="text/plain" novalidate aria-label="Get product updates">
+        <label class="sr" for="email-foot">Work email</label>
+        <input id="email-foot" name="email" type="email" required autocomplete="email" spellcheck="false" placeholder="you@company.com" aria-describedby="note-foot">
+        <button class="btn btn--ghost" type="submit">Get updates</button>
+      </form>
+      <div class="join__human" data-captcha hidden></div>
+      <p class="join__note" id="note-foot" data-form-note role="status" hidden></p>
+      <p class="joined" data-joined role="status" hidden>Almost there: we sent a confirmation link to <strong data-joined-email></strong>. Open it to confirm. After that, we write only when something ships.</p>
+    </div>
+    <div class="ft__bar">
+      <div class="ft__brand">
+        <span class="brand__word brand__word--sm">livingbrain<span>.wiki</span></span>
+        <span class="mono-s">EARLY ACCESS · LIVE</span>
+      </div>
+      <nav class="ft__nav" aria-label="Pages">
+        <a href="/">Home</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/agents/">Harnesses</a>
+        <a href="/integrations/">Integrations</a>
+        <a href="/security/">Security</a>
+        <a href="/pricing/">Pricing</a>
+        <a href="/faq/">FAQ</a>
+        <a href="/docs/">Docs</a>
+        <a href="/download/">Download</a>
+        <a href="/skills/" aria-current="page">Skills</a>
+        <a href="/guides/import-chatgpt/">Import guide</a>
+      </nav>
+    </div>
+    <nav class="ft__nav ft__nav--ext" aria-label="Elsewhere">
+      <a href="https://factory0.ventures">a Factory Zero venture</a>
+      <a href="https://colonizer.dev">Colonizer</a>
+      <a href="https://github.com/Livingbrain-wiki/livingbrain">GitHub</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/security.txt">security.txt</a>
+    </nav>
+    <div class="ft__fz">
+      <span>livingbrain · livingbrain.wiki · apache-2.0 open core</span>
+      <span class="fz-credit"><a href="https://factory0.ventures/ventures/living-brain/" rel="noopener">
+        <svg class="fz-ring" viewBox="0 0 16 16" width="11" height="11" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="6.1" fill="none" stroke="#FF5A36" stroke-width="1.9" stroke-dasharray="28.7 9.6"/></svg>
+        <span>FZ-018 · &copy; 2026 Factory Zero</span>
+      </a></span>
+    </div>
+  </div>
+</footer>
+<!--/email_off-->
+</body>
+</html>
