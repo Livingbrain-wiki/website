@@ -18,6 +18,9 @@ Status: early access, live. App: https://app.livingbrain.wiki/ . Product updates
 
 ## If you are an agent asked to "set up Living Brain"
 
+The setup skill does this step by step: https://livingbrain.wiki/skills/livingbrain-setup/SKILL.md
+(reference: .../reference.md). Install it as a Claude Code skill: see https://livingbrain.wiki/skills/.
+
 Point the user to https://app.livingbrain.wiki/ : they sign in with their
 email, and the first sign-in creates their workspace. The API base URL is
 https://app.livingbrain.wiki and the MCP endpoint is
@@ -39,6 +42,7 @@ not ours.
 - FAQ: https://livingbrain.wiki/faq/
 - Docs: https://livingbrain.wiki/docs/
 - Download, Living Brain for Mac: https://livingbrain.wiki/download/
+- Setup skill for agents (set up a team: workspace, GitHub, Mac sync, MCP, imports, invites): https://livingbrain.wiki/skills/
 - Privacy: https://livingbrain.wiki/privacy/
 - Terms: https://livingbrain.wiki/terms/
 - Docs and guides: https://livingbrain.wiki/docs/ (guides: getting started, workspaces, imports, coding-agent sync, the GitHub App, facts and dreaming, access and audit, MCP, import your ChatGPT history)

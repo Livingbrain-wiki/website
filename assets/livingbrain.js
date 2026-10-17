@@ -937,4 +937,32 @@
         });
     });
   });
+
+  // ---- copy buttons ------------------------------------------------------------
+  // A button with data-copy="<id>" copies the text of the element with that id
+  // (the install commands on /skills/). Inline scripts are not allowed by the CSP,
+  // so this lives here. Without the Clipboard API the button says so.
+  (function () {
+    var buttons = document.querySelectorAll('[data-copy]');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      btn.addEventListener('click', function () {
+        var src = document.getElementById(btn.getAttribute('data-copy'));
+        if (!src) return;
+        var label = btn.getAttribute('data-label') || btn.textContent;
+        btn.setAttribute('data-label', label);
+        function said(text) {
+          btn.textContent = text;
+          setTimeout(function () { btn.textContent = label; }, 1600);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(src.textContent || '').then(
+            function () { said('Copied'); },
+            function () { said('Copy failed'); }
+          );
+        } else {
+          said('Copy failed');
+        }
+      });
+    });
+  })();
 })();
