@@ -58,5 +58,5 @@ fi
 
 # A Worker with static assets (wrangler.toml): it serves the clean checkout's
 # dist/ and attaches livingbrain.wiki and www.livingbrain.wiki as custom domains.
-npx --yes wrangler@latest deploy --config "$tmp/tree/wrangler.toml" \
+bunx wrangler@latest deploy --config "$tmp/tree/wrangler.toml" \
   --message="$ref ${sha:0:7}: $subject"
