@@ -4,3 +4,4 @@ dist/
 .wrangler/
 design-src/support.js
 tools/vendor/
+package-lock.json
