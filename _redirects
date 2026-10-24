@@ -10,4 +10,4 @@
 
 # The Mac app: one stable link for the current release, so a new release
 # changes only this line. The DMG is a GitHub release asset (macos-v* tags).
-/download/mac  https://github.com/Livingbrain-wiki/livingbrain/releases/download/macos-v0.1.3/LivingBrain.dmg  302
+/download/mac  https://github.com/Livingbrain-wiki/livingbrain/releases/download/macos-v0.1.5/LivingBrain.dmg  302
